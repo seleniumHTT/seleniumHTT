@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" total="1" passed="1">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Article" duration-ms="19920" started-at="2015-06-24T01:52:19Z" finished-at="2015-06-24T01:52:39Z">
+    <groups>
+    </groups>
+    <test name="ArticleXML" duration-ms="19920" started-at="2015-06-24T01:52:19Z" finished-at="2015-06-24T01:52:39Z">
+      <class name="testcases.TC_article_1_create">
+        <test-method status="PASS" signature="beforeTest()[pri:0, instance:testcases.TC_article_1_create@675690]" name="beforeTest" is-config="true" duration-ms="12" started-at="2015-06-24T08:52:19Z" finished-at="2015-06-24T08:52:19Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeTest -->
+        <test-method status="PASS" signature="beforeClass()[pri:0, instance:testcases.TC_article_1_create@675690]" name="beforeClass" is-config="true" duration-ms="16247" started-at="2015-06-24T08:52:19Z" finished-at="2015-06-24T08:52:35Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeClass -->
+        <test-method status="PASS" signature="TC1_CreateArticle()[pri:0, instance:testcases.TC_article_1_create@675690]" name="TC1_CreateArticle" duration-ms="2972" started-at="2015-06-24T08:52:35Z" finished-at="2015-06-24T08:52:38Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TC1_CreateArticle -->
+        <test-method status="PASS" signature="afterClass()[pri:0, instance:testcases.TC_article_1_create@675690]" name="afterClass" is-config="true" duration-ms="676" started-at="2015-06-24T08:52:38Z" finished-at="2015-06-24T08:52:39Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterClass -->
+        <test-method status="PASS" signature="afterTest()[pri:0, instance:testcases.TC_article_1_create@675690]" name="afterTest" is-config="true" duration-ms="0" started-at="2015-06-24T08:52:39Z" finished-at="2015-06-24T08:52:39Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterTest -->
+      </class> <!-- testcases.TC_article_1_create -->
+    </test> <!-- ArticleXML -->
+  </suite> <!-- Article -->
+</testng-results>
