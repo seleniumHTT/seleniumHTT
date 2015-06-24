@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Article" parallel="none">
+  <test name="ArticleXML">
+    <classes>
+      <class name="testcases.TC_article_1_create"/>
+    </classes>
+  </test> <!-- ArticleXML -->
+</suite> <!-- Article -->
