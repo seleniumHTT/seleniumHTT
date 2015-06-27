@@ -7,6 +7,7 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.AfterTest;
 
+import pages.Login_page;
 import actions.LogInOut_action;
 import common.Selenium;
 import common.config;
@@ -18,8 +19,8 @@ public class TC_article_1_create {
   @Test
   public void TC1_CreateArticle() {
 	  //1. Login to joomla
-	  LogInOut_action logInOut = new LogInOut_action(driver);
-	  logInOut.login(config.usernameAdmin, config.passwordAdmin);
+	  Login_page loginPage = new Login_page(driver);
+	  loginPage.login(config.usernameAdmin, config.passwordAdmin);
 	  
 	  //2. Create article
 	  
