@@ -16,7 +16,12 @@ public class Login_page {
 		//Định nghĩa cho webdriver biết toàn bộ các elements phía dưới cần được khởi tạo
 		PageFactory.initElements(driver, this);
 	}	
-		
+	
+	public void login(String username, String password) {
+		txt_username.sendKeys(username);
+		txt_password.sendKeys(password);
+		btn_login.click();
+	}	
 	
 	@FindBy(xpath="//input[@id='mod-login-username']")
 	public WebElement txt_username;

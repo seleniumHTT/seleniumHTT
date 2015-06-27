@@ -19,13 +19,12 @@ public class TC_article_1_create {
   public void TC1_CreateArticle() {
 	  //1. Login to joomla
 	  Login_page loginPage = new Login_page(driver);
-	  //loginPage.login(config.usernameAdmin, config.passwordAdmin);
+	  loginPage.login(config.usernameAdmin, config.passwordAdmin);
 	  
 	  //2. Create article
 	  
 	  
-  }
-  
+  }  
   
   
   @BeforeClass
