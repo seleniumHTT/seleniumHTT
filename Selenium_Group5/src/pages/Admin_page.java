@@ -16,6 +16,23 @@ public class Admin_page extends AbstractPage {
 	}	
 	
 	
+	
+	
+	//Click main buttons
+	public Article_add_edit_page clickAddNewArticle() {
+		btn_addNewArticle.click();		
+		return new Article_add_edit_page(driver);		
+	}
+
+	public Article_manager_page clickArticleManager() {
+		btn_addNewArticle.click();		
+		return new Article_manager_page(driver);		
+	}	
+	
+	public Article_manager_page clickArticleManagerMenu() {
+		selectMenu("Content/Article Manager").click();
+		return new Article_manager_page(driver);
+	}
 	//Select menu item, split by '/'
 	public WebElement selectMenu(String menu) {
 		String menuXpath = "";
@@ -42,18 +59,6 @@ public class Admin_page extends AbstractPage {
 		}
 		return eMenu;
 	}
-	
-	//Click main buttons
-	public Article_add_page clickAddNewArticle() {
-		btn_addNewArticle.click();		
-		return new Article_add_page(driver);		
-	}
-
-	public Article_Manager_page clickArticleManager() {
-		btn_addNewArticle.click();		
-		return new Article_Manager_page(driver);		
-	}
-	
 	@FindBy(xpath="//span[contains(text(),'Add New Article')]")
 	WebElement btn_addNewArticle;
 	

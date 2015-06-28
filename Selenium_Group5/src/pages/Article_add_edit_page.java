@@ -6,22 +6,20 @@ import org.openqa.selenium.support.FindBy;
 
 import abs.AbstractPage;
 
-public class Article_add_page extends AbstractPage {
+public class Article_add_edit_page extends AbstractPage {
 	WebDriver driver;
 	
-	public Article_add_page(WebDriver driver) {
+	public Article_add_edit_page(WebDriver driver) {
 		super(driver);	
 		this.driver = driver;
 	}
 	
 	
 	public void enterData(String title, String category, String status, String access, String feature, String articleText) {
-			
-		//Switch editor to plain text mode
-		btn_toggleEditor.click();
 		
 		//Enter data
-		if(title !=null && title != "") {
+		if(title !=null && title != "") {			
+			txt_title.clear();
 			txt_title.sendKeys(title);
 		}
 		
@@ -42,14 +40,32 @@ public class Article_add_page extends AbstractPage {
 		}
 		
 		if(articleText != null && articleText != "") {
+			//Switch editor to plain text mode
+			btn_toggleEditor.click();
+			txt_articleText.clear();
 			txt_articleText.sendKeys(articleText);
+			
+			btn_toggleEditor.click();
 		}
 				
 	}
 	
-	public Article_Manager_page clickSaveClose() {
+	public void insertImage(String imageName) {
+		btn_image.click();
+		
+		driver.switchTo().frame(iframe_imageFrame);
+		driver.switchTo().frame(iframe_selectImageFrame);
+		
+		getWebElement("//a[@title='"+ imageName +"']").click();
+		
+		driver.switchTo().parentFrame();		
+		btn_insertImageIframe.click();
+		
+		driver.switchTo().parentFrame();		
+	}
+	public Article_manager_page clickSaveClose() {
 		btn_saveClose.click();
-		return new Article_Manager_page(driver);
+		return new Article_manager_page(driver);
 	}	
 		
 	
@@ -75,9 +91,22 @@ public class Article_add_page extends AbstractPage {
 	@FindBy(xpath="//a[text()='Toggle editor']")
 	WebElement btn_toggleEditor;
 	
+	@FindBy(xpath="//a[text()='Image']")
+	WebElement btn_image;
+	
 	//Submit buttons
 	@FindBy(xpath="//li[@id='toolbar-save']/a")
 	WebElement btn_saveClose;
+	
+	//iframe
+	@FindBy(xpath="//div[@id='sbox-content']/iframe")
+	WebElement iframe_imageFrame;
+	
+	@FindBy(xpath="//iframe[@id='imageframe']")
+	WebElement iframe_selectImageFrame;
+	
+	@FindBy(xpath="//button[text()='Insert']")
+	WebElement btn_insertImageIframe;
 	
 	
 	String _lbl_addNewArticle = "//h2[text()='Article Manager: Add New Article']";

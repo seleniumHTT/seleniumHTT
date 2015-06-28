@@ -11,8 +11,8 @@ import org.testng.annotations.AfterTest;
 
 import abs.AbstractTest;
 import pages.Admin_page;
-import pages.Article_Manager_page;
-import pages.Article_add_page;
+import pages.Article_manager_page;
+import pages.Article_add_edit_page;
 import pages.Login_page;
 import utilities.Random;
 import common.Selenium;
@@ -44,7 +44,7 @@ public class TC001_Article_Create extends AbstractTest{
 	  
 	  //2. Go to add new article page
 	  Admin_page adminPage = new Admin_page(driver);
-	  Article_add_page addArticlePage = adminPage.clickAddNewArticle();
+	  Article_add_edit_page addArticlePage = adminPage.clickAddNewArticle();
 	 
 	  //3. Enter data	  
 	  addArticlePage.enterData(title, category, status, access, feature, articleText);
@@ -54,14 +54,14 @@ public class TC001_Article_Create extends AbstractTest{
 	  
 	  //VP1: "Article successfully saved" message is displayed
 	  check = articleManagerPage.isMessageDisplay(msg);
-	  verifyTrue(check, "Article successfully saved message is displayed");
+	  verifyTrue(check, "VP1: Article successfully saved message is displayed");
 	  
 	  //Search article
 	  articleManagerPage.searchArticle(title);
 	  
 	  //VP2: Created article is displayed on the articles table
 	  check = articleManagerPage.isArticleExist(title);
-	  verifyTrue(check, "Created article is displayed");
+	  verifyTrue(check, "VP2: Created article is displayed");
 	  
   } 
   
@@ -80,5 +80,5 @@ public class TC001_Article_Create extends AbstractTest{
   
   String title, category, status, access, feature, articleText, msg;
   boolean check;
-  Article_Manager_page articleManagerPage;
+  Article_manager_page articleManagerPage;
 }

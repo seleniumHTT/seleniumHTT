@@ -21,8 +21,8 @@ public abstract class AbstractPage {
 	}
 	
 	//Interact method
-	public void selectCombobox(WebElement combobox, String value) {
-		new Select(combobox).selectByValue(value);
+	public void selectCombobox(WebElement combobox, String value) {		
+		new Select(combobox).selectByVisibleText(value);
 	}
 	
 	public void mouseHover(WebElement e) {
@@ -32,7 +32,7 @@ public abstract class AbstractPage {
 	
 	//Check methods
 	public boolean isMessageDisplay(String msg) {
-		return isElementExist(".//*[@id='system-message']//*[text()='"+ msg +"']");
+		return isElementExist(".//*[@id='system-message']//*[contains(text(),'"+ msg +"')]");
 	}	
 	
 	public boolean isElementExist(String xpath) {

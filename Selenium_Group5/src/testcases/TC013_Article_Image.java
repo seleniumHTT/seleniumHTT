@@ -18,7 +18,7 @@ import utilities.Random;
 import common.Selenium;
 import common.config;
 
-public class TC002_Article_Edit extends AbstractTest{
+public class TC013_Article_Image extends AbstractTest{
 	WebDriver driver;
 	Selenium sele;
 	
@@ -34,20 +34,13 @@ public class TC002_Article_Edit extends AbstractTest{
 	  access = "";
 	  feature ="";
 	  articleText = title + " content";
-	  
-	  //edited article data
-	  titleEdit = title + " edited";
-	  categoryEdit = "";
-	  statusEdit = "";
-	  accessEdit = "";
-	  featureEdit ="";
-	  articleTextEdit = articleText + " edited";
+	  imageName = "powered_by.png";
 	  
 	  msg = "Article successfully saved";
   }
   
-  @Test(description= "Verify user can edit an article")
-  public void TC2_EditArticle() {
+  @Test(description= "Verify user can add image to article's content")
+  public void TC3_MoveArticleToTrash() {
 	  //1. Login to joomla
 	  Login_page loginPage = new Login_page(driver);
 	  loginPage.login(config.usernameAdmin, config.passwordAdmin);
@@ -59,6 +52,9 @@ public class TC002_Article_Edit extends AbstractTest{
 	  //3. Click new icon, go to add page
 	  Article_add_edit_page addArticlePage = articleManagerPage.clickNewArticle();
 	  addArticlePage.enterData(title, category, status, access, feature, articleText);
+	  
+	  //4. Insert image
+	  addArticlePage.insertImage(imageName);
 	  
 	  //4. Click Save n close button
 	  articleManagerPage = addArticlePage.clickSaveClose();
@@ -72,30 +68,7 @@ public class TC002_Article_Edit extends AbstractTest{
 	  
 	  //VP2: Created article is displayed on the articles table
 	  check = articleManagerPage.isArticleExist(title);
-	  verifyTrue(check, "VP2: Created article is displayed");
-	  
-	  //5. Check on the recently added article's checkbox
-	  articleManagerPage.clickArticleCheckbox(title);
-	  
-	  //6. Click on 'Edit' icon of the top right toolbar
-	  editArticlePage = articleManagerPage.clickEditArticle();
-	  
-	  //7. Enter edit data
-	  editArticlePage.enterData(titleEdit, categoryEdit, statusEdit, accessEdit, featureEdit, articleTextEdit);
-	  
-	  //8. Click save and close
-	  articleManagerPage = editArticlePage.clickSaveClose();
-	  
-	  //VP3: "Article successfully saved" message is displayed
-	  check = articleManagerPage.isMessageDisplay(msg);
-	  verifyTrue(check, "VP3: Article successfully saved message is displayed");
-	  
-	  //Search article
-	  articleManagerPage.searchArticle(titleEdit);
-	  
-	  //VP4: Created article is displayed on the articles table
-	  check = articleManagerPage.isArticleExist(titleEdit);
-	  verifyTrue(check, "VP4: Edited article is displayed");
+	  verifyTrue(check, "VP2: Created article is displayed"); 
   } 
   
   @AfterClass
@@ -111,8 +84,7 @@ public class TC002_Article_Edit extends AbstractTest{
   public void afterTest() {
   }
   
-  String title, category, status, access, feature, articleText, msg;
-  String titleEdit, categoryEdit, statusEdit, accessEdit, featureEdit, articleTextEdit;
+  String title, category, status, access, feature, articleText, msg, msgTrash, imageName;
   boolean check;
   Article_manager_page articleManagerPage;
   Article_add_edit_page editArticlePage, addArticlePage;
