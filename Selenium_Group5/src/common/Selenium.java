@@ -9,7 +9,7 @@ public class Selenium {
 	public WebDriver getDriver(String url) {
 		driver = new FirefoxDriver();
 		driver.get(url);
-		driver.manage().window().maximize();
+		//driver.manage().window().maximize();
 		return driver;
 	}
 

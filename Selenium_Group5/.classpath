@@ -17,5 +17,8 @@
 	<classpathentry kind="lib" path="libs/selenium-java-2.45.0.jar"/>
 	<classpathentry kind="lib" path="libs/selenium-server-standalone-2.44.0.jar"/>
 	<classpathentry kind="lib" path="libs/xmlbeans-2.6.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Hoang Hai/Desktop/reportng-1.1.4/reportng-1.1.4.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Hoang Hai/Desktop/reportng-1.1.4/velocity-dep-1.4.jar"/>
+	<classpathentry kind="lib" path="D:/Git/seleniumHTT/Selenium_Group5/libs/guice-3.0.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
