@@ -57,7 +57,7 @@ public class Article_manager_page extends AbstractPage {
 	WebElement btn_search;
 	
 	@FindBy(xpath="//button[text()='Clear']")
-	WebElement btn_clear;	
+	WebElement btn_clear;
 	
 	@FindBy(xpath="//li[@id='toolbar-new']/a")
 	WebElement btn_newArticle;
@@ -89,5 +89,7 @@ public class Article_manager_page extends AbstractPage {
 	@FindBy(xpath="//select[@name='filter_published']")
 	WebElement cb_filterStatus;
 	
+	@FindBy(xpath="//a[text()='Ordering']")
+	WebElement lnk_ordering;
 	
 }
