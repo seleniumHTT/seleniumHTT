@@ -22,6 +22,7 @@ public class TC014_Article_Ordering extends AbstractTest{
 	WebDriver driver;
 	Selenium sele;
 	
+	
   @BeforeClass
   public void beforeClass() {
 	  sele = new Selenium();
@@ -94,6 +95,7 @@ public class TC014_Article_Ordering extends AbstractTest{
 	  verifyTrue(check, "VP4: Created article is displayed on the articles table");
 	  
 	  //9. Click on the Header link of Ordering column
+	  
 	  //10. Check on the second created article's checkbox
 	  //11. Click on down arrow in Ordering column of the selected article
 	  

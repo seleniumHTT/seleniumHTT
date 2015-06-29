@@ -22,6 +22,9 @@ public abstract class AbstractPage {
 		return driver.findElement(By.xpath(xpath));
 	}
 	
+	public String getCellXpath(String objectTitle, int colNumber) {
+		return "//a[contains(text(), '" + objectTitle + "')]/ancestor::tr/td["+ colNumber +"]";
+	}
 	//Interact methods
 	public void selectCombobox(WebElement combobox, String value) {		
 		new Select(combobox).selectByVisibleText(value);

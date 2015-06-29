@@ -42,13 +42,26 @@ public class Article_manager_page extends AbstractPage {
 	
 	//Handle table
 	public void clickArticleCheckbox(String articleTitle) {
-		String chbXpath = "//a[contains(text(), '" + articleTitle + "')]/ancestor::tr/td[1]/input";
+		String chbXpath = getCellXpath(articleTitle, 1) + "/input";
 		getWebElement(chbXpath).click();
+	}
+	
+	public void clickArrowOrdering(String articleTitle, order updown) {		
+		if(updown.equals(order.down)) {
+			
+		} else if (updown.equals(order.up)) {
+			
+		}
 	}
 	
 	public void filterStatus(String status) {
 		selectCombobox(cb_filterStatus, status);		
 	}
+	
+	public void clickOrderingColumn() {		
+		lnk_ordering.click();
+	}
+	
 	
 	@FindBy(xpath="//input[@id='filter_search']")
 	WebElement txt_search;
@@ -92,4 +105,5 @@ public class Article_manager_page extends AbstractPage {
 	@FindBy(xpath="//a[text()='Ordering']")
 	WebElement lnk_ordering;
 	
+	enum order {up, down}	
 }
