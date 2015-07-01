@@ -95,9 +95,11 @@ public class TC014_Article_Ordering extends AbstractTest{
 	  verifyTrue(check, "VP4: Created article is displayed on the articles table");
 	  
 	  //9. Click on the Header link of Ordering column
+	  articleManagerPage.clickOrderingColumn();
 	  
 	  //10. Check on the second created article's checkbox
 	  //11. Click on down arrow in Ordering column of the selected article
+	  articleManagerPage.clickArrowOrdering(title, "down");
 	  
 	  //VP5: Verify the first article changes its position with the second article
 

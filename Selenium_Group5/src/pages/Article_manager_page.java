@@ -40,17 +40,23 @@ public class Article_manager_page extends AbstractPage {
 		return isElementExist("//a[contains(text(),'"+ articleTitle +"')]");
 	}
 	
+	public boolean isArticleLocateAt(int row) {
+		
+		return false;
+	}
 	//Handle table
 	public void clickArticleCheckbox(String articleTitle) {
 		String chbXpath = getCellXpath(articleTitle, 1) + "/input";
 		getWebElement(chbXpath).click();
 	}
 	
-	public void clickArrowOrdering(String articleTitle, order updown) {		
-		if(updown.equals(order.down)) {
-			
-		} else if (updown.equals(order.up)) {
-			
+	public void clickArrowOrdering(String articleTitle, String updown) {		
+		if(updown.equals("down")) {
+			String downXpath = getCellXpath(articleTitle, 6) + "//a[@title='Move Down']";
+			getWebElement(downXpath).click();
+		} else if (updown.equals("up")) {
+			String upXpath = getCellXpath(articleTitle, 6) + "//a[@title='Move Up']";
+			getWebElement(upXpath).click();
 		}
 	}
 	
@@ -103,7 +109,6 @@ public class Article_manager_page extends AbstractPage {
 	WebElement cb_filterStatus;
 	
 	@FindBy(xpath="//a[text()='Ordering']")
-	WebElement lnk_ordering;
-	
-	enum order {up, down}	
+	WebElement lnk_ordering;	
+		
 }
