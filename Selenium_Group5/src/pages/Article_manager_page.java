@@ -1,5 +1,6 @@
 package pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -35,15 +36,31 @@ public class Article_manager_page extends AbstractPage {
 		btn_trash.click();
 		return new Article_manager_page(driver);
 	}
+	
 	//Verify
 	public boolean isArticleExist(String articleTitle) {
 		return isElementExist("//a[contains(text(),'"+ articleTitle +"')]");
 	}
 	
-	public boolean isArticleLocateAt(int row) {
+	public boolean isArticleLocateAt(String articleTitle, int row) {
+		int currentRow = getRowNumber(articleTitle);
 		
+		if(row == currentRow) {			
+			return true;
+		}
+		return false;		
+	}	
+	
+	public boolean isArticlePublished(String articleTitle, String expectedStatus) {
+		String buttonXpath = getCellXpath(articleTitle, 3) + "/a/span/span";
+		String currentStatus = driver.findElement(By.xpath(buttonXpath)).getAttribute("innerHTML");
+		
+		if(expectedStatus.equals(currentStatus)) {
+			return true;
+		}
 		return false;
 	}
+	
 	//Handle table
 	public void clickArticleCheckbox(String articleTitle) {
 		String chbXpath = getCellXpath(articleTitle, 1) + "/input";
@@ -58,6 +75,11 @@ public class Article_manager_page extends AbstractPage {
 			String upXpath = getCellXpath(articleTitle, 6) + "//a[@title='Move Up']";
 			getWebElement(upXpath).click();
 		}
+	}	
+	
+	public void clickChangeStatus(String articleTitle) {
+		String buttonXpath = getCellXpath(articleTitle, 3) + "/a";
+		getWebElement(buttonXpath).click();
 	}
 	
 	public void filterStatus(String status) {

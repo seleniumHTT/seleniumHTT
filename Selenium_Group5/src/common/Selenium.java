@@ -21,7 +21,7 @@ public class Selenium {
 	}
 	
 	public void close() {
-		driver.quit();
+		//driver.quit();
 	}
 	
 }

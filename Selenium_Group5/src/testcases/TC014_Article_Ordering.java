@@ -81,14 +81,14 @@ public class TC014_Article_Ordering extends AbstractTest{
 	  addArticlePage.enterData(title2, category, status, access, feature, articleText);
 	  
 	  //8. Click save and close
-	  articleManagerPage = editArticlePage.clickSaveClose();
+	  articleManagerPage = addArticlePage.clickSaveClose();
 	  
 	  //VP3: "Article successfully saved" message is displayed
 	  check = articleManagerPage.isMessageDisplay(msg);
 	  verifyTrue(check, "VP3: Article successfully saved message is displayed");
 	  
 	  //Search article
-	  articleManagerPage.searchArticle(title2);
+	  articleManagerPage.searchArticle(title);
 	  
 	  //VP4: Created article is displayed on the articles table
 	  check = articleManagerPage.isArticleExist(title2);
@@ -102,12 +102,18 @@ public class TC014_Article_Ordering extends AbstractTest{
 	  articleManagerPage.clickArrowOrdering(title, "down");
 	  
 	  //VP5: Verify the first article changes its position with the second article
-
+	  int rowTitle1 = articleManagerPage.getRowNumber(title);
+	  int rowTitle2 = articleManagerPage.getRowNumber(title2);
+	  
+	  check = articleManagerPage.isArticleLocateAt(title2, rowTitle1);
+	  verifyTrue(check, "VP5a: Verify the first article changes its position with the second article");
+	  check = articleManagerPage.isArticleLocateAt(title, rowTitle2);
+	  verifyTrue(check, "VP5b: Verify the second article changes its position with the first article");
   } 
   
   @AfterClass
   public void afterClass() {
-	  //sele.close();
+	  sele.close();
   }
 
   @BeforeTest

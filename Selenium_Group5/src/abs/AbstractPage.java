@@ -1,6 +1,7 @@
 package abs;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -25,7 +26,11 @@ public abstract class AbstractPage {
 	public String getCellXpath(String objectTitle, int colNumber) {
 		return "//a[contains(text(), '" + objectTitle + "')]/ancestor::tr/td["+ colNumber +"]";
 	}
-		
+	
+	
+	public int getRowNumber(String objectTitle) {
+		return driver.findElements(By.xpath("//a[contains(text(), '"+ objectTitle +"')]/ancestor::tr/preceding-sibling::*")).size() + 1;
+	}
 	//Interact methods
 	public void selectCombobox(WebElement combobox, String value) {		
 		new Select(combobox).selectByVisibleText(value);
@@ -86,6 +91,17 @@ public abstract class AbstractPage {
 			Thread.sleep(milisecond);
 		} catch (InterruptedException e) {			
 			e.printStackTrace();
+		}
+	}
+	
+	
+	//Javascript
+	public String getTextByScript(String xpath) {
+		String script = "return document.evaluate(\""+ xpath +"\", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;";
+		try {
+			return (String)((JavascriptExecutor)driver).executeScript(script);
+		} catch (Exception e) {
+			return null;
 		}
 	}
 }
