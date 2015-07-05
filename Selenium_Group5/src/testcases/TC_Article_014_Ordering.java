@@ -29,7 +29,7 @@ public class TC_Article_014_Ordering extends AbstractTest{
 	  this.driver = sele.getDriver(config.urlLogin);
 	  
 	  //new article data
-	  title = Random.getArticleName();
+	  title = Random.getRandomName();
 	  title2 = title + " 2"; 
 	  category = "";
 	  status = "";
