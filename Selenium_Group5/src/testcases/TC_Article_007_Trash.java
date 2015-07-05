@@ -11,14 +11,14 @@ import org.testng.annotations.AfterTest;
 
 import abs.AbstractTest;
 import pages.Admin_page;
-import pages.Article_manager_page;
 import pages.Article_add_edit_page;
+import pages.Article_manager_page;
 import pages.Login_page;
 import utilities.Random;
 import common.Selenium;
 import common.config;
 
-public class TC002_Article_Edit extends AbstractTest{
+public class TC_Article_007_Trash extends AbstractTest{
 	WebDriver driver;
 	Selenium sele;
 	
@@ -44,10 +44,11 @@ public class TC002_Article_Edit extends AbstractTest{
 	  articleTextEdit = articleText + " edited";
 	  
 	  msg = "Article successfully saved";
+	  msgTrash = "1 article trashed";
   }
   
-  @Test(description= "Verify user can edit an article")
-  public void TC2_EditArticle() {
+  @Test(description= "Verify user can move an article to trash section")
+  public void TC3_MoveArticleToTrash() {
 	  //1. Login to joomla
 	  Login_page loginPage = new Login_page(driver);
 	  loginPage.login(config.usernameAdmin, config.passwordAdmin);
@@ -77,25 +78,22 @@ public class TC002_Article_Edit extends AbstractTest{
 	  //5. Check on the recently added article's checkbox
 	  articleManagerPage.clickArticleCheckbox(title);
 	  
-	  //6. Click on 'Edit' icon of the top right toolbar
-	  editArticlePage = articleManagerPage.clickEditArticle();
+	  //6. Click on 'Trash' icon of the top right toolbar
+	  articleManagerPage = articleManagerPage.clickTrashArticle();
 	  
-	  //7. Enter edit data
-	  editArticlePage.enterData(titleEdit, categoryEdit, statusEdit, accessEdit, featureEdit, articleTextEdit);
+	  //VP3: "1 article trashed" message is displayed
+	  check = articleManagerPage.isMessageDisplay(msgTrash);
+	  verifyTrue(check, "VP3: The '1 article trashed' message is displayed");
 	  
-	  //8. Click save and close
-	  articleManagerPage = editArticlePage.clickSaveClose();
-	  
-	  //VP3: "Article successfully saved" message is displayed
-	  check = articleManagerPage.isMessageDisplay(msg);
-	  verifyTrue(check, "VP3: Article successfully saved message is displayed");
+	  //7. Select 'Trashed' item of 'Status' dropdown list
+	  articleManagerPage.filterStatus("Trashed");
 	  
 	  //Search article
-	  articleManagerPage.searchArticle(titleEdit);
+	  articleManagerPage.searchArticle(title);
 	  
-	  //VP4: Created article is displayed on the articles table
-	  check = articleManagerPage.isArticleExist(titleEdit);
-	  verifyTrue(check, "VP4: Edited article is displayed");
+	  //VP4: Verify the deleted article is displayed on the table grid	  
+	  check = articleManagerPage.isArticleExist(title);
+	  verifyTrue(check, "VP4: The deleted article is displayed on the table grid");
   } 
   
   @AfterClass
@@ -111,7 +109,7 @@ public class TC002_Article_Edit extends AbstractTest{
   public void afterTest() {
   }
   
-  String title, category, status, access, feature, articleText, msg;
+  String title, category, status, access, feature, articleText, msg, msgTrash;
   String titleEdit, categoryEdit, statusEdit, accessEdit, featureEdit, articleTextEdit;
   boolean check;
   Article_manager_page articleManagerPage;

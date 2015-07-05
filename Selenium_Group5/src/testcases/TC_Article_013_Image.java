@@ -11,14 +11,14 @@ import org.testng.annotations.AfterTest;
 
 import abs.AbstractTest;
 import pages.Admin_page;
-import pages.Article_manager_page;
 import pages.Article_add_edit_page;
+import pages.Article_manager_page;
 import pages.Login_page;
 import utilities.Random;
 import common.Selenium;
 import common.config;
 
-public class TC013_Article_Image extends AbstractTest{
+public class TC_Article_013_Image extends AbstractTest{
 	WebDriver driver;
 	Selenium sele;
 	

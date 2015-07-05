@@ -11,17 +11,16 @@ import org.testng.annotations.AfterTest;
 
 import abs.AbstractTest;
 import pages.Admin_page;
-import pages.Article_manager_page;
 import pages.Article_add_edit_page;
+import pages.Article_manager_page;
 import pages.Login_page;
 import utilities.Random;
 import common.Selenium;
 import common.config;
 
-public class TC014_Article_Ordering extends AbstractTest{
+public class TC_Article_002_Edit extends AbstractTest{
 	WebDriver driver;
 	Selenium sele;
-	
 	
   @BeforeClass
   public void beforeClass() {
@@ -30,21 +29,25 @@ public class TC014_Article_Ordering extends AbstractTest{
 	  
 	  //new article data
 	  title = Random.getArticleName();
-	  title2 = title + " 2"; 
 	  category = "";
 	  status = "";
 	  access = "";
 	  feature ="";
-	  articleText = title + " content";  
-
-	  title2 = title + " 2";  
+	  articleText = title + " content";
 	  
+	  //edited article data
+	  titleEdit = title + " edited";
+	  categoryEdit = "";
+	  statusEdit = "";
+	  accessEdit = "";
+	  featureEdit ="";
+	  articleTextEdit = articleText + " edited";
 	  
 	  msg = "Article successfully saved";
   }
   
-  @Test(description= "Verify user can change the order of articles using the Ordering column")
-  public void TC14_OrderArticle() {
+  @Test(description= "Verify user can edit an article")
+  public void TC2_EditArticle() {
 	  //1. Login to joomla
 	  Login_page loginPage = new Login_page(driver);
 	  loginPage.login(config.usernameAdmin, config.passwordAdmin);
@@ -54,7 +57,7 @@ public class TC014_Article_Ordering extends AbstractTest{
 	  articleManagerPage = adminPage.clickArticleManagerMenu();
 	 
 	  //3. Click new icon, go to add page
-	  addArticlePage = articleManagerPage.clickNewArticle();
+	  Article_add_edit_page addArticlePage = articleManagerPage.clickNewArticle();
 	  addArticlePage.enterData(title, category, status, access, feature, articleText);
 	  
 	  //4. Click Save n close button
@@ -71,49 +74,33 @@ public class TC014_Article_Ordering extends AbstractTest{
 	  check = articleManagerPage.isArticleExist(title);
 	  verifyTrue(check, "VP2: Created article is displayed");
 	  
-	  //5. Select Content > Article Manager	  
-	  articleManagerPage.clickArticleManagerMenu();
+	  //5. Check on the recently added article's checkbox
+	  articleManagerPage.clickArticleCheckbox(title);
 	  
-	  //6. Click new icon, go to add page
-	  addArticlePage = articleManagerPage.clickNewArticle();
+	  //6. Click on 'Edit' icon of the top right toolbar
+	  editArticlePage = articleManagerPage.clickEditArticle();
 	  
-	  //7. Enter required data
-	  addArticlePage.enterData(title2, category, status, access, feature, articleText);
+	  //7. Enter edit data
+	  editArticlePage.enterData(titleEdit, categoryEdit, statusEdit, accessEdit, featureEdit, articleTextEdit);
 	  
 	  //8. Click save and close
-	  articleManagerPage = addArticlePage.clickSaveClose();
+	  articleManagerPage = editArticlePage.clickSaveClose();
 	  
 	  //VP3: "Article successfully saved" message is displayed
 	  check = articleManagerPage.isMessageDisplay(msg);
 	  verifyTrue(check, "VP3: Article successfully saved message is displayed");
 	  
 	  //Search article
-	  articleManagerPage.searchArticle(title);
+	  articleManagerPage.searchArticle(titleEdit);
 	  
 	  //VP4: Created article is displayed on the articles table
-	  check = articleManagerPage.isArticleExist(title2);
-	  verifyTrue(check, "VP4: Created article is displayed on the articles table");
-	  
-	  //9. Click on the Header link of Ordering column
-	  articleManagerPage.clickOrderingColumn();
-	  
-	  //10. Check on the second created article's checkbox
-	  //11. Click on down arrow in Ordering column of the selected article
-	  articleManagerPage.clickArrowOrdering(title, "down");
-	  
-	  //VP5: Verify the first article changes its position with the second article
-	  int rowTitle1 = articleManagerPage.getRowNumber(title);
-	  int rowTitle2 = articleManagerPage.getRowNumber(title2);
-	  
-	  check = articleManagerPage.isArticleLocateAt(title2, rowTitle1);
-	  verifyTrue(check, "VP5a: Verify the first article changes its position with the second article");
-	  check = articleManagerPage.isArticleLocateAt(title, rowTitle2);
-	  verifyTrue(check, "VP5b: Verify the second article changes its position with the first article");
+	  check = articleManagerPage.isArticleExist(titleEdit);
+	  verifyTrue(check, "VP4: Edited article is displayed");
   } 
   
   @AfterClass
   public void afterClass() {
-	  sele.close();
+	  //sele.close();
   }
 
   @BeforeTest
@@ -125,7 +112,7 @@ public class TC014_Article_Ordering extends AbstractTest{
   }
   
   String title, category, status, access, feature, articleText, msg;
-  String title2, category2, status2, access2, feature2, articleText2;
+  String titleEdit, categoryEdit, statusEdit, accessEdit, featureEdit, articleTextEdit;
   boolean check;
   Article_manager_page articleManagerPage;
   Article_add_edit_page editArticlePage, addArticlePage;

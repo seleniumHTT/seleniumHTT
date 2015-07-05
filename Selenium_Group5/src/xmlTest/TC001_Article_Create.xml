@@ -6,9 +6,9 @@
 	   <listener class-name="org.uncommons.reportng.JUnitXMLReporter" />
 	</listeners>
 
-	<test name="TC001_Article_Create">
+	<test name="TC_Article_001_Create">
 		<classes>
-		  <class name="testcases.TC001_Article_Create"/>
+		  <class name="testcases.TC_Article_001_Create"/>
 		</classes>
 	</test> <!-- ArticleXML -->
 </suite> <!-- Article -->
