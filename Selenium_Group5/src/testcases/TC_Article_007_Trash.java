@@ -28,7 +28,7 @@ public class TC_Article_007_Trash extends AbstractTest{
 	  this.driver = sele.getDriver(config.urlLogin);
 	  
 	  //new article data
-	  title = Random.getArticleName();
+	  title = Random.getRandomName();
 	  category = "";
 	  status = "";
 	  access = "";
