@@ -32,7 +32,7 @@ public class TC_Weblink_002_Edit extends AbstractTest{
 	  category = "";
 	  status = "";
 	  access = "";
-	  URL ="";
+	  URL ="http://www.joomla.org";
 	  WeblinkText = title + " content";
 	  
 	  //edited Weblink data
@@ -40,7 +40,7 @@ public class TC_Weblink_002_Edit extends AbstractTest{
 	  categoryEdit = "";
 	  statusEdit = "";
 	  accessEdit = "";
-	  URLEdit ="";
+	  URLEdit = "http://www.google.com";
 	  WeblinkTextEdit = WeblinkText + " edited";
 	  
 	  msg = "Weblink successfully saved";
@@ -48,7 +48,7 @@ public class TC_Weblink_002_Edit extends AbstractTest{
   
   @Test(description= "Verify user can edit an Weblink")
   public void TC2_EditWeblink() {
-	  //1. Login to joomla
+	//1. Login to joomla
 	  Login_page loginPage = new Login_page(driver);
 	  loginPage.login(config.usernameAdmin, config.passwordAdmin);
 	  
@@ -72,7 +72,7 @@ public class TC_Weblink_002_Edit extends AbstractTest{
 	  
 	  //VP2: Created Weblink is displayed on the Weblinks table
 	  check = WeblinkManagerPage.isWeblinkExist(title);
-	  verifyTrue(check, "VP2: Created Weblink is displayed");
+	  verifyTrue(check, "VP2: Created Weblink is displayed");	  
 	  
 	  //5. Check on the recently added Weblink's checkbox
 	  WeblinkManagerPage.clickWeblinkCheckbox(title);
@@ -81,7 +81,7 @@ public class TC_Weblink_002_Edit extends AbstractTest{
 	  editWeblinkPage = WeblinkManagerPage.clickEditWeblink();
 	  
 	  //7. Enter edit data
-	  editWeblinkPage.enterData(titleEdit, categoryEdit, statusEdit, accessEdit, URLEdit, WeblinkTextEdit);
+	  editWeblinkPage.enterData(titleEdit, URLEdit, categoryEdit, statusEdit, accessEdit, WeblinkTextEdit);
 	  
 	  //8. Click save and close
 	  WeblinkManagerPage = editWeblinkPage.clickSaveClose();

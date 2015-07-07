@@ -18,7 +18,7 @@ import utilities.Random;
 import common.Selenium;
 import common.config;
 
-public class TC_Weblink_001_Create extends AbstractTest{
+public class TC_Weblink_007_Trash extends AbstractTest{
 	WebDriver driver;
 	Selenium sele;
 	
@@ -33,13 +33,14 @@ public class TC_Weblink_001_Create extends AbstractTest{
 	  status = "";
 	  access = "";
 	  URL ="http://www.joomla.org";
-	  WeblinkText = title + " content";
+	  weblinkText = title + " content";
 	    
 	  msg = "Weblink successfully saved";
+	  msgTrash = "1 weblink successfully trashed";
   }
   
-  @Test(description= "Verify user can create an Weblink")
-  public void TC2_EditWeblink() {
+  @Test(description= "Verify user can move an weblink to trash section")
+  public void TC3_MoveWeblinkToTrash() {
 	  //1. Login to joomla
 	  Login_page loginPage = new Login_page(driver);
 	  loginPage.login(config.usernameAdmin, config.passwordAdmin);
@@ -50,7 +51,7 @@ public class TC_Weblink_001_Create extends AbstractTest{
 	 
 	  //3. Click new icon, go to add page
 	  Weblink_add_edit_page addWeblinkPage = weblinkManagerPage.clickNewWeblink();
-	  addWeblinkPage.enterData(title, URL, category, status, access, WeblinkText);
+	  addWeblinkPage.enterData(title, URL, category, status, access, weblinkText);
 	  
 	  //4. Click Save n close button
 	  weblinkManagerPage = addWeblinkPage.clickSaveClose();
@@ -64,8 +65,27 @@ public class TC_Weblink_001_Create extends AbstractTest{
 	  
 	  //VP2: Created Weblink is displayed on the Weblinks table
 	  check = weblinkManagerPage.isWeblinkExist(title);
-	  verifyTrue(check, "VP2: Created Weblink is displayed");	  
+	  verifyTrue(check, "VP2: Created Weblink is displayed");
 	  
+	  //5. Check on the recently added weblink's checkbox
+	  weblinkManagerPage.clickWeblinkCheckbox(title);
+	  
+	  //6. Click on 'Trash' icon of the top right toolbar
+	  weblinkManagerPage = weblinkManagerPage.clickTrashWeblink();
+	  
+	  //VP3: "1 weblink trashed" message is displayed
+	  check = weblinkManagerPage.isMessageDisplay(msgTrash);
+	  verifyTrue(check, "VP3: The '1 weblink successfully trashed' message is displayed");
+	  
+	  //7. Select 'Trashed' item of 'Status' dropdown list
+	  weblinkManagerPage.filterStatus("Trashed");
+	  
+	  //Search weblink
+	  weblinkManagerPage.searchWeblink(title);
+	  
+	  //VP4: Verify the deleted weblink is displayed on the table grid	  
+	  check = weblinkManagerPage.isWeblinkExist(title);
+	  verifyTrue(check, "VP4: The deleted weblink is displayed on the table grid");
   } 
   
   @AfterClass
@@ -81,8 +101,7 @@ public class TC_Weblink_001_Create extends AbstractTest{
   public void afterTest() {
   }
   
-  String title, category, status, access, URL, WeblinkText, msg;
-  String titleEdit, categoryEdit, statusEdit, accessEdit, URLEdit, WeblinkTextEdit;
+  String title, category, status, access, URL, weblinkText, msg, msgTrash;
   boolean check;
   Weblink_manager_page weblinkManagerPage;
   Weblink_add_edit_page editWeblinkPage, addWeblinkPage;

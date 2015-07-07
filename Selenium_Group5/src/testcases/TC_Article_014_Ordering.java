@@ -29,16 +29,14 @@ public class TC_Article_014_Ordering extends AbstractTest{
 	  this.driver = sele.getDriver(config.urlLogin);
 	  
 	  //new article data
-	  title = Random.getRandomName();
-	  title2 = title + " 2"; 
+	  random = Random.getRandomName();
+	  title =  random + " ordering1";
+	  title2 = random + " ordering2"; 
 	  category = "";
 	  status = "";
 	  access = "";
 	  feature ="";
-	  articleText = title + " content";  
-
-	  title2 = title + " 2";  
-	  
+	  articleText = title + " content";  	  
 	  
 	  msg = "Article successfully saved";
   }
@@ -65,7 +63,7 @@ public class TC_Article_014_Ordering extends AbstractTest{
 	  verifyTrue(check, "VP1: Article successfully saved message is displayed");
 	  
 	  //Search article
-	  articleManagerPage.searchArticle(title);
+	  articleManagerPage.searchArticle(random);
 	  
 	  //VP2: Created article is displayed on the articles table
 	  check = articleManagerPage.isArticleExist(title);
@@ -88,7 +86,7 @@ public class TC_Article_014_Ordering extends AbstractTest{
 	  verifyTrue(check, "VP3: Article successfully saved message is displayed");
 	  
 	  //Search article
-	  articleManagerPage.searchArticle(title);
+	  articleManagerPage.searchArticle(random);
 	  
 	  //VP4: Created article is displayed on the articles table
 	  check = articleManagerPage.isArticleExist(title2);
@@ -99,12 +97,12 @@ public class TC_Article_014_Ordering extends AbstractTest{
 	  
 	  //10. Check on the second created article's checkbox
 	  //11. Click on down arrow in Ordering column of the selected article
-	  articleManagerPage.clickArrowOrdering(title, "down");
-	  
-	  //VP5: Verify the first article changes its position with the second article
 	  int rowTitle1 = articleManagerPage.getRowNumber(title);
 	  int rowTitle2 = articleManagerPage.getRowNumber(title2);
 	  
+	  articleManagerPage.clickArrowOrdering(title2, "down");
+	  
+	  //VP5: Verify the first article changes its position with the second article 
 	  check = articleManagerPage.isArticleLocateAt(title2, rowTitle1);
 	  verifyTrue(check, "VP5a: Verify the first article changes its position with the second article");
 	  check = articleManagerPage.isArticleLocateAt(title, rowTitle2);
@@ -124,7 +122,7 @@ public class TC_Article_014_Ordering extends AbstractTest{
   public void afterTest() {
   }
   
-  String title, category, status, access, feature, articleText, msg;
+  String title, category, status, access, feature, articleText, msg, random;
   String title2, category2, status2, access2, feature2, articleText2;
   boolean check;
   Article_manager_page articleManagerPage;

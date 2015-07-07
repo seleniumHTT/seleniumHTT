@@ -69,10 +69,10 @@ public class Weblink_manager_page extends AbstractPage {
 	
 	public void clickArrowOrdering(String WeblinkTitle, String updown) {		
 		if(updown.equals("down")) {
-			String downXpath = getCellXpath(WeblinkTitle, 6) + "//a[@title='Move Down']";
+			String downXpath = getCellXpath(WeblinkTitle, 5) + "//a[@title='Move Down']";
 			getWebElement(downXpath).click();
 		} else if (updown.equals("up")) {
-			String upXpath = getCellXpath(WeblinkTitle, 6) + "//a[@title='Move Up']";
+			String upXpath = getCellXpath(WeblinkTitle, 5) + "//a[@title='Move Up']";
 			getWebElement(upXpath).click();
 		}
 	}	
