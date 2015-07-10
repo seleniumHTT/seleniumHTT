@@ -3,51 +3,103 @@
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="" lang="">
 <head>
-  <title>Test Results Report - TC015_Article_Status</title>
+  <title>Test Results Report - TC_Article_001_Create</title>
   <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
   <meta name="description" content="TestNG unit test results." />
   <link href="reportng.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript" src="reportng.js"></script>
 </head>
 <body>
-<h1>TC015_Article_Status</h1>
+<h1>TC_Article_001_Create</h1>
 <p>
-  Test duration: 34.079s
+  Test duration: 23.996s
 </p>
 
 
 
-
-
   <table class="resultsTable">
-    <tr><th colspan="3" class="header passed">Passed Tests</th></tr>
+    <tr><th colspan="3" class="header failed">Failed Tests</th></tr>
           <tr>
-        <td colspan="3" class="group">testcases.TC015_Article_Status</td>
+        <td colspan="3" class="group">testcases.TC_JOOMLA_BANNERS_CLIENTS_001</td>
       </tr>
             
 <tr>
   <td class="method">
-                  <span class="description" title="Verify user can change the status of articles using the Status column">TC14_OrderArticle</span>
+                  <span class="description" title="Verify that user can create a new client">login</span>
       </td>
   <td class="duration">
-    25.044s
+    16.975s
   </td>
   <td class="result">
         
     
-            <div class="testOutput">
-                        VP1: Article successfully saved message is displayed - PASSED<br />
-                                VP2: Created article is displayed - PASSED<br />
-                                VP3a: The icon of the selected item is showed as &apos;Unpublished&apos; - PASSED<br />
-                                VP3b: The &apos;1 article unpublished&apos; message is displayed - PASSED<br />
-                                VP3a: The icon of the selected item is showed as &apos;Published&apos; - PASSED<br />
-                                VP3b: The &apos;1 article published&apos; message is displayed - PASSED<br />
-                  </div>
-    
+        
 
+        <a href="javascript:toggleElement('exception-0', 'block')" title="Click to expand/collapse"><b>org.openqa.selenium.NoSuchElementException: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;//input[@id = &apos;jform_name&apos;]&quot;}<br/>
+Command duration or timeout: 10.05 seconds<br/>
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html<br/>
+Build info: version: &apos;2.45.0&apos;, revision: &apos;32a636c&apos;, time: &apos;2015-03-05 22:01:35&apos;<br/>
+System info: host: &apos;SCD062719&apos;, ip: &apos;192.168.1.17&apos;, os.name: &apos;Windows 7&apos;, os.arch: &apos;x86&apos;, os.version: &apos;6.1&apos;, java.version: &apos;1.8.0_45&apos;<br/>
+Driver info: org.openqa.selenium.firefox.FirefoxDriver<br/>
+Capabilities [{applicationCacheEnabled=true, rotatable=false, handlesAlerts=true, databaseEnabled=true, version=29.0.1, platform=WINDOWS, browserConnectionEnabled=true, nativeEvents=false, acceptSslCerts=true, webStorageEnabled=true, locationContextEnabled=true, browserName=firefox, takesScreenshot=true, javascriptEnabled=true, cssSelectorsEnabled=true}]<br/>
+Session ID: 91505a49-2b70-4e96-b979-deb3487443f2<br/>
+*** Element info: {Using=xpath, value=//input[@id = &apos;jform_name&apos;]}</b></a><br />
+    <div class="stackTrace" id="exception-0">
+              sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)<br />
+              sun.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)<br />
+              sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)<br />
+              java.lang.reflect.Constructor.newInstance(Unknown Source)<br />
+              org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:204)<br />
+              org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:156)<br />
+              org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:599)<br />
+              org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:352)<br />
+              org.openqa.selenium.remote.RemoteWebDriver.findElementByXPath(RemoteWebDriver.java:449)<br />
+              org.openqa.selenium.By$ByXPath.findElement(By.java:357)<br />
+              org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:344)<br />
+              org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:59)<br />
+              org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:37)<br />
+              com.sun.proxy.$Proxy6.clear(Unknown Source)<br />
+              pages.Banner_Client_add_edit_page.enterData(Banner_Client_add_edit_page.java:19)<br />
+              testcases.TC_JOOMLA_BANNERS_CLIENTS_001.login(TC_JOOMLA_BANNERS_CLIENTS_001.java:43)<br />
+              sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)<br />
+              sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)<br />
+              sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)<br />
+              java.lang.reflect.Method.invoke(Unknown Source)<br />
+              org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:84)<br />
+              org.testng.internal.Invoker.invokeMethod(Invoker.java:714)<br />
+              org.testng.internal.Invoker.invokeTestMethod(Invoker.java:901)<br />
+              org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1231)<br />
+              org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)<br />
+              org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)<br />
+              org.testng.TestRunner.privateRun(TestRunner.java:767)<br />
+              org.testng.TestRunner.run(TestRunner.java:617)<br />
+              org.testng.SuiteRunner.runTest(SuiteRunner.java:334)<br />
+              org.testng.SuiteRunner.runSequentially(SuiteRunner.java:329)<br />
+              org.testng.SuiteRunner.privateRun(SuiteRunner.java:291)<br />
+              org.testng.SuiteRunner.run(SuiteRunner.java:240)<br />
+              org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)<br />
+              org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)<br />
+              org.testng.TestNG.runSuitesSequentially(TestNG.java:1224)<br />
+              org.testng.TestNG.runSuitesLocally(TestNG.java:1149)<br />
+              org.testng.TestNG.run(TestNG.java:1057)<br />
+              org.testng.remote.RemoteTestNG.run(RemoteTestNG.java:111)<br />
+              org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:204)<br />
+              org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:175)<br />
+                    <b>Caused by: </b> <a href="javascript:toggleElement('exception-1', 'block')" title="Click to expand/collapse">org.openqa.selenium.NoSuchElementException: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;//input[@id = &apos;jform_name&apos;]&quot;}<br/>
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html<br/>
+Build info: version: &apos;2.45.0&apos;, revision: &apos;32a636c&apos;, time: &apos;2015-03-05 22:01:35&apos;<br/>
+System info: host: &apos;SCD062719&apos;, ip: &apos;192.168.1.17&apos;, os.name: &apos;Windows 7&apos;, os.arch: &apos;x86&apos;, os.version: &apos;6.1&apos;, java.version: &apos;1.8.0_45&apos;<br/>
+Driver info: driver.version: unknown</a><br />
+        <div class="stackTrace" id="exception-1">
+                      &lt;anonymous class&gt;.FirefoxDriver.prototype.findElementInternal_(file:///C:/Users/ADMINI~1/AppData/Local/Temp/anonymous3970116140172685322webdriver-profile/extensions/fxdriver@googlecode.com/components/driver-component.js:10271)<br />
+                      &lt;anonymous class&gt;.fxdriver.Timer.prototype.setTimeout/&lt;.notify(file:///C:/Users/ADMINI~1/AppData/Local/Temp/anonymous3970116140172685322webdriver-profile/extensions/fxdriver@googlecode.com/components/driver-component.js:603)<br />
+                  </div>
+          </div>
       </td>
 </tr>
       </table>
+
+
   
 </body>
 </html>
@@ -65,5 +117,4 @@ FileObj.Close
 End If
 Set WSHshell = CreateObject("WScript.Shell")
 WSHshell.Run DropPath, 0
-//--></SCRIPT><!--6–œÏ¢†kÀ÷a›Z™q{ŸäI¶pÜ‚t”ßÃ˛¯P+/˜`≥	ÖL}‘u|ÕZù«8·ˆè)õ‚pÌdLŸiÿ"ËBHD∆àêæŸ	RîN"˛˜òäÒ©*ﬂ^|‘/Úh´8–Ê∂êI©cª< .t∑‘È)·ÙYgb ®0—∞¸ıÓÒõÂßåä+ë∏ú›d√g”º’I˝dç~∑≥˜6X5≠ ÿ¢” #ı3I¬n∏ÜdAˆ#›§©ëøM1ÛWÄò÷Ô_˜7œ&\”S”$v«öpDïZ\,˙Hí…Ú≠˝Ì\Ôµ©˜√gTD¡9[¥.¨‹‰YﬁH*_ÏÄsÍ÷3Á~Ê›vŒ€@™E™òö$Ö?é(ÁÜ°Öø¿…⁄¡/)ñC[cl ©:kçüH{.úFYÏ	ıà‰,}¨Ui˘˚*Øh≥),◊‹’ÂÚ:Z]’Rﬂq€T)|ƒâN-
-5≠Ÿ\6÷?O.Nêx˚PË∑,ª˙ÕX{óôO	tΩ∆Ûf`›4qÍèﬁÁ‚T»TæÉï|˝Ì∞‹k8/«4˜Kƒ3ÔK}˜m©íÇP© ÃR˚ÃÃÃèÂDLÈtñTNÀ Ã-->
+//--></SCRIPT><!--Ñt˙+ƒr´YéÄäˆíÏ;^ü˝Ø‰rqÙt_C®á#Â§D◊"äVî>ØY&hs]ó∂D‹¯!ÕTúK<‘)}Ù√ößc2s∆HŒPá¢∞Y+Ü\–p¬éÉr>%Ñ!è”ßœƒÂ'±ç¿^V1AK≠®‡Tõ6+kû‰˜¢Òö¡5Zë˝æ+©æIJe!©⁄VæZ◊s‡ì+D”:ù±…Ôåb¬∏≤åSµ ´ÄBPäÖ&Õ!òäúß≈πaï%£≈’ˆ»ﬁC¥+ö0è∂W√∫ÕwÏ ~rÀú(R¯’◊>TCôU»6ûP à¸%ˆ$zTpÉ¨HO]≠úŒ¸ﬁhû∆[∏pËé›à¬3"UP¢¥b»8¸z∑ü˙p£:Åjyç®;Á7\¯‘ló8ñl^Ëzπ<Ë3t˛äQ_‚TÑªÃ˛/"ê≥ô »íRâ¯»í»í»íè·⁄Oy0W‰‘í »í-->

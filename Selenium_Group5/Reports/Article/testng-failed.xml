@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [Article]" parallel="none">
+  <listeners>
+    <listener class-name="org.uncommons.reportng.HTMLReporter"/>
+    <listener class-name="org.uncommons.reportng.JUnitXMLReporter"/>
+  </listeners>
+  <test name="TC_Article_001_Create(failed)" parallel="none">
+    <classes>
+      <class name="testcases.TC_JOOMLA_BANNERS_CLIENTS_001">
+        <methods>
+          <include name="login"/>
+          <include name="afterClass"/>
+          <include name="beforeClass"/>
+        </methods>
+      </class> <!-- testcases.TC_JOOMLA_BANNERS_CLIENTS_001 -->
+    </classes>
+  </test> <!-- TC_Article_001_Create(failed) -->
+</suite> <!-- Failed suite [Article] -->

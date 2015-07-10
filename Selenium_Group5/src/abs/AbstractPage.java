@@ -10,6 +10,7 @@ import org.openqa.selenium.support.ui.Select;
 
 import pages.Article_manager_page;
 import pages.Weblink_manager_page;
+import pages.Banner_Client_manager_page;
 
 public abstract class AbstractPage {
 	WebDriver driver;
@@ -51,6 +52,11 @@ public abstract class AbstractPage {
 	public Weblink_manager_page clickWeblinkManagerMenu() {
 		selectMenu("Components/Weblinks").click();
 		return new Weblink_manager_page(driver);
+	}
+	
+	public Banner_Client_manager_page clickBannerClientManagerMenu() {
+		selectMenu("Components/Banners/Clients").click();
+		return new Banner_Client_manager_page(driver);
 	}
 	
 	//Select menu, split by '/'
