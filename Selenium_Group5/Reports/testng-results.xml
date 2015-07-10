@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" total="1" passed="1">
+<testng-results skipped="0" failed="0" total="4" passed="4">
   <reporter-output>
     <line>
       <![CDATA[VP1: Banner Client successfully saved message is displayed - PASSED]]>
@@ -7,17 +7,35 @@
     <line>
       <![CDATA[VP2: The created Banner Client is displayed - PASSED]]>
     </line>
+    <line>
+      <![CDATA[VP1: Banner Client successfully saved message is displayed - PASSED]]>
+    </line>
+    <line>
+      <![CDATA[VP2: The created Banner Client is displayed - PASSED]]>
+    </line>
+    <line>
+      <![CDATA[VP1: Banner Client successfully punlished message is displayed - PASSED]]>
+    </line>
+    <line>
+      <![CDATA[VP2: The Banner Client is published successfully - PASSED]]>
+    </line>
+    <line>
+      <![CDATA[VP1: Banner Client successfully unpunlished message is displayed - PASSED]]>
+    </line>
+    <line>
+      <![CDATA[VP2: The Banner Client is unpublished successfully - PASSED]]>
+    </line>
   </reporter-output>
-  <suite name="Default suite" duration-ms="23349" started-at="2015-07-10T17:05:45Z" finished-at="2015-07-10T17:06:09Z">
+  <suite name="Default suite" duration-ms="45278" started-at="2015-07-10T18:27:58Z" finished-at="2015-07-10T18:28:43Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="23349" started-at="2015-07-10T17:05:45Z" finished-at="2015-07-10T17:06:09Z">
+    <test name="Default test" duration-ms="45278" started-at="2015-07-10T18:27:58Z" finished-at="2015-07-10T18:28:43Z">
       <class name="testcases.TC_JOOMLA_BANNERS_CLIENTS_001">
-        <test-method status="PASS" signature="beforeClass()[pri:0, instance:testcases.TC_JOOMLA_BANNERS_CLIENTS_001@1ff8b8f]" name="beforeClass" is-config="true" duration-ms="7919" started-at="2015-07-11T00:05:45Z" finished-at="2015-07-11T00:05:53Z">
+        <test-method status="PASS" signature="beforeClass()[pri:0, instance:testcases.TC_JOOMLA_BANNERS_CLIENTS_001@1ff8b8f]" name="beforeClass" is-config="true" duration-ms="6698" started-at="2015-07-11T01:27:58Z" finished-at="2015-07-11T01:28:04Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeClass -->
-        <test-method status="PASS" signature="login()[pri:0, instance:testcases.TC_JOOMLA_BANNERS_CLIENTS_001@1ff8b8f]" name="login" duration-ms="15417" started-at="2015-07-11T00:05:53Z" description="Verify that user can create a new client" finished-at="2015-07-11T00:06:09Z">
+        <test-method status="PASS" signature="TC_001()[pri:0, instance:testcases.TC_JOOMLA_BANNERS_CLIENTS_001@1ff8b8f]" name="TC_001" duration-ms="14937" started-at="2015-07-11T01:28:04Z" description="Verify that user can create a new client" finished-at="2015-07-11T01:28:19Z">
           <reporter-output>
             <line>
               <![CDATA[VP1: Banner Client successfully saved message is displayed - PASSED]]>
@@ -26,8 +44,42 @@
               <![CDATA[VP2: The created Banner Client is displayed - PASSED]]>
             </line>
           </reporter-output>
-        </test-method> <!-- login -->
-        <test-method status="PASS" signature="afterClass()[pri:0, instance:testcases.TC_JOOMLA_BANNERS_CLIENTS_001@1ff8b8f]" name="afterClass" is-config="true" duration-ms="1" started-at="2015-07-11T00:06:09Z" finished-at="2015-07-11T00:06:09Z">
+        </test-method> <!-- TC_001 -->
+        <test-method status="PASS" signature="TC_002()[pri:0, instance:testcases.TC_JOOMLA_BANNERS_CLIENTS_001@1ff8b8f]" name="TC_002" duration-ms="8897" started-at="2015-07-11T01:28:19Z" description="Verify that user can edit a client" finished-at="2015-07-11T01:28:28Z">
+          <reporter-output>
+            <line>
+              <![CDATA[VP1: Banner Client successfully saved message is displayed - PASSED]]>
+            </line>
+            <line>
+              <![CDATA[VP2: The created Banner Client is displayed - PASSED]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- TC_002 -->
+        <test-method status="PASS" signature="TC_003()[pri:0, instance:testcases.TC_JOOMLA_BANNERS_CLIENTS_001@1ff8b8f]" name="TC_003" duration-ms="7294" started-at="2015-07-11T01:28:28Z" description="Verify that user can publish a client" finished-at="2015-07-11T01:28:35Z">
+          <reporter-output>
+            <line>
+              <![CDATA[VP1: Banner Client successfully punlished message is displayed - PASSED]]>
+            </line>
+            <line>
+              <![CDATA[VP2: The Banner Client is published successfully - PASSED]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- TC_003 -->
+        <test-method status="PASS" signature="TC_004()[pri:0, instance:testcases.TC_JOOMLA_BANNERS_CLIENTS_001@1ff8b8f]" name="TC_004" duration-ms="7429" started-at="2015-07-11T01:28:35Z" description="Verify that user can unpublish a client" finished-at="2015-07-11T01:28:43Z">
+          <reporter-output>
+            <line>
+              <![CDATA[VP1: Banner Client successfully unpunlished message is displayed - PASSED]]>
+            </line>
+            <line>
+              <![CDATA[VP2: The Banner Client is unpublished successfully - PASSED]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- TC_004 -->
+        <test-method status="PASS" signature="afterclass()[pri:0, instance:testcases.TC_JOOMLA_BANNERS_CLIENTS_001@1ff8b8f]" name="afterclass" is-config="true" duration-ms="0" started-at="2015-07-11T01:28:43Z" finished-at="2015-07-11T01:28:43Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterclass -->
+        <test-method status="PASS" signature="afterClass()[pri:0, instance:testcases.TC_JOOMLA_BANNERS_CLIENTS_001@1ff8b8f]" name="afterClass" is-config="true" duration-ms="0" started-at="2015-07-11T01:28:43Z" finished-at="2015-07-11T01:28:43Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterClass -->

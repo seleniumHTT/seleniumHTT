@@ -5,6 +5,7 @@ public class config {
 	public static final String urlLogin = "http://localhost/joomla/administrator/index.php";
 	public static final String usernameAdmin = "group5admin";
 	public static final String passwordAdmin = "selenium";
+	public static final String logoutxpath = "//span[@class = 'logout']";
 	public static int timeWaitLong = 10;
 			
 }
