@@ -9,6 +9,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 
 import pages.Article_manager_page;
+import pages.Contact_manager_page;
 import pages.Weblink_manager_page;
 import pages.Banner_Client_manager_page;
 
@@ -44,6 +45,7 @@ public abstract class AbstractPage {
 	}	
 	
 	
+	//Navigate between pages
 	public Article_manager_page clickArticleManagerMenu() {
 		selectMenu("Content/Article Manager").click();
 		return new Article_manager_page(driver);
@@ -52,6 +54,11 @@ public abstract class AbstractPage {
 	public Weblink_manager_page clickWeblinkManagerMenu() {
 		selectMenu("Components/Weblinks").click();
 		return new Weblink_manager_page(driver);
+	}
+	
+	public Contact_manager_page clickContactManagerMenu() {
+		selectMenu("Components/Contacts").click();
+		return new Contact_manager_page(driver);
 	}
 	
 	public Banner_Client_manager_page clickBannerClientManagerMenu() {
@@ -83,7 +90,10 @@ public abstract class AbstractPage {
 				 sleep(500);
 			}
 		}
+		//sleep to menu appears
+		sleep(500);
 		return eMenu;
+		 
 	}
 	
 	

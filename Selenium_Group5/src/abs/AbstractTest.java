@@ -20,13 +20,13 @@ public abstract class AbstractTest {
   public void afterClass() {
   }
   
-  public void verifyTrue(boolean condition, String verifyPoint) {
-	  if(condition == true) {
-		  Reporter.log(verifyPoint + " - PASSED");  
-	  } else {
+  public void verifyTrue(boolean condition, String verifyPoint) {	  
+	  try {
+		  Assert.assertTrue(condition);
+		  Reporter.log(verifyPoint + " - PASSED");
+	  } catch (AssertionError e) {
 		  Reporter.log(verifyPoint + " - FAILED");
-	  }
-	  Assert.assertTrue(condition);	 
+	  }	 
   }
 
   public void verifyFalse(boolean condition, String verifyPoint) {
