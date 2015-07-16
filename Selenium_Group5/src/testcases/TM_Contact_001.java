@@ -146,62 +146,8 @@ public class TM_Contact_001 extends AbstractTest{
 	  verifyTrue(check, "VP: The deleted contact is displayed on the table grid");
 	  
 	  contactManagerPage.filterStatus("- Select Status -");	  
-  } 
-  
-  @Test(description= "Verify user can change the order of weblinks using the Ordering column", dependsOnMethods= "TC_JOOMLA_CONTACTS_014")
-  public void TC_JOOMLA_CONTACTS_015() {	  
-	  contactManagerPage.searchContact(name);
-	  	  
-	  contactManagerPage.clickOrderingColumn();	  
-	 
-	  int row1 = contactManagerPage.getRowNumber(nameEdit);
-	  int row2 = contactManagerPage.getRowNumber(name2);	  
-	  contactManagerPage.clickArrowOrdering(nameEdit, "down");	  
-	  
-	  check = contactManagerPage.isContactLocateAt(nameEdit, row2);
-	  verifyTrue(check, "VP: Verify the first weblink changes its position with the second weblink");
-	  check = contactManagerPage.isContactLocateAt(name2, row1);
-	  verifyTrue(check, "VP: Verify the second weblink changes its position with the first weblink");
-  } 
-  
-  @Test(description= "Verify user can add image to contact's information", dependsOnMethods= "TC_JOOMLA_CONTACTS_015")
-  public void TC_JOOMLA_CONTACTS_013() {  
-	  
-	  Contact_add_edit_page addContactPage = contactManagerPage.clickNewContact();
-	  addContactPage.enterData(name3, alias, category, stsPublished, access, feature, contactText);	  
-	  addContactPage.insertImage(imageName);	  
-	  
-	  contactManagerPage = addContactPage.clickSaveClose();
-	  
-	  check = contactManagerPage.isMessageDisplay(msgSave);
-	  verifyTrue(check, "VP: Contact successfully saved message is displayed");
-	  
-	  contactManagerPage.searchContact(name);
-	  
-	  check = contactManagerPage.isContactExist(name);
-	  verifyTrue(check, "VP: Created contact is displayed");   
   }  
-
-  @Test(description= "Verify user can move a contact to trash section", dependsOnMethods= "TC_JOOMLA_CONTACTS_013")
-  public void TC_JOOMLA_CONTACTS_007() {	  
-	  
-	  contactManagerPage.clickContactCheckbox(name3);
-	  contactManagerPage = contactManagerPage.clickTrashContact();	  
-	  
-	  check = contactManagerPage.isMessageDisplay(msgTrash);
-	  verifyTrue(check, "The '1 contact trashed' message is displayed");
-	  
-	  contactManagerPage.filterStatus("Trashed");
-	  
-	  contactManagerPage.searchContact(name);
-	  	  
-	  check = contactManagerPage.isContactExist(name3);
-	  verifyTrue(check, "VP: The deleted contact is displayed on the table grid");
-	  
-	  contactManagerPage.filterStatus("- Select Status -");
-  } 
-  
-  
+    
   
   @AfterClass
   public void afterClass() {

@@ -97,13 +97,26 @@ public class TM_Contact_002 extends AbstractTest{
 	  verifyTrue(check, "VP: The '1 contact successfully published' message is displayed");
   }
   
-  @Test(description= "Verify user can sort the contact table by ID column", dependsOnMethods= "TC_JOOMLA_CONTACTS_006")
-  public void TC_JOOMLA_CONTACTS_011() {
-	 
-	  addContactPage = contactManagerPage.clickNewContact();
+  @Test(description= "Verify user can add image to contact's information", dependsOnMethods= "TC_JOOMLA_CONTACTS_006")
+  public void TC_JOOMLA_CONTACTS_013() {  
 	  
-	  addContactPage.enterData(name2, alias, category, status, access, feature, contactText);
-	  addContactPage.clickSaveClose();	  
+	  Contact_add_edit_page addContactPage = contactManagerPage.clickNewContact();
+	  addContactPage.enterData(name2, alias, category, status, access, feature, contactText);	  
+	  addContactPage.insertImage(imageName);	  
+	  
+	  contactManagerPage = addContactPage.clickSaveClose();
+	  
+	  check = contactManagerPage.isMessageDisplay(msgSave);
+	  verifyTrue(check, "VP: Contact successfully saved message is displayed");
+	  
+	  contactManagerPage.searchContact(name);
+	  
+	  check = contactManagerPage.isContactExist(name);
+	  verifyTrue(check, "VP: Created contact is displayed");   
+  }  
+  
+  @Test(description= "Verify user can sort the contact table by ID column", dependsOnMethods= "TC_JOOMLA_CONTACTS_013")
+  public void TC_JOOMLA_CONTACTS_011() { 	  
 	  	  
 	  contactManagerPage.searchContact(name);	  
 	 
@@ -116,6 +129,38 @@ public class TM_Contact_002 extends AbstractTest{
 	  verifyTrue(check, "VP: The contacts is sorted by ID in descending order");
   }
   
+  @Test(description= "Verify user can change the order of contacts using the Ordering column", dependsOnMethods= "TC_JOOMLA_CONTACTS_006")
+  public void TC_JOOMLA_CONTACTS_015() {	  
+	  contactManagerPage.searchContact(name);
+	  	  
+	  contactManagerPage.clickOrderingColumn();	  
+	 
+	  int row1 = contactManagerPage.getRowNumber(name);
+	  int row2 = contactManagerPage.getRowNumber(name2);	  
+	  contactManagerPage.clickArrowOrdering(name, "down");	  
+	  
+	  check = contactManagerPage.isContactLocateAt(name, row2);
+	  verifyTrue(check, "VP: Verify the first weblink changes its position with the second weblink");
+	  check = contactManagerPage.isContactLocateAt(name2, row1);
+	  verifyTrue(check, "VP: Verify the second weblink changes its position with the first weblink");
+  } 
+  
+  @Test(description= "Verify user can move a contact to trash section", dependsOnMethods= "TC_JOOMLA_CONTACTS_015")
+  public void TC_JOOMLA_CONTACTS_007() {	  
+	  
+	  contactManagerPage.clickContactCheckbox(name2);
+	  contactManagerPage = contactManagerPage.clickTrashContact();	  
+	  
+	  check = contactManagerPage.isMessageDisplay(msgTrash);
+	  verifyTrue(check, "The '1 contact trashed' message is displayed");
+	  
+	  contactManagerPage.filterStatus("Trashed");
+	  
+	  contactManagerPage.searchContact(name);
+	  	  
+	  check = contactManagerPage.isContactExist(name2);
+	  verifyTrue(check, "VP: The deleted contact is displayed on the table grid");
+  } 
   
   @AfterClass
   public void afterClass() {
