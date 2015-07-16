@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.seleniumhq.jetty7.util.log.Log;
 
 import abs.AbstractPage;
 
@@ -73,6 +74,10 @@ public class Contact_manager_page extends AbstractPage {
 		return false;
 	}
 	
+	public boolean isContactCheckedIn(String contactName) {
+		String buttonXpath = getCellXpath(contactName, 2) + _iconCheckedOut;
+		return !isElementExist(buttonXpath);
+	}
 	//Handle table
 	public void clickContactCheckbox(String contactName) {
 		String chbXpath = getCellXpath(contactName, 1) + "/input";
@@ -89,17 +94,65 @@ public class Contact_manager_page extends AbstractPage {
 		}
 	}	
 	
+	public boolean isIdSortedCorrect(String asc_dec) {
+		int rows = driver.findElements(By.xpath(_rowTable)).size();
+		int ID1, ID2;
+		int check = 0;
+		
+		if(rows>1) {
+			if(asc_dec.equals("asc")) {
+				for (int i = 1; i <= rows - 1; i++) {
+					ID1 = getIdByRow(i);
+					ID2 = getIdByRow(i+1);	
+					
+					if(ID1 > ID2) { check++;}				
+				}
+			}
+			
+			if(asc_dec.equals("dec")) {
+				for (int i = 1; i <= rows - 1; i++) {
+					ID1 = getIdByRow(i);
+					ID2 = getIdByRow(i+1);	
+					
+					if(ID1 < ID2) { check++;}				
+				}
+			}
+		} else {
+			System.out.println("Rows < 1, cannot check");
+			check ++;
+		}
+		
+		return check == 0;
+	}
+	
+	public int getIdByRow(int row) {
+		return Integer.parseInt(driver.findElement(By.xpath(_rowTable+ "["+ row +"]/td[10]")).getText());
+	}
 	public void clickChangeStatus(String contactName) {
 		String buttonXpath = getCellXpath(contactName, 4) + "/a";
 		getWebElement(buttonXpath).click();
 	}
 	
+	public void checkIn(String contactName) {
+		clickContactCheckbox(contactName);
+		btn_checkin.click();		
+	}	
+	
 	public void filterStatus(String status) {
 		selectCombobox(cb_filterStatus, status);		
 	}
 	
+	public void filterCategory(String category) {
+		selectCombobox(cb_filterCategory, category);
+		
+	}
+	
 	public void clickOrderingColumn() {		
 		lnk_ordering.click();
+	}
+	
+	public void clickIdColumn() {		
+		lnk_ID.click();
 	}
 	
 	
@@ -141,8 +194,18 @@ public class Contact_manager_page extends AbstractPage {
 	
 	@FindBy(xpath="//select[@name='filter_published']")
 	WebElement cb_filterStatus;
+		
+	@FindBy(xpath="//select[@name='filter_category_id']")
+	WebElement cb_filterCategory;
 	
+	@FindBy(xpath="//a[text()='ID']")
+	WebElement lnk_ID;
+
 	@FindBy(xpath="//a[text()='Ordering']")
-	WebElement lnk_ordering;	
+	WebElement lnk_ordering;
+	
+	String _iconCheckedOut = "/a/span[@class='state checkedout']";
+	String _rowTable = "//table[@class='adminlist']/tbody/tr";
+	
 		
 }

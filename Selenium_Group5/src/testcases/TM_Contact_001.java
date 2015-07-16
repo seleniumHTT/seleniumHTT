@@ -19,7 +19,7 @@ import utilities.Random;
 import common.Selenium;
 import common.config;
 
-public class TC_Contact_001_Create extends AbstractTest{
+public class TM_Contact_001 extends AbstractTest{
 	WebDriver driver;
 	Selenium sele;
 	
@@ -33,8 +33,9 @@ public class TC_Contact_001_Create extends AbstractTest{
 	  nameEdit = name + " edited";
 	  name2 = name + " order";
 	  name3 = name + " image";
-	  category = "";
-	  status = "Unpublished";
+	  category = "Sample Data-Contact";
+	  stsUnpublished = "Unpublished";
+	  stsPublished = "Published";
 	  imageName = "powered_by.png";
 	    
 	  msgSave = "Contact successfully saved";
@@ -55,7 +56,7 @@ public class TC_Contact_001_Create extends AbstractTest{
 	 
 	  Contact_add_edit_page addContactPage = contactManagerPage.clickNewContact();
 	  
-	  addContactPage.enterData(name, alias, category, status, access, feature, contactText);
+	  addContactPage.enterData(name, alias, category, stsPublished, access, feature, contactText);
 	  contactManagerPage = addContactPage.clickSaveClose();	  
 	  
 	  check = contactManagerPage.isMessageDisplay(msgSave);
@@ -64,9 +65,30 @@ public class TC_Contact_001_Create extends AbstractTest{
 	  contactManagerPage.searchContact(name);
 	  	  
 	  check = contactManagerPage.isContactExist(name);
+	  verifyTrue(check, "VP: Created Contact is displayed");
+	  
+  }
+  
+  @Test(description= "Verify user can search for contacts using the filter text field", dependsOnMethods= "TC_JOOMLA_CONTACTS_001")
+  public void TC_JOOMLA_CONTACTS_009() {	  	  
+	  
+	  contactManagerPage.searchContact(name);
+	  	  
+	  check = contactManagerPage.isContactExist(name);
 	  verifyTrue(check, "VP: Created Contact is displayed");	  
 	  
-  } 
+  }
+  
+  @Test(description= "User can search for contacts using the filter dropdown lists", dependsOnMethods= "TC_JOOMLA_CONTACTS_001")
+  public void TC_JOOMLA_CONTACTS_010() {
+	  	  
+	  contactManagerPage.filterStatus(stsPublished);
+	  contactManagerPage.filterCategory(category);
+	  
+	  check = contactManagerPage.isContactExist(name);
+	  verifyTrue(check, "VP: Created Contact is displayed");	  
+	  
+  }
   
   @Test(description= "Verify user can edit a contact", dependsOnMethods= "TC_JOOMLA_CONTACTS_001")
   public void TC_JOOMLA_CONTACTS_002() {
@@ -99,43 +121,32 @@ public class TC_Contact_001_Create extends AbstractTest{
   
   @Test(description= "Verify user can publish an unpublished contact", dependsOnMethods="TC_JOOMLA_CONTACTS_003")
   public void TC_JOOMLA_CONTACTS_004() {
-	  
-	  status = "Unpublished";
-	  
-	  Contact_add_edit_page addContactPage = contactManagerPage.clickNewContact();
-	  addContactPage.enterData(name2, alias, category, status, access, feature, contactText);
-	  contactManagerPage = addContactPage.clickSaveClose();
-	  
-	  contactManagerPage.searchContact(name2);
-	  
-	  contactManagerPage.clickContactCheckbox(name2);
+	  	  
+	  contactManagerPage.clickContactCheckbox(nameEdit);
 	  contactManagerPage.clickChangeStatusToolbar("Publish");	  
 	  	  
 	  check = contactManagerPage.isMessageDisplay(msgPublish);
 	  verifyTrue(check, "VP: '1 contact successfully published' message is displayed");
   }
   
-  @Test(description= "Verify user can change the status of weblinks using the Status column", dependsOnMethods= "TC_JOOMLA_CONTACTS_004")
-  public void TC_JOOMLA_CONTACTS_014() {	  
-	
-	  contactManagerPage.searchContact(name2);
+  @Test(description= "Verify user can move a contact to the archive", dependsOnMethods= "TC_JOOMLA_CONTACTS_004")
+  public void TC_JOOMLA_CONTACTS_005() {
 	  
-	  contactManagerPage.clickChangeStatus(name2);
+	  contactManagerPage.clickContactCheckbox(nameEdit);
+	  contactManagerPage.clickArchiveContact(); 
 	  
-	  check = contactManagerPage.isContactPublished(name2, "Unpublished");
-	  verifyTrue(check, "VP: The icon of the selected item is showed as 'Unpublished'");
+	  check = contactManagerPage.isMessageDisplay(msgArchive);
+	  verifyTrue(check, "The '1 contact successfully archived' message is displayed");
 	  
-	  check = contactManagerPage.isMessageDisplay(msgUnpublish);
-	  verifyTrue(check, "VP: The '1 contact successfully unpublished' message is displayed");
+	  contactManagerPage.filterStatus("Archive");
 	  
-	  contactManagerPage.clickChangeStatus(name2);	  
-	  check = contactManagerPage.isContactPublished(name2, "Published");
-	  verifyTrue(check, "VP: The icon of the selected item is showed as 'Published'");	  
+	  contactManagerPage.searchContact(nameEdit);
+	  	  
+	  check = contactManagerPage.isContactExist(nameEdit);
+	  verifyTrue(check, "VP: The deleted contact is displayed on the table grid");
 	  
-	  check = contactManagerPage.isMessageDisplay(msgPublish);
-	  verifyTrue(check, "VP: The '1 contact successfully published' message is displayed");
+	  contactManagerPage.filterStatus("- Select Status -");	  
   } 
-  
   
   @Test(description= "Verify user can change the order of weblinks using the Ordering column", dependsOnMethods= "TC_JOOMLA_CONTACTS_014")
   public void TC_JOOMLA_CONTACTS_015() {	  
@@ -157,7 +168,7 @@ public class TC_Contact_001_Create extends AbstractTest{
   public void TC_JOOMLA_CONTACTS_013() {  
 	  
 	  Contact_add_edit_page addContactPage = contactManagerPage.clickNewContact();
-	  addContactPage.enterData(name3, alias, category, status, access, feature, contactText);	  
+	  addContactPage.enterData(name3, alias, category, stsPublished, access, feature, contactText);	  
 	  addContactPage.insertImage(imageName);	  
 	  
 	  contactManagerPage = addContactPage.clickSaveClose();
@@ -190,28 +201,11 @@ public class TC_Contact_001_Create extends AbstractTest{
 	  contactManagerPage.filterStatus("- Select Status -");
   } 
   
-  @Test(description= "Verify user can move a contact to the archive", dependsOnMethods= "TC_JOOMLA_CONTACTS_013")
-  public void TC_JOOMLA_CONTACTS_005() {	  
-	  
-	  contactManagerPage.clickContactCheckbox(nameEdit);
-	  contactManagerPage.clickArchiveContact(); 
-	  
-	  check = contactManagerPage.isMessageDisplay(msgArchive);
-	  verifyTrue(check, "The '1 contact successfully archived' message is displayed");
-	  
-	  contactManagerPage.filterStatus("Archive");
-	  
-	  contactManagerPage.searchContact(name);
-	  	  
-	  check = contactManagerPage.isContactExist(nameEdit);
-	  verifyTrue(check, "VP: The deleted contact is displayed on the table grid");
-	  
-	  contactManagerPage.filterStatus("- Select Status -");	  
-  } 
+  
   
   @AfterClass
   public void afterClass() {
-	  //sele.close();
+	  sele.close();
   }
 
   @BeforeTest
@@ -222,7 +216,7 @@ public class TC_Contact_001_Create extends AbstractTest{
   public void afterTest() {
   }
   
-  String name, alias, category, status, access, feature, contactText, imageName, name2, name3;
+  String name, alias, category, stsUnpublished, stsPublished, access, feature, contactText, imageName, name2, name3;
   String msgSave, msgPublish, msgUnpublish, msgTrash, msgArchive;
   String nameEdit, aliasEdit, categoryEdit, statusEdit, accessEdit, featureEdit, Edit, contactTextEdit;
   boolean check;

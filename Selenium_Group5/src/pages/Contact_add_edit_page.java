@@ -69,6 +69,9 @@ public class Contact_add_edit_page extends AbstractPage {
 		return new Contact_manager_page(driver);
 	}	
 		
+	public void clickSave() {
+		btn_save.click();
+	}
 	
 	//Editor
 	@FindBy(xpath="//input[@id='jform_name']")
@@ -101,6 +104,9 @@ public class Contact_add_edit_page extends AbstractPage {
 	//Submit buttons
 	@FindBy(xpath="//li[@id='toolbar-save']/a")
 	WebElement btn_saveClose;
+
+	@FindBy(xpath="//li[@id='toolbar-apply']/a")
+	WebElement btn_save;
 	
 	//iframe
 	@FindBy(xpath="//div[@id='sbox-content']/iframe")
@@ -115,4 +121,6 @@ public class Contact_add_edit_page extends AbstractPage {
 	
 	String _lbl_addNewContact = "//h2[text()='Contact Manager: Add New Contact']";
 	String _lbl_ContactSaved = "";
+
+	
 }

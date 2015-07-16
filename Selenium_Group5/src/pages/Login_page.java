@@ -15,10 +15,11 @@ public class Login_page {
 		PageFactory.initElements(driver, this);
 	}	
 	
-	public void login(String username, String password) {
+	public Admin_page login(String username, String password) {
 		txt_username.sendKeys(username);
 		txt_password.sendKeys(password);
 		btn_login.click();
+		return new Admin_page(driver);
 	}	
 	
 	@FindBy(xpath="//input[@id='mod-login-username']")
