@@ -1,4 +1,4 @@
-package abs;
+package abstracts;
 
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;

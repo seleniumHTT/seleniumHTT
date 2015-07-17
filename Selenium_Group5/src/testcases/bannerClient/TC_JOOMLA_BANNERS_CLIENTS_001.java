@@ -1,11 +1,11 @@
-package testcases;
+package testcases.bannerClient;
 
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-import abs.AbstractTest;
+import abstracts.AbstractTest;
 import common.Selenium;
 import common.config;
 import pages.Admin_page;

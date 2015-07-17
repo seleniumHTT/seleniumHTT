@@ -5,7 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-import abs.AbstractPage;
+import abstracts.AbstractPage;
 
 public class Article_manager_page extends AbstractPage {
 	WebDriver driver;

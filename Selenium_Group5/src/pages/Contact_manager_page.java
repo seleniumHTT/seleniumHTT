@@ -6,7 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.seleniumhq.jetty7.util.log.Log;
 
-import abs.AbstractPage;
+import abstracts.AbstractPage;
 
 public class Contact_manager_page extends AbstractPage {
 	WebDriver driver;

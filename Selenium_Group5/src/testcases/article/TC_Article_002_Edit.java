@@ -1,4 +1,4 @@
-package testcases;
+package testcases.article;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -9,7 +9,7 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.AfterTest;
 
-import abs.AbstractTest;
+import abstracts.AbstractTest;
 import pages.Admin_page;
 import pages.Article_add_edit_page;
 import pages.Article_manager_page;

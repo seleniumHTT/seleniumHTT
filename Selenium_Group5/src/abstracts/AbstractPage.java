@@ -1,4 +1,4 @@
-package abs;
+package abstracts;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;

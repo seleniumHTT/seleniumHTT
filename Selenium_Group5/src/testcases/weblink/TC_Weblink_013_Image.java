@@ -1,4 +1,4 @@
-package testcases;
+package testcases.weblink;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -9,7 +9,7 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.AfterTest;
 
-import abs.AbstractTest;
+import abstracts.AbstractTest;
 import pages.Admin_page;
 import pages.Weblink_add_edit_page;
 import pages.Weblink_manager_page;
@@ -18,7 +18,7 @@ import utilities.Random;
 import common.Selenium;
 import common.config;
 
-public class TC_Weblink_001_Create extends AbstractTest{
+public class TC_Weblink_013_Image extends AbstractTest{
 	WebDriver driver;
 	Selenium sele;
 	
@@ -27,19 +27,20 @@ public class TC_Weblink_001_Create extends AbstractTest{
 	  sele = new Selenium();
 	  this.driver = sele.getDriver(config.urlLogin);
 	  
-	  //new Weblink data
+	  //new weblink data
 	  title = Random.getRandomName();
 	  category = "";
 	  status = "";
 	  access = "";
 	  URL ="http://www.joomla.org";
-	  WeblinkText = title + " content";
+	  weblinkText = title + " content";
 	    
 	  msg = "Weblink successfully saved";
+	  imageName = "powered_by.png";
   }
   
-  @Test(description= "Verify user can create an Weblink")
-  public void TC2_EditWeblink() {
+  @Test(description= "Verify user can add image to weblink's content")
+  public void TC3_MoveWeblinkToTrash() {
 	  //1. Login to joomla
 	  Login_page loginPage = new Login_page(driver);
 	  loginPage.login(config.usernameAdmin, config.passwordAdmin);
@@ -50,7 +51,10 @@ public class TC_Weblink_001_Create extends AbstractTest{
 	 
 	  //3. Click new icon, go to add page
 	  Weblink_add_edit_page addWeblinkPage = weblinkManagerPage.clickNewWeblink();
-	  addWeblinkPage.enterData(title, URL, category, status, access, WeblinkText);
+	  addWeblinkPage.enterData(title, URL, category, status, access, weblinkText);
+	  
+	  //4. Insert image
+	  addWeblinkPage.insertImage(imageName);
 	  
 	  //4. Click Save n close button
 	  weblinkManagerPage = addWeblinkPage.clickSaveClose();
@@ -59,13 +63,12 @@ public class TC_Weblink_001_Create extends AbstractTest{
 	  check = weblinkManagerPage.isMessageDisplay(msg);
 	  verifyTrue(check, "VP1: Weblink successfully saved message is displayed");
 	  
-	  //Search Weblink
+	  //Search weblink
 	  weblinkManagerPage.searchWeblink(title);
 	  
-	  //VP2: Created Weblink is displayed on the Weblinks table
+	  //VP2: Created weblink is displayed on the weblinks table
 	  check = weblinkManagerPage.isWeblinkExist(title);
-	  verifyTrue(check, "VP2: Created Weblink is displayed");	  
-	  
+	  verifyTrue(check, "VP2: Created weblink is displayed"); 
   } 
   
   @AfterClass
@@ -81,8 +84,7 @@ public class TC_Weblink_001_Create extends AbstractTest{
   public void afterTest() {
   }
   
-  String title, category, status, access, URL, WeblinkText, msg;
-  String titleEdit, categoryEdit, statusEdit, accessEdit, URLEdit, WeblinkTextEdit;
+  String title, category, status, access, feature, weblinkText, msg, msgTrash, imageName, URL;
   boolean check;
   Weblink_manager_page weblinkManagerPage;
   Weblink_add_edit_page editWeblinkPage, addWeblinkPage;

@@ -1,6 +1,7 @@
 package pages;
 
-import abs.AbstractPage;
+import abstracts.AbstractPage;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
