@@ -28,7 +28,7 @@ public class TC_Weblink_013_Image extends AbstractTest{
 	  this.driver = sele.getDriver(config.urlLogin);
 	  
 	  //new weblink data
-	  title = Random.getRandomName();
+	  title = Random.getCurrentTime();
 	  category = "";
 	  status = "";
 	  access = "";

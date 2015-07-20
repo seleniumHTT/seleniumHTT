@@ -27,7 +27,7 @@ public class TC_Article_001_Create extends AbstractTest{
 	  sele = new Selenium();
 	  this.driver = sele.getDriver(config.urlLogin);
 	  //Test data
-	  title = Random.getRandomName();
+	  title = Random.getCurrentTime();
 	  category = "";
 	  status = "";
 	  access = "";

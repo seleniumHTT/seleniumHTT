@@ -16,7 +16,7 @@ public class TestData {
 			try {
 				XMLhelper xmlHelper = new XMLhelper(filePath);
 				name = xmlHelper.getContentByXpath(_name);
-				name = name + Random.getRandomName();
+				name = name + Random.getCurrentTime();
 				
 				alias = xmlHelper.getContentByXpath(_alias);
 				category = xmlHelper.getContentByXpath(_category);

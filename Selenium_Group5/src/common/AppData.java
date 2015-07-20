@@ -31,7 +31,7 @@ public class AppData {
 	}
 		
 	public static String getRandomString(String suite) {
-		return Random.getRandomName() + " " + suite; 
+		return Random.getCurrentTime() + " " + suite; 
 	}		
 	
 	private static String urlLogin, username, password;

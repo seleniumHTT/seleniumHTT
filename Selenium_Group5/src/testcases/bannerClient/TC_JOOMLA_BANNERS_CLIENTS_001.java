@@ -22,7 +22,7 @@ public class TC_JOOMLA_BANNERS_CLIENTS_001 extends AbstractTest{
   public void beforeClass(){
 	  sele = new Selenium();
 	  this.driver = sele.getDriver(config.urlLogin);
-	  randomNumber = Random.getRandomName();
+	  randomNumber = Random.getCurrentTime();
 	  clientName = "Client Test " + randomNumber;
 	  contactName = "Mr John";
 	  contactEmail = "John@gmail.com";

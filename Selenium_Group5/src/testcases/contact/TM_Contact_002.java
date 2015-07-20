@@ -40,8 +40,8 @@ public class TM_Contact_002 extends AbstractTest{
 	  verifyTrue(check, "VP: Contact successfully saved message is displayed");	  
 	  
 	  config.tearDown();
-	  config.setup();
 	  
+	  config.getBrowser();
 	  Login_page loginPage = PageFactory.getLoginPage();
 	  adminPage = loginPage.login(AppData.getUsername(), AppData.getPassword());
 	  

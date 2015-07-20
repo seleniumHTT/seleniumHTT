@@ -9,6 +9,6 @@
 	</timeWait>
 	
 	<closeBrowser>YES</closeBrowser>
-	<maximizeBrowser>YES</maximizeBrowser>
+	<maximizeBrowser>NO</maximizeBrowser>
 
 </webconfig>

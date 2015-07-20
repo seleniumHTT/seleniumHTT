@@ -29,7 +29,7 @@ public class TC_Weblink_014_Ordering extends AbstractTest{
 	  this.driver = sele.getDriver(config.urlLogin);
 	  
 	  //new weblink data
-	  random = Random.getRandomName();
+	  random = Random.getCurrentTime();
 	  title =  random + " ordering1";
 	  title2 = random + " ordering2"; 
 	  category = "";

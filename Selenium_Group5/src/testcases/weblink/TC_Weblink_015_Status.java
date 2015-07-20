@@ -29,7 +29,7 @@ public class TC_Weblink_015_Status extends AbstractTest{
 	  this.driver = sele.getDriver(config.urlLogin);
 	  
 	//new Weblink data
-	  title = Random.getRandomName();
+	  title = Random.getCurrentTime();
 	  category = "";
 	  status = "";
 	  access = "";

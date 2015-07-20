@@ -25,7 +25,6 @@ public class config {
 	
 	public static void getBrowser() {
 		getConfig();
-		
 		if(browser.equals("chrome")) {
 			System.out.println("Chrome is selected");
 			System.setProperty("webdriver.chrome.driver", chromePath);
@@ -68,7 +67,7 @@ public class config {
 	
 	public static void tearDown() {
 		if(closeBrowser == true) {
-			driver.close();
+			driver.quit();
 			System.out.println("AUT Closed");
 		}
 		System.out.println("Teared down");
