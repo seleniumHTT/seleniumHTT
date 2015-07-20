@@ -25,6 +25,10 @@
 	<weblink>
 		<name>Group 5 Weblink </name>
 		<alias></alias>
+		<urls>
+			<url>http://www.joomla.org</url>
+			<url>http://www.google.com</url>
+		</urls>
 		<category>Sample Data-Weblinks</category>
 		<status>
 			<stsPublished>Published</stsPublished>

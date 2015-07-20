@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <webconfig>	
-	<browser>firefox</browser>
+	<browser>ie</browser>
 	<grid>NO</grid>
 	<timeWait>
 		<longTime>20</longTime>

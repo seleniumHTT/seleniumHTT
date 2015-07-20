@@ -10,7 +10,7 @@ public class TM_Article_002 extends AbstractTest{
 
 	
   @BeforeClass
-  public void beforeClass() {
+  public void beforeClass() {	  
 	  config.setup();
 	  TestData.Article.getDataTest();
 	  
@@ -29,7 +29,7 @@ public class TM_Article_002 extends AbstractTest{
   }
   
   @Test(description= "Verify user can check in a article", priority=1)
-  public void TC_JOOMLA_CONTACTS_006() {	
+  public void TC_JOOMLA_ARTICLE_006() {	
 	  
 	  articleManagerPage = adminPage.clickArticleManagerMenu();
 	 
@@ -58,8 +58,8 @@ public class TM_Article_002 extends AbstractTest{
 	  verifyTrue(check, "VP: Article successfully saved message is displayed");  
   }
   
-  @Test(description= "Verify user can change the status of article using the Status column", dependsOnMethods= "TC_JOOMLA_CONTACTS_006")
-  public void TC_JOOMLA_CONTACTS_014() {
+  @Test(description= "Verify user can change the status of article using the Status column", dependsOnMethods= "TC_JOOMLA_ARTICLE_006", priority=1)
+  public void TC_JOOMLA_ARTICLE_014() {
 	  
 	  articleManagerPage.clickChangeStatus(name);
 	  
@@ -77,11 +77,11 @@ public class TM_Article_002 extends AbstractTest{
 	  verifyTrue(check, "VP: The '1 article successfully published' message is displayed");
   }
   
-  @Test(description= "Verify user can add image to article's information", dependsOnMethods= "TC_JOOMLA_CONTACTS_006")
-  public void TC_JOOMLA_CONTACTS_013() {  
+  @Test(description= "Verify user can add image to article's information", dependsOnMethods= "TC_JOOMLA_ARTICLE_006")
+  public void TC_JOOMLA_ARTICLE_013() {  
 	  
 	  Article_add_edit_page addArticlePage = articleManagerPage.clickNewArticle();
-	  addArticlePage.enterData(name, category, stsPublished, access, feature, articleText);
+	  addArticlePage.enterData(name3, category, stsPublished, access, feature, articleText);
 	  addArticlePage.insertImage(imageName);	  
 	  
 	  articleManagerPage = addArticlePage.clickSaveClose();
@@ -91,12 +91,12 @@ public class TM_Article_002 extends AbstractTest{
 	  
 	  articleManagerPage.searchArticle(name);
 	  
-	  check = articleManagerPage.isArticleExist(name);
+	  check = articleManagerPage.isArticleExist(name3);
 	  verifyTrue(check, "VP: Created article is displayed");   
   }  
   
-  @Test(description= "Verify user can sort the article table by ID column", dependsOnMethods= "TC_JOOMLA_CONTACTS_013")
-  public void TC_JOOMLA_CONTACTS_011() { 	  
+  @Test(description= "Verify user can sort the article table by ID column", dependsOnMethods= "TC_JOOMLA_ARTICLE_013")
+  public void TC_JOOMLA_ARTICLE_011() { 	  
 	  	  
 	  articleManagerPage.searchArticle(name);	  
 	 
@@ -109,26 +109,26 @@ public class TM_Article_002 extends AbstractTest{
 	  verifyTrue(check, "VP: The articles is sorted by ID in descending order");
   }
   
-  @Test(description= "Verify user can change the order of articles using the Ordering column", dependsOnMethods= "TC_JOOMLA_CONTACTS_006")
-  public void TC_JOOMLA_CONTACTS_015() {	  
+  @Test(description= "Verify user can change the order of articles using the Ordering column", dependsOnMethods= "TC_JOOMLA_ARTICLE_006")
+  public void TC_JOOMLA_ARTICLE_015() {	  
 	  articleManagerPage.searchArticle(name);
 	  	  
 	  articleManagerPage.clickOrderingColumn();	  
 	 
 	  int row1 = articleManagerPage.getRowNumber(name);
-	  int row2 = articleManagerPage.getRowNumber(name2);	  
+	  int row2 = articleManagerPage.getRowNumber(name3);	  
 	  articleManagerPage.clickArrowOrdering(name, "down");	  
 	  
 	  check = articleManagerPage.isArticleLocateAt(name, row2);
 	  verifyTrue(check, "VP: Verify the first weblink changes its position with the second weblink");
-	  check = articleManagerPage.isArticleLocateAt(name2, row1);
+	  check = articleManagerPage.isArticleLocateAt(name3, row1);
 	  verifyTrue(check, "VP: Verify the second weblink changes its position with the first weblink");
   } 
   
-  @Test(description= "Verify user can move a article to trash section", dependsOnMethods= "TC_JOOMLA_CONTACTS_015")
-  public void TC_JOOMLA_CONTACTS_007() {	  
+  @Test(description= "Verify user can move a article to trash section", dependsOnMethods= "TC_JOOMLA_ARTICLE_015")
+  public void TC_JOOMLA_ARTICLE_007() {	  
 	  
-	  articleManagerPage.clickArticleCheckbox(name2);
+	  articleManagerPage.clickArticleCheckbox(name3);
 	  articleManagerPage = articleManagerPage.clickTrashArticle();	  
 	  
 	  check = articleManagerPage.isMessageDisplay(AppData.Article.msgTrash);
@@ -138,7 +138,7 @@ public class TM_Article_002 extends AbstractTest{
 	  
 	  articleManagerPage.searchArticle(name);
 	  	  
-	  check = articleManagerPage.isArticleExist(name2);
+	  check = articleManagerPage.isArticleExist(name3);
 	  verifyTrue(check, "VP: The deleted article is displayed on the table grid");
   } 
   

@@ -24,7 +24,7 @@ public class TM_Article_001 extends AbstractTest{
   }
   
   @Test(description= "Verify user can create an Article", priority=1)
-  public void TC_JOOMLA_CONTACTS_001() {	 	  
+  public void TC_JOOMLA_ARTICLE_001() {	 	  
 	  
 	  articleManagerPage = adminPage.clickArticleManagerMenu();
 	 
@@ -42,8 +42,8 @@ public class TM_Article_001 extends AbstractTest{
 	  verifyTrue(check, "VP: Created Article is displayed");	  
   }
   
-  @Test(description= "Verify user can search for articles using the filter text field", dependsOnMethods= "TC_JOOMLA_CONTACTS_001")
-  public void TC_JOOMLA_CONTACTS_009() {	  	  
+  @Test(description= "Verify user can search for articles using the filter text field", dependsOnMethods= "TC_JOOMLA_ARTICLE_001", priority=1)
+  public void TC_JOOMLA_ARTICLE_009() {	  	  
 	  
 	  articleManagerPage.searchArticle(name);
 	  	  
@@ -52,8 +52,8 @@ public class TM_Article_001 extends AbstractTest{
 	  
   }
   
-  @Test(description= "User can search for articles using the filter dropdown lists", dependsOnMethods= "TC_JOOMLA_CONTACTS_001")
-  public void TC_JOOMLA_CONTACTS_010() {
+  @Test(description= "User can search for articles using the filter dropdown lists", dependsOnMethods= "TC_JOOMLA_ARTICLE_001", priority=1)
+  public void TC_JOOMLA_ARTICLE_010() {
 	  	  
 	  articleManagerPage.filterStatus(stsPublished);
 	  articleManagerPage.filterCategory(category);
@@ -65,13 +65,13 @@ public class TM_Article_001 extends AbstractTest{
 	  articleManagerPage.filterCategory("Select Category");
   }
   
-  @Test(description= "Verify user can edit a article", dependsOnMethods= "TC_JOOMLA_CONTACTS_001")
-  public void TC_JOOMLA_CONTACTS_002() {
+  @Test(description= "Verify user can edit a article", dependsOnMethods= "TC_JOOMLA_ARTICLE_001")
+  public void TC_JOOMLA_ARTICLE_002() {
 	  
 	  articleManagerPage.clickArticleCheckbox(name);
 	  editArticlePage = articleManagerPage.clickEditArticle();
 	  	  
-	  editArticlePage.enterData(name, category, stsPublished, access, feature, articleText);
+	  editArticlePage.enterData(nameEdit, category, stsPublished, access, feature, articleText);
 	  articleManagerPage = editArticlePage.clickSaveClose();
 	  	  
 	  check = articleManagerPage.isMessageDisplay(AppData.Article.msgSave);
@@ -84,8 +84,8 @@ public class TM_Article_001 extends AbstractTest{
 	  
   }
   
-  @Test(description= "Verify user can publish an unpublished article", dependsOnMethods= "TC_JOOMLA_CONTACTS_002")
-  public void TC_JOOMLA_CONTACTS_003() {	  
+  @Test(description= "Verify user can publish an unpublished article", dependsOnMethods= "TC_JOOMLA_ARTICLE_002")
+  public void TC_JOOMLA_ARTICLE_003() {	  
 	
 	  articleManagerPage.clickArticleCheckbox(nameEdit);
 	  articleManagerPage.clickChangeStatusToolbar("Unpublish");	  
@@ -94,8 +94,8 @@ public class TM_Article_001 extends AbstractTest{
 	  verifyTrue(check, "VP: '1 article successfully unpublished' message is displayed");
   }
   
-  @Test(description= "Verify user can publish an unpublished article", dependsOnMethods="TC_JOOMLA_CONTACTS_003")
-  public void TC_JOOMLA_CONTACTS_004() {
+  @Test(description= "Verify user can publish an unpublished article", dependsOnMethods="TC_JOOMLA_ARTICLE_003")
+  public void TC_JOOMLA_ARTICLE_004() {
 	  	  
 	  articleManagerPage.clickArticleCheckbox(nameEdit);
 	  articleManagerPage.clickChangeStatusToolbar("Publish");	  
@@ -104,8 +104,8 @@ public class TM_Article_001 extends AbstractTest{
 	  verifyTrue(check, "VP: '1 article successfully published' message is displayed");
   }
   
-  @Test(description= "Verify user can move a article to the archive", dependsOnMethods= "TC_JOOMLA_CONTACTS_004")
-  public void TC_JOOMLA_CONTACTS_005() {
+  @Test(description= "Verify user can move a article to the archive", dependsOnMethods= "TC_JOOMLA_ARTICLE_004")
+  public void TC_JOOMLA_ARTICLE_005() {
 	  
 	  articleManagerPage.clickArticleCheckbox(nameEdit);
 	  articleManagerPage.clickArchiveArticle(); 

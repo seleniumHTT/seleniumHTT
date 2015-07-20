@@ -22,6 +22,14 @@ public class config {
 		AppData.getData();		
 	}
 	
+	public static int getLongTime() {
+		return longTime;
+	}
+
+	public static int getShortTime() {
+		return shortTime;
+	}
+	
 	public static void getBrowser() {
 		getConfig();
 		if(browser.equals("chrome")) {
@@ -49,6 +57,9 @@ public class config {
 		}
 	}
 		
+	public static void setImplicitlyWait(int seconds) {
+		driver.manage().timeouts().implicitlyWait(seconds, TimeUnit.SECONDS);
+	}
 	private static void getConfig() {
 		try {
 			XMLhelper xmlHelper = new XMLhelper(filePath);
@@ -75,6 +86,7 @@ public class config {
 	private static String browser;
 	private static boolean maximizeBrowser, closeBrowser;  
 	private static int longTime, shortTime;
+	
 	private static final String filePath = "./resources/automation.config.xml";
 	private static final String chromePath = "./resources/chromedriver.exe";
 	private static final String iePath = "./resources/IEDriverServer.exe";

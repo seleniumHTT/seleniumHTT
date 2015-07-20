@@ -8,6 +8,8 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 
+import common.config;
+
 import pages.Article_manager_page;
 import pages.Contact_manager_page;
 import pages.Weblink_manager_page;
@@ -145,7 +147,10 @@ public abstract class AbstractPage {
 	}	
 	
 	public boolean isElementExist(String xpath) {
-		return !driver.findElements(By.xpath(xpath)).isEmpty();
+		config.setImplicitlyWait(config.getShortTime());
+		boolean check = !driver.findElements(By.xpath(xpath)).isEmpty();
+		config.setImplicitlyWait(config.getLongTime());
+		return check;
 	}
 	
 	//Wait, sleep methods

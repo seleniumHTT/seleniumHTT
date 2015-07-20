@@ -12,7 +12,7 @@ public class TestData {
 			try {
 				XMLhelper xmlHelper = new XMLhelper(TestData.filePath);
 				name = xmlHelper.getContentByXpath(_name);
-				name = name + Random.getRandomName();
+				name = name + Random.getCurrentTime();
 				
 				alias = xmlHelper.getContentByXpath(_alias);
 				category = xmlHelper.getContentByXpath(_category);
@@ -127,9 +127,11 @@ public class TestData {
 			try {
 				XMLhelper xmlHelper = new XMLhelper(filePath);
 				name = xmlHelper.getContentByXpath(_name);
-				name = name + Random.getRandomName();
+				name = name + Random.getCurrentTime();
 				
 				alias = xmlHelper.getContentByXpath(_alias);
+				url1 = xmlHelper.getContentByXpath(_url1);
+				url2 = xmlHelper.getContentByXpath(_url2);
 				category = xmlHelper.getContentByXpath(_category);
 				stsPublished = xmlHelper.getContentByXpath(_stsPublished);
 				stsUnpublished = xmlHelper.getContentByXpath(_stsUnpublished);
@@ -149,6 +151,14 @@ public class TestData {
 			return alias;
 		}
 
+		public static String getUrl1() {
+			return url1;
+		}
+		
+		public static String getUrl2() {
+			return url2;
+		}
+		
 		public static String getCategory() {
 			return category;
 		}
@@ -169,7 +179,7 @@ public class TestData {
 			return imageName;
 		}
 		
-		private static String name, alias, category, stsPublished, stsUnpublished, feature, imageName;
+		private static String name, alias, url1, url2, category, stsPublished, stsUnpublished, feature, imageName;
 		private static final String _name = "//weblink/name";
 		private static final String _alias = "//weblink/alias";
 		private static final String _category = "//weblink/category";
@@ -177,6 +187,8 @@ public class TestData {
 		private static final String _stsUnpublished = "//weblink//stsUnpublished";
 		private static final String _feature = "//weblink/feature";
 		private static final String _imageName = "//weblink/imageName";
+		private static String _url1 = "//weblink/urls/url[1]";
+		private static String _url2 = "//weblink/urls/url[2]";
 	}
 	
 	public static class BannerClient {

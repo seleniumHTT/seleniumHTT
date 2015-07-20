@@ -15,9 +15,9 @@ public class Weblink_manager_page extends AbstractPage {
 		this.driver = driver;
 	}
 
-	public void searchWeblink(String WeblinkTitle) {
+	public void searchWeblink(String weblinkTitle) {
 		txt_search.clear();
-		txt_search.sendKeys(WeblinkTitle);
+		txt_search.sendKeys(weblinkTitle);
 		btn_search.click();
 	}
 	
@@ -37,13 +37,25 @@ public class Weblink_manager_page extends AbstractPage {
 		return new Weblink_manager_page(driver);
 	}
 	
-	//Verify
-	public boolean isWeblinkExist(String WeblinkTitle) {
-		return isElementExist("//a[contains(text(),'"+ WeblinkTitle +"')]");
+	public void clickArchiveWeblink() {
+		btn_archive.click();
 	}
 	
-	public boolean isWeblinkLocateAt(String WeblinkTitle, int row) {
-		int currentRow = getRowNumber(WeblinkTitle);
+	public void clickChangeStatusToolbar(String status) {
+		if(status.equals("Publish")) {
+			btn_publish.click();
+		} else if(status.equals("Unpublish")) {
+			btn_unpublish.click();
+		}
+	}
+	
+	//Verify
+	public boolean isWeblinkExist(String weblinkTitle) {
+		return isElementExist("//a[contains(text(),'"+ weblinkTitle +"')]");
+	}
+	
+	public boolean isWeblinkLocateAt(String weblinkTitle, int row) {
+		int currentRow = getRowNumber(weblinkTitle);
 		
 		if(row == currentRow) {			
 			return true;
@@ -51,8 +63,8 @@ public class Weblink_manager_page extends AbstractPage {
 		return false;		
 	}	
 	
-	public boolean isWeblinkPublished(String WeblinkTitle, String expectedStatus) {
-		String buttonXpath = getCellXpath(WeblinkTitle, 3) + "/a/span/span";
+	public boolean isWeblinkPublished(String weblinkTitle, String expectedStatus) {
+		String buttonXpath = getCellXpath(weblinkTitle, 3) + "/a/span/span";
 		String currentStatus = driver.findElement(By.xpath(buttonXpath)).getAttribute("innerHTML");
 		
 		if(expectedStatus.equals(currentStatus)) {
@@ -61,29 +73,52 @@ public class Weblink_manager_page extends AbstractPage {
 		return false;
 	}
 	
+	public boolean isWeblinkCheckedIn(String weblinkTitle) {
+		String buttonXpath = getCellXpath(weblinkTitle, 2) + _iconCheckedOut;
+		return !isElementExist(buttonXpath);
+	}
+	
 	//Handle table
-	public void clickWeblinkCheckbox(String WeblinkTitle) {
-		String chbXpath = getCellXpath(WeblinkTitle, 1) + "/input";
+	public void clickWeblinkCheckbox(String weblinkTitle) {
+		String chbXpath = getCellXpath(weblinkTitle, 1) + "/input";
 		getWebElement(chbXpath).click();
 	}
 	
-	public void clickArrowOrdering(String WeblinkTitle, String updown) {		
+	public void clickArrowOrdering(String weblinkTitle, String updown) {		
 		if(updown.equals("down")) {
-			String downXpath = getCellXpath(WeblinkTitle, 5) + "//a[@title='Move Down']";
+			String downXpath = getCellXpath(weblinkTitle, 5) + "//a[@title='Move Down']";
 			getWebElement(downXpath).click();
 		} else if (updown.equals("up")) {
-			String upXpath = getCellXpath(WeblinkTitle, 5) + "//a[@title='Move Up']";
+			String upXpath = getCellXpath(weblinkTitle, 5) + "//a[@title='Move Up']";
 			getWebElement(upXpath).click();
 		}
 	}	
 	
-	public void clickChangeStatus(String WeblinkTitle) {
-		String buttonXpath = getCellXpath(WeblinkTitle, 3) + "/a";
+	public boolean isIdSortedCorrect(String asc_dec) {
+		return isNumberSortedCorrect(asc_dec, _rowTable, 9);
+	}		
+	
+	public void checkIn(String name) {
+		clickWeblinkCheckbox(name);
+		btn_checkin.click();		
+	}
+	
+	public void clickChangeStatus(String weblinkTitle) {
+		String buttonXpath = getCellXpath(weblinkTitle, 3) + "/a";
 		getWebElement(buttonXpath).click();
 	}
 	
 	public void filterStatus(String status) {
 		selectCombobox(cb_filterStatus, status);		
+	}
+	
+	public void filterCategory(String category) {
+		selectComboboxByXpath(_categoryValue, category);
+		
+	}
+	
+	public void clickIdColumn() {		
+		lnk_ID.click();
 	}
 	
 	public void clickOrderingColumn() {		
@@ -133,4 +168,13 @@ public class Weblink_manager_page extends AbstractPage {
 	@FindBy(xpath="//a[text()='Ordering']")
 	WebElement lnk_ordering;	
 		
+	@FindBy(xpath="//select[@name='filter_category_id']")
+	WebElement cb_filterCategory;
+		
+	@FindBy(xpath="//a[text()='ID']")
+	WebElement lnk_ID;
+	
+	String _iconCheckedOut = "/a/span[@class='state checkedout']";
+	String _rowTable = "//table[@class='adminlist']/tbody/tr";
+	String _categoryValue = "//select[@name='filter_category_id']/option[contains(text(), '%s')]";
 }

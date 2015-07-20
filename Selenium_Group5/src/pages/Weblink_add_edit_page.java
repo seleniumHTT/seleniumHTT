@@ -15,12 +15,17 @@ public class Weblink_add_edit_page extends AbstractPage {
 	}
 	
 	
-	public void enterData(String title, String URL, String category, String status, String access, String WeblinkText) {
 		
+	public void enterData(String title, String alias, String URL, String category, String status, String access, String WeblinkText) {
 		//Enter data
 		if(title !=null && title != "") {			
 			txt_title.clear();
 			txt_title.sendKeys(title);
+		}
+		
+		if(alias !=null && alias != "") {			
+			txt_alias.clear();
+			txt_alias.sendKeys(alias);
 		}
 		
 		if(URL != null && URL != "") {
@@ -29,7 +34,7 @@ public class Weblink_add_edit_page extends AbstractPage {
 		}
 		
 		if(category !=null && category != "") {
-			selectCombobox(cb_category, category);
+			selectComboboxByXpath(_categoryValue, category);
 		}
 		
 		if(status != null && status != "") {
@@ -64,16 +69,23 @@ public class Weblink_add_edit_page extends AbstractPage {
 		
 		driver.switchTo().parentFrame();		
 	}
+	
 	public Weblink_manager_page clickSaveClose() {
 		btn_saveClose.click();
 		return new Weblink_manager_page(driver);
 	}	
 		
+	public void clickSave() {
+		btn_save.click();
+	}
 	
 	//Editor
 	@FindBy(xpath="//input[@id='jform_title']")
 	WebElement txt_title;
 
+	@FindBy(xpath="//input[@id='jform_alias']")
+	WebElement txt_alias;
+			
 	@FindBy(xpath="//select[@id='jform_catid']")
 	WebElement cb_category;
 	
@@ -99,6 +111,9 @@ public class Weblink_add_edit_page extends AbstractPage {
 	@FindBy(xpath="//li[@id='toolbar-save']/a")
 	WebElement btn_saveClose;
 	
+	@FindBy(xpath="//li[@id='toolbar-apply']/a")
+	WebElement btn_save;
+	
 	//iframe
 	@FindBy(xpath="//div[@id='sbox-content']/iframe")
 	WebElement iframe_imageFrame;
@@ -111,5 +126,5 @@ public class Weblink_add_edit_page extends AbstractPage {
 	
 	
 	String _lbl_addNewWeblink = "//h2[text()='Weblink Manager: Add New Weblink']";
-	String _lbl_WeblinkSaved = "";
+	String _categoryValue = "//select[@id='jform_catid']/option[contains(text(), '%s')]";
 }
