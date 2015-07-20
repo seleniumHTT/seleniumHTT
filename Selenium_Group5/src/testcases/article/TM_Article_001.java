@@ -30,7 +30,7 @@ public class TM_Article_001 extends AbstractTest{
 	 
 	  addArticlePage = articleManagerPage.clickNewArticle();
 	  
-	  addArticlePage.enterData(name, alias, category, stsPublished, access, feature, articleText);
+	  addArticlePage.enterData(name, category, stsPublished, access, feature, articleText);
 	  articleManagerPage = addArticlePage.clickSaveClose();	  
 	  
 	  check = articleManagerPage.isMessageDisplay(AppData.Article.msgSave);
@@ -137,8 +137,8 @@ public class TM_Article_001 extends AbstractTest{
   public void afterTest() {
   }
   
-  private String name, alias, category, stsPublished, access, feature, articleText;
-  private String nameEdit, aliasEdit, categoryEdit, statusEdit, accessEdit, featureEdit, articleTextEdit;
+  private String name, category, stsPublished, access, feature, articleText;
+  private String nameEdit;
   private boolean check;
   private Article_manager_page articleManagerPage;
   private Article_add_edit_page editArticlePage, addArticlePage;

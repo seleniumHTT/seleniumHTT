@@ -42,6 +42,19 @@ public class Article_manager_page extends AbstractPage {
 		btn_checkin.click();		
 	}	
 	
+	public void clickArchiveArticle() {
+		btn_archive.click();
+		
+	}
+	
+	public void clickChangeStatusToolbar(String status) {
+		if(status.equals("Publish")) {
+			btn_publish.click();
+		} else if(status.equals("Unpublish")) {
+			btn_unpublish.click();
+		}
+	}
+	
 	//Verify
 	public boolean isArticleExist(String articleTitle) {
 		return isElementExist("//a[contains(text(),'"+ articleTitle +"')]");
@@ -160,4 +173,5 @@ public class Article_manager_page extends AbstractPage {
 	private String _iconCheckedOut = "/a/span[@class='state checkedout']";
 	private String _rowTable = "//table[@class='adminlist']/tbody/tr";
 	private String _categoryValue = "//select[@name='filter_category_id']/option[contains(text(), '%s')]";
+	
 }
