@@ -1,72 +1,44 @@
 package testcases.contact;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.testng.Assert;
-import org.testng.annotations.Test;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.AfterTest;
+import org.testng.annotations.*;
 
 import abstracts.AbstractTest;
-import pages.Admin_page;
-import pages.Contact_add_edit_page;
-import pages.Contact_manager_page;
-import pages.Login_page;
-import pages.Weblink_add_edit_page;
-import utilities.Random;
-import common.Selenium;
-import common.config;
+import pages.*;
+import common.*;
 
-public class TM_Contact_001 extends AbstractTest{
-	WebDriver driver;
-	Selenium sele;
+public class TM_Contact_001 extends AbstractTest{	
 	
   @BeforeClass
   public void beforeClass() {
-	  sele = new Selenium();
-	  this.driver = sele.getDriver(config.urlLogin);
+	  config.setup();
 	  
 	  //new Contact data
-	  name = Random.getRandomName() + " name";
+	  name = TestData.Contact.getName();  
 	  nameEdit = name + " edited";
-	  name2 = name + " order";
-	  name3 = name + " image";
-	  category = "Sample Data-Contact";
-	  stsUnpublished = "Unpublished";
-	  stsPublished = "Published";
-	  imageName = "powered_by.png";
-	    
-	  msgSave = "Contact successfully saved";
-	  msgPublish = "1 contact successfully published";
-	  msgUnpublish = "1 contact successfully unpublished";
+	  category = TestData.Contact.getCategory();
+	  stsPublished = TestData.Contact.getStsPublished();
 	  
-	  msgTrash = "1 contact successfully trashed";
-	  msgArchive = "1 contact successfully archived";
+	  Login_page loginPage = PageFactory.getLoginPage();
+	  adminPage = loginPage.login(AppData.getUsername(), AppData.getPassword());
   }
   
   @Test(description= "Verify user can create an Contact", priority=1)
-  public void TC_JOOMLA_CONTACTS_001() {	  
-	  Login_page loginPage = new Login_page(driver);
-	  loginPage.login(config.usernameAdmin, config.passwordAdmin);	  
+  public void TC_JOOMLA_CONTACTS_001() {	 	  
 	  
-	  adminPage = new Admin_page(driver);
 	  contactManagerPage = adminPage.clickContactManagerMenu();
 	 
-	  Contact_add_edit_page addContactPage = contactManagerPage.clickNewContact();
+	  addContactPage = contactManagerPage.clickNewContact();
 	  
 	  addContactPage.enterData(name, alias, category, stsPublished, access, feature, contactText);
 	  contactManagerPage = addContactPage.clickSaveClose();	  
 	  
-	  check = contactManagerPage.isMessageDisplay(msgSave);
+	  check = contactManagerPage.isMessageDisplay(AppData.msgSaveContact);
 	  verifyTrue(check, "VP: Contact successfully saved message is displayed");	  
 	  
 	  contactManagerPage.searchContact(name);
 	  	  
 	  check = contactManagerPage.isContactExist(name);
-	  verifyTrue(check, "VP: Created Contact is displayed");
-	  
+	  verifyTrue(check, "VP: Created Contact is displayed");	  
   }
   
   @Test(description= "Verify user can search for contacts using the filter text field", dependsOnMethods= "TC_JOOMLA_CONTACTS_001")
@@ -88,6 +60,8 @@ public class TM_Contact_001 extends AbstractTest{
 	  check = contactManagerPage.isContactExist(name);
 	  verifyTrue(check, "VP: Created Contact is displayed");	  
 	  
+	  contactManagerPage.filterStatus("- Select Status -");
+	  contactManagerPage.filterCategory("Select Category");
   }
   
   @Test(description= "Verify user can edit a contact", dependsOnMethods= "TC_JOOMLA_CONTACTS_001")
@@ -99,7 +73,7 @@ public class TM_Contact_001 extends AbstractTest{
 	  editContactPage.enterData(nameEdit, aliasEdit, categoryEdit, statusEdit, accessEdit, featureEdit, contactTextEdit);
 	  contactManagerPage = editContactPage.clickSaveClose();
 	  	  
-	  check = contactManagerPage.isMessageDisplay(msgSave);
+	  check = contactManagerPage.isMessageDisplay(AppData.msgSaveContact);
 	  verifyTrue(check, "VP: Contact successfully saved message is displayed");	  
 	  
 	  contactManagerPage.searchContact(nameEdit);
@@ -115,7 +89,7 @@ public class TM_Contact_001 extends AbstractTest{
 	  contactManagerPage.clickContactCheckbox(nameEdit);
 	  contactManagerPage.clickChangeStatusToolbar("Unpublish");	  
 	  	  
-	  check = contactManagerPage.isMessageDisplay(msgUnpublish);
+	  check = contactManagerPage.isMessageDisplay(AppData.msgUnpublish);
 	  verifyTrue(check, "VP: '1 contact successfully unpublished' message is displayed");
   }
   
@@ -125,7 +99,7 @@ public class TM_Contact_001 extends AbstractTest{
 	  contactManagerPage.clickContactCheckbox(nameEdit);
 	  contactManagerPage.clickChangeStatusToolbar("Publish");	  
 	  	  
-	  check = contactManagerPage.isMessageDisplay(msgPublish);
+	  check = contactManagerPage.isMessageDisplay(AppData.msgPublish);
 	  verifyTrue(check, "VP: '1 contact successfully published' message is displayed");
   }
   
@@ -135,10 +109,10 @@ public class TM_Contact_001 extends AbstractTest{
 	  contactManagerPage.clickContactCheckbox(nameEdit);
 	  contactManagerPage.clickArchiveContact(); 
 	  
-	  check = contactManagerPage.isMessageDisplay(msgArchive);
+	  check = contactManagerPage.isMessageDisplay(AppData.msgArchive);
 	  verifyTrue(check, "The '1 contact successfully archived' message is displayed");
 	  
-	  contactManagerPage.filterStatus("Archive");
+	  contactManagerPage.filterStatus("Archived");
 	  
 	  contactManagerPage.searchContact(nameEdit);
 	  	  
@@ -151,7 +125,7 @@ public class TM_Contact_001 extends AbstractTest{
   
   @AfterClass
   public void afterClass() {
-	  sele.close();
+	  config.tearDown();
   }
 
   @BeforeTest
@@ -162,11 +136,10 @@ public class TM_Contact_001 extends AbstractTest{
   public void afterTest() {
   }
   
-  String name, alias, category, stsUnpublished, stsPublished, access, feature, contactText, imageName, name2, name3;
-  String msgSave, msgPublish, msgUnpublish, msgTrash, msgArchive;
-  String nameEdit, aliasEdit, categoryEdit, statusEdit, accessEdit, featureEdit, Edit, contactTextEdit;
-  boolean check;
-  Contact_manager_page contactManagerPage;
-  Contact_add_edit_page editContactPage, addContactPage;
-  Admin_page adminPage;
+  private String name, alias, category, stsPublished, access, feature, contactText;
+  private String nameEdit, aliasEdit, categoryEdit, statusEdit, accessEdit, featureEdit, contactTextEdit;
+  private boolean check;
+  private Contact_manager_page contactManagerPage;
+  private Contact_add_edit_page editContactPage, addContactPage;
+  private Admin_page adminPage;
 }

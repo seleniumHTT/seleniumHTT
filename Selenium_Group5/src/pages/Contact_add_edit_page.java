@@ -29,7 +29,7 @@ public class Contact_add_edit_page extends AbstractPage {
 		}
 		
 		if(category !=null && category != "") {
-			selectCombobox(cb_category, category);
+			selectComboboxByXpath(_categoryValue, category);
 		}
 		
 		if(status != null && status != "") {
@@ -73,6 +73,9 @@ public class Contact_add_edit_page extends AbstractPage {
 		btn_save.click();
 	}
 	
+	public void filterCategoryByXpath(String category) {
+		getWebElement(String.format(_categoryValue, category)).click();;
+	}
 	//Editor
 	@FindBy(xpath="//input[@id='jform_name']")
 	WebElement txt_name;
@@ -120,7 +123,6 @@ public class Contact_add_edit_page extends AbstractPage {
 	
 	
 	String _lbl_addNewContact = "//h2[text()='Contact Manager: Add New Contact']";
-	String _lbl_ContactSaved = "";
-
+	String _categoryValue = "//select[@id='jform_catid']/option[contains(text(), '%s')]";
 	
 }

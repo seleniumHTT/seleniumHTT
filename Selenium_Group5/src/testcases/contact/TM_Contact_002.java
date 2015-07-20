@@ -1,71 +1,49 @@
 package testcases.contact;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.testng.Assert;
-import org.testng.annotations.Test;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.AfterTest;
+import org.testng.annotations.*;
 
 import abstracts.AbstractTest;
-import pages.Admin_page;
-import pages.Contact_add_edit_page;
-import pages.Contact_manager_page;
-import pages.Login_page;
-import pages.Weblink_add_edit_page;
-import utilities.Random;
-import common.Selenium;
-import common.config;
+import pages.*;
+import common.*;
 
 public class TM_Contact_002 extends AbstractTest{
-	WebDriver driver;
-	Selenium sele;
+
 	
   @BeforeClass
   public void beforeClass() {
-	  sele = new Selenium();
-	  this.driver = sele.getDriver(config.urlLogin);
+	  config.setup();
 	  
 	  //new Contact data
-	  name = Random.getRandomName() + " name";
-	  nameEdit = name + " edited";
+	  name = TestData.Contact.getName(); 
 	  name2 = name + " order";
 	  name3 = name + " image";
-	  category = "";
-	  status = "Published";
-	  imageName = "powered_by.png";
-	    
-	  msgSave = "Contact successfully saved";
-	  msgCheckedIn = "1 contact successfully checked in";
-	  msgPublish = "1 contact successfully published";
-	  msgUnpublish = "1 contact successfully unpublished";
+	  nameEdit = name + " edited";
+	  category = TestData.Contact.getCategory();
+	  stsPublished = TestData.Contact.getStsPublished();
+	  imageName = TestData.Contact.getImageName();	    
 	  
-	  msgTrash = "1 contact successfully trashed";
-	  msgArchive = "1 contact successfully archived";
+	  Login_page loginPage = PageFactory.getLoginPage();
+	  adminPage = loginPage.login(AppData.getUsername(), AppData.getPassword());
   }
   
   @Test(description= "Verify user can check in a contact", priority=1)
-  public void TC_JOOMLA_CONTACTS_006() {	  
-	  loginPage = new Login_page(driver);
-	  adminPage = loginPage.login(config.usernameAdmin, config.passwordAdmin);
+  public void TC_JOOMLA_CONTACTS_006() {	
 	  
 	  contactManagerPage = adminPage.clickContactManagerMenu();
 	 
 	  addContactPage = contactManagerPage.clickNewContact();
 	  
-	  addContactPage.enterData(name, alias, category, status, access, feature, contactText);
+	  addContactPage.enterData(name, alias, category, stsPublished, access, feature, contactText);
 	  addContactPage.clickSave();	  
 	  
-	  check = contactManagerPage.isMessageDisplay(msgSave);
+	  check = contactManagerPage.isMessageDisplay(AppData.msgSaveContact);
 	  verifyTrue(check, "VP: Contact successfully saved message is displayed");	  
 	  
-	  sele.close();
+	  config.tearDown();
+	  config.setup();
 	  
-	  driver = sele.getDriver(config.urlLogin);
-	  loginPage = new Login_page(driver);
-	  adminPage = loginPage.login(config.usernameAdmin, config.passwordAdmin);
+	  Login_page loginPage = PageFactory.getLoginPage();
+	  adminPage = loginPage.login(AppData.getUsername(), AppData.getPassword());
 	  
 	  contactManagerPage = adminPage.clickContactManagerMenu();
 	  contactManagerPage.searchContact(name);
@@ -74,7 +52,7 @@ public class TM_Contact_002 extends AbstractTest{
 	  check = contactManagerPage.isContactCheckedIn(name);
 	  verifyTrue(check, "VP: The lock icon next to the contact is removed");
 	  
-	  check = contactManagerPage.isMessageDisplay(msgCheckedIn);
+	  check = contactManagerPage.isMessageDisplay(AppData.msgCheckedIn);
 	  verifyTrue(check, "VP: Contact successfully saved message is displayed");  
   }
   
@@ -86,14 +64,14 @@ public class TM_Contact_002 extends AbstractTest{
 	  check = contactManagerPage.isContactPublished(name, "Unpublished");
 	  verifyTrue(check, "VP: The icon of the selected item is showed as 'Unpublished'");
 	  
-	  check = contactManagerPage.isMessageDisplay(msgUnpublish);
+	  check = contactManagerPage.isMessageDisplay(AppData.msgUnpublish);
 	  verifyTrue(check, "VP: The '1 contact successfully unpublished' message is displayed");
 	  
 	  contactManagerPage.clickChangeStatus(name);	  
 	  check = contactManagerPage.isContactPublished(name, "Published");
 	  verifyTrue(check, "VP: The icon of the selected item is showed as 'Published'");	  
 	  
-	  check = contactManagerPage.isMessageDisplay(msgPublish);
+	  check = contactManagerPage.isMessageDisplay(AppData.msgPublish);
 	  verifyTrue(check, "VP: The '1 contact successfully published' message is displayed");
   }
   
@@ -101,12 +79,12 @@ public class TM_Contact_002 extends AbstractTest{
   public void TC_JOOMLA_CONTACTS_013() {  
 	  
 	  Contact_add_edit_page addContactPage = contactManagerPage.clickNewContact();
-	  addContactPage.enterData(name2, alias, category, status, access, feature, contactText);	  
+	  addContactPage.enterData(name2, alias, category, stsPublished, access, feature, contactText);	  
 	  addContactPage.insertImage(imageName);	  
 	  
 	  contactManagerPage = addContactPage.clickSaveClose();
 	  
-	  check = contactManagerPage.isMessageDisplay(msgSave);
+	  check = contactManagerPage.isMessageDisplay(AppData.msgSaveContact);
 	  verifyTrue(check, "VP: Contact successfully saved message is displayed");
 	  
 	  contactManagerPage.searchContact(name);
@@ -151,7 +129,7 @@ public class TM_Contact_002 extends AbstractTest{
 	  contactManagerPage.clickContactCheckbox(name2);
 	  contactManagerPage = contactManagerPage.clickTrashContact();	  
 	  
-	  check = contactManagerPage.isMessageDisplay(msgTrash);
+	  check = contactManagerPage.isMessageDisplay(AppData.msgTrash);
 	  verifyTrue(check, "The '1 contact trashed' message is displayed");
 	  
 	  contactManagerPage.filterStatus("Trashed");
@@ -164,7 +142,7 @@ public class TM_Contact_002 extends AbstractTest{
   
   @AfterClass
   public void afterClass() {
-	  sele.close();
+	  config.tearDown();
   }
 
   @BeforeTest
@@ -175,8 +153,7 @@ public class TM_Contact_002 extends AbstractTest{
   public void afterTest() {
   }
   
-  String name, alias, category, status, access, feature, contactText, imageName, name2, name3;
-  String msgSave, msgPublish, msgUnpublish, msgTrash, msgArchive, msgCheckedIn;
+  String name, alias, category, stsPublished, access, feature, contactText, imageName, name2, name3; 
   String nameEdit, aliasEdit, categoryEdit, statusEdit, accessEdit, featureEdit, Edit, contactTextEdit;
   boolean check;
   Contact_manager_page contactManagerPage;

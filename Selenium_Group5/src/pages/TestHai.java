@@ -3,6 +3,8 @@ package pages;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+import javax.xml.xpath.XPathExpressionException;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -11,22 +13,22 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import utilities.Random;
-import common.Selenium;
+import utilities.XMLhelper;
 import common.config;
 
 public class TestHai {
 
 	public static void main(String[] args) {
-		URL hubUrl;
+		
+		XMLhelper xh = null;
 		try {
-			hubUrl = new URL("http://localhost:4444/wd/hub");
-			DesiredCapabilities capabilities = DesiredCapabilities.firefox();
-			RemoteWebDriver driver = new RemoteWebDriver(hubUrl, capabilities);			
-			driver.get("http://www.google.com");
-		} catch (MalformedURLException e) {
+			xh = new XMLhelper("./resources/webconfig.xml");
+		} catch (XPathExpressionException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		System.out.println(xh.getContentByXpath("//username"));
+		
 		
 		
 //		String menu = "hoanghai/a";

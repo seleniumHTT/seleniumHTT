@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<webconfig>	
+	<browser>firefox</browser>
+	<grid>NO</grid>
+	<timeWait>
+		<longTime>20</longTime>
+		<shortTime>5</shortTime>
+	</timeWait>
+	
+	<closeBrowser>YES</closeBrowser>
+	<maximizeBrowser>YES</maximizeBrowser>
+
+</webconfig>

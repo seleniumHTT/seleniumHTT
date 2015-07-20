@@ -10,21 +10,23 @@ import java.io.*;
 
 public class XMLhelper {
 	
-	public XMLhelper(String filePath) {
+	public XMLhelper(String filePath) throws XPathExpressionException {
 		factory = DocumentBuilderFactory.newInstance();
 		
+		
 		try {
-			builder = factory.newDocumentBuilder();	
+			builder = factory.newDocumentBuilder();			
 			document = builder.parse(new File(filePath));
 			
 			document.getDocumentElement().normalize();	
 			
 			xPathfactory = XPathFactory.newInstance();
-			xpath = xPathfactory.newXPath();
+			xpath = xPathfactory.newXPath();			
 			
-		} catch (SAXException | ParserConfigurationException e) {
-			e.printStackTrace();
 		} catch (IOException e) {
+			e.printStackTrace();		
+		
+		} catch (SAXException | ParserConfigurationException e) {
 			e.printStackTrace();
 		}
 		
@@ -36,7 +38,7 @@ public class XMLhelper {
 		
 		try {
 			expr = xpath.compile(xpathString);
-			expr.evaluate(document, XPathConstants.STRING);
+			return expr.evaluate(document);
 		} catch (XPathExpressionException e) {			
 			e.printStackTrace();			
 		}

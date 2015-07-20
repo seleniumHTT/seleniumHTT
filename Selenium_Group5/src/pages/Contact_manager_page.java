@@ -143,10 +143,10 @@ public class Contact_manager_page extends AbstractPage {
 	}
 	
 	public void filterCategory(String category) {
-		selectCombobox(cb_filterCategory, category);
+		selectComboboxByXpath(_categoryValue, category);
 		
-	}
-	
+	}	
+		
 	public void clickOrderingColumn() {		
 		lnk_ordering.click();
 	}
@@ -206,6 +206,6 @@ public class Contact_manager_page extends AbstractPage {
 	
 	String _iconCheckedOut = "/a/span[@class='state checkedout']";
 	String _rowTable = "//table[@class='adminlist']/tbody/tr";
-	
+	String _categoryValue = "//select[@name='filter_category_id']/option[contains(text(), '%s')]";
 		
 }

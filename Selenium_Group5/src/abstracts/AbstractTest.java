@@ -5,12 +5,9 @@ import org.testng.Assert;
 import org.testng.Reporter;
 import org.testng.annotations.*;
 
-import common.Selenium;
-
 public abstract class AbstractTest {
 	
   WebDriver driver;
-  Selenium sele;
   
   @BeforeClass
   public void beforeClass() {

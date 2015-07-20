@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testdata>
+	<article>
+	</article>
+	
+	<contact>
+		<name>Group 5 contact </name>
+		<alias></alias>
+		<category>Sample Data-Contact</category>
+		<status>
+			<stsPublished>Published</stsPublished>
+			<stsUnpublished>Unpublished</stsUnpublished>
+		</status>
+		<imageName>powered_by.png</imageName>
+	</contact>
+	
+	<weblink>
+	</weblink>
+	
+	<bannerclient>
+	</bannerclient>
+	
+</testdata>

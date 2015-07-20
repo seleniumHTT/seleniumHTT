@@ -39,6 +39,13 @@ public abstract class AbstractPage {
 		new Select(combobox).selectByVisibleText(value);
 	}
 	
+	public void selectCombobox(String xpath) {
+		getWebElement(xpath).click();
+	}
+	
+	public void selectComboboxByXpath(String valueXpath, String value) {
+		getWebElement(String.format(valueXpath, value)).click();
+	}
 	public void mouseHover(WebElement e) {
 		Actions action = new Actions(driver);
 		action.moveToElement(e).perform();
