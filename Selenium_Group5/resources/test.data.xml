@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testdata>
 	<article>
+		<name>Group 5 article </name>
+			<alias></alias>
+			<category>Sample Data-Articles</category>
+			<status>
+				<stsPublished>Published</stsPublished>
+				<stsUnpublished>Unpublished</stsUnpublished>
+			</status>
+		<imageName>powered_by.png</imageName>
 	</article>
 	
 	<contact>
@@ -15,6 +23,14 @@
 	</contact>
 	
 	<weblink>
+		<name>Group 5 Weblink </name>
+		<alias></alias>
+		<category>Sample Data-Weblinks</category>
+		<status>
+			<stsPublished>Published</stsPublished>
+			<stsUnpublished>Unpublished</stsUnpublished>
+		</status>
+		<imageName>powered_by.png</imageName>
 	</weblink>
 	
 	<bannerclient>

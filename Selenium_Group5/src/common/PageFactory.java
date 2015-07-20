@@ -18,9 +18,11 @@ public class PageFactory {
 		return new Admin_page(driver);
 	}
 
-	public static WebDriver getDriver() {		
+	public static WebDriver getDriver() {
 		return config.getDriver();
 	}
 
+
 	private static WebDriver driver = null;
+
 }

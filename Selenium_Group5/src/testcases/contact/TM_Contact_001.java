@@ -11,6 +11,7 @@ public class TM_Contact_001 extends AbstractTest{
   @BeforeClass
   public void beforeClass() {
 	  config.setup();
+	  TestData.Contact.getDataTest();
 	  
 	  //new Contact data
 	  name = TestData.Contact.getName();  
@@ -32,7 +33,7 @@ public class TM_Contact_001 extends AbstractTest{
 	  addContactPage.enterData(name, alias, category, stsPublished, access, feature, contactText);
 	  contactManagerPage = addContactPage.clickSaveClose();	  
 	  
-	  check = contactManagerPage.isMessageDisplay(AppData.msgSaveContact);
+	  check = contactManagerPage.isMessageDisplay(AppData.Contact.msgSave);
 	  verifyTrue(check, "VP: Contact successfully saved message is displayed");	  
 	  
 	  contactManagerPage.searchContact(name);
@@ -73,7 +74,7 @@ public class TM_Contact_001 extends AbstractTest{
 	  editContactPage.enterData(nameEdit, aliasEdit, categoryEdit, statusEdit, accessEdit, featureEdit, contactTextEdit);
 	  contactManagerPage = editContactPage.clickSaveClose();
 	  	  
-	  check = contactManagerPage.isMessageDisplay(AppData.msgSaveContact);
+	  check = contactManagerPage.isMessageDisplay(AppData.Contact.msgSave);
 	  verifyTrue(check, "VP: Contact successfully saved message is displayed");	  
 	  
 	  contactManagerPage.searchContact(nameEdit);
@@ -89,7 +90,7 @@ public class TM_Contact_001 extends AbstractTest{
 	  contactManagerPage.clickContactCheckbox(nameEdit);
 	  contactManagerPage.clickChangeStatusToolbar("Unpublish");	  
 	  	  
-	  check = contactManagerPage.isMessageDisplay(AppData.msgUnpublish);
+	  check = contactManagerPage.isMessageDisplay(AppData.Contact.msgUnpublish);
 	  verifyTrue(check, "VP: '1 contact successfully unpublished' message is displayed");
   }
   
@@ -99,7 +100,7 @@ public class TM_Contact_001 extends AbstractTest{
 	  contactManagerPage.clickContactCheckbox(nameEdit);
 	  contactManagerPage.clickChangeStatusToolbar("Publish");	  
 	  	  
-	  check = contactManagerPage.isMessageDisplay(AppData.msgPublish);
+	  check = contactManagerPage.isMessageDisplay(AppData.Contact.msgPublish);
 	  verifyTrue(check, "VP: '1 contact successfully published' message is displayed");
   }
   
@@ -109,7 +110,7 @@ public class TM_Contact_001 extends AbstractTest{
 	  contactManagerPage.clickContactCheckbox(nameEdit);
 	  contactManagerPage.clickArchiveContact(); 
 	  
-	  check = contactManagerPage.isMessageDisplay(AppData.msgArchive);
+	  check = contactManagerPage.isMessageDisplay(AppData.Contact.msgArchive);
 	  verifyTrue(check, "The '1 contact successfully archived' message is displayed");
 	  
 	  contactManagerPage.filterStatus("Archived");

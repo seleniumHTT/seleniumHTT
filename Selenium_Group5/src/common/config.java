@@ -19,8 +19,7 @@ public class config {
 	
 	public static void setup() {
 		getBrowser();
-		AppData.getData();
-		TestData.Contact.getDataTest();
+		AppData.getData();		
 	}
 	
 	public static void getBrowser() {

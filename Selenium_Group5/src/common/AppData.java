@@ -34,15 +34,41 @@ public class AppData {
 		return Random.getCurrentTime() + " " + suite; 
 	}		
 	
-	private static String urlLogin, username, password;
 	
-	public static final String imageName = "powered_by.png";
-	public static final String msgSaveContact = "Contact successfully saved";
-	public static final String msgPublish = "1 contact successfully published";
-	public static final String msgUnpublish = "1 contact successfully unpublished";
-	public static final String msgTrash = "1 contact successfully trashed";
-	public static final String msgArchive = "1 contact successfully archived";
-	public static final String msgCheckedIn = "1 contact successfully checked in";
+	
+	public static class Article {		
+		public static final String imageName = "powered_by.png";
+		public static final String msgSave = "Article successfully saved";
+		public static final String msgPublish = "1 article successfully published";
+		public static final String msgUnpublish = "1 article successfully unpublished";
+		public static final String msgTrash = "1 article successfully trashed";
+		public static final String msgArchive = "1 article successfully archived";
+		public static final String msgCheckedIn = "1 article successfully checked in";	
+	}
+	
+	public static class Contact {
+		public static final String imageName = "powered_by.png";
+		public static final String msgSave = "Contact successfully saved";
+		public static final String msgPublish = "1 contact successfully published";
+		public static final String msgUnpublish = "1 contact successfully unpublished";
+		public static final String msgTrash = "1 contact successfully trashed";
+		public static final String msgArchive = "1 contact successfully archived";
+		public static final String msgCheckedIn = "1 contact successfully checked in";		
+	}
+	
+	public static class Weblink {
+		public static final String imageName = "powered_by.png";
+		public static final String msgSave = "Weblink successfully saved";
+		public static final String msgPublish = "1 weblink successfully published";
+		public static final String msgUnpublish = "1 weblink successfully unpublished";
+		public static final String msgTrash = "1 weblink successfully trashed";
+		public static final String msgArchive = "1 weblink successfully archived";
+		public static final String msgCheckedIn = "1 weblink successfully checked in";		
+	}
+	
+	
+	
+	private static String urlLogin, username, password;
 	
 	private static String filePath = "./resources/application.data.xml";
 	

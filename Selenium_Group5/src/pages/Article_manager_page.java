@@ -37,6 +37,24 @@ public class Article_manager_page extends AbstractPage {
 		return new Article_manager_page(driver);
 	}
 	
+	public void checkIn(String contactName) {
+		clickArticleCheckbox(contactName);
+		btn_checkin.click();		
+	}	
+	
+	public void clickArchiveArticle() {
+		btn_archive.click();
+		
+	}
+	
+	public void clickChangeStatusToolbar(String status) {
+		if(status.equals("Publish")) {
+			btn_publish.click();
+		} else if(status.equals("Unpublish")) {
+			btn_unpublish.click();
+		}
+	}
+	
 	//Verify
 	public boolean isArticleExist(String articleTitle) {
 		return isElementExist("//a[contains(text(),'"+ articleTitle +"')]");
@@ -60,6 +78,16 @@ public class Article_manager_page extends AbstractPage {
 		}
 		return false;
 	}
+	
+	public boolean isArticleCheckedIn(String contactName) {
+		String buttonXpath = getCellXpath(contactName, 2) + _iconCheckedOut;
+		return !isElementExist(buttonXpath);
+	}
+	
+	public boolean isIdSortedCorrect(String asc_dec) {
+		return isNumberSortedCorrect(asc_dec, _rowTable, 12);
+	}	
+	
 	
 	//Handle table
 	public void clickArticleCheckbox(String articleTitle) {
@@ -86,51 +114,64 @@ public class Article_manager_page extends AbstractPage {
 		selectCombobox(cb_filterStatus, status);		
 	}
 	
+	public void filterCategory(String category) {
+		selectComboboxByXpath(_categoryValue, category);		
+	}
 	public void clickOrderingColumn() {		
 		lnk_ordering.click();
 	}
 	
+	public void clickIdColumn() {		
+		lnk_ID.click();
+	}
 	
 	@FindBy(xpath="//input[@id='filter_search']")
-	WebElement txt_search;
+	private WebElement txt_search;
 	
 	@FindBy(xpath="//button[text()='Search']")
-	WebElement btn_search;
+	private WebElement btn_search;
 	
 	@FindBy(xpath="//button[text()='Clear']")
-	WebElement btn_clear;
+	private WebElement btn_clear;
 	
 	@FindBy(xpath="//li[@id='toolbar-new']/a")
-	WebElement btn_newArticle;
+	private WebElement btn_newArticle;
 	
 	@FindBy(xpath="//li[@id='toolbar-edit']/a")
-	WebElement btn_editArticle;
+	private WebElement btn_editArticle;
 	
 	@FindBy(xpath="//li[@id='toolbar-publish']/a")
-	WebElement btn_publish;
+	private WebElement btn_publish;
 	
 	@FindBy(xpath="//li[@id='toolbar-unpublish']/a")
-	WebElement btn_unpublish;
+	private WebElement btn_unpublish;
 	
 	@FindBy(xpath="//li[@id='toolbar-featured']/a")
-	WebElement btn_featured;
+	private WebElement btn_featured;
 	
 	@FindBy(xpath="//li[@id='toolbar-archive']/a")
-	WebElement btn_archive;
+	private WebElement btn_archive;
 	
 	@FindBy(xpath="//li[@id='toolbar-checkin']/a")
-	WebElement btn_checkin;
+	private WebElement btn_checkin;
 	
 	@FindBy(xpath="//li[@id='toolbar-trash']/a")
-	WebElement btn_trash;
+	private WebElement btn_trash;
 	
 	@FindBy(xpath="//li[@id='toolbar-help']/a")
-	WebElement btn_help;
+	private WebElement btn_help;
 	
 	@FindBy(xpath="//select[@name='filter_published']")
-	WebElement cb_filterStatus;
+	private WebElement cb_filterStatus;
 	
 	@FindBy(xpath="//a[text()='Ordering']")
-	WebElement lnk_ordering;	
+	private WebElement lnk_ordering;	
 		
+	@FindBy(xpath="//a[text()='ID']")
+	WebElement lnk_ID;
+	
+	private String _iconCheckedOut = "/a/span[@class='state checkedout']";
+	private String _rowTable = "//table[@class='adminlist']/tbody/tr";
+	private String _categoryValue = "//select[@name='filter_category_id']/option[contains(text(), '%s')]";
+	
 }
