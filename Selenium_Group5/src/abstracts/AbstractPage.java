@@ -103,7 +103,42 @@ public abstract class AbstractPage {
 		 
 	}
 	
+	//check number sorting
+	public boolean isNumberSortedCorrect(String asc_dec, String xpathRow, int col) {
+		
+		int rows = driver.findElements(By.xpath(xpathRow)).size();
+		int num1, num2;
+		int check = 0;
+		
+		if(rows>1) {
+			if(asc_dec.equals("asc")) {
+				for (int i = 1; i <= rows - 1; i++) {
+					num1 = getNumberInCell(xpathRow, i, col);
+					num2 = getNumberInCell(xpathRow, i + 1, col);	
+					
+					if(num1 > num2) { check++;}				
+				}
+			}
+			
+			if(asc_dec.equals("dec")) {
+				for (int i = 1; i <= rows - 1; i++) {
+					num1 = getNumberInCell(xpathRow, i, col);
+					num2 = getNumberInCell(xpathRow, i + 1, col);	
+					
+					if(num1 < num2) { check++;}				
+				}
+			}
+		} else {
+			System.out.println("Rows < 1, cannot check");
+			check ++;
+		}
+		
+		return check == 0;
+	}
 	
+	public int getNumberInCell(String xpathRowTable, int row, int col) {
+		return Integer.parseInt(driver.findElement(By.xpath(xpathRowTable+ "["+ row +"]/td["+ col +"]")).getText());
+	}
 	//Check methods
 	public boolean isMessageDisplay(String msg) {
 		return isElementExist(".//*[@id='system-message']//*[contains(text(),'"+ msg +"')]");

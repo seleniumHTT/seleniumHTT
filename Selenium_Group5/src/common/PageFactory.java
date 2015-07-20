@@ -7,18 +7,21 @@ import pages.*;
 public class PageFactory {
 
 
-	public static Login_page getLoginPage() {		
+	public static Login_page getLoginPage() {
+		driver = config.getDriver();
 		driver.get(AppData.getUrlLogin());
 		return new Login_page(driver);
 	}
 
-	public static Admin_page getAdminPage() {		
+	public static Admin_page getAdminPage() {
+		driver = config.getDriver();
 		return new Admin_page(driver);
 	}
 
-	public static WebDriver getDriver() {
+	public static WebDriver getDriver() {		
+		driver = config.getDriver();
 		return config.getDriver();
 	}
 
-	private static WebDriver driver = config.getDriver();
+	private static WebDriver driver =null;
 }

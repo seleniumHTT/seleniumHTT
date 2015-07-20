@@ -95,39 +95,9 @@ public class Contact_manager_page extends AbstractPage {
 	}	
 	
 	public boolean isIdSortedCorrect(String asc_dec) {
-		int rows = driver.findElements(By.xpath(_rowTable)).size();
-		int ID1, ID2;
-		int check = 0;
-		
-		if(rows>1) {
-			if(asc_dec.equals("asc")) {
-				for (int i = 1; i <= rows - 1; i++) {
-					ID1 = getIdByRow(i);
-					ID2 = getIdByRow(i+1);	
-					
-					if(ID1 > ID2) { check++;}				
-				}
-			}
-			
-			if(asc_dec.equals("dec")) {
-				for (int i = 1; i <= rows - 1; i++) {
-					ID1 = getIdByRow(i);
-					ID2 = getIdByRow(i+1);	
-					
-					if(ID1 < ID2) { check++;}				
-				}
-			}
-		} else {
-			System.out.println("Rows < 1, cannot check");
-			check ++;
-		}
-		
-		return check == 0;
-	}
+		return isNumberSortedCorrect(asc_dec, _rowTable, 10);
+	}	
 	
-	public int getIdByRow(int row) {
-		return Integer.parseInt(driver.findElement(By.xpath(_rowTable+ "["+ row +"]/td[10]")).getText());
-	}
 	public void clickChangeStatus(String contactName) {
 		String buttonXpath = getCellXpath(contactName, 4) + "/a";
 		getWebElement(buttonXpath).click();

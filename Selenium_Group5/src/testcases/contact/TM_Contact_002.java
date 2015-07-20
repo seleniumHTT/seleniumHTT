@@ -12,6 +12,7 @@ public class TM_Contact_002 extends AbstractTest{
   @BeforeClass
   public void beforeClass() {
 	  config.setup();
+	  TestData.Contact.getDataTest();
 	  
 	  //new Contact data
 	  name = TestData.Contact.getName(); 
@@ -36,11 +37,11 @@ public class TM_Contact_002 extends AbstractTest{
 	  addContactPage.enterData(name, alias, category, stsPublished, access, feature, contactText);
 	  addContactPage.clickSave();	  
 	  
-	  check = contactManagerPage.isMessageDisplay(AppData.msgSaveContact);
+	  check = contactManagerPage.isMessageDisplay(AppData.Contact.msgSave);
 	  verifyTrue(check, "VP: Contact successfully saved message is displayed");	  
 	  
 	  config.tearDown();
-	  config.setup();
+	  config.getBrowser();
 	  
 	  Login_page loginPage = PageFactory.getLoginPage();
 	  adminPage = loginPage.login(AppData.getUsername(), AppData.getPassword());
@@ -52,7 +53,7 @@ public class TM_Contact_002 extends AbstractTest{
 	  check = contactManagerPage.isContactCheckedIn(name);
 	  verifyTrue(check, "VP: The lock icon next to the contact is removed");
 	  
-	  check = contactManagerPage.isMessageDisplay(AppData.msgCheckedIn);
+	  check = contactManagerPage.isMessageDisplay(AppData.Contact.msgCheckedIn);
 	  verifyTrue(check, "VP: Contact successfully saved message is displayed");  
   }
   
@@ -64,14 +65,14 @@ public class TM_Contact_002 extends AbstractTest{
 	  check = contactManagerPage.isContactPublished(name, "Unpublished");
 	  verifyTrue(check, "VP: The icon of the selected item is showed as 'Unpublished'");
 	  
-	  check = contactManagerPage.isMessageDisplay(AppData.msgUnpublish);
+	  check = contactManagerPage.isMessageDisplay(AppData.Contact.msgUnpublish);
 	  verifyTrue(check, "VP: The '1 contact successfully unpublished' message is displayed");
 	  
 	  contactManagerPage.clickChangeStatus(name);	  
 	  check = contactManagerPage.isContactPublished(name, "Published");
 	  verifyTrue(check, "VP: The icon of the selected item is showed as 'Published'");	  
 	  
-	  check = contactManagerPage.isMessageDisplay(AppData.msgPublish);
+	  check = contactManagerPage.isMessageDisplay(AppData.Contact.msgPublish);
 	  verifyTrue(check, "VP: The '1 contact successfully published' message is displayed");
   }
   
@@ -84,7 +85,7 @@ public class TM_Contact_002 extends AbstractTest{
 	  
 	  contactManagerPage = addContactPage.clickSaveClose();
 	  
-	  check = contactManagerPage.isMessageDisplay(AppData.msgSaveContact);
+	  check = contactManagerPage.isMessageDisplay(AppData.Contact.msgSave);
 	  verifyTrue(check, "VP: Contact successfully saved message is displayed");
 	  
 	  contactManagerPage.searchContact(name);
@@ -129,7 +130,7 @@ public class TM_Contact_002 extends AbstractTest{
 	  contactManagerPage.clickContactCheckbox(name2);
 	  contactManagerPage = contactManagerPage.clickTrashContact();	  
 	  
-	  check = contactManagerPage.isMessageDisplay(AppData.msgTrash);
+	  check = contactManagerPage.isMessageDisplay(AppData.Contact.msgTrash);
 	  verifyTrue(check, "The '1 contact trashed' message is displayed");
 	  
 	  contactManagerPage.filterStatus("Trashed");

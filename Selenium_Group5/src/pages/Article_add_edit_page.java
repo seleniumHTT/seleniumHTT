@@ -24,7 +24,7 @@ public class Article_add_edit_page extends AbstractPage {
 		}
 		
 		if(category !=null && category != "") {
-			selectCombobox(cb_category, category);
+			selectComboboxByXpath(_categoryValue, category);
 		}
 		
 		if(status != null && status != "") {
@@ -63,12 +63,19 @@ public class Article_add_edit_page extends AbstractPage {
 		
 		driver.switchTo().parentFrame();		
 	}
+	
 	public Article_manager_page clickSaveClose() {
 		btn_saveClose.click();
 		return new Article_manager_page(driver);
 	}	
 		
+	public void clickSave() {
+		btn_save.click();
+	}
 	
+	public void filterCategoryByXpath(String category) {
+		getWebElement(String.format(_categoryValue, category)).click();;
+	}
 	//Editor
 	@FindBy(xpath="//input[@id='jform_title']")
 	WebElement txt_title;
@@ -98,6 +105,9 @@ public class Article_add_edit_page extends AbstractPage {
 	@FindBy(xpath="//li[@id='toolbar-save']/a")
 	WebElement btn_saveClose;
 	
+	@FindBy(xpath="//li[@id='toolbar-apply']/a")
+	WebElement btn_save;
+	
 	//iframe
 	@FindBy(xpath="//div[@id='sbox-content']/iframe")
 	WebElement iframe_imageFrame;
@@ -110,5 +120,5 @@ public class Article_add_edit_page extends AbstractPage {
 	
 	
 	String _lbl_addNewArticle = "//h2[text()='Article Manager: Add New Article']";
-	String _lbl_articleSaved = "";
+	String _categoryValue = "//select[@id='jform_catid']/option[contains(text(), '%s')]";
 }
