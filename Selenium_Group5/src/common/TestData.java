@@ -192,6 +192,48 @@ public class TestData {
 	}
 	
 	public static class BannerClient {
+		public static void getDataTest() {
+			try {
+				XMLhelper xmlHelper = new XMLhelper(filePath);
+				name = xmlHelper.getContentByXpath(_name);
+				name = name + Random.getCurrentTime();
+				
+				contactname = xmlHelper.getContentByXpath(_contactname);
+				contactemail = xmlHelper.getContentByXpath(_contactemail);
+				stsPublished = xmlHelper.getContentByXpath(_stsPublished);
+				stsUnpublished = xmlHelper.getContentByXpath(_stsUnpublished);
+				} catch (XPathExpressionException e) {			
+					e.printStackTrace();
+				}
+			
+		}
+		
+		public static String getName() {
+			return name;
+		}
+		
+		public static String getContactName() {
+			return contactname;
+		}
+		
+		public static String getContactEmail() {
+			return contactemail;
+		}
+		
+		public static String getStsPublished() {
+			return stsPublished;
+		}
+
+		public static String getStsUnpublished() {
+			return stsUnpublished;
+		}
+		
+		private static String name, contactname, contactemail, stsPublished, stsUnpublished; 
+		private static final String _name = "//bannerclient/name";
+		private static final String _contactname = "//bannerclient/contactname";
+		private static final String _contactemail = "//bannerclient/contactemail";
+		private static final String _stsPublished = "//bannerclient/stsPublished";
+		private static final String _stsUnpublished = "//bannerclient/stsUnpublished";
 		
 	}
 	

@@ -38,6 +38,13 @@
 	</weblink>
 	
 	<bannerclient>
+		<name>Group 5 BannerClient </name>
+		<contactname>Mr John</contactname>		
+		<contactemail>John@gmail.com</contactemail>
+		<status>
+			<stsPublished>Published</stsPublished>
+			<stsUnpublished>Unpublished</stsUnpublished>
+		</status>		
 	</bannerclient>
 	
 </testdata>
