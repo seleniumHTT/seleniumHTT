@@ -79,6 +79,12 @@ public class Article_manager_page extends AbstractPage {
 		return false;
 	}
 	
+	public boolean isArticlePublic(String articleTitle, String expectedAccess) {
+		String xpathAccess = getCellXpath(articleTitle, 7);
+		String currentAccess = driver.findElement(By.xpath(xpathAccess)).getAttribute("innerHTML");
+		if(currentAccess.equals(expectedAccess)) {return true; }
+		return false;
+	}
 	public boolean isArticleCheckedIn(String contactName) {
 		String buttonXpath = getCellXpath(contactName, 2) + _iconCheckedOut;
 		return !isElementExist(buttonXpath);
@@ -88,6 +94,23 @@ public class Article_manager_page extends AbstractPage {
 		return isNumberSortedCorrect(asc_dec, _rowTable, 12);
 	}	
 	
+	public boolean isArticleFeatured(String articleTitle, String access) {
+		
+		String icoXpath;
+		
+		if(access.equals("Featured")) {
+			icoXpath = getCellXpath(articleTitle, 4) + _icoFeatured;
+			return isElementExist(icoXpath);
+		} else 
+			
+		if(access.equals("Unfeatured")) {
+			icoXpath = getCellXpath(articleTitle, 4) + _icoUnFeatured;
+			return isElementExist(icoXpath);
+		} else {
+			System.out.println("Any icon isn't found");
+			return false;
+		}
+	}
 	
 	//Handle table
 	public void clickArticleCheckbox(String articleTitle) {
@@ -110,9 +133,20 @@ public class Article_manager_page extends AbstractPage {
 		getWebElement(buttonXpath).click();
 	}
 	
+	public void clickChangeFeature(String articleTitle) {
+		String icoFeatured = getCellXpath(articleTitle, 4) + _icoFeatured;
+		String icoUnFeatured = getCellXpath(articleTitle, 4) + _icoUnFeatured;
+		
+		if(isElementExist(icoFeatured)) {
+			getWebElement(icoFeatured).click();
+		} else getWebElement(icoUnFeatured).click(); 
+		
+	}
+	
 	public void filterStatus(String status) {
 		selectCombobox(cb_filterStatus, status);		
 	}
+	
 	
 	public void filterCategory(String category) {
 		selectComboboxByXpath(_categoryValue, category);		
@@ -170,8 +204,10 @@ public class Article_manager_page extends AbstractPage {
 	@FindBy(xpath="//a[text()='ID']")
 	WebElement lnk_ID;
 	
+		
 	private String _iconCheckedOut = "/a/span[@class='state checkedout']";
 	private String _rowTable = "//table[@class='adminlist']/tbody/tr";
 	private String _categoryValue = "//select[@name='filter_category_id']/option[contains(text(), '%s')]";
-	
+	private String _icoFeatured = "//img[@alt='Featured article']";
+	private String _icoUnFeatured = "//img[@alt='Unfeatured article']";
 }

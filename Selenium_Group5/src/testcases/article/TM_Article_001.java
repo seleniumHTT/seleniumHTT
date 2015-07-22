@@ -52,7 +52,32 @@ public class TM_Article_001 extends AbstractTest{
 	  
   }
   
-  @Test(description= "User can search for articles using the filter dropdown lists", dependsOnMethods= "TC_JOOMLA_ARTICLE_001", priority=1)
+  @Test(description= "Verify user can change the feature property of articles using the Featured column", dependsOnMethods= "TC_JOOMLA_ARTICLE_001", priority=1)
+  public void TC_JOOMLA_ARTICLE_016() {	  	  
+	  
+	  articleManagerPage.searchArticle(name);
+	  	  
+	  articleManagerPage.clickChangeFeature(name);	  
+	  check = articleManagerPage.isArticleFeatured(name, "Unfeatured");
+	  verifyTrue(check, "VP: The icon of the selected item is showed as 'Unfeatured'");	  
+	  
+	  articleManagerPage.clickChangeFeature(name);	  
+	  check = articleManagerPage.isArticleFeatured(name, "Featured");
+	  verifyTrue(check, "VP: The icon of the selected item is showed as 'Featured'");
+	  
+  }
+  
+  @Test(description= "Verify user can create a new article with 'Public' Access Level property", dependsOnMethods= "TC_JOOMLA_ARTICLE_001", priority=1)
+  public void TC_JOOMLA_ARTICLE_017() {	  	  
+	  
+	  articleManagerPage.searchArticle(name);
+	  
+	  check = articleManagerPage.isArticlePublic(name, "Public");
+	  verifyTrue(check, "VP: The Access Level of the article is displayed as 'Public'");	  
+	  
+  }  
+  
+  @Test(description= "User can search for articles using the filter dropdown lists", dependsOnMethods= "TC_JOOMLA_ARTICLE_001", priority=2)
   public void TC_JOOMLA_ARTICLE_010() {
 	  	  
 	  articleManagerPage.filterStatus(stsPublished);
@@ -65,7 +90,7 @@ public class TM_Article_001 extends AbstractTest{
 	  articleManagerPage.filterCategory("Select Category");
   }
   
-  @Test(description= "Verify user can edit a article", dependsOnMethods= "TC_JOOMLA_ARTICLE_001")
+  @Test(description= "Verify user can edit a article", dependsOnMethods= "TC_JOOMLA_ARTICLE_001", priority=2)
   public void TC_JOOMLA_ARTICLE_002() {
 	  
 	  articleManagerPage.clickArticleCheckbox(name);

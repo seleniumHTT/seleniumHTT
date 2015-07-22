@@ -21,8 +21,10 @@ public abstract class AbstractTest {
 	  try {
 		  Assert.assertTrue(condition);
 		  Reporter.log(verifyPoint + " - PASSED");
-	  } catch (AssertionError e) {
+	  } catch (AssertionError e) {		  
 		  Reporter.log(verifyPoint + " - FAILED");
+		  Assert.fail("Test Fail", e.getCause());
+		  
 	  }	 
   }
 

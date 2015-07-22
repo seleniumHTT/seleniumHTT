@@ -39,11 +39,11 @@ public class AppData {
 	public static class Article {		
 		public static final String imageName = "powered_by.png";
 		public static final String msgSave = "Article successfully saved";
-		public static final String msgPublish = "1 article successfully published";
-		public static final String msgUnpublish = "1 article successfully unpublished";
-		public static final String msgTrash = "1 article successfully trashed";
-		public static final String msgArchive = "1 article successfully archived";
-		public static final String msgCheckedIn = "1 article successfully checked in";	
+		public static final String msgPublish = "1 article published";
+		public static final String msgUnpublish = "1 article unpublished";
+		public static final String msgTrash = "1 article trashed";
+		public static final String msgArchive = "1 article archived";
+		public static final String msgCheckedIn = "1 article checked in";	
 	}
 	
 	public static class Contact {
