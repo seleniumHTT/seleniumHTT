@@ -58,12 +58,12 @@ public class TM_Article_001 extends AbstractTest{
 	  articleManagerPage.searchArticle(name);
 	  	  
 	  articleManagerPage.clickChangeFeature(name);	  
-	  check = articleManagerPage.isArticleFeatured(name, "Unfeatured");
-	  verifyTrue(check, "VP: The icon of the selected item is showed as 'Unfeatured'");	  
+	  check = articleManagerPage.isArticleFeatured(name, "Featured");
+	  verifyTrue(check, "VP: The icon of the selected item is showed as 'Featured'");	  
 	  
 	  articleManagerPage.clickChangeFeature(name);	  
-	  check = articleManagerPage.isArticleFeatured(name, "Featured");
-	  verifyTrue(check, "VP: The icon of the selected item is showed as 'Featured'");
+	  check = articleManagerPage.isArticleFeatured(name, "Unfeatured");
+	  verifyTrue(check, "VP: The icon of the selected item is showed as 'Unfeatured'");
 	  
   }
   
@@ -154,13 +154,13 @@ public class TM_Article_001 extends AbstractTest{
 	  config.tearDown();
   }
 
-  @BeforeTest
-  public void beforeTest() {
-  }
-
-  @AfterTest
-  public void afterTest() {
-  }
+//  @BeforeTest
+//  public void beforeTest() {
+//  }
+//
+//  @AfterTest
+//  public void afterTest() {
+//  }
   
   private String name, category, stsPublished, access, feature, articleText;
   private String nameEdit;

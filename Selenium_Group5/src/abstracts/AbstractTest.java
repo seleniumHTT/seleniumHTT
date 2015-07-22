@@ -1,5 +1,7 @@
 package abstracts;
 
+import java.lang.reflect.Method;
+
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.Reporter;
@@ -23,7 +25,7 @@ public abstract class AbstractTest {
 		  Reporter.log(verifyPoint + " - PASSED");
 	  } catch (AssertionError e) {		  
 		  Reporter.log(verifyPoint + " - FAILED");
-		  Assert.fail("Test Fail", e.getCause());
+		  Assert.fail("Test Failed", e.getCause());
 		  
 	  }	 
   }
@@ -37,6 +39,15 @@ public abstract class AbstractTest {
 	  Assert.assertFalse(condition);	  
   }
   
+  @BeforeMethod
+  public void beforeTest(Method method) {
+	  System.out.println("---------Begin " + method.getName());
+	  Reporter.log("---------Begin " + method.getName());
+  }
   
-  
+  @AfterMethod
+  public void afterTest(Method method) {
+	  System.out.println("---------End " + method.getName());
+	  Reporter.log("---------End " + method.getName());
+  }
 }

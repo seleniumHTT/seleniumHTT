@@ -81,7 +81,7 @@ public class Article_manager_page extends AbstractPage {
 	
 	public boolean isArticlePublic(String articleTitle, String expectedAccess) {
 		String xpathAccess = getCellXpath(articleTitle, 7);
-		String currentAccess = driver.findElement(By.xpath(xpathAccess)).getAttribute("innerHTML");
+		String currentAccess = driver.findElement(By.xpath(xpathAccess)).getAttribute("innerHTML").trim();
 		if(currentAccess.equals(expectedAccess)) {return true; }
 		return false;
 	}

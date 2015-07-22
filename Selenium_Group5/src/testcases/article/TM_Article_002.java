@@ -35,7 +35,7 @@ public class TM_Article_002 extends AbstractTest{
 	 
 	  addArticlePage = articleManagerPage.clickNewArticle();
 	  
-	  addArticlePage.enterData(name, category, stsPublished, access, feature, articleText);
+	  addArticlePage.enterData(name2, category, stsPublished, access, feature, articleText);
 	  addArticlePage.clickSave();	  
 	  
 	  check = articleManagerPage.isMessageDisplay(AppData.Article.msgSave);
@@ -50,8 +50,8 @@ public class TM_Article_002 extends AbstractTest{
 	  articleManagerPage = adminPage.clickArticleManagerMenu();
 	  articleManagerPage.searchArticle(name);
 	  
-	  articleManagerPage.checkIn(name);
-	  check = articleManagerPage.isArticleCheckedIn(name);
+	  articleManagerPage.checkIn(name2);
+	  check = articleManagerPage.isArticleCheckedIn(name2);
 	  verifyTrue(check, "VP: The lock icon next to the article is removed");
 	  
 	  check = articleManagerPage.isMessageDisplay(AppData.Article.msgCheckedIn);
@@ -61,16 +61,16 @@ public class TM_Article_002 extends AbstractTest{
   @Test(description= "Verify user can change the status of article using the Status column", dependsOnMethods= "TC_JOOMLA_ARTICLE_006", priority=1)
   public void TC_JOOMLA_ARTICLE_014() {
 	  
-	  articleManagerPage.clickChangeStatus(name);
+	  articleManagerPage.clickChangeStatus(name2);
 	  
-	  check = articleManagerPage.isArticlePublished(name, "Unpublished");
+	  check = articleManagerPage.isArticlePublished(name2, "Unpublished");
 	  verifyTrue(check, "VP: The icon of the selected item is showed as 'Unpublished'");
 	  
 	  check = articleManagerPage.isMessageDisplay(AppData.Article.msgUnpublish);
 	  verifyTrue(check, "VP: The '1 article successfully unpublished' message is displayed");
 	  
-	  articleManagerPage.clickChangeStatus(name);	  
-	  check = articleManagerPage.isArticlePublished(name, "Published");
+	  articleManagerPage.clickChangeStatus(name2);	  
+	  check = articleManagerPage.isArticlePublished(name2, "Published");
 	  verifyTrue(check, "VP: The icon of the selected item is showed as 'Published'");	  
 	  
 	  check = articleManagerPage.isMessageDisplay(AppData.Article.msgPublish);
@@ -115,13 +115,13 @@ public class TM_Article_002 extends AbstractTest{
 	  	  
 	  articleManagerPage.clickOrderingColumn();	  
 	 
-	  int row1 = articleManagerPage.getRowNumber(name);
-	  int row2 = articleManagerPage.getRowNumber(name3);	  
-	  articleManagerPage.clickArrowOrdering(name, "down");	  
+	  int row1 = articleManagerPage.getRowNumber(name3);
+	  int row2 = articleManagerPage.getRowNumber(name2);	  
+	  articleManagerPage.clickArrowOrdering(name3, "down");	  
 	  
-	  check = articleManagerPage.isArticleLocateAt(name, row2);
+	  check = articleManagerPage.isArticleLocateAt(name3, row2);
 	  verifyTrue(check, "VP: Verify the first weblink changes its position with the second weblink");
-	  check = articleManagerPage.isArticleLocateAt(name3, row1);
+	  check = articleManagerPage.isArticleLocateAt(name2, row1);
 	  verifyTrue(check, "VP: Verify the second weblink changes its position with the first weblink");
   } 
   

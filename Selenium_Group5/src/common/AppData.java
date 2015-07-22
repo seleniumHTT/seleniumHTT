@@ -43,7 +43,7 @@ public class AppData {
 		public static final String msgUnpublish = "1 article unpublished";
 		public static final String msgTrash = "1 article trashed";
 		public static final String msgArchive = "1 article archived";
-		public static final String msgCheckedIn = "1 article checked in";	
+		public static final String msgCheckedIn = "1 article successfully checked in";	
 	}
 	
 	public static class Contact {
