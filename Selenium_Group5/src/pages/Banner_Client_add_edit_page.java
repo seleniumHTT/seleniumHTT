@@ -14,19 +14,26 @@ public class Banner_Client_add_edit_page extends AbstractPage{
 		this.driver = driver;
 	}
 	
-	public void enterData(String clientName, String contactName, String contactEmail){
+	public void enterData(String clientName, String contactName, String contactEmail, String status){
 		
-		if(clientName != null && clientName!="")
+		if(clientName != null && clientName!=""){
 			txt_clientName.clear();
 			txt_clientName.sendKeys(clientName);
+		}
 			
-		if(contactName!=null && contactName!="")
+		if(contactName!=null && contactName!=""){
 			txt_contactName.clear();
 			txt_contactName.sendKeys(contactName);
+		}
 
-		if(contactEmail!=null && contactEmail!="")
+		if(contactEmail!=null && contactEmail!=""){
 			txt_contactEmail.clear();
 			txt_contactEmail.sendKeys(contactEmail);
+		}
+			
+		if(status != null && status != "") {
+			selectCombobox(cb_status, status);
+		}
 			
 	}
 	
@@ -45,6 +52,9 @@ public class Banner_Client_add_edit_page extends AbstractPage{
 	
 	@FindBy(xpath="//input[@id='jform_email']")
 	WebElement txt_contactEmail;
+	
+	@FindBy(xpath="//input[@id='jform_state-lbl']")
+	WebElement cb_status;
 	
 	@FindBy(xpath="//li[@id='toolbar-save']/a")
 	WebElement btn_saveClose;
