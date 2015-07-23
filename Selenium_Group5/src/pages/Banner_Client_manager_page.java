@@ -32,6 +32,10 @@ public class Banner_Client_manager_page extends AbstractPage{
 		btn_unpublishBannerClient.click();		
 	}
 	
+	public void clickArchiveBannerClient(){
+		btn_archiveBannerClient.click();		
+	}
+	
 	public void clickTrashBannerClient(){
 		btn_trashBannerClient.click();		
 	}
@@ -69,6 +73,9 @@ public class Banner_Client_manager_page extends AbstractPage{
 	
 	@FindBy(xpath="//li[@id='toolbar-unpublish']/a")
 	WebElement btn_unpublishBannerClient;
+	
+	@FindBy(xpath="//li[@id='toolbar-archive']/a")
+	WebElement btn_archiveBannerClient;
 	
 	@FindBy(xpath="//li[@id='toolbar-trash']/a")
 	WebElement btn_trashBannerClient;

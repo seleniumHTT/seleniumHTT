@@ -42,8 +42,11 @@
 		<contactname>Mr John</contactname>		
 		<contactemail>John@gmail.com</contactemail>
 		<status>
+			<stsSelectStatus>- Select Status -</stsSelectStatus>
 			<stsPublished>Published</stsPublished>
 			<stsUnpublished>Unpublished</stsUnpublished>
+			<stsArchived>Archived</stsArchived>
+			<stsTrashed>Trashed</stsTrashed>
 		</status>		
 	</bannerclient>
 	
