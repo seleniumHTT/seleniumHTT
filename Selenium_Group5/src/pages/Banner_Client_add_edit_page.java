@@ -53,7 +53,7 @@ public class Banner_Client_add_edit_page extends AbstractPage{
 	@FindBy(xpath="//input[@id='jform_email']")
 	WebElement txt_contactEmail;
 	
-	@FindBy(xpath="//input[@id='jform_state-lbl']")
+	@FindBy(xpath="//select[@id='jform_state']")
 	WebElement cb_status;
 	
 	@FindBy(xpath="//li[@id='toolbar-save']/a")

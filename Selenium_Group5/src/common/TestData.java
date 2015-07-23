@@ -232,8 +232,8 @@ public class TestData {
 		private static final String _name = "//bannerclient/name";
 		private static final String _contactname = "//bannerclient/contactname";
 		private static final String _contactemail = "//bannerclient/contactemail";
-		private static final String _stsPublished = "//bannerclient/stsPublished";
-		private static final String _stsUnpublished = "//bannerclient/stsUnpublished";
+		private static final String _stsPublished = "//bannerclient//stsPublished";
+		private static final String _stsUnpublished = "//bannerclient//stsUnpublished";
 		
 	}
 	

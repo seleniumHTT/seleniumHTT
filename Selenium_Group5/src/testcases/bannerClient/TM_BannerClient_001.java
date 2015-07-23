@@ -19,14 +19,14 @@ public class TM_BannerClient_001 extends AbstractTest{
 	  contactNameEditted = contactName + " edited";
 	  contactEmail = TestData.BannerClient.getContactEmail();
 	  contactEmailEdited = "edited" + contactEmail;
-	  stsPublished = TestData.Article.getStsPublished();
-	  stsUnpublished = TestData.Article.getStsPublished();
+	  stsPublished = TestData.BannerClient.getStsPublished();
+	  stsUnpublished = TestData.BannerClient.getStsUnpublished();
 	  
 	  Login_page loginPage = PageFactory.getLoginPage();
 	  adminPage = loginPage.login(AppData.getUsername(), AppData.getPassword());
   }
   
-  @Test(description = "Verify that user can create a new client", priority = 1)
+  @Test(description = "Verify that user can create a new client")
   public void TC_JOOMLA_BANNERS_CLIENTS_001(){
 	managerBannerClientPage = adminPage.clickBannerClientManagerMenu();
 	
@@ -42,11 +42,11 @@ public class TM_BannerClient_001 extends AbstractTest{
 	
 	check = managerBannerClientPage.isBannerClientExist(name);
 	verifyTrue(check, "VP2: The created Banner Client is displayed");
-			
+				
   }
   	
     
-  @Test(description ="Verify that user can edit a client", dependsOnMethods= "TC_JOOMLA_BANNERS_CLIENTS_001")
+  @Test(description ="Verify that user can edit a client")
   public void TC_JOOMLA_BANNERS_CLIENTS_002(){
 	  
 	managerBannerClientPage.clickClientCheckbox(name);
@@ -65,7 +65,7 @@ public class TM_BannerClient_001 extends AbstractTest{
 	
   }  
   
-  @Test(description ="Verify that user can publish a client", dependsOnMethods= "TC_JOOMLA_BANNERS_CLIENTS_002")
+  @Test(description ="Verify that user can publish a client")
   public void TC_JOOMLA_BANNERS_CLIENTS_003(){
 	  
 	managerBannerClientPage.clickClientCheckbox(nameEdited);
@@ -82,9 +82,10 @@ public class TM_BannerClient_001 extends AbstractTest{
 	
   }
   
-  @Test(description ="Verify that user can unpublish a client", dependsOnMethods= "TC_JOOMLA_BANNERS_CLIENTS_003")
+  @Test(description ="Verify that user can unpublish a client")
   public void TC_JOOMLA_BANNERS_CLIENTS_004(){
 	  
+	
 	managerBannerClientPage.clickClientCheckbox(nameEdited);
 	managerBannerClientPage.clickUnpublishBannerClient();
 	
@@ -99,7 +100,7 @@ public class TM_BannerClient_001 extends AbstractTest{
 	
   }  
   
-  @Test(description = "Verify that user can search a client  by using filter textbox", dependsOnMethods = "TC_JOOMLA_BANNERS_CLIENTS_004")
+  @Test(description = "Verify that user can search a client  by using filter textbox")
   public void TC_JOOMLA_BANNERS_CLIENTS_008() {
 	  managerBannerClientPage.filterStatus("- Select Status -"); 
 	  
@@ -110,7 +111,7 @@ public class TM_BannerClient_001 extends AbstractTest{
 	
   }
   
-  @Test(description = "Verify that user can search a client by using filter dropdown list", dependsOnMethods = "TC_JOOMLA_BANNERS_CLIENTS_008")
+  @Test(description = "Verify that user can search a client by using filter dropdown list")
   public void TC_JOOMLA_BANNERS_CLIENTS_009() {
 	  managerBannerClientPage.filterStatus(stsUnpublished);
 	  
