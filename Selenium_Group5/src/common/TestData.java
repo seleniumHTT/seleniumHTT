@@ -200,8 +200,11 @@ public class TestData {
 				
 				contactname = xmlHelper.getContentByXpath(_contactname);
 				contactemail = xmlHelper.getContentByXpath(_contactemail);
+				stsSelectStatus = xmlHelper.getContentByXpath(_stsSelectStatus);
 				stsPublished = xmlHelper.getContentByXpath(_stsPublished);
 				stsUnpublished = xmlHelper.getContentByXpath(_stsUnpublished);
+				stsArchived = xmlHelper.getContentByXpath(_stsArchived);
+				stsTrashed = xmlHelper.getContentByXpath(_stsTrashed);
 				} catch (XPathExpressionException e) {			
 					e.printStackTrace();
 				}
@@ -220,6 +223,10 @@ public class TestData {
 			return contactemail;
 		}
 		
+		public static String getStsSelectStatus() {
+			return stsSelectStatus;
+		}
+		
 		public static String getStsPublished() {
 			return stsPublished;
 		}
@@ -228,12 +235,23 @@ public class TestData {
 			return stsUnpublished;
 		}
 		
-		private static String name, contactname, contactemail, stsPublished, stsUnpublished; 
+		public static String getStsArchived() {
+			return stsArchived;
+		}
+		
+		public static String getStsTrashed() {
+			return stsTrashed;
+		}
+		
+		private static String name, contactname, contactemail, stsSelectStatus, stsPublished, stsUnpublished, stsArchived, stsTrashed;
 		private static final String _name = "//bannerclient/name";
 		private static final String _contactname = "//bannerclient/contactname";
 		private static final String _contactemail = "//bannerclient/contactemail";
-		private static final String _stsPublished = "//bannerclient/stsPublished";
-		private static final String _stsUnpublished = "//bannerclient/stsUnpublished";
+		private static final String _stsSelectStatus = "//bannerclient//stsSelectStatus";
+		private static final String _stsPublished = "//bannerclient//stsPublished";
+		private static final String _stsUnpublished = "//bannerclient//stsUnpublished";
+		private static final String _stsArchived = "//bannerclient//stsArchived";
+		private static final String _stsTrashed = "//bannerclient//stsTrashed";
 		
 	}
 	

@@ -19,14 +19,17 @@ public class TM_BannerClient_001 extends AbstractTest{
 	  contactNameEditted = contactName + " edited";
 	  contactEmail = TestData.BannerClient.getContactEmail();
 	  contactEmailEdited = "edited" + contactEmail;
-	  stsPublished = TestData.Article.getStsPublished();
-	  stsUnpublished = TestData.Article.getStsPublished();
+	  stsSelectStatus = TestData.BannerClient.getStsSelectStatus();
+	  stsPublished = TestData.BannerClient.getStsPublished();
+	  stsUnpublished = TestData.BannerClient.getStsUnpublished();
+	  stsArchived = TestData.BannerClient.getStsArchived();
+	  stsTrashed = TestData.BannerClient.getStsTrashed();
 	  
 	  Login_page loginPage = PageFactory.getLoginPage();
 	  adminPage = loginPage.login(AppData.getUsername(), AppData.getPassword());
   }
   
-  @Test(description = "Verify that user can create a new client", priority = 1)
+  @Test(description = "Verify that user can create a new client")
   public void TC_JOOMLA_BANNERS_CLIENTS_001(){
 	managerBannerClientPage = adminPage.clickBannerClientManagerMenu();
 	
@@ -42,11 +45,11 @@ public class TM_BannerClient_001 extends AbstractTest{
 	
 	check = managerBannerClientPage.isBannerClientExist(name);
 	verifyTrue(check, "VP2: The created Banner Client is displayed");
-			
+				
   }
   	
     
-  @Test(description ="Verify that user can edit a client", dependsOnMethods= "TC_JOOMLA_BANNERS_CLIENTS_001")
+  @Test(description ="Verify that user can edit a client")
   public void TC_JOOMLA_BANNERS_CLIENTS_002(){
 	  
 	managerBannerClientPage.clickClientCheckbox(name);
@@ -65,7 +68,7 @@ public class TM_BannerClient_001 extends AbstractTest{
 	
   }  
   
-  @Test(description ="Verify that user can publish a client", dependsOnMethods= "TC_JOOMLA_BANNERS_CLIENTS_002")
+  @Test(description ="Verify that user can publish a client")
   public void TC_JOOMLA_BANNERS_CLIENTS_003(){
 	  
 	managerBannerClientPage.clickClientCheckbox(nameEdited);
@@ -82,9 +85,10 @@ public class TM_BannerClient_001 extends AbstractTest{
 	
   }
   
-  @Test(description ="Verify that user can unpublish a client", dependsOnMethods= "TC_JOOMLA_BANNERS_CLIENTS_003")
+  @Test(description ="Verify that user can unpublish a client")
   public void TC_JOOMLA_BANNERS_CLIENTS_004(){
 	  
+	
 	managerBannerClientPage.clickClientCheckbox(nameEdited);
 	managerBannerClientPage.clickUnpublishBannerClient();
 	
@@ -99,31 +103,75 @@ public class TM_BannerClient_001 extends AbstractTest{
 	
   }  
   
-  @Test(description = "Verify that user can search a client  by using filter textbox", dependsOnMethods = "TC_JOOMLA_BANNERS_CLIENTS_004")
+  @Test(description ="Verify that user can archive a client")
+  public void TC_JOOMLA_BANNERS_CLIENTS_005(){	 
+	
+	managerBannerClientPage.clickClientCheckbox(nameEdited);
+	managerBannerClientPage.clickArchiveBannerClient();
+	
+	check = managerBannerClientPage.isMessageDisplay(AppData.BannerClient.msgArchive);
+	verifyTrue(check, "VP1: Banner Client successfully archived message is displayed");
+	
+	managerBannerClientPage.filterStatus(stsArchived);
+	
+	managerBannerClientPage.searchBannerClient(nameEdited);
+	check = managerBannerClientPage.isBannerClientExist(nameEdited);
+	verifyTrue(check, "VP2: The Banner Client is archived successfully");
+	
+  } 
+  
+  @Test(description ="Verify that user can send a client to trash")
+  public void TC_JOOMLA_BANNERS_CLIENTS_006(){	 
+	
+	managerBannerClientPage.clickClientCheckbox(nameEdited);
+	managerBannerClientPage.clickTrashBannerClient();
+	
+	check = managerBannerClientPage.isMessageDisplay(AppData.BannerClient.msgTrash);
+	verifyTrue(check, "VP1: Banner Client successfully trashed message is displayed");
+	
+	managerBannerClientPage.filterStatus(stsTrashed);
+	
+	managerBannerClientPage.searchBannerClient(nameEdited);
+	check = managerBannerClientPage.isBannerClientExist(nameEdited);
+	verifyTrue(check, "VP2: The Banner Client is trashed successfully");
+	
+  }   
+  
+  @Test(description = "Verify that user can search a client  by using filter textbox")
   public void TC_JOOMLA_BANNERS_CLIENTS_008() {
-	  managerBannerClientPage.filterStatus("- Select Status -"); 
 	  
-	  managerBannerClientPage.searchBannerClient(nameEdited);
-		
-	  check = managerBannerClientPage.isBannerClientExist(nameEdited);
-	  verifyTrue(check, "VP2: The created Banner Client is displayed");
+	managerBannerClientPage.clickClientCheckbox(nameEdited);
+	managerBannerClientPage.clickPublishBannerClient();
+	  
+	managerBannerClientPage.filterStatus(stsSelectStatus); 
+	  
+	managerBannerClientPage.searchBannerClient(nameEdited);
+	
+	check = managerBannerClientPage.isBannerClientExist(nameEdited);
+	verifyTrue(check, "VP2: The created Banner Client is displayed");
 	
   }
   
-  @Test(description = "Verify that user can search a client by using filter dropdown list", dependsOnMethods = "TC_JOOMLA_BANNERS_CLIENTS_008")
+  @Test(description = "Verify that user can search a client by using filter dropdown list")
   public void TC_JOOMLA_BANNERS_CLIENTS_009() {
-	  managerBannerClientPage.filterStatus(stsUnpublished);
-	  
-	  managerBannerClientPage.isBannerClientExist(nameEdited);
-	  verifyTrue(check, "VP2: The created Banner Client is displayed");
-	  
-	  managerBannerClientPage.filterStatus("- Select Status -");  
 	
-  }  
+	managerBannerClientPage.clickClientCheckbox(nameEdited);
+	
+	addBannerClientPage = managerBannerClientPage.clickEditBannerClient();
+	addBannerClientPage.enterData(nameEdited, contactNameEditted, contactEmailEdited, stsUnpublished);
+	
+	managerBannerClientPage = addBannerClientPage.clickSaveClose();  
+	  
+	managerBannerClientPage.filterStatus(stsUnpublished);
+	  
+	managerBannerClientPage.isBannerClientExist(nameEdited);
+	verifyTrue(check, "VP2: The created Banner Client is displayed");
+	
+  }    
   
   @AfterClass
   public void afterClass() {
-	  config.tearDown();
+	config.tearDown();
   }
 
   @BeforeTest
@@ -134,7 +182,7 @@ public class TM_BannerClient_001 extends AbstractTest{
   public void afterTest() {
   }
   
-  String name, nameEdited, contactName, contactNameEditted, contactEmail, contactEmailEdited, stsPublished, stsUnpublished;
+  String name, nameEdited, contactName, contactNameEditted, contactEmail, contactEmailEdited, stsSelectStatus, stsPublished, stsUnpublished, stsArchived, stsTrashed;
   boolean check;
   Login_page logInPage;
   Admin_page adminPage;
