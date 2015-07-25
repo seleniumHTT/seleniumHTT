@@ -22,7 +22,18 @@ public class PageFactory {
 		return config.getDriver();
 	}
 
-
+	
+	
 	private static WebDriver driver = null;
+	private static String parentWindow = null;
+	
+	public static String getParentWindow() {
+		return parentWindow;
+	}
+
+	public static void setParentWindow(String parentWindow) {
+		PageFactory.parentWindow = parentWindow;
+	}
+	
 
 }

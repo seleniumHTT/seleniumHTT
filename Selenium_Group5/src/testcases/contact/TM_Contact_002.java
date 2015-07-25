@@ -34,7 +34,7 @@ public class TM_Contact_002 extends AbstractTest{
 	 
 	  addContactPage = contactManagerPage.clickNewContact();
 	  
-	  addContactPage.enterData(name, alias, category, stsPublished, access, feature, contactText);
+	  addContactPage.enterData(name2, alias, category, stsPublished, access, feature, contactText);
 	  addContactPage.clickSave();	  
 	  
 	  check = contactManagerPage.isMessageDisplay(AppData.Contact.msgSave);
@@ -49,8 +49,8 @@ public class TM_Contact_002 extends AbstractTest{
 	  contactManagerPage = adminPage.clickContactManagerMenu();
 	  contactManagerPage.searchContact(name);
 	  
-	  contactManagerPage.checkIn(name);
-	  check = contactManagerPage.isContactCheckedIn(name);
+	  contactManagerPage.checkIn(name2);
+	  check = contactManagerPage.isContactCheckedIn(name2);
 	  verifyTrue(check, "VP: The lock icon next to the contact is removed");
 	  
 	  check = contactManagerPage.isMessageDisplay(AppData.Contact.msgCheckedIn);
@@ -60,16 +60,16 @@ public class TM_Contact_002 extends AbstractTest{
   @Test(description= "Verify user can change the status of contact using the Status column", dependsOnMethods= "TC_JOOMLA_CONTACTS_006")
   public void TC_JOOMLA_CONTACTS_014() {
 	  
-	  contactManagerPage.clickChangeStatus(name);
+	  contactManagerPage.clickChangeStatus(name2);
 	  
-	  check = contactManagerPage.isContactPublished(name, "Unpublished");
+	  check = contactManagerPage.isContactPublished(name2, "Unpublished");
 	  verifyTrue(check, "VP: The icon of the selected item is showed as 'Unpublished'");
 	  
 	  check = contactManagerPage.isMessageDisplay(AppData.Contact.msgUnpublish);
 	  verifyTrue(check, "VP: The '1 contact successfully unpublished' message is displayed");
 	  
-	  contactManagerPage.clickChangeStatus(name);	  
-	  check = contactManagerPage.isContactPublished(name, "Published");
+	  contactManagerPage.clickChangeStatus(name2);	  
+	  check = contactManagerPage.isContactPublished(name2, "Published");
 	  verifyTrue(check, "VP: The icon of the selected item is showed as 'Published'");	  
 	  
 	  check = contactManagerPage.isMessageDisplay(AppData.Contact.msgPublish);
@@ -80,7 +80,7 @@ public class TM_Contact_002 extends AbstractTest{
   public void TC_JOOMLA_CONTACTS_013() {  
 	  
 	  Contact_add_edit_page addContactPage = contactManagerPage.clickNewContact();
-	  addContactPage.enterData(name2, alias, category, stsPublished, access, feature, contactText);	  
+	  addContactPage.enterData(name3, alias, category, stsPublished, access, feature, contactText);	  
 	  addContactPage.insertImage(imageName);	  
 	  
 	  contactManagerPage = addContactPage.clickSaveClose();
@@ -114,11 +114,11 @@ public class TM_Contact_002 extends AbstractTest{
 	  	  
 	  contactManagerPage.clickOrderingColumn();	  
 	 
-	  int row1 = contactManagerPage.getRowNumber(name);
+	  int row1 = contactManagerPage.getRowNumber(name3);
 	  int row2 = contactManagerPage.getRowNumber(name2);	  
 	  contactManagerPage.clickArrowOrdering(name, "down");	  
 	  
-	  check = contactManagerPage.isContactLocateAt(name, row2);
+	  check = contactManagerPage.isContactLocateAt(name3, row2);
 	  verifyTrue(check, "VP: Verify the first weblink changes its position with the second weblink");
 	  check = contactManagerPage.isContactLocateAt(name2, row1);
 	  verifyTrue(check, "VP: Verify the second weblink changes its position with the first weblink");
@@ -127,7 +127,7 @@ public class TM_Contact_002 extends AbstractTest{
   @Test(description= "Verify user can move a contact to trash section", dependsOnMethods= "TC_JOOMLA_CONTACTS_015")
   public void TC_JOOMLA_CONTACTS_007() {	  
 	  
-	  contactManagerPage.clickContactCheckbox(name2);
+	  contactManagerPage.clickContactCheckbox(name3);
 	  contactManagerPage = contactManagerPage.clickTrashContact();	  
 	  
 	  check = contactManagerPage.isMessageDisplay(AppData.Contact.msgTrash);
@@ -137,7 +137,7 @@ public class TM_Contact_002 extends AbstractTest{
 	  
 	  contactManagerPage.searchContact(name);
 	  	  
-	  check = contactManagerPage.isContactExist(name2);
+	  check = contactManagerPage.isContactExist(name3);
 	  verifyTrue(check, "VP: The deleted contact is displayed on the table grid");
   } 
   

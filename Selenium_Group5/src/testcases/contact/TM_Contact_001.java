@@ -52,6 +52,31 @@ public class TM_Contact_001 extends AbstractTest{
 	  
   }
   
+  @Test(description= "Verify user can change the feature property of contacts using the Featured column", dependsOnMethods= "TC_JOOMLA_CONTACTS_001", priority=1)
+  public void TC_JOOMLA_CONTACTS_016() {	  	  
+	  
+	  contactManagerPage.searchContact(name);
+	  	  
+	  contactManagerPage.clickChangeFeature(name);	  
+	  check = contactManagerPage.isContactFeatured(name, "Featured");
+	  verifyTrue(check, "VP: The icon of the selected item is showed as 'Featured'");	  
+	  
+	  contactManagerPage.clickChangeFeature(name);	  
+	  check = contactManagerPage.isContactFeatured(name, "Unfeatured");
+	  verifyTrue(check, "VP: The icon of the selected item is showed as 'Unfeatured'");
+	  
+  }
+  
+  @Test(description= "Verify user can create a new contact with 'Public' Access Level property", dependsOnMethods= "TC_JOOMLA_CONTACTS_001", priority=1)
+  public void TC_JOOMLA_CONTACTS_017() {	  	  
+	  
+	  contactManagerPage.searchContact(name);
+	  
+	  check = contactManagerPage.isContactPublic(name, "Public");
+	  verifyTrue(check, "VP: The Access Level of the contact is displayed as 'Public'");	  
+	  
+  }  
+  
   @Test(description= "User can search for contacts using the filter dropdown lists", dependsOnMethods= "TC_JOOMLA_CONTACTS_001")
   public void TC_JOOMLA_CONTACTS_010() {
 	  	  
@@ -65,7 +90,7 @@ public class TM_Contact_001 extends AbstractTest{
 	  contactManagerPage.filterCategory("Select Category");
   }
   
-  @Test(description= "Verify user can edit a contact", dependsOnMethods= "TC_JOOMLA_CONTACTS_001")
+  @Test(description= "Verify user can edit a contact", dependsOnMethods= "TC_JOOMLA_CONTACTS_001", priority=2)
   public void TC_JOOMLA_CONTACTS_002() {
 	  
 	  contactManagerPage.clickContactCheckbox(name);
@@ -123,6 +148,14 @@ public class TM_Contact_001 extends AbstractTest{
 	  contactManagerPage.filterStatus("- Select Status -");	  
   }  
     
+  @Test(description= "User can access contact's help section", dependsOnMethods= "TC_JOOMLA_CONTACTS_001")
+  public void TC_JOOMLA_CONTACTS_008() {	  
+		 
+	  Help_page helpPage = contactManagerPage.clickHelpToolbar();
+	  check = helpPage.isHelpWindowDisplays("Joomla! Help");
+	  verifyTrue(check, "VP: The contact's help window is displayed");	  
+	  helpPage.closeBackToParentPage();
+  }  
   
   @AfterClass
   public void afterClass() {

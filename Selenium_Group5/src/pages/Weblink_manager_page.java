@@ -5,6 +5,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import common.PageFactory;
+
 import abstracts.AbstractPage;
 
 public class Weblink_manager_page extends AbstractPage {
@@ -40,13 +42,20 @@ public class Weblink_manager_page extends AbstractPage {
 	public void clickArchiveWeblink() {
 		btn_archive.click();
 	}
-	
+		
 	public void clickChangeStatusToolbar(String status) {
 		if(status.equals("Publish")) {
 			btn_publish.click();
 		} else if(status.equals("Unpublish")) {
 			btn_unpublish.click();
 		}
+	}
+	
+	public Help_page clickHelpToolbar() {
+		PageFactory.setParentWindow(driver.getWindowHandle());
+		btn_help.click();
+		switchToNextWindow();
+		return new Help_page(driver);
 	}
 	
 	//Verify

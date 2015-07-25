@@ -6,6 +6,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.seleniumhq.jetty7.util.log.Log;
 
+import common.PageFactory;
+
 import abstracts.AbstractPage;
 
 public class Contact_manager_page extends AbstractPage {
@@ -50,6 +52,13 @@ public class Contact_manager_page extends AbstractPage {
 		}
 	}
 	
+	public Help_page clickHelpToolbar() {
+		PageFactory.setParentWindow(driver.getWindowHandle());
+		btn_help.click();
+		switchToNextWindow();
+		return new Help_page(driver);
+	}
+	
 	//Verify
 	public boolean isContactExist(String contactName) {
 		return isElementExist("//a[contains(text(),'"+ contactName +"')]");
@@ -78,6 +87,35 @@ public class Contact_manager_page extends AbstractPage {
 		String buttonXpath = getCellXpath(contactName, 2) + _iconCheckedOut;
 		return !isElementExist(buttonXpath);
 	}
+	
+	public boolean isContactFeatured(String name, String access) {
+		String icoXpath;
+		
+		if(access.equals("Featured")) {
+			icoXpath = getCellXpath(name, 5) + _icoFeatured;
+			return isElementExist(icoXpath);
+		} else 
+			
+		if(access.equals("Unfeatured")) {
+			icoXpath = getCellXpath(name, 5) + _icoUnFeatured;
+			return isElementExist(icoXpath);
+		} else {
+			System.out.println("Any icon isn't found");
+			return false;
+		}
+	}
+	
+	public boolean isIdSortedCorrect(String asc_dec) {
+		return isNumberSortedCorrect(asc_dec, _rowTable, 10);
+	}	
+	
+	public boolean isContactPublic(String name, String expectedAccess) {
+		String xpathAccess = getCellXpath(name, 8);
+		String currentAccess = driver.findElement(By.xpath(xpathAccess)).getAttribute("innerHTML").trim();
+		if(currentAccess.equals(expectedAccess)) {return true; }
+		return false;
+	}
+	
 	//Handle table
 	public void clickContactCheckbox(String contactName) {
 		String chbXpath = getCellXpath(contactName, 1) + "/input";
@@ -85,17 +123,23 @@ public class Contact_manager_page extends AbstractPage {
 	}
 	
 	public void clickArrowOrdering(String contactName, String updown) {		
-		if(updown.equals("down")) {
-			String downXpath = getCellXpath(contactName, 7) + "//a[@title='Move Down']";
+		if(updown.equals("down")) {			
+			String downXpath = getCellXpath(contactName, 7) + _iconMoveDown;
 			getWebElement(downXpath).click();
-		} else if (updown.equals("up")) {
-			String upXpath = getCellXpath(contactName, 7) + "//a[@title='Move Up']";
+		} else if (updown.equals("up")) {			
+			String upXpath = getCellXpath(contactName, 7) + _iconMoveUp;
 			getWebElement(upXpath).click();
 		}
 	}	
 	
-	public boolean isIdSortedCorrect(String asc_dec) {
-		return isNumberSortedCorrect(asc_dec, _rowTable, 10);
+	public void clickChangeFeature(String name) {
+		String icoFeatured = getCellXpath(name, 5) + _icoFeatured;
+		String icoUnFeatured = getCellXpath(name, 5) + _icoUnFeatured;
+		
+		if(isElementExist(icoFeatured)) {
+			getWebElement(icoFeatured).click();
+		} else getWebElement(icoUnFeatured).click();
+		
 	}	
 	
 	public void clickChangeStatus(String contactName) {
@@ -127,55 +171,63 @@ public class Contact_manager_page extends AbstractPage {
 	
 	
 	@FindBy(xpath="//input[@id='filter_search']")
-	WebElement txt_search;
+	private WebElement txt_search;
 	
 	@FindBy(xpath="//button[text()='Search']")
-	WebElement btn_search;
+	private WebElement btn_search;
 	
 	@FindBy(xpath="//button[text()='Clear']")
-	WebElement btn_clear;
+	private WebElement btn_clear;
 	
 	@FindBy(xpath="//li[@id='toolbar-new']/a")
-	WebElement btn_newContact;
+	private WebElement btn_newContact;
 	
 	@FindBy(xpath="//li[@id='toolbar-edit']/a")
-	WebElement btn_editContact;
+	private WebElement btn_editContact;
 	
 	@FindBy(xpath="//li[@id='toolbar-publish']/a")
-	WebElement btn_publish;
+	private WebElement btn_publish;
 	
 	@FindBy(xpath="//li[@id='toolbar-unpublish']/a")
-	WebElement btn_unpublish;
+	private WebElement btn_unpublish;
 	
 	@FindBy(xpath="//li[@id='toolbar-featured']/a")
-	WebElement btn_featured;
+	private WebElement btn_featured;
 	
 	@FindBy(xpath="//li[@id='toolbar-archive']/a")
-	WebElement btn_archive;
+	private WebElement btn_archive;
 	
 	@FindBy(xpath="//li[@id='toolbar-checkin']/a")
-	WebElement btn_checkin;
+	private WebElement btn_checkin;
 	
 	@FindBy(xpath="//li[@id='toolbar-trash']/a")
-	WebElement btn_trash;
+	private WebElement btn_trash;
 	
 	@FindBy(xpath="//li[@id='toolbar-help']/a")
-	WebElement btn_help;
+	private WebElement btn_help;
 	
 	@FindBy(xpath="//select[@name='filter_published']")
-	WebElement cb_filterStatus;
+	private WebElement cb_filterStatus;
 		
 	@FindBy(xpath="//select[@name='filter_category_id']")
-	WebElement cb_filterCategory;
+	private WebElement cb_filterCategory;
 	
 	@FindBy(xpath="//a[text()='ID']")
-	WebElement lnk_ID;
+	private WebElement lnk_ID;
 
 	@FindBy(xpath="//a[text()='Ordering']")
-	WebElement lnk_ordering;
+	private WebElement lnk_ordering;
 	
-	String _iconCheckedOut = "/a/span[@class='state checkedout']";
-	String _rowTable = "//table[@class='adminlist']/tbody/tr";
-	String _categoryValue = "//select[@name='filter_category_id']/option[contains(text(), '%s')]";
+	private String _iconCheckedOut = "/a/span[@class='state checkedout']";
+	private String _rowTable = "//table[@class='adminlist']/tbody/tr";
+	private String _categoryValue = "//select[@name='filter_category_id']/option[contains(text(), '%s')]";
+	private String _icoFeatured = "//img[contains(@alt, 'Featured')]";
+	private String _icoUnFeatured = "//img[contains(@alt, 'Unfeatured')]";	
+	private String _iconMoveUp = "//a[@title='Move Up']";
+	private String _iconMoveDown = "//a[@title='Move Down']";
+	
+
+	
+
 		
 }

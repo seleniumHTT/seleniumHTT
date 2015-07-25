@@ -42,6 +42,15 @@ public class TM_Article_001 extends AbstractTest{
 	  verifyTrue(check, "VP: Created Article is displayed");	  
   }
   
+  @Test(description= "User can access contact's help section", dependsOnMethods= "TC_JOOMLA_CONTACTS_001")
+  public void TC_JOOMLA_CONTACTS_008() {	  
+		 
+	  Help_page helpPage = articleManagerPage.clickHelpToolbar();
+	  check = helpPage.isHelpWindowDisplays("Joomla! Help");
+	  verifyTrue(check, "VP: The contact's help window is displayed");	  
+	  helpPage.closeBackToParentPage();
+  }  
+  
   @Test(description= "Verify user can search for articles using the filter text field", dependsOnMethods= "TC_JOOMLA_ARTICLE_001", priority=1)
   public void TC_JOOMLA_ARTICLE_009() {	  	  
 	  

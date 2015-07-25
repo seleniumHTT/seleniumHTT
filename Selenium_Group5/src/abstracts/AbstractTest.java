@@ -21,9 +21,12 @@ public abstract class AbstractTest {
   
   public void verifyTrue(boolean condition, String verifyPoint) {	  
 	  try {
+		  
 		  Assert.assertTrue(condition);
+		  System.out.println("--------------" + verifyPoint + " - PASSED");
 		  Reporter.log(verifyPoint + " - PASSED");
 	  } catch (AssertionError e) {		  
+		  System.out.println("--------------" + verifyPoint + " - FAILED");
 		  Reporter.log(verifyPoint + " - FAILED");
 		  Assert.fail("Test Failed", e.getCause());
 		  

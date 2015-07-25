@@ -5,6 +5,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import common.PageFactory;
+
 import abstracts.AbstractPage;
 
 public class Article_manager_page extends AbstractPage {
@@ -47,6 +49,13 @@ public class Article_manager_page extends AbstractPage {
 		
 	}
 	
+	public Help_page clickHelpToolbar() {
+		PageFactory.setParentWindow(driver.getWindowHandle());
+		btn_help.click();
+		switchToNextWindow();
+		return new Help_page(driver);
+	}
+	
 	public void clickChangeStatusToolbar(String status) {
 		if(status.equals("Publish")) {
 			btn_publish.click();
@@ -71,7 +80,7 @@ public class Article_manager_page extends AbstractPage {
 	
 	public boolean isArticlePublished(String articleTitle, String expectedStatus) {
 		String buttonXpath = getCellXpath(articleTitle, 3) + "/a/span/span";
-		String currentStatus = driver.findElement(By.xpath(buttonXpath)).getAttribute("innerHTML");
+		String currentStatus = driver.findElement(By.xpath(buttonXpath)).getAttribute("innerHTML").trim();
 		
 		if(expectedStatus.equals(currentStatus)) {
 			return true;
@@ -120,10 +129,10 @@ public class Article_manager_page extends AbstractPage {
 	
 	public void clickArrowOrdering(String articleTitle, String updown) {		
 		if(updown.equals("down")) {
-			String downXpath = getCellXpath(articleTitle, 6) + "//a[@title='Move Down']";
+			String downXpath = getCellXpath(articleTitle, 6) + _iconMoveDown;
 			getWebElement(downXpath).click();
 		} else if (updown.equals("up")) {
-			String upXpath = getCellXpath(articleTitle, 6) + "//a[@title='Move Up']";
+			String upXpath = getCellXpath(articleTitle, 6) + _iconMoveUp;
 			getWebElement(upXpath).click();
 		}
 	}	
@@ -202,12 +211,14 @@ public class Article_manager_page extends AbstractPage {
 	private WebElement lnk_ordering;	
 		
 	@FindBy(xpath="//a[text()='ID']")
-	WebElement lnk_ID;
+	private WebElement lnk_ID;
 	
 		
 	private String _iconCheckedOut = "/a/span[@class='state checkedout']";
 	private String _rowTable = "//table[@class='adminlist']/tbody/tr";
 	private String _categoryValue = "//select[@name='filter_category_id']/option[contains(text(), '%s')]";
-	private String _icoFeatured = "//img[@alt='Featured article']";
-	private String _icoUnFeatured = "//img[@alt='Unfeatured article']";
+	private String _icoFeatured = "//img[contains(@alt, 'Featured')]";
+	private String _icoUnFeatured = "//img[contains(@alt, 'Unfeatured')]";	
+	private String _iconMoveUp = "//a[@title='Move Up']";
+	private String _iconMoveDown = "//a[@title='Move Down']";
 }

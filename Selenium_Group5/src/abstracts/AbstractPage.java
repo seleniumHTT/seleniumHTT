@@ -162,6 +162,19 @@ public abstract class AbstractPage {
 		}
 	}
 	
+	// Switch to next opened window
+	public WebDriver switchToNextWindow() {
+		for (String winHandle : driver.getWindowHandles()) {
+			// switch focus of WebDriver to the next found window handle (that's your newly opened window)
+		    driver.switchTo().window(winHandle); 
+		}
+		return driver;
+	}
+	
+	//Close current window of page
+	public void closeWindow() {
+		driver.close();
+	}
 	
 	//Javascript
 	public String getTextByScript(String xpath) {
