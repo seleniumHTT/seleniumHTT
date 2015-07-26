@@ -81,6 +81,9 @@ public class Category_add_edit_page extends AbstractPage {
 	@FindBy(xpath="//input[@id='jform_title']")
 	WebElement txt_title;
 
+	@FindBy(xpath="//input[@id='jform_alias']")
+	WebElement txt_alias;
+	
 	@FindBy(xpath="//select[@id='jform_parent_id']")
 	WebElement cb_parent;
 	
@@ -93,7 +96,7 @@ public class Category_add_edit_page extends AbstractPage {
 	@FindBy(xpath="//select[@id='jform_featured']")
 	WebElement cb_feature;
 	
-	@FindBy(xpath="//textarea[@id='jform_categorytext']")
+	@FindBy(xpath="//textarea[@id='jform_description']")
 	WebElement txt_categoryText;
 	
 	@FindBy(xpath="//a[text()='Toggle editor']")

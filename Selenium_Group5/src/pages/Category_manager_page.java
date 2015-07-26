@@ -39,8 +39,8 @@ public class Category_manager_page extends AbstractPage {
 		return new Category_manager_page(driver);
 	}
 	
-	public void checkIn(String contactName) {
-		clickCategoryCheckbox(contactName);
+	public void checkIn(String categoryTitle) {
+		clickCategoryCheckbox(categoryTitle);
 		btn_checkin.click();		
 	}	
 	
@@ -89,14 +89,14 @@ public class Category_manager_page extends AbstractPage {
 	}
 	
 	public boolean isCategoryPublic(String categoryTitle, String expectedAccess) {
-		String xpathAccess = getCellXpath(categoryTitle, 7);
+		String xpathAccess = getCellXpath(categoryTitle, 5);
 		String currentAccess = driver.findElement(By.xpath(xpathAccess)).getAttribute("innerHTML").trim();
 		if(currentAccess.equals(expectedAccess)) {return true; }
 		return false;
 	}
 	
-	public boolean isCategoryCheckedIn(String contactName) {
-		String buttonXpath = getCellXpath(contactName, 2) + _iconCheckedOut;
+	public boolean isCategoryCheckedIn(String categoryTitle) {
+		String buttonXpath = getCellXpath(categoryTitle, 2) + _iconCheckedOut;
 		return !isElementExist(buttonXpath);
 	}
 	
@@ -113,10 +113,10 @@ public class Category_manager_page extends AbstractPage {
 	
 	public void clickArrowOrdering(String categoryTitle, String updown) {		
 		if(updown.equals("down")) {
-			String downXpath = getCellXpath(categoryTitle, 6) + _iconMoveDown;
+			String downXpath = getCellXpath(categoryTitle, 4) + _iconMoveDown;
 			getWebElement(downXpath).click();
 		} else if (updown.equals("up")) {
-			String upXpath = getCellXpath(categoryTitle, 6) + _iconMoveUp;
+			String upXpath = getCellXpath(categoryTitle, 4) + _iconMoveUp;
 			getWebElement(upXpath).click();
 		}
 	}	

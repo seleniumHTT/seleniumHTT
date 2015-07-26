@@ -76,6 +76,15 @@ public class AppData {
 	
 	}
 	
+	public static class Category {
+		public static final String msgSave = "Category successfully saved";
+		public static final String msgPublish = "1 category successfully published";
+		public static final String msgUnpublish = "1 category successfully unpublished";
+		public static final String msgTrash = "1 category successfully trashed";
+		public static final String msgArchive = "1 category successfully archived";
+		public static final String msgCheckedIn = "1 category successfully checked in";		
+	}
+	
 	private static String urlLogin, username, password;
 	
 	private static String filePath = "./resources/application.data.xml";

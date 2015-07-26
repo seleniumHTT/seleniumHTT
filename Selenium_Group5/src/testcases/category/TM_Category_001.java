@@ -15,7 +15,7 @@ public class TM_Category_001 extends AbstractTest{
 	  
 	  name = TestData.Category.getName();  
 	  nameEdit = name + " edited";
-	  category = TestData.Category.getParent();
+	  parent = TestData.Category.getParent();
 	  stsPublished = TestData.Category.getStsPublished();
 	  categoryText = name + " category text";
 	  helpPageTitle = TestData.Category.getHelpPageTitle();
@@ -27,9 +27,11 @@ public class TM_Category_001 extends AbstractTest{
   @Test(description= "Verify user can create an Category", priority=1)
   public void TC_JOOMLA_CATEGORY_MANAGER_001() {	 	  
 	 
-	  addCategoryPage = Category_manager_page.clickAddNewCategory();
+	  categoryManagerPage = adminPage.clickCategoryManagerMenu();
+		 
+	  addCategoryPage = categoryManagerPage.clickNewCategory();
 	  
-	  addCategoryPage.enterData(name, category, stsPublished, access, feature, categoryText);
+	  addCategoryPage.enterData(name, alias, parent, stsPublished, access, categoryText);
 	  categoryManagerPage = addCategoryPage.clickSaveClose();	  
 	  
 	  check = categoryManagerPage.isMessageDisplay(AppData.Category.msgSave);
@@ -58,23 +60,8 @@ public class TM_Category_001 extends AbstractTest{
 	  check = categoryManagerPage.isCategoryExist(name);
 	  verifyTrue(check, "VP: Created Category is displayed");	  
 	  
-  }
-  
-  @Test(description= "Verify user can change the feature property of categorys using the Featured column", dependsOnMethods= "TC_JOOMLA_CATEGORY_MANAGER_001", priority=1)
-  public void TC_JOOMLA_CATEGORY_MANAGER_016() {	  	  
-	  
-	  categoryManagerPage.searchCategory(name);
-	  	  
-	  categoryManagerPage.clickChangeFeature(name);	  
-	  check = categoryManagerPage.isCategoryFeatured(name, "Featured");
-	  verifyTrue(check, "VP: The icon of the selected item is showed as 'Featured'");	  
-	  
-	  categoryManagerPage.clickChangeFeature(name);	  
-	  check = categoryManagerPage.isCategoryFeatured(name, "Unfeatured");
-	  verifyTrue(check, "VP: The icon of the selected item is showed as 'Unfeatured'");
-	  
-  }
-  
+  }  
+
   @Test(description= "Verify user can create a new category with 'Public' Access Level property", dependsOnMethods= "TC_JOOMLA_CATEGORY_MANAGER_001", priority=1)
   public void TC_JOOMLA_CATEGORY_MANAGER_017() {	  	  
 	  
@@ -85,11 +72,11 @@ public class TM_Category_001 extends AbstractTest{
 	  
   }  
   
-  @Test(description= "User can search for categorys using the filter dropdown lists", dependsOnMethods= "TC_JOOMLA_CATEGORY_MANAGER_001", priority=2)
+  @Test(description= "User can search for categories using the filter dropdown lists", dependsOnMethods= "TC_JOOMLA_CATEGORY_MANAGER_001", priority=2)
   public void TC_JOOMLA_CATEGORY_MANAGER_010() {
 	  	  
 	  categoryManagerPage.filterStatus(stsPublished);
-	  categoryManagerPage.filterCategory(category);
+	  categoryManagerPage.filterCategory(parent);
 	  
 	  check = categoryManagerPage.isCategoryExist(name);
 	  verifyTrue(check, "VP: Created Category is displayed");	  
@@ -102,9 +89,9 @@ public class TM_Category_001 extends AbstractTest{
   public void TC_JOOMLA_CATEGORY_MANAGER_002() {
 	  
 	  categoryManagerPage.clickCategoryCheckbox(name);
-	  editCategoryPage = categoryManagerPage.clickEditCategory();
-	  	  
-	  editCategoryPage.enterData(nameEdit, category, stsPublished, access, feature, categoryText);
+	  editCategoryPage = categoryManagerPage.clickEditCategory();	    
+	  
+	  editCategoryPage.enterData(nameEdit, alias, parent, stsPublished, access, categoryText);
 	  categoryManagerPage = editCategoryPage.clickSaveClose();
 	  	  
 	  check = categoryManagerPage.isMessageDisplay(AppData.Category.msgSave);
@@ -157,7 +144,7 @@ public class TM_Category_001 extends AbstractTest{
   }    
 
   
-  private String name, category, stsPublished, access, feature, categoryText, helpPageTitle;
+  private String name, alias, parent, stsPublished, access, categoryText, helpPageTitle;
   private String nameEdit;
   private boolean check;
   private Category_manager_page categoryManagerPage;

@@ -19,7 +19,7 @@ public class TM_Category_002 extends AbstractTest{
 	  name2 = name + " order";
 	  name3 = name + " image";
 	  nameEdit = name + " edited";
-	  category = TestData.Category.getParent();
+	  parent = TestData.Category.getParent();
 	  stsPublished = TestData.Category.getStsPublished();
 	  imageName = TestData.Category.getImageName();	    
 	  categoryText = name + " category text";
@@ -27,37 +27,7 @@ public class TM_Category_002 extends AbstractTest{
 	  Login_page loginPage = PageFactory.getLoginPage();
 	  adminPage = loginPage.login(AppData.getUsername(), AppData.getPassword());
   }
-  
-  @Test(description= "Verify user can check in a category", priority=1)
-  public void TC_JOOMLA_CATEGORY_MANAGER_006() {	
-	  
-	  categoryManagerPage = adminPage.clickCategoryManagerMenu();
-	 
-	  addCategoryPage = categoryManagerPage.clickNewCategory();
-	  
-	  addCategoryPage.enterData(name2, category, stsPublished, access, feature, categoryText);
-	  addCategoryPage.clickSave();	  
-	  
-	  check = categoryManagerPage.isMessageDisplay(AppData.Category.msgSave);
-	  verifyTrue(check, "VP: Category successfully saved message is displayed");	  
-	  
-	  config.tearDown();
-	  config.setup();
-	  
-	  Login_page loginPage = PageFactory.getLoginPage();
-	  adminPage = loginPage.login(AppData.getUsername(), AppData.getPassword());
-	  
-	  categoryManagerPage = adminPage.clickCategoryManagerMenu();
-	  categoryManagerPage.searchCategory(name);
-	  
-	  categoryManagerPage.checkIn(name2);
-	  check = categoryManagerPage.isCategoryCheckedIn(name2);
-	  verifyTrue(check, "VP: The lock icon next to the category is removed");
-	  
-	  check = categoryManagerPage.isMessageDisplay(AppData.Category.msgCheckedIn);
-	  verifyTrue(check, "VP: Category successfully saved message is displayed");  
-  }
-  
+   
   @Test(description= "Verify user can change the status of category using the Status column", dependsOnMethods= "TC_JOOMLA_CATEGORY_MANAGER_006", priority=1)
   public void TC_JOOMLA_CATEGORY_MANAGER_014() {
 	  
@@ -80,8 +50,9 @@ public class TM_Category_002 extends AbstractTest{
   @Test(description= "Verify user can add image to category's information", dependsOnMethods= "TC_JOOMLA_CATEGORY_MANAGER_006")
   public void TC_JOOMLA_CATEGORY_MANAGER_013() {  
 	  
-	  Category_add_edit_page addCategoryPage = categoryManagerPage.clickNewCategory();
-	  addCategoryPage.enterData(name3, category, stsPublished, access, feature, categoryText);
+	  Category_add_edit_page addCategoryPage = categoryManagerPage.clickNewCategory();	  
+	  addCategoryPage.enterData(name3, alias, parent, stsPublished, access, categoryText);
+	  
 	  addCategoryPage.insertImage(imageName);	  
 	  
 	  categoryManagerPage = addCategoryPage.clickSaveClose();
@@ -155,8 +126,8 @@ public class TM_Category_002 extends AbstractTest{
   public void afterTest() {
   }
   
-  String name, alias, category, stsPublished, access, feature, categoryText, imageName, name2, name3; 
-  String nameEdit, aliasEdit, categoryEdit, statusEdit, accessEdit, featureEdit, Edit, categoryTextEdit;
+  String name, alias, parent, stsPublished, access, feature, categoryText, imageName, name2, name3; 
+  String nameEdit;
   boolean check;
   Category_manager_page categoryManagerPage;
   Category_add_edit_page editCategoryPage, addCategoryPage;
