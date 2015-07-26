@@ -20,6 +20,7 @@ public class TestData {
 				stsUnpublished = xmlHelper.getContentByXpath(_stsUnpublished);
 				feature = xmlHelper.getContentByXpath(_feature);
 				imageName = xmlHelper.getContentByXpath(_imageName);
+				helpPage = xmlHelper.getContentByXpath(_helpPage);
 				
 			} catch (XPathExpressionException e) {			
 				e.printStackTrace();
@@ -54,7 +55,11 @@ public class TestData {
 			return imageName;
 		}
 		
-		private static String name, alias, category, stsPublished, stsUnpublished, feature, imageName;
+		public static String getHelpPageTitle() {
+			return helpPage;
+		}
+		
+		private static String name, alias, category, stsPublished, stsUnpublished, feature, imageName, helpPage;
 		private static final String _name = "//article/name";
 		private static final String _alias = "//article/alias";
 		private static final String _category = "//article/category";
@@ -62,6 +67,7 @@ public class TestData {
 		private static final String _stsUnpublished = "//article//stsUnpublished";
 		private static final String _feature = "//article/feature";
 		private static final String _imageName = "//article/imageName";
+		private static final String _helpPage = "//article/helpPage";
 	}
 	
 	public static class Contact {
@@ -78,6 +84,7 @@ public class TestData {
 				stsUnpublished = xmlHelper.getContentByXpath(_stsUnpublished);
 				feature = xmlHelper.getContentByXpath(_feature);
 				imageName = xmlHelper.getContentByXpath(_imageName);
+				helpPage = xmlHelper.getContentByXpath(_helpPage);
 				
 			} catch (XPathExpressionException e) {			
 				e.printStackTrace();
@@ -112,7 +119,11 @@ public class TestData {
 			return imageName;
 		}
 		
-		private static String name, alias, category, stsPublished, stsUnpublished, feature, imageName;
+		public static String getHelpPageTitle() {
+			return helpPage;
+		}
+		
+		private static String name, alias, category, stsPublished, stsUnpublished, feature, imageName, helpPage;
 		private static final String _name = "//contact/name";
 		private static final String _alias = "//contact/alias";
 		private static final String _category = "//contact/category";
@@ -120,6 +131,7 @@ public class TestData {
 		private static final String _stsUnpublished = "//contact//stsUnpublished";
 		private static final String _feature = "//contact/feature";
 		private static final String _imageName = "//contact/imageName";
+		private static final String _helpPage = "//contact/helpPage";
 	}
 	
 	public static class Weblink {
@@ -137,6 +149,7 @@ public class TestData {
 				stsUnpublished = xmlHelper.getContentByXpath(_stsUnpublished);
 				feature = xmlHelper.getContentByXpath(_feature);
 				imageName = xmlHelper.getContentByXpath(_imageName);
+				helpPage = xmlHelper.getContentByXpath(_helpPage);
 				
 			} catch (XPathExpressionException e) {			
 				e.printStackTrace();
@@ -179,7 +192,11 @@ public class TestData {
 			return imageName;
 		}
 		
-		private static String name, alias, url1, url2, category, stsPublished, stsUnpublished, feature, imageName;
+		public static String getHelpPageTitle() {
+			return helpPage;
+		}
+		
+		private static String name, alias, url1, url2, category, stsPublished, stsUnpublished, feature, imageName, helpPage;
 		private static final String _name = "//weblink/name";
 		private static final String _alias = "//weblink/alias";
 		private static final String _category = "//weblink/category";
@@ -187,6 +204,7 @@ public class TestData {
 		private static final String _stsUnpublished = "//weblink//stsUnpublished";
 		private static final String _feature = "//weblink/feature";
 		private static final String _imageName = "//weblink/imageName";
+		private static final String _helpPage = "//weblink/helpPage";
 		private static String _url1 = "//weblink/urls/url[1]";
 		private static String _url2 = "//weblink/urls/url[2]";
 	}
@@ -205,9 +223,10 @@ public class TestData {
 				stsUnpublished = xmlHelper.getContentByXpath(_stsUnpublished);
 				stsArchived = xmlHelper.getContentByXpath(_stsArchived);
 				stsTrashed = xmlHelper.getContentByXpath(_stsTrashed);
-				} catch (XPathExpressionException e) {			
-					e.printStackTrace();
-				}
+				helpPage = xmlHelper.getContentByXpath(_helpPage);
+			} catch (XPathExpressionException e) {			
+				e.printStackTrace();
+			}
 			
 		}
 		
@@ -243,7 +262,10 @@ public class TestData {
 			return stsTrashed;
 		}
 		
-		private static String name, contactname, contactemail, stsSelectStatus, stsPublished, stsUnpublished, stsArchived, stsTrashed;
+		public static String getHelpPageTitle() {
+			return helpPage;
+		}
+		private static String name, contactname, contactemail, stsSelectStatus, stsPublished, stsUnpublished, stsArchived, stsTrashed, helpPage;
 		private static final String _name = "//bannerclient/name";
 		private static final String _contactname = "//bannerclient/contactname";
 		private static final String _contactemail = "//bannerclient/contactemail";
@@ -252,7 +274,7 @@ public class TestData {
 		private static final String _stsUnpublished = "//bannerclient//stsUnpublished";
 		private static final String _stsArchived = "//bannerclient//stsArchived";
 		private static final String _stsTrashed = "//bannerclient//stsTrashed";
-		
+		private static final String _helpPage = "//bannerclient/helpPage";
 	}
 	
 	private final static String filePath = "./resources/test.data.xml";

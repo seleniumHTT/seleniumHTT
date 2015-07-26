@@ -18,6 +18,7 @@ public class TM_Article_001 extends AbstractTest{
 	  category = TestData.Article.getCategory();
 	  stsPublished = TestData.Article.getStsPublished();
 	  articleText = name + " article text";
+	  helpPageTitle = TestData.Article.getHelpPageTitle();
 	  
 	  Login_page loginPage = PageFactory.getLoginPage();
 	  adminPage = loginPage.login(AppData.getUsername(), AppData.getPassword());
@@ -25,10 +26,8 @@ public class TM_Article_001 extends AbstractTest{
   
   @Test(description= "Verify user can create an Article", priority=1)
   public void TC_JOOMLA_ARTICLE_001() {	 	  
-	  
-	  articleManagerPage = adminPage.clickArticleManagerMenu();
 	 
-	  addArticlePage = articleManagerPage.clickNewArticle();
+	  addArticlePage = adminPage.clickAddNewArticle();
 	  
 	  addArticlePage.enterData(name, category, stsPublished, access, feature, articleText);
 	  articleManagerPage = addArticlePage.clickSaveClose();	  
@@ -42,12 +41,12 @@ public class TM_Article_001 extends AbstractTest{
 	  verifyTrue(check, "VP: Created Article is displayed");	  
   }
   
-  @Test(description= "User can access contact's help section", dependsOnMethods= "TC_JOOMLA_CONTACTS_001")
-  public void TC_JOOMLA_CONTACTS_008() {	  
+  @Test(description= "User can access article's help section", dependsOnMethods= "TC_JOOMLA_ARTICLE_001")
+  public void TC_JOOMLA_ARTICLE_008() {	  
 		 
 	  Help_page helpPage = articleManagerPage.clickHelpToolbar();
-	  check = helpPage.isHelpWindowDisplays("Joomla! Help");
-	  verifyTrue(check, "VP: The contact's help window is displayed");	  
+	  check = helpPage.isHelpWindowDisplays(helpPageTitle);
+	  verifyTrue(check, "VP: The article's help window is displayed");	  
 	  helpPage.closeBackToParentPage();
   }  
   
@@ -155,23 +154,10 @@ public class TM_Article_001 extends AbstractTest{
 	  verifyTrue(check, "VP: The deleted article is displayed on the table grid");
 	  
 	  articleManagerPage.filterStatus("- Select Status -");	  
-  }  
-    
-  
-  @AfterClass
-  public void afterClass() {
-	  config.tearDown();
-  }
+  }    
 
-//  @BeforeTest
-//  public void beforeTest() {
-//  }
-//
-//  @AfterTest
-//  public void afterTest() {
-//  }
   
-  private String name, category, stsPublished, access, feature, articleText;
+  private String name, category, stsPublished, access, feature, articleText, helpPageTitle;
   private String nameEdit;
   private boolean check;
   private Article_manager_page articleManagerPage;

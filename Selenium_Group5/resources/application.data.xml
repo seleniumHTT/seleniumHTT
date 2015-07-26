@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <application>
-	 	<loginUrl>http://192.168.190.135:8888/Joomla_2.5.28/administrator/index.php</loginUrl>
-<!-- 	<loginUrl>http://localhost/joomla/administrator/index.php</loginUrl> -->
+<!-- 	 	<loginUrl>http://192.168.190.135:8888/Joomla_2.5.28/administrator/index.php</loginUrl> -->
+	<loginUrl>http://localhost/joomla/administrator/index.php</loginUrl>
 	<account>
 			<username>Group5admin</username>
 			<password>selenium</password>

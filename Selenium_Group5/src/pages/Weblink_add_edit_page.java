@@ -79,52 +79,73 @@ public class Weblink_add_edit_page extends AbstractPage {
 		btn_save.click();
 	}
 	
-	//Editor
+	public void clickSaveCopy() {
+		btn_saveCopy.click();
+	}
+	
+	public Weblink_manager_page clickClose() {
+		btn_close.click();
+		return new Weblink_manager_page(driver);
+	}
+	
+	///////////////
 	@FindBy(xpath="//input[@id='jform_title']")
-	WebElement txt_title;
+	private WebElement txt_title;
 
 	@FindBy(xpath="//input[@id='jform_alias']")
-	WebElement txt_alias;
+	private WebElement txt_alias;
 			
 	@FindBy(xpath="//select[@id='jform_catid']")
-	WebElement cb_category;
+	private WebElement cb_category;
 	
 	@FindBy(xpath="//select[@id='jform_state']")
-	WebElement cb_status;
+	private WebElement cb_status;
 	
 	@FindBy(xpath="//select[@id='jform_access']")
-	WebElement cb_access;
+	private WebElement cb_access;
 	
 	@FindBy(xpath="//input[@id='jform_url']")
-	WebElement txt_url;
+	private WebElement txt_url;
 	
 	@FindBy(xpath="//textarea[@id='jform_description']")
-	WebElement txt_WeblinkText;
+	private WebElement txt_WeblinkText;
 	
 	@FindBy(xpath="//a[text()='Toggle editor']")
-	WebElement btn_toggleEditor;
+	private WebElement btn_toggleEditor;
 	
 	@FindBy(xpath="//a[text()='Image']")
-	WebElement btn_image;
+	private WebElement btn_image;
 	
 	//Submit buttons
 	@FindBy(xpath="//li[@id='toolbar-save']/a")
-	WebElement btn_saveClose;
+	private WebElement btn_saveClose;
 	
 	@FindBy(xpath="//li[@id='toolbar-apply']/a")
-	WebElement btn_save;
+	private WebElement btn_save;
+	
+	@FindBy(xpath="//li[@id='toolbar-save-copy']/a")
+	private WebElement btn_saveCopy;
+	
+	@FindBy(xpath="//li[@id='toolbar-cancel']/a")
+	private WebElement btn_close;
+	
+	@FindBy(xpath="//img[@id='jform_publish_up_img'")
+	private WebElement btn_publishDateStart;
+	
+	@FindBy(xpath="//img[@id='jform_publish_down_img'")
+	private WebElement btn_publishDateFinish;
 	
 	//iframe
 	@FindBy(xpath="//div[@id='sbox-content']/iframe")
-	WebElement iframe_imageFrame;
+	private WebElement iframe_imageFrame;
 	
 	@FindBy(xpath="//iframe[@id='imageframe']")
-	WebElement iframe_selectImageFrame;
+	private WebElement iframe_selectImageFrame;
 	
 	@FindBy(xpath="//button[text()='Insert']")
-	WebElement btn_insertImageIframe;
+	private WebElement btn_insertImageIframe;	
 	
+	private String _lbl_addNewWeblink = "//h2[text()='Weblink Manager: Add New Weblink']";
+	private String _categoryValue = "//select[@id='jform_catid']/option[contains(text(), '%s')]";
 	
-	String _lbl_addNewWeblink = "//h2[text()='Weblink Manager: Add New Weblink']";
-	String _categoryValue = "//select[@id='jform_catid']/option[contains(text(), '%s')]";
 }

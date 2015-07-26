@@ -14,6 +14,7 @@ public class TM_Weblink_001 extends AbstractTest{
 	  TestData.Weblink.getDataTest();	  
 	  
 	  name = TestData.Weblink.getName();  
+	  nameCopied = name + " copied";
 	  nameEdit = name + " edited";
 	  url1 = TestData.Weblink.getUrl1();
 	  url2 = TestData.Weblink.getUrl2();
@@ -21,6 +22,7 @@ public class TM_Weblink_001 extends AbstractTest{
 	  category = TestData.Weblink.getCategory();
 	  stsPublished = TestData.Weblink.getStsPublished();
 	  weblinkText = name + " weblink text";
+	  helpPageTitle = TestData.Weblink.getHelpPageTitle();
 	  
 	  Login_page loginPage = PageFactory.getLoginPage();
 	  adminPage = loginPage.login(AppData.getUsername(), AppData.getPassword());
@@ -45,6 +47,15 @@ public class TM_Weblink_001 extends AbstractTest{
 	  verifyTrue(check, "VP: Created Weblink is displayed");	  
   }
   
+  @Test(description= "User can access weblink's help section", dependsOnMethods= "TC_JOOMLA_WEBLINKS_001")
+  public void TC_JOOMLA_WEBLINKS_008() {	  
+		 
+	  Help_page helpPage = weblinkManagerPage.clickHelpToolbar();
+	  check = helpPage.isHelpWindowDisplays(helpPageTitle);
+	  verifyTrue(check, "VP: The weblink's help window is displayed");	  
+	  helpPage.closeBackToParentPage();
+  } 
+    
   @Test(description= "Verify user can search for weblinks using the filter text field", dependsOnMethods= "TC_JOOMLA_WEBLINKS_001", priority=1)
   public void TC_JOOMLA_WEBLINKS_009() {	  	  
 	  
@@ -53,8 +64,19 @@ public class TM_Weblink_001 extends AbstractTest{
 	  check = weblinkManagerPage.isWeblinkExist(name);
 	  verifyTrue(check, "VP: Created Weblink is displayed");	  
 	  
-  }
+  }  
   
+  
+  @Test(description= "Verify user can create a new weblink with 'Public' Access Level property", dependsOnMethods= "TC_JOOMLA_WEBLINKS_001", priority=1)
+  public void TC_JOOMLA_WEBLINKS_017() {	  	  
+	  
+	  weblinkManagerPage.searchWeblink(name);
+	  
+	  check = weblinkManagerPage.isWeblinkPublic(name, "Public");
+	  verifyTrue(check, "VP: The Access Level of the weblink is displayed as 'Public'");	  
+	  
+  }  
+ 
   @Test(description= "User can search for weblinks using the filter dropdown lists", dependsOnMethods= "TC_JOOMLA_WEBLINKS_001", priority=1)
   public void TC_JOOMLA_WEBLINKS_010() {
 	  	  
@@ -68,13 +90,13 @@ public class TM_Weblink_001 extends AbstractTest{
 	  weblinkManagerPage.filterCategory("Select Category");
   }
   
-  @Test(description= "Verify user can edit a weblink", dependsOnMethods= "TC_JOOMLA_WEBLINKS_001")
+  @Test(description= "Verify user can edit a weblink", dependsOnMethods= "TC_JOOMLA_WEBLINKS_001", priority=2)
   public void TC_JOOMLA_WEBLINKS_002() {
 	  
 	  weblinkManagerPage.clickWeblinkCheckbox(name);
 	  editWeblinkPage = weblinkManagerPage.clickEditWeblink();
 	  	  
-	  editWeblinkPage.enterData(nameEdit, alias, url1, category, stsPublished, access, weblinkText);
+	  editWeblinkPage.enterData(nameEdit, alias, url2, category, stsPublished, access, weblinkText);
 	  weblinkManagerPage = editWeblinkPage.clickSaveClose();
 	  	  
 	  check = weblinkManagerPage.isMessageDisplay(AppData.Weblink.msgSave);
@@ -114,7 +136,7 @@ public class TM_Weblink_001 extends AbstractTest{
 	  weblinkManagerPage.clickArchiveWeblink(); 
 	  
 	  check = weblinkManagerPage.isMessageDisplay(AppData.Weblink.msgArchive);
-	  verifyTrue(check, "The '1 weblink successfully archived' message is displayed");
+	  verifyTrue(check, "VP: The '1 weblink successfully archived' message is displayed");
 	  
 	  weblinkManagerPage.filterStatus("Archived");
 	  
@@ -126,21 +148,27 @@ public class TM_Weblink_001 extends AbstractTest{
 	  weblinkManagerPage.filterStatus("- Select Status -");	  
   }  
     
-  
-  @AfterClass
-  public void afterClass() {
-	  config.tearDown();
-  }
+  @Test(description= "Verify user can create a copied version of an existed weblink", dependsOnMethods= "TC_JOOMLA_WEBLINKS_001", priority=1)
+  public void TC_JOOMLA_WEBLINKS_016() {
+	  weblinkManagerPage.clickWeblinkCheckbox(name);
+	  editWeblinkPage = weblinkManagerPage.clickEditWeblink();
+	  	  
+	  editWeblinkPage.enterData(nameCopied, nameCopied, url2, category, stsPublished, access, weblinkText);
+	  editWeblinkPage.clickSaveCopy();
+	  	  
+	  check = editWeblinkPage.isMessageDisplay(AppData.Weblink.msgSave);
+	  verifyTrue(check, "VP: Weblink successfully saved message is displayed");	  
+	  
+	  weblinkManagerPage = editWeblinkPage.clickClose();	  
+	  weblinkManagerPage.searchWeblink(name);
+	  	  
+	  check = weblinkManagerPage.isWeblinkExist(nameCopied);
+	  verifyTrue(check, "VP: Edited weblink is displayed");	
+	  	  
+  } 
 
-  @BeforeTest
-  public void beforeTest() {
-  }
-
-  @AfterTest
-  public void afterTest() {
-  }
   
-  private String name, url1, url2, alias, category, stsPublished, access, feature, weblinkText;
+  private String name, url1, url2, alias, category, stsPublished, access, weblinkText, helpPageTitle, nameCopied;
   private String nameEdit;
   private boolean check;
   private Weblink_manager_page weblinkManagerPage;

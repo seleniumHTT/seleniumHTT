@@ -9,7 +9,6 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 
 import common.config;
-
 import pages.Article_manager_page;
 import pages.Contact_manager_page;
 import pages.Weblink_manager_page;
@@ -29,13 +28,18 @@ public abstract class AbstractPage {
 	}
 	
 	public String getCellXpath(String objectTitle, int colNumber) {
-		return "//a[contains(text(), '" + objectTitle + "')]/ancestor::tr/td["+ colNumber +"]";
+		return String.format(_cell, objectTitle, colNumber);
 	}
 	
+	public String getInnerText(String xpath) {
+		return driver.findElement(By.xpath(xpath)).getAttribute("innerHTML").trim();
+	}
 	
 	public int getRowNumber(String objectTitle) {
-		return driver.findElements(By.xpath("//a[contains(text(), '"+ objectTitle +"')]/ancestor::tr/preceding-sibling::*")).size() + 1;
+		String previousRows = String.format(_previousRows, objectTitle);
+		return driver.findElements(By.xpath(previousRows)).size() + 1;
 	}
+	
 	//Interact methods
 	public void selectCombobox(WebElement combobox, String value) {		
 		new Select(combobox).selectByVisibleText(value);
@@ -143,7 +147,7 @@ public abstract class AbstractPage {
 	}
 	//Check methods
 	public boolean isMessageDisplay(String msg) {
-		return isElementExist(".//*[@id='system-message']//*[contains(text(),'"+ msg +"')]");
+		return isElementExist(String.format(_systemMsg, msg));
 	}	
 	
 	public boolean isElementExist(String xpath) {
@@ -186,4 +190,7 @@ public abstract class AbstractPage {
 		}
 	}
 	
+	private String _cell = "//a[contains(text(), '%s')]/ancestor::tr/td[%s]";
+	private String _previousRows = "//a[contains(text(), '%s')]/ancestor::tr/preceding-sibling::*";
+	private String _systemMsg = ".//*[@id='system-message']//*[contains(text(),'%s')]";
 }

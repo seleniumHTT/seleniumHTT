@@ -94,6 +94,7 @@ public class Article_manager_page extends AbstractPage {
 		if(currentAccess.equals(expectedAccess)) {return true; }
 		return false;
 	}
+	
 	public boolean isArticleCheckedIn(String contactName) {
 		String buttonXpath = getCellXpath(contactName, 2) + _iconCheckedOut;
 		return !isElementExist(buttonXpath);

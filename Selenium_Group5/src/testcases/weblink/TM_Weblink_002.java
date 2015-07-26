@@ -38,7 +38,7 @@ public class TM_Weblink_002 extends AbstractTest{
 	 
 	  addWeblinkPage = weblinkManagerPage.clickNewWeblink();
 	  
-	  addWeblinkPage.enterData(name, alias, url1, category, stsPublished, access, weblinkText);
+	  addWeblinkPage.enterData(name2, alias, url1, category, stsPublished, access, weblinkText);
 	  addWeblinkPage.clickSave();	  
 	  
 	  check = weblinkManagerPage.isMessageDisplay(AppData.Weblink.msgSave);
@@ -53,8 +53,8 @@ public class TM_Weblink_002 extends AbstractTest{
 	  weblinkManagerPage = adminPage.clickWeblinkManagerMenu();
 	  weblinkManagerPage.searchWeblink(name);
 	  
-	  weblinkManagerPage.checkIn(name);
-	  check = weblinkManagerPage.isWeblinkCheckedIn(name);
+	  weblinkManagerPage.checkIn(name2);
+	  check = weblinkManagerPage.isWeblinkCheckedIn(name2);
 	  verifyTrue(check, "VP: The lock icon next to the weblink is removed");
 	  
 	  check = weblinkManagerPage.isMessageDisplay(AppData.Weblink.msgCheckedIn);
@@ -64,15 +64,15 @@ public class TM_Weblink_002 extends AbstractTest{
   @Test(description= "Verify user can change the status of weblink using the Status column", dependsOnMethods= "TC_JOOMLA_WEBLINK_006", priority=1)
   public void TC_JOOMLA_WEBLINK_014() {
 	  
-	  weblinkManagerPage.clickChangeStatus(name);
+	  weblinkManagerPage.clickChangeStatus(name2);
 	  
-	  check = weblinkManagerPage.isWeblinkPublished(name, "Unpublished");
+	  check = weblinkManagerPage.isWeblinkPublished(name2, "Unpublished");
 	  verifyTrue(check, "VP: The icon of the selected item is showed as 'Unpublished'");
 	  
 	  check = weblinkManagerPage.isMessageDisplay(AppData.Weblink.msgUnpublish);
 	  verifyTrue(check, "VP: The '1 weblink successfully unpublished' message is displayed");
 	  
-	  weblinkManagerPage.clickChangeStatus(name);	  
+	  weblinkManagerPage.clickChangeStatus(name2);	  
 	  check = weblinkManagerPage.isWeblinkPublished(name, "Published");
 	  verifyTrue(check, "VP: The icon of the selected item is showed as 'Published'");	  
 	  
@@ -80,11 +80,11 @@ public class TM_Weblink_002 extends AbstractTest{
 	  verifyTrue(check, "VP: The '1 weblink successfully published' message is displayed");
   }
   
-  @Test(description= "Verify user can add image to weblink's information", dependsOnMethods= "TC_JOOMLA_WEBLINK_006")
+  @Test(description= "Verify user can add image to weblink's description", dependsOnMethods= "TC_JOOMLA_WEBLINK_006")
   public void TC_JOOMLA_WEBLINK_013() {  
 	  
 	  Weblink_add_edit_page addWeblinkPage = weblinkManagerPage.clickNewWeblink();
-	  addWeblinkPage.enterData(name3, alias, url1, category, stsPublished, access, weblinkText);
+	  addWeblinkPage.enterData(name3, alias, url2, category, stsPublished, access, weblinkText);
 	  addWeblinkPage.insertImage(imageName);	  
 	  
 	  weblinkManagerPage = addWeblinkPage.clickSaveClose();
@@ -112,23 +112,23 @@ public class TM_Weblink_002 extends AbstractTest{
 	  verifyTrue(check, "VP: The weblinks is sorted by ID in descending order");
   }
   
-  @Test(description= "Verify user can change the order of weblinks using the Ordering column", dependsOnMethods= "TC_JOOMLA_WEBLINK_006")
+  @Test(description= "Verify user can change the order of weblinks using the Ordering column", dependsOnMethods= "TC_JOOMLA_WEBLINK_006", priority=1)
   public void TC_JOOMLA_WEBLINK_015() {	  
 	  weblinkManagerPage.searchWeblink(name);
 	  	  
 	  weblinkManagerPage.clickOrderingColumn();	  
 	 
-	  int row1 = weblinkManagerPage.getRowNumber(name);
+	  int row1 = weblinkManagerPage.getRowNumber(name2);
 	  int row2 = weblinkManagerPage.getRowNumber(name3);	  
-	  weblinkManagerPage.clickArrowOrdering(name, "down");	  
+	  weblinkManagerPage.clickArrowOrdering(name2, "down");	  
 	  
-	  check = weblinkManagerPage.isWeblinkLocateAt(name, row2);
+	  check = weblinkManagerPage.isWeblinkLocateAt(name2, row2);
 	  verifyTrue(check, "VP: Verify the first weblink changes its position with the second weblink");
 	  check = weblinkManagerPage.isWeblinkLocateAt(name3, row1);
 	  verifyTrue(check, "VP: Verify the second weblink changes its position with the first weblink");
   } 
   
-  @Test(description= "Verify user can move a weblink to trash section", dependsOnMethods= "TC_JOOMLA_WEBLINK_015")
+  @Test(description= "Verify user can move a weblink to trash section", dependsOnMethods= "TC_JOOMLA_WEBLINK_013", priority=2)
   public void TC_JOOMLA_WEBLINK_007() {	  
 	  
 	  weblinkManagerPage.clickWeblinkCheckbox(name3);
@@ -143,21 +143,8 @@ public class TM_Weblink_002 extends AbstractTest{
 	  	  
 	  check = weblinkManagerPage.isWeblinkExist(name3);
 	  verifyTrue(check, "VP: The deleted weblink is displayed on the table grid");
-  } 
-  
-  @AfterClass
-  public void afterClass() {
-	  config.tearDown();
-  }
+  }   
 
-  @BeforeTest
-  public void beforeTest() {
-  }
-
-  @AfterTest
-  public void afterTest() {
-  }
-  
   String name, url1, url2, alias, category, stsPublished, access, feature, weblinkText, imageName, name2, name3; 
   boolean check;
   Weblink_manager_page weblinkManagerPage;

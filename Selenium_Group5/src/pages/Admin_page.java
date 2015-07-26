@@ -15,16 +15,12 @@ public class Admin_page extends AbstractPage {
 		this.driver = driver;
 	}	
 	
-	
-	
-	
 	//Click main buttons
 	public Article_add_edit_page clickAddNewArticle() {
 		btn_addNewArticle.click();		
 		return new Article_add_edit_page(driver);		
-	}
-	
-	//Select menu item, split by '/'
+	}	
+
 	
 	@FindBy(xpath="//span[contains(text(),'Add New Article')]")
 	WebElement btn_addNewArticle;

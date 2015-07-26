@@ -6,7 +6,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 import common.PageFactory;
-
 import abstracts.AbstractPage;
 
 public class Weblink_manager_page extends AbstractPage {
@@ -74,7 +73,7 @@ public class Weblink_manager_page extends AbstractPage {
 	
 	public boolean isWeblinkPublished(String weblinkTitle, String expectedStatus) {
 		String buttonXpath = getCellXpath(weblinkTitle, 3) + "/a/span/span";
-		String currentStatus = driver.findElement(By.xpath(buttonXpath)).getAttribute("innerHTML");
+		String currentStatus = driver.findElement(By.xpath(buttonXpath)).getAttribute("innerHTML").trim();
 		
 		if(expectedStatus.equals(currentStatus)) {
 			return true;
@@ -87,6 +86,12 @@ public class Weblink_manager_page extends AbstractPage {
 		return !isElementExist(buttonXpath);
 	}
 	
+	public boolean isWeblinkPublic(String name, String expectedAccess) {		
+		String currentAccess = getInnerText(getCellXpath(name, 6));
+		if(currentAccess.equals(expectedAccess)) {return true; }
+		return false;
+	}
+	
 	//Handle table
 	public void clickWeblinkCheckbox(String weblinkTitle) {
 		String chbXpath = getCellXpath(weblinkTitle, 1) + "/input";
@@ -95,10 +100,10 @@ public class Weblink_manager_page extends AbstractPage {
 	
 	public void clickArrowOrdering(String weblinkTitle, String updown) {		
 		if(updown.equals("down")) {
-			String downXpath = getCellXpath(weblinkTitle, 5) + "//a[@title='Move Down']";
+			String downXpath = getCellXpath(weblinkTitle, 5) + _iconMoveDown;
 			getWebElement(downXpath).click();
 		} else if (updown.equals("up")) {
-			String upXpath = getCellXpath(weblinkTitle, 5) + "//a[@title='Move Up']";
+			String upXpath = getCellXpath(weblinkTitle, 5) + _iconMoveUp;
 			getWebElement(upXpath).click();
 		}
 	}	
@@ -136,54 +141,57 @@ public class Weblink_manager_page extends AbstractPage {
 	
 	
 	@FindBy(xpath="//input[@id='filter_search']")
-	WebElement txt_search;
+	private WebElement txt_search;
 	
 	@FindBy(xpath="//button[text()='Search']")
-	WebElement btn_search;
+	private WebElement btn_search;
 	
 	@FindBy(xpath="//button[text()='Clear']")
-	WebElement btn_clear;
+	private WebElement btn_clear;
 	
 	@FindBy(xpath="//li[@id='toolbar-new']/a")
-	WebElement btn_newWeblink;
+	private WebElement btn_newWeblink;
 	
 	@FindBy(xpath="//li[@id='toolbar-edit']/a")
-	WebElement btn_editWeblink;
+	private WebElement btn_editWeblink;
 	
 	@FindBy(xpath="//li[@id='toolbar-publish']/a")
-	WebElement btn_publish;
+	private WebElement btn_publish;
 	
 	@FindBy(xpath="//li[@id='toolbar-unpublish']/a")
-	WebElement btn_unpublish;
+	private WebElement btn_unpublish;
 	
 	@FindBy(xpath="//li[@id='toolbar-featured']/a")
-	WebElement btn_featured;
+	private WebElement btn_featured;
 	
 	@FindBy(xpath="//li[@id='toolbar-archive']/a")
-	WebElement btn_archive;
+	private WebElement btn_archive;
 	
 	@FindBy(xpath="//li[@id='toolbar-checkin']/a")
-	WebElement btn_checkin;
+	private WebElement btn_checkin;
 	
 	@FindBy(xpath="//li[@id='toolbar-trash']/a")
-	WebElement btn_trash;
+	private WebElement btn_trash;
 	
 	@FindBy(xpath="//li[@id='toolbar-help']/a")
-	WebElement btn_help;
+	private WebElement btn_help;
 	
 	@FindBy(xpath="//select[@name='filter_published']")
-	WebElement cb_filterStatus;
+	private WebElement cb_filterStatus;
 	
 	@FindBy(xpath="//a[text()='Ordering']")
-	WebElement lnk_ordering;	
+	private WebElement lnk_ordering;	
 		
 	@FindBy(xpath="//select[@name='filter_category_id']")
-	WebElement cb_filterCategory;
+	private WebElement cb_filterCategory;
 		
 	@FindBy(xpath="//a[text()='ID']")
-	WebElement lnk_ID;
+	private WebElement lnk_ID;
 	
-	String _iconCheckedOut = "/a/span[@class='state checkedout']";
-	String _rowTable = "//table[@class='adminlist']/tbody/tr";
-	String _categoryValue = "//select[@name='filter_category_id']/option[contains(text(), '%s')]";
+	private String _iconCheckedOut = "/a/span[@class='state checkedout']";
+	private String _rowTable = "//table[@class='adminlist']/tbody/tr";
+	private String _categoryValue = "//select[@name='filter_category_id']/option[contains(text(), '%s')]";
+	private String _iconMoveUp = "//a[@title='Move Up']";
+	private String _iconMoveDown = "//a[@title='Move Down']";	
+	
 }

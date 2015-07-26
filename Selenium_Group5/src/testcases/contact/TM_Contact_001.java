@@ -18,6 +18,7 @@ public class TM_Contact_001 extends AbstractTest{
 	  nameEdit = name + " edited";
 	  category = TestData.Contact.getCategory();
 	  stsPublished = TestData.Contact.getStsPublished();
+	  helpPageTitle = TestData.Contact.getHelpPageTitle();
 	  
 	  Login_page loginPage = PageFactory.getLoginPage();
 	  adminPage = loginPage.login(AppData.getUsername(), AppData.getPassword());
@@ -152,7 +153,7 @@ public class TM_Contact_001 extends AbstractTest{
   public void TC_JOOMLA_CONTACTS_008() {	  
 		 
 	  Help_page helpPage = contactManagerPage.clickHelpToolbar();
-	  check = helpPage.isHelpWindowDisplays("Joomla! Help");
+	  check = helpPage.isHelpWindowDisplays(helpPageTitle);
 	  verifyTrue(check, "VP: The contact's help window is displayed");	  
 	  helpPage.closeBackToParentPage();
   }  
@@ -170,7 +171,7 @@ public class TM_Contact_001 extends AbstractTest{
   public void afterTest() {
   }
   
-  private String name, alias, category, stsPublished, access, feature, contactText;
+  private String name, alias, category, stsPublished, access, feature, contactText, helpPageTitle;
   private String nameEdit, aliasEdit, categoryEdit, statusEdit, accessEdit, featureEdit, contactTextEdit;
   private boolean check;
   private Contact_manager_page contactManagerPage;

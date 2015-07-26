@@ -7,16 +7,15 @@ import org.testng.Assert;
 import org.testng.Reporter;
 import org.testng.annotations.*;
 
+import common.config;
+
 public abstract class AbstractTest {
 	
-  WebDriver driver;
-  
-  @BeforeClass
-  public void beforeClass() {
-  }
+  WebDriver driver;  
 
   @AfterClass
   public void afterClass() {
+	  config.tearDown();
   }
   
   public void verifyTrue(boolean condition, String verifyPoint) {	  

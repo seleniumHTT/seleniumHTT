@@ -9,6 +9,7 @@
 				<stsUnpublished>Unpublished</stsUnpublished>
 			</status>
 		<imageName>powered_by.png</imageName>
+		<helpPage>Joomla! Help</helpPage>
 	</article>
 	
 	<contact>
@@ -20,6 +21,7 @@
 			<stsUnpublished>Unpublished</stsUnpublished>
 		</status>
 		<imageName>powered_by.png</imageName>
+		<helpPage>Joomla! Help</helpPage>
 	</contact>
 	
 	<weblink>
@@ -35,6 +37,7 @@
 			<stsUnpublished>Unpublished</stsUnpublished>
 		</status>
 		<imageName>powered_by.png</imageName>
+		<helpPage>Joomla! Help</helpPage>
 	</weblink>
 	
 	<bannerclient>
@@ -48,6 +51,7 @@
 			<stsArchived>Archived</stsArchived>
 			<stsTrashed>Trashed</stsTrashed>
 		</status>		
+		<helpPage>Joomla! Help</helpPage>
 	</bannerclient>
 	
 </testdata>
