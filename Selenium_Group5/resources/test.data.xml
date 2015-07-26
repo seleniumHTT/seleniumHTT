@@ -57,7 +57,7 @@
 	<category>
 		<name>Group 5 category </name>
 			<alias></alias>
-			<parent>Sample Data-Articles</parent>
+			<parent>- No Parent -</parent>
 			<status>
 				<stsPublished>Published</stsPublished>
 				<stsUnpublished>Unpublished</stsUnpublished>

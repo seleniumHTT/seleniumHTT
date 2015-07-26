@@ -9,10 +9,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 
 import common.config;
-import pages.Article_manager_page;
-import pages.Contact_manager_page;
-import pages.Weblink_manager_page;
-import pages.Banner_Client_manager_page;
+import pages.*;
 
 public abstract class AbstractPage {
 	WebDriver driver;
@@ -77,6 +74,11 @@ public abstract class AbstractPage {
 	public Banner_Client_manager_page clickBannerClientManagerMenu() {
 		selectMenu("Components/Banners/Clients").click();
 		return new Banner_Client_manager_page(driver);
+	}
+	
+	public Category_manager_page clickCategoryManagerMenu() {
+		selectMenu("Content/Category Manager").click();
+		return new Category_manager_page(driver);
 	}
 	
 	//Select menu, split by '/'

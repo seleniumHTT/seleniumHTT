@@ -15,7 +15,7 @@ public class TM_Category_001 extends AbstractTest{
 	  
 	  name = TestData.Category.getName();  
 	  nameEdit = name + " edited";
-	  category = TestData.Category.getCategory();
+	  category = TestData.Category.getParent();
 	  stsPublished = TestData.Category.getStsPublished();
 	  categoryText = name + " category text";
 	  helpPageTitle = TestData.Category.getHelpPageTitle();
@@ -27,7 +27,7 @@ public class TM_Category_001 extends AbstractTest{
   @Test(description= "Verify user can create an Category", priority=1)
   public void TC_JOOMLA_CATEGORY_MANAGER_001() {	 	  
 	 
-	  addCategoryPage = adminPage.clickAddNewCategory();
+	  addCategoryPage = Category_manager_page.clickAddNewCategory();
 	  
 	  addCategoryPage.enterData(name, category, stsPublished, access, feature, categoryText);
 	  categoryManagerPage = addCategoryPage.clickSaveClose();	  

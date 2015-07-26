@@ -62,7 +62,7 @@ public class TestData {
 		private static String name, alias, category, stsPublished, stsUnpublished, feature, imageName, helpPage;
 		private static final String _name = "//article/name";
 		private static final String _alias = "//article/alias";
-		private static final String _category = "//article/category";
+		private static final String _category = "//article/parent";
 		private static final String _stsPublished = "//article//stsPublished";
 		private static final String _stsUnpublished = "//article//stsUnpublished";
 		private static final String _feature = "//article/feature";
@@ -126,7 +126,7 @@ public class TestData {
 		private static String name, alias, category, stsPublished, stsUnpublished, feature, imageName, helpPage;
 		private static final String _name = "//contact/name";
 		private static final String _alias = "//contact/alias";
-		private static final String _category = "//contact/category";
+		private static final String _category = "//contact/parent";
 		private static final String _stsPublished = "//contact//stsPublished";
 		private static final String _stsUnpublished = "//contact//stsUnpublished";
 		private static final String _feature = "//contact/feature";
@@ -199,7 +199,7 @@ public class TestData {
 		private static String name, alias, url1, url2, category, stsPublished, stsUnpublished, feature, imageName, helpPage;
 		private static final String _name = "//weblink/name";
 		private static final String _alias = "//weblink/alias";
-		private static final String _category = "//weblink/category";
+		private static final String _category = "//weblink/parent";
 		private static final String _stsPublished = "//weblink//stsPublished";
 		private static final String _stsUnpublished = "//weblink//stsUnpublished";
 		private static final String _feature = "//weblink/feature";
@@ -286,7 +286,7 @@ public static class Category {
 				name = name + Random.getCurrentTime();
 				
 				alias = xmlHelper.getContentByXpath(_alias);
-				category = xmlHelper.getContentByXpath(_category);
+				parent = xmlHelper.getContentByXpath(_parent);
 				stsPublished = xmlHelper.getContentByXpath(_stsPublished);
 				stsUnpublished = xmlHelper.getContentByXpath(_stsUnpublished);
 				feature = xmlHelper.getContentByXpath(_feature);
@@ -306,8 +306,8 @@ public static class Category {
 			return alias;
 		}
 
-		public static String getCategory() {
-			return category;
+		public static String getParent() {
+			return parent;
 		}
 
 		public static String getStsPublished() {
@@ -330,15 +330,15 @@ public static class Category {
 			return helpPage;
 		}
 		
-		private static String name, alias, category, stsPublished, stsUnpublished, feature, imageName, helpPage;
-		private static final String _name = "//category/name";
-		private static final String _alias = "//category/alias";
-		private static final String _category = "//category/category";
-		private static final String _stsPublished = "//category//stsPublished";
-		private static final String _stsUnpublished = "//category//stsUnpublished";
-		private static final String _feature = "//category/feature";
-		private static final String _imageName = "//category/imageName";
-		private static final String _helpPage = "//category/helpPage";
+		private static String name, alias, parent, stsPublished, stsUnpublished, feature, imageName, helpPage;
+		private static final String _name = "//parent/name";
+		private static final String _alias = "//parent/alias";
+		private static final String _parent = "//parent/parent";
+		private static final String _stsPublished = "//parent//stsPublished";
+		private static final String _stsUnpublished = "//parent//stsUnpublished";
+		private static final String _feature = "//parent/feature";
+		private static final String _imageName = "//parent/imageName";
+		private static final String _helpPage = "//parent/helpPage";
 	}
 	private final static String filePath = "./resources/test.data.xml";
 }

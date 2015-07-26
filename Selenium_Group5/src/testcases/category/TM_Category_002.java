@@ -19,7 +19,7 @@ public class TM_Category_002 extends AbstractTest{
 	  name2 = name + " order";
 	  name3 = name + " image";
 	  nameEdit = name + " edited";
-	  category = TestData.Category.getCategory();
+	  category = TestData.Category.getParent();
 	  stsPublished = TestData.Category.getStsPublished();
 	  imageName = TestData.Category.getImageName();	    
 	  categoryText = name + " category text";

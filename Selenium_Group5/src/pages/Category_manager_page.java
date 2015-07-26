@@ -103,24 +103,7 @@ public class Category_manager_page extends AbstractPage {
 	public boolean isIdSortedCorrect(String asc_dec) {
 		return isNumberSortedCorrect(asc_dec, _rowTable, 12);
 	}	
-	
-	public boolean isCategoryFeatured(String categoryTitle, String access) {
 		
-		String icoXpath;
-		
-		if(access.equals("Featured")) {
-			icoXpath = getCellXpath(categoryTitle, 4) + _icoFeatured;
-			return isElementExist(icoXpath);
-		} else 
-			
-		if(access.equals("Unfeatured")) {
-			icoXpath = getCellXpath(categoryTitle, 4) + _icoUnFeatured;
-			return isElementExist(icoXpath);
-		} else {
-			System.out.println("Any icon isn't found");
-			return false;
-		}
-	}
 	
 	//Handle table
 	public void clickCategoryCheckbox(String categoryTitle) {
@@ -143,15 +126,6 @@ public class Category_manager_page extends AbstractPage {
 		getWebElement(buttonXpath).click();
 	}
 	
-	public void clickChangeFeature(String categoryTitle) {
-		String icoFeatured = getCellXpath(categoryTitle, 4) + _icoFeatured;
-		String icoUnFeatured = getCellXpath(categoryTitle, 4) + _icoUnFeatured;
-		
-		if(isElementExist(icoFeatured)) {
-			getWebElement(icoFeatured).click();
-		} else getWebElement(icoUnFeatured).click(); 
-		
-	}
 	
 	public void filterStatus(String status) {
 		selectCombobox(cb_filterStatus, status);		
@@ -217,9 +191,7 @@ public class Category_manager_page extends AbstractPage {
 		
 	private String _iconCheckedOut = "/a/span[@class='state checkedout']";
 	private String _rowTable = "//table[@class='adminlist']/tbody/tr";
-	private String _categoryValue = "//select[@name='filter_category_id']/option[contains(text(), '%s')]";
-	private String _icoFeatured = "//img[contains(@alt, 'Featured')]";
-	private String _icoUnFeatured = "//img[contains(@alt, 'Unfeatured')]";	
+	private String _categoryValue = "//select[@name='filter_category_id']/option[contains(text(), '%s')]";	
 	private String _iconMoveUp = "//a[@title='Move Up']";
 	private String _iconMoveDown = "//a[@title='Move Down']";
 }

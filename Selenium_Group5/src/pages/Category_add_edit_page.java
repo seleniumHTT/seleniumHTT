@@ -15,7 +15,7 @@ public class Category_add_edit_page extends AbstractPage {
 	}
 	
 	
-	public void enterData(String title, String category, String status, String access, String feature, String categoryText) {
+	public void enterData(String title, String alias, String parent, String status, String access, String categoryText) {
 		
 		//Enter data
 		if(title !=null && title != "") {			
@@ -23,8 +23,8 @@ public class Category_add_edit_page extends AbstractPage {
 			txt_title.sendKeys(title);
 		}
 		
-		if(category !=null && category != "") {
-			selectComboboxByXpath(_categoryValue, category);
+		if(parent !=null && parent != "") {
+			selectComboboxByXpath(_categoryParent, parent);
 		}
 		
 		if(status != null && status != "") {
@@ -33,11 +33,7 @@ public class Category_add_edit_page extends AbstractPage {
 		
 		if(access != null && access != "") {
 			selectCombobox(cb_access, access);
-		}
-		
-		if(feature != null && feature != "") {
-			selectCombobox(cb_feature, feature);
-		}
+		}			
 		
 		if(categoryText != null && categoryText != "") {
 			//Switch editor to plain text mode
@@ -73,15 +69,20 @@ public class Category_add_edit_page extends AbstractPage {
 		btn_save.click();
 	}
 	
+	public void clickCancel() {
+		btn_cancel.click();
+	}
+	
+	
 	public void filterCategoryByXpath(String category) {
-		getWebElement(String.format(_categoryValue, category)).click();;
+		getWebElement(String.format(_categoryParent, category)).click();;
 	}
 	//Editor
 	@FindBy(xpath="//input[@id='jform_title']")
 	WebElement txt_title;
 
-	@FindBy(xpath="//select[@id='jform_catid']")
-	WebElement cb_category;
+	@FindBy(xpath="//select[@id='jform_parent_id']")
+	WebElement cb_parent;
 	
 	@FindBy(xpath="//select[@id='jform_state']")
 	WebElement cb_status;
@@ -108,6 +109,12 @@ public class Category_add_edit_page extends AbstractPage {
 	@FindBy(xpath="//li[@id='toolbar-apply']/a")
 	WebElement btn_save;
 	
+	@FindBy(xpath="//li[@id='toolbar-save-new']/a")
+	WebElement btn_saveNew;
+	
+	@FindBy(xpath="//li[@id='toolbar-cancel']/a")
+	WebElement btn_cancel;
+	
 	//iframe
 	@FindBy(xpath="//div[@id='sbox-content']/iframe")
 	WebElement iframe_imageFrame;
@@ -119,6 +126,6 @@ public class Category_add_edit_page extends AbstractPage {
 	WebElement btn_insertImageIframe;
 	
 	
-	String _lbl_addNewCategory = "//h2[text()='Category Manager: Add New Category']";
-	String _categoryValue = "//select[@id='jform_catid']/option[contains(text(), '%s')]";
+	String _lbl_addNewCategory = "//h2[text()='Category Manager: Add A New Articles Category']";
+	String _categoryParent = "//select[@id='jform_catid']/option[contains(text(), '%s')]";
 }

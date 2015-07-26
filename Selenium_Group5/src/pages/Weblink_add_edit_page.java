@@ -84,7 +84,7 @@ public class Weblink_add_edit_page extends AbstractPage {
 	}
 	
 	public Weblink_manager_page clickClose() {
-		btn_close.click();
+		btn_cancel.click();
 		return new Weblink_manager_page(driver);
 	}
 	
@@ -127,7 +127,7 @@ public class Weblink_add_edit_page extends AbstractPage {
 	private WebElement btn_saveCopy;
 	
 	@FindBy(xpath="//li[@id='toolbar-cancel']/a")
-	private WebElement btn_close;
+	private WebElement btn_cancel;
 	
 	@FindBy(xpath="//img[@id='jform_publish_up_img'")
 	private WebElement btn_publishDateStart;
