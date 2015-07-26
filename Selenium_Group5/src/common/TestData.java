@@ -277,5 +277,68 @@ public class TestData {
 		private static final String _helpPage = "//bannerclient/helpPage";
 	}
 	
+public static class Category {
+		
+		public static void getDataTest() {
+			try {
+				XMLhelper xmlHelper = new XMLhelper(TestData.filePath);
+				name = xmlHelper.getContentByXpath(_name);
+				name = name + Random.getCurrentTime();
+				
+				alias = xmlHelper.getContentByXpath(_alias);
+				category = xmlHelper.getContentByXpath(_category);
+				stsPublished = xmlHelper.getContentByXpath(_stsPublished);
+				stsUnpublished = xmlHelper.getContentByXpath(_stsUnpublished);
+				feature = xmlHelper.getContentByXpath(_feature);
+				imageName = xmlHelper.getContentByXpath(_imageName);
+				helpPage = xmlHelper.getContentByXpath(_helpPage);
+				
+			} catch (XPathExpressionException e) {			
+				e.printStackTrace();
+			}	
+		}
+
+		public static String getName() {
+			return name;
+		}
+
+		public static String getAlias() {
+			return alias;
+		}
+
+		public static String getCategory() {
+			return category;
+		}
+
+		public static String getStsPublished() {
+			return stsPublished;
+		}
+
+		public static String getStsUnpublished() {
+			return stsUnpublished;
+		}
+
+		public static String getFeature() {
+			return feature;
+		}
+		
+		public static String getImageName() {
+			return imageName;
+		}
+		
+		public static String getHelpPageTitle() {
+			return helpPage;
+		}
+		
+		private static String name, alias, category, stsPublished, stsUnpublished, feature, imageName, helpPage;
+		private static final String _name = "//category/name";
+		private static final String _alias = "//category/alias";
+		private static final String _category = "//category/category";
+		private static final String _stsPublished = "//category//stsPublished";
+		private static final String _stsUnpublished = "//category//stsUnpublished";
+		private static final String _feature = "//category/feature";
+		private static final String _imageName = "//category/imageName";
+		private static final String _helpPage = "//category/helpPage";
+	}
 	private final static String filePath = "./resources/test.data.xml";
 }
