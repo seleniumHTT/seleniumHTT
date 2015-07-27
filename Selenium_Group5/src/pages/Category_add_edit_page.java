@@ -15,7 +15,7 @@ public class Category_add_edit_page extends AbstractPage {
 	}
 	
 	
-	public void enterData(String title, String alias, String parent, String status, String access, String categoryText) {
+	public void enterData(String title, String alias, String parent, String status, String access, String language, String categoryText) {
 		
 		//Enter data
 		if(title !=null && title != "") {			
@@ -34,6 +34,10 @@ public class Category_add_edit_page extends AbstractPage {
 		if(access != null && access != "") {
 			selectCombobox(cb_access, access);
 		}			
+		
+		if(language != null && language != "") {
+			selectCombobox(cb_language, language);
+		}
 		
 		if(categoryText != null && categoryText != "") {
 			//Switch editor to plain text mode
@@ -95,6 +99,9 @@ public class Category_add_edit_page extends AbstractPage {
 	
 	@FindBy(xpath="//select[@id='jform_featured']")
 	WebElement cb_feature;
+	
+	@FindBy(xpath="//select[@id='jform_language']")
+	WebElement cb_language;	
 	
 	@FindBy(xpath="//textarea[@id='jform_description']")
 	WebElement txt_categoryText;

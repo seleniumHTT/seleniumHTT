@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Article" parallel="none">
+<suite name="Article">
 	<listeners>
 	   <listener class-name="org.uncommons.reportng.HTMLReporter" />
 	   <listener class-name="org.uncommons.reportng.JUnitXMLReporter" />
 	</listeners>
 
-	<test name="TC_Article_001_Create">
-		<classes>
-		  <class name="testcases.article.TM_Article_001"/>
+	<test name="TM_Article">
+<!-- 		<classes> -->
+<!-- 		  <class name="testcases.article.TM_Article_001"/> -->
 <!-- 		  <class name="testcases.article.TM_Article_002"/> -->
-		</classes>
+<!-- 		</classes> -->
+		<packages>
+     		 <package name="testcases.article" />
+ 	  </packages>
 	</test> <!-- ArticleXML -->
 </suite> <!-- Article -->

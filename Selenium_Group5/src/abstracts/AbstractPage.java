@@ -56,33 +56,40 @@ public abstract class AbstractPage {
 	
 	
 	//Navigate between pages
-	public Article_manager_page clickArticleManagerMenu() {
-		selectMenu("Content/Article Manager").click();
+	public Article_manager_page clickArticleManagerMenu() {		
+		clickMenu(menuArticleManager);
 		return new Article_manager_page(driver);
 	}
 	
-	public Weblink_manager_page clickWeblinkManagerMenu() {
-		selectMenu("Components/Weblinks").click();
+	public Weblink_manager_page clickWeblinkManagerMenu() {		
+		clickMenu(menuWeblinkManager);
 		return new Weblink_manager_page(driver);
 	}
 	
-	public Contact_manager_page clickContactManagerMenu() {
-		selectMenu("Components/Contacts").click();
+	public Contact_manager_page clickContactManagerMenu() {		
+		clickMenu(menuContactManager);
 		return new Contact_manager_page(driver);
 	}
 	
 	public Banner_Client_manager_page clickBannerClientManagerMenu() {
-		selectMenu("Components/Banners/Clients").click();
+		clickMenu(menuBannerClientManager);
 		return new Banner_Client_manager_page(driver);
 	}
 	
-	public Category_manager_page clickCategoryManagerMenu() {
-		selectMenu("Content/Category Manager").click();
+	public Category_manager_page clickCategoryManagerMenu() {		
+		clickMenu(menuCategoryManager);
 		return new Category_manager_page(driver);
 	}
 	
+	public void clickMenu(String menu) {
+		while(driver.getTitle().contains(adminPageTitle)) {			
+			getSelectedMenu(menu).click();
+			sleep(config.getShortTime()*1000);
+		}
+	}
+	
 	//Select menu, split by '/'
-	public WebElement selectMenu(String menu) {
+	public WebElement getSelectedMenu(String menu) {
 		String menuXpath = "";
 		WebElement eMenu = null;
 		
@@ -195,4 +202,10 @@ public abstract class AbstractPage {
 	private String _cell = "//a[contains(text(), '%s')]/ancestor::tr/td[%s]";
 	private String _previousRows = "//a[contains(text(), '%s')]/ancestor::tr/preceding-sibling::*";
 	private String _systemMsg = ".//*[@id='system-message']//*[contains(text(),'%s')]";
+	private final String adminPageTitle = "Control Panel";
+	private final String menuContactManager = "Components/Contacts";
+	private final String menuWeblinkManager = "Components/Weblinks";
+	private final String menuBannerClientManager = "Components/Banners/Clients";
+	private final String menuCategoryManager = "Content/Category Manager";
+	private final String menuArticleManager = "Content/Article Manager";
 }

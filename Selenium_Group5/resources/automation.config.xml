@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <webconfig>	
-	<browser>firefox</browser>
+	<browser>chrome</browser>
 	<grid>NO</grid>
 	<timeWait>
-		<longTime>20</longTime>
+		<longTime>60</longTime>
 		<shortTime>5</shortTime>
 	</timeWait>
 	
 	<closeBrowser>YES</closeBrowser>
-	<maximizeBrowser>NO</maximizeBrowser>
+	<maximizeBrowser>YES</maximizeBrowser>
 
 </webconfig>
