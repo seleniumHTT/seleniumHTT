@@ -1,417 +1,359 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" total="8" passed="8">
+<testng-results skipped="0" failed="0" total="6" passed="6">
   <reporter-output>
     <line>
-      <![CDATA[---------Begin TC_JOOMLA_BANNERS_CLIENTS_001]]>
+      <![CDATA[---------Begin TC_JOOMLA_BANNERS_CLIENTS_010]]>
     </line>
     <line>
-      <![CDATA[VP1: Banner Client successfully saved message is displayed - PASSED]]>
+      <![CDATA[VP: Banner Client successfully saved message is displayed - PASSED]]>
     </line>
     <line>
-      <![CDATA[VP2: The created Banner Client is displayed - PASSED]]>
+      <![CDATA[VP: Check In icon is displayed - PASSED]]>
     </line>
     <line>
-      <![CDATA[---------End TC_JOOMLA_BANNERS_CLIENTS_001]]>
+      <![CDATA[VP: Check In icon is removed - PASSED]]>
     </line>
     <line>
-      <![CDATA[---------Begin TC_JOOMLA_BANNERS_CLIENTS_002]]>
+      <![CDATA[VP: Banner Client successfully checked in message is displayed - PASSED]]>
     </line>
     <line>
-      <![CDATA[VP1: Banner Client successfully saved message is displayed - PASSED]]>
+      <![CDATA[---------End TC_JOOMLA_BANNERS_CLIENTS_010]]>
     </line>
     <line>
-      <![CDATA[VP2: The created Banner Client is displayed - PASSED]]>
+      <![CDATA[---------Begin TC_JOOMLA_BANNERS_CLIENTS_012]]>
     </line>
     <line>
-      <![CDATA[---------End TC_JOOMLA_BANNERS_CLIENTS_002]]>
+      <![CDATA[VP: The Banner Client Help window is displayed - PASSED]]>
     </line>
     <line>
-      <![CDATA[---------Begin TC_JOOMLA_BANNERS_CLIENTS_003]]>
+      <![CDATA[---------End TC_JOOMLA_BANNERS_CLIENTS_012]]>
     </line>
     <line>
-      <![CDATA[VP1: Banner Client successfully punlished message is displayed - PASSED]]>
+      <![CDATA[---------Begin TC_JOOMLA_BANNERS_CLIENTS_014]]>
     </line>
     <line>
-      <![CDATA[VP2: The Banner Client is published successfully - PASSED]]>
+      <![CDATA[VP: Contact Name is highlighted in red - PASSED]]>
     </line>
     <line>
-      <![CDATA[---------End TC_JOOMLA_BANNERS_CLIENTS_003]]>
+      <![CDATA[---------End TC_JOOMLA_BANNERS_CLIENTS_014]]>
     </line>
     <line>
-      <![CDATA[---------Begin TC_JOOMLA_BANNERS_CLIENTS_004]]>
+      <![CDATA[---------Begin TC_JOOMLA_BANNERS_CLIENTS_015]]>
     </line>
     <line>
-      <![CDATA[VP1: Banner Client successfully unpunlished message is displayed - PASSED]]>
+      <![CDATA[VP: Contact Email is highlighted in red - PASSED]]>
     </line>
     <line>
-      <![CDATA[VP2: The Banner Client is unpublished successfully - PASSED]]>
+      <![CDATA[---------End TC_JOOMLA_BANNERS_CLIENTS_015]]>
     </line>
     <line>
-      <![CDATA[---------End TC_JOOMLA_BANNERS_CLIENTS_004]]>
+      <![CDATA[---------Begin TC_JOOMLA_BANNERS_CLIENTS_011]]>
     </line>
     <line>
-      <![CDATA[---------Begin TC_JOOMLA_BANNERS_CLIENTS_005]]>
+      <![CDATA[VP: First Banner Client successfully saved message is displayed - PASSED]]>
     </line>
     <line>
-      <![CDATA[VP1: Banner Client successfully archived message is displayed - PASSED]]>
+      <![CDATA[VP: New Client page is still opened - PASSED]]>
     </line>
     <line>
-      <![CDATA[VP2: The Banner Client is archived successfully - PASSED]]>
+      <![CDATA[VP: Second Banner Client successfully saved message is displayed - PASSED]]>
     </line>
     <line>
-      <![CDATA[---------End TC_JOOMLA_BANNERS_CLIENTS_005]]>
+      <![CDATA[VP: First Banner Client is created successfully - PASSED]]>
     </line>
     <line>
-      <![CDATA[---------Begin TC_JOOMLA_BANNERS_CLIENTS_006]]>
+      <![CDATA[VP: Second Banner Client is created successfully - PASSED]]>
     </line>
     <line>
-      <![CDATA[VP1: Banner Client successfully trashed message is displayed - PASSED]]>
+      <![CDATA[---------End TC_JOOMLA_BANNERS_CLIENTS_011]]>
     </line>
     <line>
-      <![CDATA[VP2: The Banner Client is trashed successfully - PASSED]]>
+      <![CDATA[---------Begin TC_JOOMLA_BANNERS_CLIENTS_013]]>
     </line>
     <line>
-      <![CDATA[---------End TC_JOOMLA_BANNERS_CLIENTS_006]]>
+      <![CDATA[VP: Banner Client successfully saved message is displayed - PASSED]]>
     </line>
     <line>
-      <![CDATA[---------Begin TC_JOOMLA_BANNERS_CLIENTS_008]]>
+      <![CDATA[VP: Edit Client page is opened - PASSED]]>
     </line>
     <line>
-      <![CDATA[VP2: The created Banner Client is displayed - PASSED]]>
+      <![CDATA[VP: Banner Client successfully saved message is displayed - PASSED]]>
     </line>
     <line>
-      <![CDATA[---------End TC_JOOMLA_BANNERS_CLIENTS_008]]>
+      <![CDATA[VP: First Banner Client is created successfully - PASSED]]>
     </line>
     <line>
-      <![CDATA[---------Begin TC_JOOMLA_BANNERS_CLIENTS_009]]>
+      <![CDATA[VP: Banner Client Copied is created successfully - PASSED]]>
     </line>
     <line>
-      <![CDATA[VP2: The created Banner Client is displayed - PASSED]]>
-    </line>
-    <line>
-      <![CDATA[---------End TC_JOOMLA_BANNERS_CLIENTS_009]]>
+      <![CDATA[---------End TC_JOOMLA_BANNERS_CLIENTS_013]]>
     </line>
   </reporter-output>
-  <suite name="Default suite" duration-ms="42459" started-at="2015-07-23T10:00:07Z" finished-at="2015-07-23T10:00:49Z">
+  <suite name="Default suite" duration-ms="125146" started-at="2015-07-28T15:27:12Z" finished-at="2015-07-28T15:29:18Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="42459" started-at="2015-07-23T10:00:07Z" finished-at="2015-07-23T10:00:49Z">
-      <class name="testcases.bannerClient.TM_BannerClient_001">
-        <test-method status="PASS" signature="beforeTest()[pri:0, instance:testcases.bannerClient.TM_BannerClient_001@2ac1fdc4]" name="beforeTest" is-config="true" duration-ms="6" started-at="2015-07-23T17:00:07Z" finished-at="2015-07-23T17:00:07Z">
+    <test name="Default test" duration-ms="125146" started-at="2015-07-28T15:27:12Z" finished-at="2015-07-28T15:29:18Z">
+      <class name="testcases.bannerClient.TM_BannerClient_002">
+        <test-method status="PASS" signature="beforeTest()[pri:0, instance:testcases.bannerClient.TM_BannerClient_002@cbc42f]" name="beforeTest" is-config="true" duration-ms="12" started-at="2015-07-28T22:27:12Z" finished-at="2015-07-28T22:27:12Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeTest -->
-        <test-method status="PASS" signature="beforeClass()[pri:0, instance:testcases.bannerClient.TM_BannerClient_001@2ac1fdc4]" name="beforeClass" is-config="true" duration-ms="9381" started-at="2015-07-23T17:00:07Z" finished-at="2015-07-23T17:00:16Z">
+        <test-method status="PASS" signature="beforeClass()[pri:0, instance:testcases.bannerClient.TM_BannerClient_002@cbc42f]" name="beforeClass" is-config="true" duration-ms="16115" started-at="2015-07-28T22:27:12Z" finished-at="2015-07-28T22:27:29Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeClass -->
-        <test-method status="PASS" signature="beforeTest(java.lang.reflect.Method)[pri:0, instance:testcases.bannerClient.TM_BannerClient_001@2ac1fdc4]" name="beforeTest" is-config="true" duration-ms="1" started-at="2015-07-23T17:00:16Z" finished-at="2015-07-23T17:00:16Z">
+        <test-method status="PASS" signature="beforeTest(java.lang.reflect.Method)[pri:0, instance:testcases.bannerClient.TM_BannerClient_002@cbc42f]" name="beforeTest" is-config="true" duration-ms="0" started-at="2015-07-28T22:27:29Z" finished-at="2015-07-28T22:27:29Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[public void testcases.bannerClient.TM_BannerClient_001.TC_JOOMLA_BANNERS_CLIENTS_001()]]>
+                <![CDATA[public void testcases.bannerClient.TM_BannerClient_002.TC_JOOMLA_BANNERS_CLIENTS_010()]]>
               </value>
             </param>
           </params>
           <reporter-output>
             <line>
-              <![CDATA[---------Begin TC_JOOMLA_BANNERS_CLIENTS_001]]>
+              <![CDATA[---------Begin TC_JOOMLA_BANNERS_CLIENTS_010]]>
             </line>
           </reporter-output>
         </test-method> <!-- beforeTest -->
-        <test-method status="PASS" signature="TC_JOOMLA_BANNERS_CLIENTS_001()[pri:0, instance:testcases.bannerClient.TM_BannerClient_001@2ac1fdc4]" name="TC_JOOMLA_BANNERS_CLIENTS_001" duration-ms="6386" started-at="2015-07-23T17:00:16Z" description="Verify that user can create a new client" finished-at="2015-07-23T17:00:23Z">
+        <test-method status="PASS" signature="TC_JOOMLA_BANNERS_CLIENTS_010()[pri:0, instance:testcases.bannerClient.TM_BannerClient_002@cbc42f]" name="TC_JOOMLA_BANNERS_CLIENTS_010" duration-ms="52264" started-at="2015-07-28T22:27:29Z" description="Verify that user can check in a client" finished-at="2015-07-28T22:28:21Z">
           <reporter-output>
             <line>
-              <![CDATA[VP1: Banner Client successfully saved message is displayed - PASSED]]>
+              <![CDATA[VP: Banner Client successfully saved message is displayed - PASSED]]>
             </line>
             <line>
-              <![CDATA[VP2: The created Banner Client is displayed - PASSED]]>
+              <![CDATA[VP: Check In icon is displayed - PASSED]]>
+            </line>
+            <line>
+              <![CDATA[VP: Check In icon is removed - PASSED]]>
+            </line>
+            <line>
+              <![CDATA[VP: Banner Client successfully checked in message is displayed - PASSED]]>
             </line>
           </reporter-output>
-        </test-method> <!-- TC_JOOMLA_BANNERS_CLIENTS_001 -->
-        <test-method status="PASS" signature="afterTest(java.lang.reflect.Method)[pri:0, instance:testcases.bannerClient.TM_BannerClient_001@2ac1fdc4]" name="afterTest" is-config="true" duration-ms="1" started-at="2015-07-23T17:00:23Z" finished-at="2015-07-23T17:00:23Z">
+        </test-method> <!-- TC_JOOMLA_BANNERS_CLIENTS_010 -->
+        <test-method status="PASS" signature="afterTest(java.lang.reflect.Method)[pri:0, instance:testcases.bannerClient.TM_BannerClient_002@cbc42f]" name="afterTest" is-config="true" duration-ms="1" started-at="2015-07-28T22:28:21Z" finished-at="2015-07-28T22:28:21Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[public void testcases.bannerClient.TM_BannerClient_001.TC_JOOMLA_BANNERS_CLIENTS_001()]]>
+                <![CDATA[public void testcases.bannerClient.TM_BannerClient_002.TC_JOOMLA_BANNERS_CLIENTS_010()]]>
               </value>
             </param>
           </params>
           <reporter-output>
             <line>
-              <![CDATA[---------End TC_JOOMLA_BANNERS_CLIENTS_001]]>
+              <![CDATA[---------End TC_JOOMLA_BANNERS_CLIENTS_010]]>
             </line>
           </reporter-output>
         </test-method> <!-- afterTest -->
-        <test-method status="PASS" signature="beforeTest(java.lang.reflect.Method)[pri:0, instance:testcases.bannerClient.TM_BannerClient_001@2ac1fdc4]" name="beforeTest" is-config="true" duration-ms="1" started-at="2015-07-23T17:00:23Z" finished-at="2015-07-23T17:00:23Z">
+        <test-method status="PASS" signature="beforeTest(java.lang.reflect.Method)[pri:0, instance:testcases.bannerClient.TM_BannerClient_002@cbc42f]" name="beforeTest" is-config="true" duration-ms="0" started-at="2015-07-28T22:28:21Z" finished-at="2015-07-28T22:28:21Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[public void testcases.bannerClient.TM_BannerClient_001.TC_JOOMLA_BANNERS_CLIENTS_002()]]>
+                <![CDATA[public void testcases.bannerClient.TM_BannerClient_002.TC_JOOMLA_BANNERS_CLIENTS_012()]]>
               </value>
             </param>
           </params>
           <reporter-output>
             <line>
-              <![CDATA[---------Begin TC_JOOMLA_BANNERS_CLIENTS_002]]>
+              <![CDATA[---------Begin TC_JOOMLA_BANNERS_CLIENTS_012]]>
             </line>
           </reporter-output>
         </test-method> <!-- beforeTest -->
-        <test-method status="PASS" signature="TC_JOOMLA_BANNERS_CLIENTS_002()[pri:0, instance:testcases.bannerClient.TM_BannerClient_001@2ac1fdc4]" name="TC_JOOMLA_BANNERS_CLIENTS_002" duration-ms="4416" started-at="2015-07-23T17:00:23Z" description="Verify that user can edit a client" finished-at="2015-07-23T17:00:27Z">
+        <test-method status="PASS" signature="TC_JOOMLA_BANNERS_CLIENTS_012()[pri:0, instance:testcases.bannerClient.TM_BannerClient_002@cbc42f]" name="TC_JOOMLA_BANNERS_CLIENTS_012" duration-ms="7238" started-at="2015-07-28T22:28:21Z" description="Verify that user can browse New Client Help page" depends-on-methods="testcases.bannerClient.TM_BannerClient_002.TC_JOOMLA_BANNERS_CLIENTS_010" finished-at="2015-07-28T22:28:28Z">
           <reporter-output>
             <line>
-              <![CDATA[VP1: Banner Client successfully saved message is displayed - PASSED]]>
-            </line>
-            <line>
-              <![CDATA[VP2: The created Banner Client is displayed - PASSED]]>
+              <![CDATA[VP: The Banner Client Help window is displayed - PASSED]]>
             </line>
           </reporter-output>
-        </test-method> <!-- TC_JOOMLA_BANNERS_CLIENTS_002 -->
-        <test-method status="PASS" signature="afterTest(java.lang.reflect.Method)[pri:0, instance:testcases.bannerClient.TM_BannerClient_001@2ac1fdc4]" name="afterTest" is-config="true" duration-ms="1" started-at="2015-07-23T17:00:27Z" finished-at="2015-07-23T17:00:27Z">
+        </test-method> <!-- TC_JOOMLA_BANNERS_CLIENTS_012 -->
+        <test-method status="PASS" signature="afterTest(java.lang.reflect.Method)[pri:0, instance:testcases.bannerClient.TM_BannerClient_002@cbc42f]" name="afterTest" is-config="true" duration-ms="1" started-at="2015-07-28T22:28:28Z" finished-at="2015-07-28T22:28:28Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[public void testcases.bannerClient.TM_BannerClient_001.TC_JOOMLA_BANNERS_CLIENTS_002()]]>
+                <![CDATA[public void testcases.bannerClient.TM_BannerClient_002.TC_JOOMLA_BANNERS_CLIENTS_012()]]>
               </value>
             </param>
           </params>
           <reporter-output>
             <line>
-              <![CDATA[---------End TC_JOOMLA_BANNERS_CLIENTS_002]]>
+              <![CDATA[---------End TC_JOOMLA_BANNERS_CLIENTS_012]]>
             </line>
           </reporter-output>
         </test-method> <!-- afterTest -->
-        <test-method status="PASS" signature="TC_JOOMLA_BANNERS_CLIENTS_003()[pri:0, instance:testcases.bannerClient.TM_BannerClient_001@2ac1fdc4]" name="TC_JOOMLA_BANNERS_CLIENTS_003" duration-ms="3131" started-at="2015-07-23T17:00:27Z" description="Verify that user can publish a client" finished-at="2015-07-23T17:00:30Z">
+        <test-method status="PASS" signature="TC_JOOMLA_BANNERS_CLIENTS_014()[pri:0, instance:testcases.bannerClient.TM_BannerClient_002@cbc42f]" name="TC_JOOMLA_BANNERS_CLIENTS_014" duration-ms="1768" started-at="2015-07-28T22:28:28Z" description="Verify that user cannot create a new client without entering the name of the client" depends-on-methods="testcases.bannerClient.TM_BannerClient_002.TC_JOOMLA_BANNERS_CLIENTS_012" finished-at="2015-07-28T22:28:30Z">
           <reporter-output>
             <line>
-              <![CDATA[VP1: Banner Client successfully punlished message is displayed - PASSED]]>
-            </line>
-            <line>
-              <![CDATA[VP2: The Banner Client is published successfully - PASSED]]>
+              <![CDATA[VP: Contact Name is highlighted in red - PASSED]]>
             </line>
           </reporter-output>
-        </test-method> <!-- TC_JOOMLA_BANNERS_CLIENTS_003 -->
-        <test-method status="PASS" signature="beforeTest(java.lang.reflect.Method)[pri:0, instance:testcases.bannerClient.TM_BannerClient_001@2ac1fdc4]" name="beforeTest" is-config="true" duration-ms="0" started-at="2015-07-23T17:00:27Z" finished-at="2015-07-23T17:00:27Z">
+        </test-method> <!-- TC_JOOMLA_BANNERS_CLIENTS_014 -->
+        <test-method status="PASS" signature="beforeTest(java.lang.reflect.Method)[pri:0, instance:testcases.bannerClient.TM_BannerClient_002@cbc42f]" name="beforeTest" is-config="true" duration-ms="0" started-at="2015-07-28T22:28:28Z" finished-at="2015-07-28T22:28:28Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[public void testcases.bannerClient.TM_BannerClient_001.TC_JOOMLA_BANNERS_CLIENTS_003()]]>
+                <![CDATA[public void testcases.bannerClient.TM_BannerClient_002.TC_JOOMLA_BANNERS_CLIENTS_014()]]>
               </value>
             </param>
           </params>
           <reporter-output>
             <line>
-              <![CDATA[---------Begin TC_JOOMLA_BANNERS_CLIENTS_003]]>
+              <![CDATA[---------Begin TC_JOOMLA_BANNERS_CLIENTS_014]]>
             </line>
           </reporter-output>
         </test-method> <!-- beforeTest -->
-        <test-method status="PASS" signature="TC_JOOMLA_BANNERS_CLIENTS_004()[pri:0, instance:testcases.bannerClient.TM_BannerClient_001@2ac1fdc4]" name="TC_JOOMLA_BANNERS_CLIENTS_004" duration-ms="3481" started-at="2015-07-23T17:00:30Z" description="Verify that user can unpublish a client" finished-at="2015-07-23T17:00:34Z">
-          <reporter-output>
-            <line>
-              <![CDATA[VP1: Banner Client successfully unpunlished message is displayed - PASSED]]>
-            </line>
-            <line>
-              <![CDATA[VP2: The Banner Client is unpublished successfully - PASSED]]>
-            </line>
-          </reporter-output>
-        </test-method> <!-- TC_JOOMLA_BANNERS_CLIENTS_004 -->
-        <test-method status="PASS" signature="beforeTest(java.lang.reflect.Method)[pri:0, instance:testcases.bannerClient.TM_BannerClient_001@2ac1fdc4]" name="beforeTest" is-config="true" duration-ms="0" started-at="2015-07-23T17:00:30Z" finished-at="2015-07-23T17:00:30Z">
+        <test-method status="PASS" signature="afterTest(java.lang.reflect.Method)[pri:0, instance:testcases.bannerClient.TM_BannerClient_002@cbc42f]" name="afterTest" is-config="true" duration-ms="0" started-at="2015-07-28T22:28:30Z" finished-at="2015-07-28T22:28:30Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[public void testcases.bannerClient.TM_BannerClient_001.TC_JOOMLA_BANNERS_CLIENTS_004()]]>
+                <![CDATA[public void testcases.bannerClient.TM_BannerClient_002.TC_JOOMLA_BANNERS_CLIENTS_014()]]>
               </value>
             </param>
           </params>
           <reporter-output>
             <line>
-              <![CDATA[---------Begin TC_JOOMLA_BANNERS_CLIENTS_004]]>
-            </line>
-          </reporter-output>
-        </test-method> <!-- beforeTest -->
-        <test-method status="PASS" signature="afterTest(java.lang.reflect.Method)[pri:0, instance:testcases.bannerClient.TM_BannerClient_001@2ac1fdc4]" name="afterTest" is-config="true" duration-ms="0" started-at="2015-07-23T17:00:30Z" finished-at="2015-07-23T17:00:30Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[public void testcases.bannerClient.TM_BannerClient_001.TC_JOOMLA_BANNERS_CLIENTS_003()]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-            <line>
-              <![CDATA[---------End TC_JOOMLA_BANNERS_CLIENTS_003]]>
+              <![CDATA[---------End TC_JOOMLA_BANNERS_CLIENTS_014]]>
             </line>
           </reporter-output>
         </test-method> <!-- afterTest -->
-        <test-method status="PASS" signature="afterTest(java.lang.reflect.Method)[pri:0, instance:testcases.bannerClient.TM_BannerClient_001@2ac1fdc4]" name="afterTest" is-config="true" duration-ms="0" started-at="2015-07-23T17:00:34Z" finished-at="2015-07-23T17:00:34Z">
+        <test-method status="PASS" signature="beforeTest(java.lang.reflect.Method)[pri:0, instance:testcases.bannerClient.TM_BannerClient_002@cbc42f]" name="beforeTest" is-config="true" duration-ms="0" started-at="2015-07-28T22:28:30Z" finished-at="2015-07-28T22:28:30Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[public void testcases.bannerClient.TM_BannerClient_001.TC_JOOMLA_BANNERS_CLIENTS_004()]]>
+                <![CDATA[public void testcases.bannerClient.TM_BannerClient_002.TC_JOOMLA_BANNERS_CLIENTS_015()]]>
               </value>
             </param>
           </params>
           <reporter-output>
             <line>
-              <![CDATA[---------End TC_JOOMLA_BANNERS_CLIENTS_004]]>
-            </line>
-          </reporter-output>
-        </test-method> <!-- afterTest -->
-        <test-method status="PASS" signature="beforeTest(java.lang.reflect.Method)[pri:0, instance:testcases.bannerClient.TM_BannerClient_001@2ac1fdc4]" name="beforeTest" is-config="true" duration-ms="0" started-at="2015-07-23T17:00:34Z" finished-at="2015-07-23T17:00:34Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[public void testcases.bannerClient.TM_BannerClient_001.TC_JOOMLA_BANNERS_CLIENTS_005()]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-            <line>
-              <![CDATA[---------Begin TC_JOOMLA_BANNERS_CLIENTS_005]]>
+              <![CDATA[---------Begin TC_JOOMLA_BANNERS_CLIENTS_015]]>
             </line>
           </reporter-output>
         </test-method> <!-- beforeTest -->
-        <test-method status="PASS" signature="TC_JOOMLA_BANNERS_CLIENTS_005()[pri:0, instance:testcases.bannerClient.TM_BannerClient_001@2ac1fdc4]" name="TC_JOOMLA_BANNERS_CLIENTS_005" duration-ms="3453" started-at="2015-07-23T17:00:34Z" description="Verify that user can archive a client" finished-at="2015-07-23T17:00:37Z">
+        <test-method status="PASS" signature="TC_JOOMLA_BANNERS_CLIENTS_015()[pri:0, instance:testcases.bannerClient.TM_BannerClient_002@cbc42f]" name="TC_JOOMLA_BANNERS_CLIENTS_015" duration-ms="6528" started-at="2015-07-28T22:28:30Z" description="Verify that user cannot create a new client without entering the email of the client" depends-on-methods="testcases.bannerClient.TM_BannerClient_002.TC_JOOMLA_BANNERS_CLIENTS_014" finished-at="2015-07-28T22:28:36Z">
           <reporter-output>
             <line>
-              <![CDATA[VP1: Banner Client successfully archived message is displayed - PASSED]]>
-            </line>
-            <line>
-              <![CDATA[VP2: The Banner Client is archived successfully - PASSED]]>
+              <![CDATA[VP: Contact Email is highlighted in red - PASSED]]>
             </line>
           </reporter-output>
-        </test-method> <!-- TC_JOOMLA_BANNERS_CLIENTS_005 -->
-        <test-method status="PASS" signature="afterTest(java.lang.reflect.Method)[pri:0, instance:testcases.bannerClient.TM_BannerClient_001@2ac1fdc4]" name="afterTest" is-config="true" duration-ms="0" started-at="2015-07-23T17:00:37Z" finished-at="2015-07-23T17:00:37Z">
+        </test-method> <!-- TC_JOOMLA_BANNERS_CLIENTS_015 -->
+        <test-method status="PASS" signature="afterTest(java.lang.reflect.Method)[pri:0, instance:testcases.bannerClient.TM_BannerClient_002@cbc42f]" name="afterTest" is-config="true" duration-ms="0" started-at="2015-07-28T22:28:36Z" finished-at="2015-07-28T22:28:36Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[public void testcases.bannerClient.TM_BannerClient_001.TC_JOOMLA_BANNERS_CLIENTS_005()]]>
+                <![CDATA[public void testcases.bannerClient.TM_BannerClient_002.TC_JOOMLA_BANNERS_CLIENTS_015()]]>
               </value>
             </param>
           </params>
           <reporter-output>
             <line>
-              <![CDATA[---------End TC_JOOMLA_BANNERS_CLIENTS_005]]>
+              <![CDATA[---------End TC_JOOMLA_BANNERS_CLIENTS_015]]>
             </line>
           </reporter-output>
         </test-method> <!-- afterTest -->
-        <test-method status="PASS" signature="beforeTest(java.lang.reflect.Method)[pri:0, instance:testcases.bannerClient.TM_BannerClient_001@2ac1fdc4]" name="beforeTest" is-config="true" duration-ms="1" started-at="2015-07-23T17:00:37Z" finished-at="2015-07-23T17:00:37Z">
+        <test-method status="PASS" signature="TC_JOOMLA_BANNERS_CLIENTS_011()[pri:0, instance:testcases.bannerClient.TM_BannerClient_002@cbc42f]" name="TC_JOOMLA_BANNERS_CLIENTS_011" duration-ms="18983" started-at="2015-07-28T22:28:36Z" description="Verify that user can create many clients by using &#039;Save &amp; New&#039; button" depends-on-methods="testcases.bannerClient.TM_BannerClient_002.TC_JOOMLA_BANNERS_CLIENTS_015" finished-at="2015-07-28T22:28:55Z">
+          <reporter-output>
+            <line>
+              <![CDATA[VP: First Banner Client successfully saved message is displayed - PASSED]]>
+            </line>
+            <line>
+              <![CDATA[VP: New Client page is still opened - PASSED]]>
+            </line>
+            <line>
+              <![CDATA[VP: Second Banner Client successfully saved message is displayed - PASSED]]>
+            </line>
+            <line>
+              <![CDATA[VP: First Banner Client is created successfully - PASSED]]>
+            </line>
+            <line>
+              <![CDATA[VP: Second Banner Client is created successfully - PASSED]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- TC_JOOMLA_BANNERS_CLIENTS_011 -->
+        <test-method status="PASS" signature="beforeTest(java.lang.reflect.Method)[pri:0, instance:testcases.bannerClient.TM_BannerClient_002@cbc42f]" name="beforeTest" is-config="true" duration-ms="0" started-at="2015-07-28T22:28:36Z" finished-at="2015-07-28T22:28:36Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[public void testcases.bannerClient.TM_BannerClient_001.TC_JOOMLA_BANNERS_CLIENTS_006()]]>
+                <![CDATA[public void testcases.bannerClient.TM_BannerClient_002.TC_JOOMLA_BANNERS_CLIENTS_011()]]>
               </value>
             </param>
           </params>
           <reporter-output>
             <line>
-              <![CDATA[---------Begin TC_JOOMLA_BANNERS_CLIENTS_006]]>
+              <![CDATA[---------Begin TC_JOOMLA_BANNERS_CLIENTS_011]]>
             </line>
           </reporter-output>
         </test-method> <!-- beforeTest -->
-        <test-method status="PASS" signature="TC_JOOMLA_BANNERS_CLIENTS_006()[pri:0, instance:testcases.bannerClient.TM_BannerClient_001@2ac1fdc4]" name="TC_JOOMLA_BANNERS_CLIENTS_006" duration-ms="3564" started-at="2015-07-23T17:00:37Z" description="Verify that user can send a client to trash" finished-at="2015-07-23T17:00:41Z">
-          <reporter-output>
-            <line>
-              <![CDATA[VP1: Banner Client successfully trashed message is displayed - PASSED]]>
-            </line>
-            <line>
-              <![CDATA[VP2: The Banner Client is trashed successfully - PASSED]]>
-            </line>
-          </reporter-output>
-        </test-method> <!-- TC_JOOMLA_BANNERS_CLIENTS_006 -->
-        <test-method status="PASS" signature="afterTest(java.lang.reflect.Method)[pri:0, instance:testcases.bannerClient.TM_BannerClient_001@2ac1fdc4]" name="afterTest" is-config="true" duration-ms="0" started-at="2015-07-23T17:00:41Z" finished-at="2015-07-23T17:00:41Z">
+        <test-method status="PASS" signature="afterTest(java.lang.reflect.Method)[pri:0, instance:testcases.bannerClient.TM_BannerClient_002@cbc42f]" name="afterTest" is-config="true" duration-ms="0" started-at="2015-07-28T22:28:55Z" finished-at="2015-07-28T22:28:55Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[public void testcases.bannerClient.TM_BannerClient_001.TC_JOOMLA_BANNERS_CLIENTS_006()]]>
+                <![CDATA[public void testcases.bannerClient.TM_BannerClient_002.TC_JOOMLA_BANNERS_CLIENTS_011()]]>
               </value>
             </param>
           </params>
           <reporter-output>
             <line>
-              <![CDATA[---------End TC_JOOMLA_BANNERS_CLIENTS_006]]>
+              <![CDATA[---------End TC_JOOMLA_BANNERS_CLIENTS_011]]>
             </line>
           </reporter-output>
         </test-method> <!-- afterTest -->
-        <test-method status="PASS" signature="TC_JOOMLA_BANNERS_CLIENTS_008()[pri:0, instance:testcases.bannerClient.TM_BannerClient_001@2ac1fdc4]" name="TC_JOOMLA_BANNERS_CLIENTS_008" duration-ms="3048" started-at="2015-07-23T17:00:41Z" description="Verify that user can search a client  by using filter textbox" finished-at="2015-07-23T17:00:44Z">
-          <reporter-output>
-            <line>
-              <![CDATA[VP2: The created Banner Client is displayed - PASSED]]>
-            </line>
-          </reporter-output>
-        </test-method> <!-- TC_JOOMLA_BANNERS_CLIENTS_008 -->
-        <test-method status="PASS" signature="beforeTest(java.lang.reflect.Method)[pri:0, instance:testcases.bannerClient.TM_BannerClient_001@2ac1fdc4]" name="beforeTest" is-config="true" duration-ms="0" started-at="2015-07-23T17:00:41Z" finished-at="2015-07-23T17:00:41Z">
+        <test-method status="PASS" signature="beforeTest(java.lang.reflect.Method)[pri:0, instance:testcases.bannerClient.TM_BannerClient_002@cbc42f]" name="beforeTest" is-config="true" duration-ms="0" started-at="2015-07-28T22:28:55Z" finished-at="2015-07-28T22:28:55Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[public void testcases.bannerClient.TM_BannerClient_001.TC_JOOMLA_BANNERS_CLIENTS_008()]]>
+                <![CDATA[public void testcases.bannerClient.TM_BannerClient_002.TC_JOOMLA_BANNERS_CLIENTS_013()]]>
               </value>
             </param>
           </params>
           <reporter-output>
             <line>
-              <![CDATA[---------Begin TC_JOOMLA_BANNERS_CLIENTS_008]]>
+              <![CDATA[---------Begin TC_JOOMLA_BANNERS_CLIENTS_013]]>
             </line>
           </reporter-output>
         </test-method> <!-- beforeTest -->
-        <test-method status="PASS" signature="afterTest(java.lang.reflect.Method)[pri:0, instance:testcases.bannerClient.TM_BannerClient_001@2ac1fdc4]" name="afterTest" is-config="true" duration-ms="4" started-at="2015-07-23T17:00:44Z" finished-at="2015-07-23T17:00:44Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[public void testcases.bannerClient.TM_BannerClient_001.TC_JOOMLA_BANNERS_CLIENTS_008()]]>
-              </value>
-            </param>
-          </params>
+        <test-method status="PASS" signature="TC_JOOMLA_BANNERS_CLIENTS_013()[pri:0, instance:testcases.bannerClient.TM_BannerClient_002@cbc42f]" name="TC_JOOMLA_BANNERS_CLIENTS_013" duration-ms="21872" started-at="2015-07-28T22:28:55Z" description="Verify that user can creat a new client by using &#039;Save as Copy&#039; button" depends-on-methods="testcases.bannerClient.TM_BannerClient_002.TC_JOOMLA_BANNERS_CLIENTS_011" finished-at="2015-07-28T22:29:17Z">
           <reporter-output>
             <line>
-              <![CDATA[---------End TC_JOOMLA_BANNERS_CLIENTS_008]]>
+              <![CDATA[VP: Banner Client successfully saved message is displayed - PASSED]]>
             </line>
-          </reporter-output>
-        </test-method> <!-- afterTest -->
-        <test-method status="PASS" signature="beforeTest(java.lang.reflect.Method)[pri:0, instance:testcases.bannerClient.TM_BannerClient_001@2ac1fdc4]" name="beforeTest" is-config="true" duration-ms="0" started-at="2015-07-23T17:00:44Z" finished-at="2015-07-23T17:00:44Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[public void testcases.bannerClient.TM_BannerClient_001.TC_JOOMLA_BANNERS_CLIENTS_009()]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
             <line>
-              <![CDATA[---------Begin TC_JOOMLA_BANNERS_CLIENTS_009]]>
+              <![CDATA[VP: Edit Client page is opened - PASSED]]>
             </line>
-          </reporter-output>
-        </test-method> <!-- beforeTest -->
-        <test-method status="PASS" signature="TC_JOOMLA_BANNERS_CLIENTS_009()[pri:0, instance:testcases.bannerClient.TM_BannerClient_001@2ac1fdc4]" name="TC_JOOMLA_BANNERS_CLIENTS_009" duration-ms="4102" started-at="2015-07-23T17:00:44Z" description="Verify that user can search a client by using filter dropdown list" finished-at="2015-07-23T17:00:48Z">
-          <reporter-output>
             <line>
-              <![CDATA[VP2: The created Banner Client is displayed - PASSED]]>
+              <![CDATA[VP: Banner Client successfully saved message is displayed - PASSED]]>
+            </line>
+            <line>
+              <![CDATA[VP: First Banner Client is created successfully - PASSED]]>
+            </line>
+            <line>
+              <![CDATA[VP: Banner Client Copied is created successfully - PASSED]]>
             </line>
           </reporter-output>
-        </test-method> <!-- TC_JOOMLA_BANNERS_CLIENTS_009 -->
-        <test-method status="PASS" signature="afterClass()[pri:0, instance:testcases.bannerClient.TM_BannerClient_001@2ac1fdc4]" name="afterClass" is-config="true" duration-ms="1453" started-at="2015-07-23T17:00:48Z" finished-at="2015-07-23T17:00:49Z">
+        </test-method> <!-- TC_JOOMLA_BANNERS_CLIENTS_013 -->
+        <test-method status="PASS" signature="afterClass()[pri:0, instance:testcases.bannerClient.TM_BannerClient_002@cbc42f]" name="afterClass" is-config="true" duration-ms="334" started-at="2015-07-28T22:29:17Z" finished-at="2015-07-28T22:29:18Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterClass -->
-        <test-method status="PASS" signature="afterTest(java.lang.reflect.Method)[pri:0, instance:testcases.bannerClient.TM_BannerClient_001@2ac1fdc4]" name="afterTest" is-config="true" duration-ms="0" started-at="2015-07-23T17:00:48Z" finished-at="2015-07-23T17:00:48Z">
+        <test-method status="PASS" signature="afterTest(java.lang.reflect.Method)[pri:0, instance:testcases.bannerClient.TM_BannerClient_002@cbc42f]" name="afterTest" is-config="true" duration-ms="0" started-at="2015-07-28T22:29:17Z" finished-at="2015-07-28T22:29:17Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[public void testcases.bannerClient.TM_BannerClient_001.TC_JOOMLA_BANNERS_CLIENTS_009()]]>
+                <![CDATA[public void testcases.bannerClient.TM_BannerClient_002.TC_JOOMLA_BANNERS_CLIENTS_013()]]>
               </value>
             </param>
           </params>
           <reporter-output>
             <line>
-              <![CDATA[---------End TC_JOOMLA_BANNERS_CLIENTS_009]]>
+              <![CDATA[---------End TC_JOOMLA_BANNERS_CLIENTS_013]]>
             </line>
           </reporter-output>
         </test-method> <!-- afterTest -->
-        <test-method status="PASS" signature="afterTest()[pri:0, instance:testcases.bannerClient.TM_BannerClient_001@2ac1fdc4]" name="afterTest" is-config="true" duration-ms="1" started-at="2015-07-23T17:00:49Z" finished-at="2015-07-23T17:00:49Z">
+        <test-method status="PASS" signature="afterTest()[pri:0, instance:testcases.bannerClient.TM_BannerClient_002@cbc42f]" name="afterTest" is-config="true" duration-ms="0" started-at="2015-07-28T22:29:18Z" finished-at="2015-07-28T22:29:18Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterTest -->
-      </class> <!-- testcases.bannerClient.TM_BannerClient_001 -->
+      </class> <!-- testcases.bannerClient.TM_BannerClient_002 -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

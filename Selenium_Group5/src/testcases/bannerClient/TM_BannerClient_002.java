@@ -120,7 +120,7 @@ public class TM_BannerClient_002 extends AbstractTest {
 		addBannerClientPage.enterData(clientName1, contactName1, contactEmail1, stsPublished);
 		addBannerClientPage.clickSaveNew();
 		
-		check = addBannerClientPage.isElementExist(AppData.BannerClient.msgSave);
+		check = addBannerClientPage.isMessageDisplay(AppData.BannerClient.msgSave);
 		verifyTrue(check, "VP: First Banner Client successfully saved message is displayed");
 		
 		check = addBannerClientPage.isNewClientPageOpening();

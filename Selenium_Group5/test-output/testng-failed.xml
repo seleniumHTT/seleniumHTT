@@ -3,18 +3,19 @@
 <suite name="Failed suite [Default suite]">
   <test name="Default test(failed)">
     <classes>
-      <class name="testcases.bannerClient.TM_BannerClient_001">
+      <class name="testcases.bannerClient.TM_BannerClient_002">
         <methods>
-          <include name="TC_JOOMLA_BANNERS_CLIENTS_009"/>
           <include name="beforeTest"/>
+          <include name="beforeTest"/>
+          <include name="TC_JOOMLA_BANNERS_CLIENTS_010"/>
+          <include name="TC_JOOMLA_BANNERS_CLIENTS_011"/>
+          <include name="afterTest"/>
           <include name="beforeClass"/>
           <include name="afterTest"/>
-          <include name="beforeTest"/>
-          <include name="afterTest"/>
-          <include name="TC_JOOMLA_BANNERS_CLIENTS_008"/>
+          <include name="TC_JOOMLA_BANNERS_CLIENTS_013"/>
           <include name="afterClass"/>
         </methods>
-      </class> <!-- testcases.bannerClient.TM_BannerClient_001 -->
+      </class> <!-- testcases.bannerClient.TM_BannerClient_002 -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
