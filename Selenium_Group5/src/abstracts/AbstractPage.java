@@ -61,7 +61,6 @@ public abstract class AbstractPage {
 	//Navigate between pages
 	public Article_manager_page clickArticleManagerMenu() {		
 		clickMenu(menuArticleManager);
-//		getSelectedMenu(menuArticleManager);
 		return new Article_manager_page(driver);
 	}
 	
@@ -86,10 +85,11 @@ public abstract class AbstractPage {
 	}
 	
 	public void clickMenu(String menu) {
-		while(driver.getTitle().contains(adminPageTitle)) {			
+		String currentUrl = driver.getCurrentUrl();
+		do {
 			getSelectedMenu(menu).click();
 			sleep(config.getShortTime()*1000);
-		}
+		} while (currentUrl == driver.getCurrentUrl());
 	}
 	
 	//Select menu, split by '/'
