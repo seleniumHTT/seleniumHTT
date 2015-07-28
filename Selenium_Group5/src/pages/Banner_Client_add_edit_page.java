@@ -1,6 +1,7 @@
 package pages;
 
 import abstracts.AbstractPage;
+import common.PageFactory;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -14,8 +15,8 @@ public class Banner_Client_add_edit_page extends AbstractPage{
 		this.driver = driver;
 	}
 	
+	//Form action
 	public void enterData(String clientName, String contactName, String contactEmail, String status){
-		
 		if(clientName != null && clientName!=""){
 			txt_clientName.clear();
 			txt_clientName.sendKeys(clientName);
@@ -35,29 +36,93 @@ public class Banner_Client_add_edit_page extends AbstractPage{
 			selectCombobox(cb_status, status);
 		}
 			
-	}
+	}	
 	
+	//Toolbar action
 	public Banner_Client_manager_page clickSaveClose(){
 		btn_saveClose.click();
 		return new Banner_Client_manager_page(driver);
 	}
+		
+	public Help_page clickHelpPage(){
+		PageFactory.setParentWindow(driver.getWindowHandle());
+		btn_help.click();
+		switchToNextWindow();
+		return new Help_page(driver);
+	}
 	
+	public Banner_Client_manager_page clickCancel(){
+		btn_cancel.click();
+		return new Banner_Client_manager_page(driver);
+	}
+	
+	public void clickSave(){
+		btn_save.click();
+	}
+	
+	public void clickSaveCopy(){
+		btn_saveCopy.click();
+	}
+	
+	public void clickSaveNew(){
+		btn_saveNew.click();
+	}
+	
+	public void refreshPage(){
+		driver.navigate().refresh();		
+	}
+	
+	//Verify action
+	public boolean isContactNameHighlighed(){
+		return isElementExist(_txt_contactNameInvalid);
+	}
+	
+	public boolean isContactEmailHighlighed(){
+		return isElementExist(_txt_contactEmailInvalid);
+	}	
+	
+	public boolean isNewClientPageOpening(){
+		return isElementExist(_txt_newClientTitle);
+	}
+	
+	public boolean isEditClientPageOpening(){
+		return isElementExist(_txt_editClientitle);
+	}
 	
 	//Editor		
 	@FindBy(xpath="//input[@id = 'jform_name']")
-	WebElement txt_clientName;
+	private WebElement txt_clientName;
 	
 	@FindBy(xpath="//input[@id='jform_contact']")
-	WebElement txt_contactName;
+	private WebElement txt_contactName;
 	
 	@FindBy(xpath="//input[@id='jform_email']")
-	WebElement txt_contactEmail;
+	private WebElement txt_contactEmail;
 	
 	@FindBy(xpath="//select[@id='jform_state']")
-	WebElement cb_status;
+	private WebElement cb_status;
 	
 	@FindBy(xpath="//li[@id='toolbar-save']/a")
-	WebElement btn_saveClose;
+	private WebElement btn_saveClose;
 	
+	@FindBy(xpath="//li[@id='toolbar-save-new']/a")
+	private WebElement btn_saveNew;
+	
+	@FindBy(xpath="//li[@id='toolbar-apply']/a")
+	private WebElement btn_save;
+	
+	@FindBy(xpath="//li[@id='toolbar-save-copy']/a")
+	private WebElement btn_saveCopy;
+	
+	@FindBy(xpath="//li[@id='toolbar-help']/a")
+	private WebElement btn_help;
+	
+	@FindBy(xpath="//li[@id='toolbar-cancel']/a")
+	private WebElement btn_cancel;
+	
+	private String _txt_contactNameInvalid = "//input[@id='jform_contact' and @aria-invalid='true']";
+	private String _txt_contactEmailInvalid = "//input[@id='jform_email' and @aria-invalid='true']";
+	private String _txt_newClientTitle = ".//*[@id='toolbar-box']/div/div[2]/h2[contains (text(),'Banner Manager: New Client')]";
+	private String _txt_editClientitle = ".//*[@id='toolbar-box']/div/div[2]/h2[contains (text(),'Banner Manager: Edit Client')]";
 	
 }

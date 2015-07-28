@@ -5,6 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 import abstracts.AbstractPage;
+import common.PageFactory;
 
 public class Banner_Client_manager_page extends AbstractPage{
 	WebDriver driver;
@@ -14,6 +15,7 @@ public class Banner_Client_manager_page extends AbstractPage{
 		this.driver = driver;
 	}
 	
+	//Action toolbar
 	public Banner_Client_add_edit_page clickNewBannerClient(){
 		btn_newBannerClient.click();
 		return new Banner_Client_add_edit_page(driver);
@@ -22,6 +24,13 @@ public class Banner_Client_manager_page extends AbstractPage{
 	public Banner_Client_add_edit_page clickEditBannerClient(){
 		btn_editBannerClient.click();
 		return new Banner_Client_add_edit_page(driver);
+	}
+	
+	public Help_page clickHelpBannerClient(){
+		PageFactory.setParentWindow(driver.getWindowHandle());
+		btn_helpBannerClient.click();
+		switchToNextWindow();
+		return new Help_page(driver);
 	}
 	
 	public void clickPublishBannerClient(){
@@ -40,12 +49,17 @@ public class Banner_Client_manager_page extends AbstractPage{
 		btn_trashBannerClient.click();		
 	}
 	
+	public void clickCheckInBannerClient(){
+		btn_checkInBannerClient.click();
+	}
+	
 	public void searchBannerClient(String bannerClientName){
 		txt_search.clear();
 		txt_search.sendKeys(bannerClientName);
 		btn_search.click();		
 	}
 	
+	//Handle table
 	public void clickClientCheckbox(String bannerClientName) {
 		String chbXpath = getCellXpath(bannerClientName, 1) + "/input";
 		getWebElement(chbXpath).click();
@@ -55,37 +69,51 @@ public class Banner_Client_manager_page extends AbstractPage{
 		selectCombobox(cb_filterStatus, status);		
 	}
 	
+	//Verify
 	public boolean isBannerClientExist(String bannerClientName){
 		return isElementExist("//a[contains(text(),'"+ bannerClientName + "')]");
 		
 	}
 	
-		
+	public boolean isArticleCheckedIn(String bannerClientName) {
+		String buttonXpath = getCellXpath(bannerClientName, 2) + _iconCheckedOut;
+		return !isElementExist(buttonXpath);
+	}
+			
 	//Editor
 	@FindBy(xpath="//li[@id='toolbar-new']/a")
-	WebElement btn_newBannerClient;
+	private WebElement btn_newBannerClient;
 	
 	@FindBy(xpath="//li[@id='toolbar-edit']/a")
-	WebElement btn_editBannerClient;
+	private WebElement btn_editBannerClient;
 	
 	@FindBy(xpath="//li[@id='toolbar-publish']/a")
-	WebElement btn_publishBannerClient;
+	private WebElement btn_publishBannerClient;
 	
 	@FindBy(xpath="//li[@id='toolbar-unpublish']/a")
-	WebElement btn_unpublishBannerClient;
+	private WebElement btn_unpublishBannerClient;
 	
 	@FindBy(xpath="//li[@id='toolbar-archive']/a")
-	WebElement btn_archiveBannerClient;
+	private WebElement btn_archiveBannerClient;
 	
 	@FindBy(xpath="//li[@id='toolbar-trash']/a")
-	WebElement btn_trashBannerClient;
+	private WebElement btn_trashBannerClient;
+	
+	@FindBy(xpath="//li[@id='toolbar-help']/a")
+	private WebElement btn_helpBannerClient;
+	
+	@FindBy(xpath="//li[@id='toolbar-checkin']/a")
+	private WebElement btn_checkInBannerClient;
 		
 	@FindBy(xpath="//input[@id='filter_search']")
-	WebElement txt_search;
+	private WebElement txt_search;
 	
 	@FindBy(xpath="//button[@type='submit']")
-	WebElement btn_search;
+	private WebElement btn_search;
 	
 	@FindBy(xpath="//select[@name='filter_state']")
-	WebElement cb_filterStatus;
+	private WebElement cb_filterStatus;
+	
+	private String _iconCheckedOut = "/a/span[@class='state checkedout']";
+	
 }
