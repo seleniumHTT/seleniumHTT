@@ -34,7 +34,10 @@ public abstract class AbstractPage {
 	
 	public int getRowNumber(String objectTitle) {
 		String previousRows = String.format(_previousRows, objectTitle);
-		return driver.findElements(By.xpath(previousRows)).size() + 1;
+		config.setImplicitlyWait(config.getShortTime());
+		int rows = driver.findElements(By.xpath(previousRows)).size() + 1;
+		config.setImplicitlyWait(config.getLongTime());
+		return rows;
 	}
 	
 	//Interact methods
@@ -58,6 +61,7 @@ public abstract class AbstractPage {
 	//Navigate between pages
 	public Article_manager_page clickArticleManagerMenu() {		
 		clickMenu(menuArticleManager);
+//		getSelectedMenu(menuArticleManager);
 		return new Article_manager_page(driver);
 	}
 	

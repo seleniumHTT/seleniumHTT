@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <webconfig>	
-	<browser>chrome</browser>
+	<browser>firefox</browser>
 	<grid>NO</grid>
 	<timeWait>
 		<longTime>60</longTime>
@@ -9,6 +9,6 @@
 	</timeWait>
 	
 	<closeBrowser>YES</closeBrowser>
-	<maximizeBrowser>YES</maximizeBrowser>
+	<maximizeBrowser>NO</maximizeBrowser>
 
 </webconfig>
