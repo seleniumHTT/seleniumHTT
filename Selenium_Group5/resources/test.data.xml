@@ -40,6 +40,22 @@
 		<helpPage>Joomla! Help</helpPage>
 	</weblink>
 	
+	<banner>
+		<name>Group 5 Banner </name>
+		<alias></alias>
+		<category>
+			<ctgCategory>- Sample Data-Banners</ctgCategory>
+			<ctgUncategory>- Sample Data-Banners</ctgUncategory>
+		</category>
+		<status>
+			<stsSelectStatus>- Select Status -</stsSelectStatus>
+			<stsPublished>Published</stsPublished>
+			<stsUnpublished>Unpublished</stsUnpublished>
+			<stsArchived>Archived</stsArchived>
+			<stsTrashed>Trashed</stsTrashed>
+		</status>			
+	</banner>
+	
 	<bannerclient>
 		<name>Group 5 BannerClient </name>
 		<contactname>Mr John</contactname>		

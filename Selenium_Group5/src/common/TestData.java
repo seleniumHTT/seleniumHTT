@@ -209,6 +209,80 @@ public class TestData {
 		private static String _url2 = "//weblink/urls/url[2]";
 	}
 	
+	public static class Banner {
+		public static void getDataTest() {
+			try {
+				XMLhelper xmlHelper = new XMLhelper(filePath);
+				name = xmlHelper.getContentByXpath(_name);
+				name = name + Random.getCurrentTime();
+				
+				alias = xmlHelper.getContentByXpath(_alias);
+				category = xmlHelper.getContentByXpath(_ctgCategory);
+				unCategory = xmlHelper.getContentByXpath(_ctgUncategory);
+				stsSelectStatus = xmlHelper.getContentByXpath(_stsSelectStatus);
+				stsPublished = xmlHelper.getContentByXpath(_stsPublished);
+				stsUnpublished = xmlHelper.getContentByXpath(_stsUnpublished);
+				stsArchived = xmlHelper.getContentByXpath(_stsArchived);
+				stsTrashed = xmlHelper.getContentByXpath(_stsTrashed);
+				helpPage = xmlHelper.getContentByXpath(_helpPage);
+			} catch (XPathExpressionException e) {			
+				e.printStackTrace();
+			}
+			
+		}
+		
+		public static String getName() {
+			return name;
+		}
+		
+		public static String getAlias() {
+			return alias;
+		}
+		
+		public static String getCategory() {
+			return category;
+		}
+		
+		public static String getUncategory() {
+			return unCategory;
+		}
+		
+		public static String getStsSelectStatus() {
+			return stsSelectStatus;
+		}
+		
+		public static String getStsPublished() {
+			return stsPublished;
+		}
+
+		public static String getStsUnpublished() {
+			return stsUnpublished;
+		}
+		
+		public static String getStsArchived() {
+			return stsArchived;
+		}
+		
+		public static String getStsTrashed() {
+			return stsTrashed;
+		}
+		
+		public static String getHelpPageTitle() {
+			return helpPage;
+		}
+		private static String name, alias, category, unCategory, stsSelectStatus, stsPublished, stsUnpublished, stsArchived, stsTrashed, helpPage;
+		private static final String _name = "//banner/name";
+		private static final String _alias = "//banner/alias";
+		private static final String _ctgCategory = "//banner/ctgCategory";
+		private static final String _ctgUncategory = "//banner/ctgUncategory";
+		private static final String _stsSelectStatus = "//banner//stsSelectStatus";
+		private static final String _stsPublished = "//banner//stsPublished";
+		private static final String _stsUnpublished = "//banner//stsUnpublished";
+		private static final String _stsArchived = "//banner//stsArchived";
+		private static final String _stsTrashed = "//banner//stsTrashed";
+		private static final String _helpPage = "//banner/helpPage";
+	}
+	
 	public static class BannerClient {
 		public static void getDataTest() {
 			try {

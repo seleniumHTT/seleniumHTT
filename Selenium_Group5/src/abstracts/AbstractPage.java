@@ -74,6 +74,11 @@ public abstract class AbstractPage {
 		return new Contact_manager_page(driver);
 	}
 	
+	public Banner_manager_page clickBannerManagerMenu() {
+		clickMenu(menuBannerManager);
+		return new Banner_manager_page(driver);
+	}
+	
 	public Banner_Client_manager_page clickBannerClientManagerMenu() {
 		clickMenu(menuBannerClientManager);
 		return new Banner_Client_manager_page(driver);
@@ -209,6 +214,7 @@ public abstract class AbstractPage {
 	private final String adminPageTitle = "Control Panel";
 	private final String menuContactManager = "Components/Contacts";
 	private final String menuWeblinkManager = "Components/Weblinks";
+	private final String menuBannerManager = "Components/Banners/Banners";
 	private final String menuBannerClientManager = "Components/Banners/Clients";
 	private final String menuCategoryManager = "Content/Category Manager";
 	private final String menuArticleManager = "Content/Article Manager";
