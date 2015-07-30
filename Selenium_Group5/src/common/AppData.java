@@ -66,6 +66,16 @@ public class AppData {
 		public static final String msgCheckedIn = "1 weblink successfully checked in";		
 	}
 	
+	public static class Banner {
+		public static final String msgSave = "Banner successfully saved";
+		public static final String msgPublish = "1 banner successfully published";
+		public static final String msgUnpublish = "1 banner successfully unpublished";
+		public static final String msgTrash = "1 banner successfully trashed";
+		public static final String msgArchive = "1 banner successfully archived";
+		public static final String msgCheckedIn = "1 banner successfully checked in";	
+	
+	}
+	
 	public static class BannerClient {
 		public static final String msgSave = "Client successfully saved";
 		public static final String msgPublish = "1 client successfully published";
