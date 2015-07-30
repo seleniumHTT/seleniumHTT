@@ -17,6 +17,12 @@ public class TM_Category_001 extends AbstractTest{
 	  nameEdit = name + " edited";
 	  parent = TestData.Category.getParent();
 	  stsPublished = TestData.Category.getStsPublished();
+	  stsUnpublished = TestData.Category.getStsUnpublished();
+	  accessReg = TestData.Category.getAccessRegistered();
+	  accessPub = TestData.Category.getAccessPublic();
+	  langUk = TestData.Category.getLanguageUK();
+	  langAll = TestData.Category.getLanguageAll();
+	  
 	  categoryText = name + " category text";
 	  helpPageTitle = TestData.Category.getHelpPageTitle();
 	  
@@ -31,7 +37,7 @@ public class TM_Category_001 extends AbstractTest{
 		 
 	  addCategoryPage = categoryManagerPage.clickNewCategory();
 	  
-	  addCategoryPage.enterData(name, alias, parent, stsPublished, access, categoryText);
+	  addCategoryPage.enterData(name, alias, parent, stsPublished, access, language, categoryText);
 	  categoryManagerPage = addCategoryPage.clickSaveClose();	  
 	  
 	  check = categoryManagerPage.isMessageDisplay(AppData.Category.msgSave);
@@ -75,14 +81,16 @@ public class TM_Category_001 extends AbstractTest{
   @Test(description= "User can search for categories using the filter dropdown lists", dependsOnMethods= "TC_JOOMLA_CATEGORY_MANAGER_001", priority=2)
   public void TC_JOOMLA_CATEGORY_MANAGER_010() {
 	  	  
-	  categoryManagerPage.filterStatus(stsPublished);
-	  categoryManagerPage.filterCategory(parent);
+	  categoryManagerPage.filterStatus(stsUnpublished);
+	  categoryManagerPage.filterAccess(accessReg);
+	  categoryManagerPage.filterLanguage(langUk);
 	  
 	  check = categoryManagerPage.isCategoryExist(name);
 	  verifyTrue(check, "VP: Created Category is displayed");	  
 	  
 	  categoryManagerPage.filterStatus("- Select Status -");
-	  categoryManagerPage.filterCategory("Select Category");
+	  categoryManagerPage.filterAccess("- Select Access -");
+	  categoryManagerPage.filterLanguage("- Select Languague -");
   }
   
   @Test(description= "Verify user can edit a category", dependsOnMethods= "TC_JOOMLA_CATEGORY_MANAGER_001", priority=2)
@@ -144,8 +152,8 @@ public class TM_Category_001 extends AbstractTest{
   }    
 
   
-  private String name, alias, parent, stsPublished, access, categoryText, helpPageTitle;
-  private String nameEdit;
+  private String name, alias, parent, stsPublished, language, access, categoryText, helpPageTitle;
+  private String nameEdit, stsUnpublished, accessReg, accessPub, langUk, langAll;
   private boolean check;
   private Category_manager_page categoryManagerPage;
   private Category_add_edit_page editCategoryPage, addCategoryPage;

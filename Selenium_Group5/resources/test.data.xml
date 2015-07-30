@@ -56,12 +56,19 @@
 	
 	<category>
 		<name>Group 5 category </name>
-			<alias></alias>
-			<parent>- No Parent -</parent>
-			<status>
-				<stsPublished>Published</stsPublished>
-				<stsUnpublished>Unpublished</stsUnpublished>
-			</status>
+		<alias></alias>
+		<parent>- No Parent -</parent>
+		<status>
+			<stsPublished>Published</stsPublished>
+			<stsUnpublished>Unpublished</stsUnpublished>			
+		</status>
+		<access>
+			<public>Public</public>
+			<registered>Registered</registered>
+		</access>
+		<language>
+			<all>All</all>
+			<UK>English (UK)</UK>
 		<imageName>powered_by.png</imageName>
 		<helpPage>Joomla! Help</helpPage>
 	</category>

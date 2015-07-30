@@ -289,7 +289,10 @@ public static class Category {
 				parent = xmlHelper.getContentByXpath(_parent);
 				stsPublished = xmlHelper.getContentByXpath(_stsPublished);
 				stsUnpublished = xmlHelper.getContentByXpath(_stsUnpublished);
-				feature = xmlHelper.getContentByXpath(_feature);
+				accessRegistered = xmlHelper.getContentByXpath(_accessRegistered);
+				accessPublic = xmlHelper.getContentByXpath(_accessPublic);
+				languageUK = xmlHelper.getContentByXpath(_languageUK);
+				languageAll = xmlHelper.getContentByXpath(_languageAll);
 				imageName = xmlHelper.getContentByXpath(_imageName);
 				helpPage = xmlHelper.getContentByXpath(_helpPage);
 				
@@ -317,11 +320,15 @@ public static class Category {
 		public static String getStsUnpublished() {
 			return stsUnpublished;
 		}
-
-		public static String getFeature() {
-			return feature;
+		
+		public static String getAccessRegistered() {
+			return accessRegistered;
 		}
 		
+		public static String getAccessPublic() {
+			return accessPublic;
+		}
+				
 		public static String getImageName() {
 			return imageName;
 		}
@@ -330,15 +337,28 @@ public static class Category {
 			return helpPage;
 		}
 		
-		private static String name, alias, parent, stsPublished, stsUnpublished, feature, imageName, helpPage;
-		private static final String _name = "//parent/name";
-		private static final String _alias = "//parent/alias";
-		private static final String _parent = "//parent/parent";
-		private static final String _stsPublished = "//parent//stsPublished";
-		private static final String _stsUnpublished = "//parent//stsUnpublished";
-		private static final String _feature = "//parent/feature";
-		private static final String _imageName = "//parent/imageName";
-		private static final String _helpPage = "//parent/helpPage";
+		public static String getLanguageUK() {
+			return languageUK;
+		}
+		
+		public static String getLanguageAll() {
+			return languageAll;
+		}
+		
+		private static String name, alias, parent, stsPublished, stsUnpublished, 
+			accessPublic, accessRegistered, imageName, helpPage, languageUK, languageAll;
+		private static final String _name = "//category/name";
+		private static final String _alias = "//category/alias";
+		private static final String _parent = "//category/parent";
+		private static final String _stsPublished = "//category//stsPublished";
+		private static final String _stsUnpublished = "//category//stsUnpublished";
+		private static final String _accessRegistered = "//category/registered";
+		private static final String _accessPublic = "//category/public";
+		private static final String _imageName = "//category/imageName";
+		private static final String _helpPage = "//category/helpPage";
+		private static final String _languageUK = "//category/language/UK";
+		private static final String _languageAll = "//category/language/all";
+		
 	}
 	private final static String filePath = "./resources/test.data.xml";
 }

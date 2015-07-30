@@ -130,11 +130,15 @@ public class Category_manager_page extends AbstractPage {
 	public void filterStatus(String status) {
 		selectCombobox(cb_filterStatus, status);		
 	}
-	
-	
-	public void filterCategory(String category) {
-		selectComboboxByXpath(_categoryValue, category);		
+		
+	public void filterAccess(String access) {
+		selectCombobox(cb_filterAccess, access);		
 	}
+	
+	public void filterLanguage(String language) {
+		selectCombobox(cb_filterLanguage, language);		
+	}
+	
 	public void clickOrderingColumn() {		
 		lnk_ordering.click();
 	}
@@ -182,6 +186,12 @@ public class Category_manager_page extends AbstractPage {
 	@FindBy(xpath="//select[@name='filter_published']")
 	private WebElement cb_filterStatus;
 	
+	@FindBy(xpath="//select[@name='filter_language']")
+	private WebElement cb_filterLanguage;
+	
+	@FindBy(xpath="//select[@name='filter_access']")
+	private WebElement cb_filterAccess;
+	
 	@FindBy(xpath="//a[text()='Ordering']")
 	private WebElement lnk_ordering;	
 		
@@ -190,8 +200,7 @@ public class Category_manager_page extends AbstractPage {
 	
 		
 	private String _iconCheckedOut = "/a/span[@class='state checkedout']";
-	private String _rowTable = "//table[@class='adminlist']/tbody/tr";
-	private String _categoryValue = "//select[@name='filter_category_id']/option[contains(text(), '%s')]";	
+	private String _rowTable = "//table[@class='adminlist']/tbody/tr";		
 	private String _iconMoveUp = "//a[@title='Move Up']";
 	private String _iconMoveDown = "//a[@title='Move Down']";
 }

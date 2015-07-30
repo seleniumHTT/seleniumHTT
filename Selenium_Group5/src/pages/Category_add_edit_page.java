@@ -23,6 +23,11 @@ public class Category_add_edit_page extends AbstractPage {
 			txt_title.sendKeys(title);
 		}
 		
+		if(alias !=null && alias != "") {			
+			txt_alias.clear();
+			txt_alias.sendKeys(alias);
+		}
+		
 		if(parent !=null && parent != "") {
 			selectComboboxByXpath(_categoryParent, parent);
 		}
