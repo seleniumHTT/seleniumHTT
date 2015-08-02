@@ -84,6 +84,11 @@ public abstract class AbstractPage {
 		return new Banner_Client_manager_page(driver);
 	}
 	
+	public Banner_Category_manager_page clickBannerCategoryManagerMenu() {
+		clickMenu(menuBannerCategoryManager);
+		return new Banner_Category_manager_page(driver);
+	}
+	
 	public Category_manager_page clickCategoryManagerMenu() {		
 		clickMenu(menuCategoryManager);
 		return new Category_manager_page(driver);
@@ -211,11 +216,12 @@ public abstract class AbstractPage {
 	private String _cell = "//a[contains(text(), '%s')]/ancestor::tr/td[%s]";
 	private String _previousRows = "//a[contains(text(), '%s')]/ancestor::tr/preceding-sibling::*";
 	private String _systemMsg = ".//*[@id='system-message']//*[contains(text(),'%s')]";
-	private final String adminPageTitle = "Control Panel";
+//	private final String adminPageTitle = "Control Panel";
 	private final String menuContactManager = "Components/Contacts";
 	private final String menuWeblinkManager = "Components/Weblinks";
 	private final String menuBannerManager = "Components/Banners/Banners";
 	private final String menuBannerClientManager = "Components/Banners/Clients";
+	private final String menuBannerCategoryManager = "Components/Banners/Categories";
 	private final String menuCategoryManager = "Content/Category Manager";
 	private final String menuArticleManager = "Content/Article Manager";
 }

@@ -66,13 +66,13 @@ public class TM_BannerClient_002 extends AbstractTest {
 		managerBannerClientPage = adminPage.clickBannerClientManagerMenu();
 		managerBannerClientPage.searchBannerClient(name);
 		
-		check = managerBannerClientPage.isArticleCheckedIn(name);
+		check = managerBannerClientPage.isBannerClientCheckedIn(name);
 		verifyFalse(check , "VP: Check In icon is displayed");
 				
 		managerBannerClientPage.clickClientCheckbox(name);
 		managerBannerClientPage.clickCheckInBannerClient();
 		
-		check = managerBannerClientPage.isArticleCheckedIn(name);
+		check = managerBannerClientPage.isBannerClientCheckedIn(name);
 		verifyTrue(check, "VP: Check In icon is removed");
 		
 		check = managerBannerClientPage.isMessageDisplay(AppData.BannerClient.msgCheckedIn);

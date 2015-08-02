@@ -14,105 +14,160 @@ public class TM_Category_002 extends AbstractTest{
 	  config.setup();
 	  TestData.Category.getDataTest();
 	  
-	  //new Category data
-	  name = TestData.Category.getName(); 
-	  name2 = name + " order";
-	  name3 = name + " image";
-	  nameEdit = name + " edited";
+	  name = TestData.Category.getName();
+	  name2 = "Another " + name;
+	  nameSaveAsNew = name + " New";
+	  name2SaveAsCopy = name2 + " Copy";
 	  parent = TestData.Category.getParent();
 	  stsPublished = TestData.Category.getStsPublished();
-	  imageName = TestData.Category.getImageName();	    
+	  stsUnpublished = TestData.Category.getStsUnpublished();
+	  accessReg = TestData.Category.getAccessRegistered();
+	  langUk = TestData.Category.getLanguageUK();
 	  categoryText = name + " category text";
+	  helpPageTitle = TestData.Category.getHelpPageTitle();
+	  defaultAccessLevel = "- Keep original Access Levels -";
+	  defaultLanguage = "- Keep original Language -";
+	  batchActionMove = "Move";
+	  batchActionCopy = "Copy";
 	  
 	  Login_page loginPage = PageFactory.getLoginPage();
 	  adminPage = loginPage.login(AppData.getUsername(), AppData.getPassword());
   }
    
-  @Test(description= "Verify user can change the status of category using the Status column", dependsOnMethods= "TC_JOOMLA_CATEGORY_MANAGER_006", priority=1)
-  public void TC_JOOMLA_CATEGORY_MANAGER_014() {
+  @Test(description= "Verify that user can browse 'New Category help' page", priority=1)
+  public void TC_JOOMLA_CATEGORY_MANAGER_011() {
 	  
-	  categoryManagerPage.clickChangeStatus(name2);
+	  managerCategoryPage = adminPage.clickCategoryManagerMenu();
 	  
-	  check = categoryManagerPage.isCategoryPublished(name2, "Unpublished");
-	  verifyTrue(check, "VP: The icon of the selected item is showed as 'Unpublished'");
+	  addCategoryPage = managerCategoryPage.clickNewCategory();
+	  helpPage = addCategoryPage.clickHelpPage();
 	  
-	  check = categoryManagerPage.isMessageDisplay(AppData.Category.msgUnpublish);
-	  verifyTrue(check, "VP: The '1 category successfully unpublished' message is displayed");
+	  check = helpPage.isHelpWindowDisplays(helpPageTitle);
+	  verifyTrue(check, "VP: The Category's Help window is displayed");
 	  
-	  categoryManagerPage.clickChangeStatus(name2);	  
-	  check = categoryManagerPage.isCategoryPublished(name2, "Published");
-	  verifyTrue(check, "VP: The icon of the selected item is showed as 'Published'");	  
-	  
-	  check = categoryManagerPage.isMessageDisplay(AppData.Category.msgPublish);
-	  verifyTrue(check, "VP: The '1 category successfully published' message is displayed");
+	  helpPage.closeBackToParentPage();
   }
   
-  @Test(description= "Verify user can add image to category's information", dependsOnMethods= "TC_JOOMLA_CATEGORY_MANAGER_006")
-  public void TC_JOOMLA_CATEGORY_MANAGER_013() {  
+  @Test(description="Verify that user can cancel adding action while adding a new create", dependsOnMethods="TC_JOOMLA_CATEGORY_MANAGER_011", priority=1)
+  public void TC_JOOMLA_CATEGORY_MANAGER_012(){
 	  
-	  Category_add_edit_page addCategoryPage = categoryManagerPage.clickNewCategory();	  
-	  addCategoryPage.enterData(name3, alias, parent, stsPublished, access, categoryText);
+	  addCategoryPage.enterData(name, alias, parent, stsPublished, accessReg, langUk, categoryText);
+	  managerCategoryPage = addCategoryPage.clickCancel();
 	  
-	  addCategoryPage.insertImage(imageName);	  
+	  managerCategoryPage.searchCategory(name);
 	  
-	  categoryManagerPage = addCategoryPage.clickSaveClose();
+	  check = managerCategoryPage.isCategoryExist(name);
+	  verifyFalse(check, "The new Category is not created");
 	  
-	  check = categoryManagerPage.isMessageDisplay(AppData.Category.msgSave);
+  }
+  
+  @Test(description="Verify that user can create many categories by using 'Save & New' button", dependsOnMethods="TC_JOOMLA_CATEGORY_MANAGER_012", priority=1)
+  public void TC_JOOMLA_CATEGORY_MANAGER_010(){
+	  
+	  addCategoryPage = managerCategoryPage.clickNewCategory();
+	  
+	  addCategoryPage.enterData(name, alias, parent, stsPublished, accessReg, langUk, categoryText);
+	  addCategoryPage.clickSaveNew();
+	  
+	  check = addCategoryPage.isMessageDisplay(AppData.Category.msgSave);
 	  verifyTrue(check, "VP: Category successfully saved message is displayed");
 	  
-	  categoryManagerPage.searchCategory(name);
+	  addCategoryPage.enterData(nameSaveAsNew, alias, parent, stsPublished, accessReg, langUk, categoryText);
+	  managerCategoryPage = addCategoryPage.clickSaveClose();
 	  
-	  check = categoryManagerPage.isCategoryExist(name3);
-	  verifyTrue(check, "VP: Created category is displayed");   
-  }  
-  
-  @Test(description= "Verify user can sort the category table by ID column", dependsOnMethods= "TC_JOOMLA_CATEGORY_MANAGER_013")
-  public void TC_JOOMLA_CATEGORY_MANAGER_011() { 	  
-	  	  
-	  categoryManagerPage.searchCategory(name);	  
-	 
-	  categoryManagerPage.clickIdColumn();
-	  check = categoryManagerPage.isIdSortedCorrect("asc");
-	  verifyTrue(check, "VP: The categorys is sorted by ID in ascending order");
+	  check = managerCategoryPage.isMessageDisplay(AppData.Category.msgSave);
+	  verifyTrue(check, "VP: Category successfully saved message is displayed");
 	  
-	  categoryManagerPage.clickIdColumn();
-	  check = categoryManagerPage.isIdSortedCorrect("dec");
-	  verifyTrue(check, "VP: The categorys is sorted by ID in descending order");
+	  managerCategoryPage.filterStatus("- Select Status -");
+	  managerCategoryPage.filterAccess("- Select Access -");
+	  managerCategoryPage.filterLanguage("- Select Language -");
+	  
+	  managerCategoryPage.searchCategory(name);
+	  
+	  check = managerCategoryPage.isCategoryExist(name);
+	  verifyTrue(check, "VP: The first Category is created");
+	  
+	  managerCategoryPage.searchCategory(name);
+	  
+	  check = managerCategoryPage.isCategoryExist(name);
+	  verifyTrue(check, "VP: The first Category is created");
   }
   
-  @Test(description= "Verify user can change the order of categorys using the Ordering column", dependsOnMethods= "TC_JOOMLA_CATEGORY_MANAGER_006")
-  public void TC_JOOMLA_CATEGORY_MANAGER_015() {	  
-	  categoryManagerPage.searchCategory(name);
-	  	  
-	  categoryManagerPage.clickOrderingColumn();	  
-	 
-	  int row1 = categoryManagerPage.getRowNumber(name3);
-	  int row2 = categoryManagerPage.getRowNumber(name2);	  
-	  categoryManagerPage.clickArrowOrdering(name3, "down");	  
+  @Test(description="Verify that user can creat a new category by using 'Save as Copy' button", dependsOnMethods="TC_JOOMLA_CATEGORY_MANAGER_010", priority=1)
+  public void TC_JOOMLA_CATEGORY_MANAGER_013(){
 	  
-	  check = categoryManagerPage.isCategoryLocateAt(name3, row2);
-	  verifyTrue(check, "VP: Verify the first weblink changes its position with the second weblink");
-	  check = categoryManagerPage.isCategoryLocateAt(name2, row1);
-	  verifyTrue(check, "VP: Verify the second weblink changes its position with the first weblink");
-  } 
+	  addCategoryPage = managerCategoryPage.clickNewCategory();
+	  
+	  addCategoryPage.enterData(name2, alias, parent, stsPublished, accessReg, langUk, categoryText);
+	  editCategoryPage = addCategoryPage.clickSave();
+	  
+	  check = editCategoryPage.isMessageDisplay(AppData.Category.msgSave);
+	  verifyTrue(check, "VP: Category successfully saved message is displayed");
+	  
+	  check = editCategoryPage.isEditClientPageOpening();
+	  verifyTrue(check, "VP: Edit Category page is openning");
+	  
+	  editCategoryPage.enterData(name2SaveAsCopy, alias, parent, stsPublished, accessReg, langUk, categoryText);
+	  managerCategoryPage = editCategoryPage.clickSaveCopy();
+	  
+	  check = managerCategoryPage.isMessageDisplay(AppData.Category.msgSave);
+	  verifyTrue(check, "VP: Category successfully saved message is displayed");
+	  
+	  managerCategoryPage.filterStatus("- Select Status -");
+	  managerCategoryPage.filterAccess("- Select Access -");
+	  managerCategoryPage.filterLanguage("- Select Language -");
+	  
+	  managerCategoryPage.searchCategory(name2);
+	  
+	  check = managerCategoryPage.isCategoryExist(name2);
+	  verifyTrue(check, "VP: The first Category is created");
+	  
+	  managerCategoryPage.searchCategory(name2SaveAsCopy);
+	  
+	  check = managerCategoryPage.isCategoryExist(name2SaveAsCopy);
+	  verifyTrue(check, "VP: The first Category is created");
+	  
+  }
   
-  @Test(description= "Verify user can move a category to trash section", dependsOnMethods= "TC_JOOMLA_CATEGORY_MANAGER_015")
-  public void TC_JOOMLA_CATEGORY_MANAGER_007() {	  
+  @Test(description="Verify that user can move may articles to another category", dependsOnMethods="TC_JOOMLA_CATEGORY_MANAGER_013", priority=1)
+  public void TC_JOOMLA_CATEGORY_MANAGER_014() {
 	  
-	  categoryManagerPage.clickCategoryCheckbox(name3);
-	  categoryManagerPage = categoryManagerPage.clickTrashCategory();	  
+	  managerCategoryPage.searchCategory(nameSaveAsNew);
+	  managerCategoryPage.clickCategoryCheckbox(nameSaveAsNew);
+	  managerCategoryPage.batchProcess(defaultAccessLevel, defaultLanguage, name, batchActionMove);
+	  managerCategoryPage.clickProcess();
 	  
-	  check = categoryManagerPage.isMessageDisplay(AppData.Category.msgTrash);
-	  verifyTrue(check, "The '1 category trashed' message is displayed");
+	  check = managerCategoryPage.isMessageDisplay(AppData.Category.msgBatch);
+	  verifyTrue(check, "VP: Batch Process completed message displayed");
 	  
-	  categoryManagerPage.filterStatus("Trashed");
+	  managerCategoryPage.clickCategoryCheckbox(nameSaveAsNew);
+	  editCategoryPage = managerCategoryPage.clickEditCategory();
 	  
-	  categoryManagerPage.searchCategory(name);
-	  	  
-	  check = categoryManagerPage.isCategoryExist(name3);
-	  verifyTrue(check, "VP: The deleted category is displayed on the table grid");
-  } 
+	  check = editCategoryPage.isCategoryDataCorrect(nameSaveAsNew, alias, name, stsPublished, accessReg, langUk, categoryText);
+	  verifyTrue(check, "VP: Category Artical is moved successfully");
+	  
+	  managerCategoryPage = addCategoryPage.clickCancel();
+  }
   
+  @Test(description="Verify that user can copy may articles to another category", dependsOnMethods="TC_JOOMLA_CATEGORY_MANAGER_014", priority=1)
+  public void TC_JOOMLA_CATEGORY_MANAGER_015(){
+	  
+	  managerCategoryPage.searchCategory(name2SaveAsCopy);
+	  managerCategoryPage.clickCategoryCheckbox(name2SaveAsCopy);
+	  managerCategoryPage.batchProcess(defaultAccessLevel, defaultLanguage, name2, batchActionCopy);
+	  managerCategoryPage.clickProcess();
+	  
+	  check = managerCategoryPage.isMessageDisplay(AppData.Category.msgBatch);
+	  verifyTrue(check, "VP: Batch Process completed message displayed");
+	  
+	  managerCategoryPage.clickCategoryCheckbox(name2SaveAsCopy);
+	  editCategoryPage = managerCategoryPage.clickEditCategory();
+	  
+	  check = editCategoryPage.isCategoryDataCorrect(name2SaveAsCopy, alias, name2, stsPublished, accessReg, langUk, categoryText);
+	  verifyTrue(check, "VP: Category Artical is moved successfully");
+  }
+   
+    
   @AfterClass
   public void afterClass() {
 	  config.tearDown();
@@ -126,11 +181,13 @@ public class TM_Category_002 extends AbstractTest{
   public void afterTest() {
   }
   
-  String name, alias, parent, stsPublished, access, feature, categoryText, imageName, name2, name3; 
-  String nameEdit;
+  String name, name2, nameSaveAsNew, name2SaveAsCopy, alias, parent, stsPublished, stsUnpublished, accessReg, categoryText, langUk;
+  String defaultAccessLevel, defaultLanguage, batchActionMove, batchActionCopy; 
+  String helpPageTitle;
   boolean check;
-  Category_manager_page categoryManagerPage;
+  Category_manager_page managerCategoryPage;
   Category_add_edit_page editCategoryPage, addCategoryPage;
+  Help_page helpPage;
   Admin_page adminPage;
   Login_page loginPage;
 }

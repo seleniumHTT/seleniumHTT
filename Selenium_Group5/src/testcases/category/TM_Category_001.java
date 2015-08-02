@@ -19,10 +19,8 @@ public class TM_Category_001 extends AbstractTest{
 	  stsPublished = TestData.Category.getStsPublished();
 	  stsUnpublished = TestData.Category.getStsUnpublished();
 	  accessReg = TestData.Category.getAccessRegistered();
-	  accessPub = TestData.Category.getAccessPublic();
 	  langUk = TestData.Category.getLanguageUK();
-	  langAll = TestData.Category.getLanguageAll();
-	  
+	  	  
 	  categoryText = name + " category text";
 	  helpPageTitle = TestData.Category.getHelpPageTitle();
 	  
@@ -30,132 +28,153 @@ public class TM_Category_001 extends AbstractTest{
 	  adminPage = loginPage.login(AppData.getUsername(), AppData.getPassword());
   }
   
-  @Test(description= "Verify user can create an Category", priority=1)
+  @Test(description= "Verify that user can browse 'Category help' page", priority=1)
+  public void TC_JOOMLA_CATEGORY_MANAGER_007() {	  
+	  
+	  managerCategoryPage = adminPage.clickCategoryManagerMenu();
+	  
+	  Help_page helpPage = managerCategoryPage.clickHelpToolbar();
+	  
+	  check = helpPage.isHelpWindowDisplays(helpPageTitle);
+	  verifyTrue(check, "VP: The Category's Help window is displayed");	  
+	  
+	  helpPage.closeBackToParentPage();
+  } 
+ 
+  @Test(description= "Verify that user can create a new category", dependsOnMethods= "TC_JOOMLA_CATEGORY_MANAGER_007", priority=1)
   public void TC_JOOMLA_CATEGORY_MANAGER_001() {	 	  
 	 
-	  categoryManagerPage = adminPage.clickCategoryManagerMenu();
-		 
-	  addCategoryPage = categoryManagerPage.clickNewCategory();
+	  addCategoryPage = managerCategoryPage.clickNewCategory();
 	  
 	  addCategoryPage.enterData(name, alias, parent, stsPublished, access, language, categoryText);
-	  categoryManagerPage = addCategoryPage.clickSaveClose();	  
+	  managerCategoryPage = addCategoryPage.clickSaveClose();	  
 	  
-	  check = categoryManagerPage.isMessageDisplay(AppData.Category.msgSave);
+	  check = managerCategoryPage.isMessageDisplay(AppData.Category.msgSave);
 	  verifyTrue(check, "VP: Category successfully saved message is displayed");	  
 	  
-	  categoryManagerPage.searchCategory(name);
+	  managerCategoryPage.searchCategory(name);
 	  	  
-	  check = categoryManagerPage.isCategoryExist(name);
+	  check = managerCategoryPage.isCategoryExist(name);
 	  verifyTrue(check, "VP: Created Category is displayed");	  
-  }
-  
-  @Test(description= "User can access category's help section", dependsOnMethods= "TC_JOOMLA_CATEGORY_MANAGER_001")
-  public void TC_JOOMLA_CATEGORY_MANAGER_008() {	  
-		 
-	  Help_page helpPage = categoryManagerPage.clickHelpToolbar();
-	  check = helpPage.isHelpWindowDisplays(helpPageTitle);
-	  verifyTrue(check, "VP: The category's help window is displayed");	  
-	  helpPage.closeBackToParentPage();
-  }  
+  } 
   
   @Test(description= "Verify user can search for categorys using the filter text field", dependsOnMethods= "TC_JOOMLA_CATEGORY_MANAGER_001", priority=1)
-  public void TC_JOOMLA_CATEGORY_MANAGER_009() {	  	  
+  public void TC_JOOMLA_CATEGORY_MANAGER_008() {	  	  
 	  
-	  categoryManagerPage.searchCategory(name);
+	  managerCategoryPage.searchCategory(name);
 	  	  
-	  check = categoryManagerPage.isCategoryExist(name);
+	  check = managerCategoryPage.isCategoryExist(name);
 	  verifyTrue(check, "VP: Created Category is displayed");	  
 	  
   }  
 
-  @Test(description= "Verify user can create a new category with 'Public' Access Level property", dependsOnMethods= "TC_JOOMLA_CATEGORY_MANAGER_001", priority=1)
-  public void TC_JOOMLA_CATEGORY_MANAGER_017() {	  	  
+  @Test(description= "Verify that user can edit a category", dependsOnMethods= "TC_JOOMLA_CATEGORY_MANAGER_008", priority=1)
+  public void TC_JOOMLA_CATEGORY_MANAGER_002() {
 	  
-	  categoryManagerPage.searchCategory(name);
+	  managerCategoryPage.clickCategoryCheckbox(name);
+	  editCategoryPage = managerCategoryPage.clickEditCategory();	    
 	  
-	  check = categoryManagerPage.isCategoryPublic(name, "Public");
-	  verifyTrue(check, "VP: The Access Level of the category is displayed as 'Public'");	  
+	  editCategoryPage.enterData(nameEdit, alias, parent, stsUnpublished, accessReg, langUk, categoryText);
+	  managerCategoryPage = editCategoryPage.clickSaveClose();
+	  	  
+	  check = managerCategoryPage.isMessageDisplay(AppData.Category.msgSave);
+	  verifyTrue(check, "VP: Category successfully saved message is displayed");	  
+	  
+	  managerCategoryPage.searchCategory(nameEdit);
+	  	  
+	  check = managerCategoryPage.isCategoryExist(nameEdit);
+	  verifyTrue(check, "VP: Edited Category is displayed");	  
 	  
   }  
   
-  @Test(description= "User can search for categories using the filter dropdown lists", dependsOnMethods= "TC_JOOMLA_CATEGORY_MANAGER_001", priority=2)
-  public void TC_JOOMLA_CATEGORY_MANAGER_010() {
+  @Test(description= "User can search for categories using the filter dropdown lists", dependsOnMethods= "TC_JOOMLA_CATEGORY_MANAGER_002", priority=2)
+  public void TC_JOOMLA_CATEGORY_MANAGER_009() {
 	  	  
-	  categoryManagerPage.filterStatus(stsUnpublished);
-	  categoryManagerPage.filterAccess(accessReg);
-	  categoryManagerPage.filterLanguage(langUk);
+	  managerCategoryPage.filterStatus(stsUnpublished);
+	  managerCategoryPage.filterAccess(accessReg);
+	  managerCategoryPage.filterLanguage(langUk);
 	  
-	  check = categoryManagerPage.isCategoryExist(name);
+	  check = managerCategoryPage.isCategoryExist(nameEdit);
 	  verifyTrue(check, "VP: Created Category is displayed");	  
 	  
-	  categoryManagerPage.filterStatus("- Select Status -");
-	  categoryManagerPage.filterAccess("- Select Access -");
-	  categoryManagerPage.filterLanguage("- Select Languague -");
+	  managerCategoryPage.filterStatus("- Select Status -");
+	  managerCategoryPage.filterAccess("- Select Access -");
+	  managerCategoryPage.filterLanguage("- Select Language -");
   }
   
-  @Test(description= "Verify user can edit a category", dependsOnMethods= "TC_JOOMLA_CATEGORY_MANAGER_001", priority=2)
-  public void TC_JOOMLA_CATEGORY_MANAGER_002() {
-	  
-	  categoryManagerPage.clickCategoryCheckbox(name);
-	  editCategoryPage = categoryManagerPage.clickEditCategory();	    
-	  
-	  editCategoryPage.enterData(nameEdit, alias, parent, stsPublished, access, categoryText);
-	  categoryManagerPage = editCategoryPage.clickSaveClose();
+  @Test(description= "Verify user can publish an unpublished category", dependsOnMethods="TC_JOOMLA_CATEGORY_MANAGER_009", priority=1)
+  public void TC_JOOMLA_CATEGORY_MANAGER_003() {
 	  	  
-	  check = categoryManagerPage.isMessageDisplay(AppData.Category.msgSave);
-	  verifyTrue(check, "VP: Category successfully saved message is displayed");	  
-	  
-	  categoryManagerPage.searchCategory(nameEdit);
+	  managerCategoryPage.searchCategory(nameEdit);
+	  managerCategoryPage.clickCategoryCheckbox(nameEdit);
+	  managerCategoryPage.clickChangeStatusToolbar("Publish");	  
 	  	  
-	  check = categoryManagerPage.isCategoryExist(nameEdit);
-	  verifyTrue(check, "VP: Edited category is displayed");	  
-	  
-  }
-  
-  @Test(description= "Verify user can publish an unpublished category", dependsOnMethods= "TC_JOOMLA_CATEGORY_MANAGER_002")
-  public void TC_JOOMLA_CATEGORY_MANAGER_003() {	  
-	
-	  categoryManagerPage.clickCategoryCheckbox(nameEdit);
-	  categoryManagerPage.clickChangeStatusToolbar("Unpublish");	  
-	  	  
-	  check = categoryManagerPage.isMessageDisplay(AppData.Category.msgUnpublish);
-	  verifyTrue(check, "VP: '1 category successfully unpublished' message is displayed");
-  }
-  
-  @Test(description= "Verify user can publish an unpublished category", dependsOnMethods="TC_JOOMLA_CATEGORY_MANAGER_003")
-  public void TC_JOOMLA_CATEGORY_MANAGER_004() {
-	  	  
-	  categoryManagerPage.clickCategoryCheckbox(nameEdit);
-	  categoryManagerPage.clickChangeStatusToolbar("Publish");	  
-	  	  
-	  check = categoryManagerPage.isMessageDisplay(AppData.Category.msgPublish);
+	  check = managerCategoryPage.isMessageDisplay(AppData.Category.msgPublish);
 	  verifyTrue(check, "VP: '1 category successfully published' message is displayed");
+	  
+	  managerCategoryPage.filterStatus(stsPublished);
+	  managerCategoryPage.searchCategory(nameEdit);
+	  
+	  check = managerCategoryPage.isCategoryExist(nameEdit);
+	  verifyTrue(check, "VP: The selected Category is published successfully");
   }
   
-  @Test(description= "Verify user can move a category to the archive", dependsOnMethods= "TC_JOOMLA_CATEGORY_MANAGER_004")
+  @Test(description= "Verify that user can publish a category", dependsOnMethods= "TC_JOOMLA_CATEGORY_MANAGER_003", priority=1)
+  public void TC_JOOMLA_CATEGORY_MANAGER_004() {	  
+	
+	  managerCategoryPage.clickCategoryCheckbox(nameEdit);
+	  managerCategoryPage.clickChangeStatusToolbar("Unpublish");	  
+	  	  
+	  check = managerCategoryPage.isMessageDisplay(AppData.Category.msgUnpublish);
+	  verifyTrue(check, "VP: '1 category successfully unpublished' message is displayed");
+	  
+	  managerCategoryPage.filterStatus(stsUnpublished);
+	  managerCategoryPage.searchCategory(nameEdit);
+	  
+	  check = managerCategoryPage.isCategoryExist(nameEdit);
+	  verifyTrue(check, "VP: The selected Category is Unpublished successfully");
+  }
+  
+ 
+  @Test(description= "Verify that user can archive a category", dependsOnMethods= "TC_JOOMLA_CATEGORY_MANAGER_004", priority=1)
   public void TC_JOOMLA_CATEGORY_MANAGER_005() {
 	  
-	  categoryManagerPage.clickCategoryCheckbox(nameEdit);
-	  categoryManagerPage.clickArchiveCategory(); 
+	  managerCategoryPage.clickCategoryCheckbox(nameEdit);
+	  managerCategoryPage.clickArchiveCategory(); 
 	  
-	  check = categoryManagerPage.isMessageDisplay(AppData.Category.msgArchive);
+	  check = managerCategoryPage.isMessageDisplay(AppData.Category.msgArchive);
 	  verifyTrue(check, "The '1 category successfully archived' message is displayed");
 	  
-	  categoryManagerPage.filterStatus("Archived");
+	  managerCategoryPage.filterStatus("Archived");
 	  
-	  categoryManagerPage.searchCategory(nameEdit);
+	  managerCategoryPage.searchCategory(nameEdit);
 	  	  
-	  check = categoryManagerPage.isCategoryExist(nameEdit);
-	  verifyTrue(check, "VP: The deleted category is displayed on the table grid");
-	  
-	  categoryManagerPage.filterStatus("- Select Status -");	  
+	  check = managerCategoryPage.isCategoryExist(nameEdit);
+	  verifyTrue(check, "VP: The selected Category is archived successfully");	   	  
   }    
+  
+  @Test(description= "Verify that user can send a category to trash", dependsOnMethods= "TC_JOOMLA_CATEGORY_MANAGER_005", priority=1)
+  public void TC_JOOMLA_CATEGORY_MANAGER_006() {
+	  
+	  managerCategoryPage.clickCategoryCheckbox(nameEdit);
+	  managerCategoryPage.clickTrashCategory(); 
+	  
+	  check = managerCategoryPage.isMessageDisplay(AppData.Category.msgTrash);
+	  verifyTrue(check, "The '1 category successfully archived' message is displayed");
+	  
+	  managerCategoryPage.filterStatus("Trashed");
+	  
+	  managerCategoryPage.searchCategory(nameEdit);
+	  	  
+	  check = managerCategoryPage.isCategoryExist(nameEdit);
+	  verifyTrue(check, "VP: The selected Category is trashed successfully");	
+  }
 
   
   private String name, alias, parent, stsPublished, language, access, categoryText, helpPageTitle;
-  private String nameEdit, stsUnpublished, accessReg, accessPub, langUk, langAll;
+  private String nameEdit, stsUnpublished, accessReg, langUk;
   private boolean check;
-  private Category_manager_page categoryManagerPage;
+  private Category_manager_page managerCategoryPage;
   private Category_add_edit_page editCategoryPage, addCategoryPage;
   private Admin_page adminPage;
 }

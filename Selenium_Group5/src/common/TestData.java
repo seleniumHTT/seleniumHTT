@@ -351,7 +351,29 @@ public class TestData {
 		private static final String _helpPage = "//bannerclient/helpPage";
 	}
 	
-public static class Category {
+	public static class BannerCategory {
+		public static void getDataTest() {
+			try {
+				XMLhelper xmlHelper = new XMLhelper(filePath);
+				name = xmlHelper.getContentByXpath(_name);
+				name = name + Random.getCurrentTime();
+
+			} catch (XPathExpressionException e) {			
+				e.printStackTrace();
+			}
+			
+		}
+		
+		public static String getName() {
+			return name;
+		}
+		
+		private static String name;
+		private static final String _name = "//bannercategory/name";
+
+	}
+	
+	public static class Category {
 		
 		public static void getDataTest() {
 			try {
@@ -426,8 +448,8 @@ public static class Category {
 		private static final String _parent = "//category/parent";
 		private static final String _stsPublished = "//category//stsPublished";
 		private static final String _stsUnpublished = "//category//stsUnpublished";
-		private static final String _accessRegistered = "//category/registered";
-		private static final String _accessPublic = "//category/public";
+		private static final String _accessRegistered = "//category//registered";
+		private static final String _accessPublic = "//category//public";
 		private static final String _imageName = "//category/imageName";
 		private static final String _helpPage = "//category/helpPage";
 		private static final String _languageUK = "//category/language/UK";

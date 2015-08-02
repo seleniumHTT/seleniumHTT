@@ -44,8 +44,8 @@
 		<name>Group 5 Banner </name>
 		<alias></alias>
 		<category>
-			<ctgCategory>- Sample Data-Banners</ctgCategory>
-			<ctgUncategory>- Sample Data-Banners</ctgUncategory>
+			<ctgCategory>Sample Data-Banners</ctgCategory>
+			<ctgUncategory>Uncategorised</ctgUncategory>
 		</category>
 		<status>
 			<stsSelectStatus>- Select Status -</stsSelectStatus>
@@ -70,10 +70,15 @@
 		<helpPage>Joomla! Help</helpPage>
 	</bannerclient>
 	
+	<bannercategory>
+		<name>Group 5 BannerCategory </name>
+	</bannercategory>
+	
+	
 	<category>
-		<name>Group 5 category </name>
+		<name>Group 5 Category </name>
 		<alias></alias>
-		<parent>- No Parent -</parent>
+		<parent>- No parent -</parent>
 		<status>
 			<stsPublished>Published</stsPublished>
 			<stsUnpublished>Unpublished</stsUnpublished>			

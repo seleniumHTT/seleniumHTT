@@ -75,9 +75,13 @@ public class Banner_Client_manager_page extends AbstractPage{
 		
 	}
 	
-	public boolean isArticleCheckedIn(String bannerClientName) {
+	public boolean isBannerClientCheckedIn(String bannerClientName) {
 		String buttonXpath = getCellXpath(bannerClientName, 2) + _iconCheckedOut;
 		return !isElementExist(buttonXpath);
+	}
+	
+	public boolean isBannerClientManagerTitleCorrect(){
+		return isElementExist(_txt_BannerClientManagerTitle);
 	}
 			
 	//Editor
@@ -115,5 +119,6 @@ public class Banner_Client_manager_page extends AbstractPage{
 	private WebElement cb_filterStatus;
 	
 	private String _iconCheckedOut = "/a/span[@class='state checkedout']";
+	private String _txt_BannerClientManagerTitle = ".//*[@id='toolbar-box']//h2[contains(text(),'Banner Manager: Clients')]";
 	
 }

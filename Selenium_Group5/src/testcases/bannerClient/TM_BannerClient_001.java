@@ -32,6 +32,7 @@ public class TM_BannerClient_001 extends AbstractTest{
     
   @Test(description= "Verify that user can browse Banner client help page", priority=1)
   public void TC_JOOMLA_BANNERS_CLIENTS_007() {	  
+	  
 	  managerBannerClientPage = adminPage.clickBannerClientManagerMenu();
 	  
 	  helpPage = managerBannerClientPage.clickHelpBannerClient();
@@ -105,7 +106,7 @@ public class TM_BannerClient_001 extends AbstractTest{
 	managerBannerClientPage.clickPublishBannerClient();
 	
 	check = managerBannerClientPage.isMessageDisplay(AppData.BannerClient.msgPublish);
-	verifyTrue(check, "VP: Banner Client successfully punlished message is displayed");
+	verifyTrue(check, "VP: Banner Client successful published message is displayed");
 	
 	managerBannerClientPage.filterStatus(stsPublished);
 	
@@ -123,7 +124,7 @@ public class TM_BannerClient_001 extends AbstractTest{
 	managerBannerClientPage.clickUnpublishBannerClient();
 	
 	check = managerBannerClientPage.isMessageDisplay(AppData.BannerClient.msgUnpublish);
-	verifyTrue(check, "VP: Banner Client successfully unpunlished message is displayed");
+	verifyTrue(check, "VP: Banner Client successful unpublished message is displayed");
 	
 	managerBannerClientPage.filterStatus(stsUnpublished);
 	

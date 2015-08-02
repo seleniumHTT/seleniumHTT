@@ -1,10 +1,12 @@
 package pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 import abstracts.AbstractPage;
+import common.PageFactory;
 
 public class Category_add_edit_page extends AbstractPage {
 	WebDriver driver;
@@ -14,7 +16,7 @@ public class Category_add_edit_page extends AbstractPage {
 		this.driver = driver;
 	}
 	
-	
+	//Form actions
 	public void enterData(String title, String alias, String parent, String status, String access, String language, String categoryText) {
 		
 		//Enter data
@@ -29,7 +31,7 @@ public class Category_add_edit_page extends AbstractPage {
 		}
 		
 		if(parent !=null && parent != "") {
-			selectComboboxByXpath(_categoryParent, parent);
+			selectCombobox(cb_parent, parent);
 		}
 		
 		if(status != null && status != "") {
@@ -54,93 +56,157 @@ public class Category_add_edit_page extends AbstractPage {
 		}
 				
 	}
-	
-	public void insertImage(String imageName) {
-		btn_image.click();
-		
-		driver.switchTo().frame(iframe_imageFrame);
-		driver.switchTo().frame(iframe_selectImageFrame);
-		
-		getWebElement("//a[@title='"+ imageName +"']").click();
-		
-		driver.switchTo().parentFrame();		
-		btn_insertImageIframe.click();
-		
-		driver.switchTo().parentFrame();		
-	}
-	
+			
+	//Toolbar action
 	public Category_manager_page clickSaveClose() {
 		btn_saveClose.click();
 		return new Category_manager_page(driver);
 	}	
+	
+	public Category_manager_page clickSaveCopy(){
+		btn_saveClose.click();
+		return new Category_manager_page(driver);
+	}
 		
-	public void clickSave() {
+	public Help_page clickHelpPage(){
+		PageFactory.setParentWindow(driver.getWindowHandle());
+		btn_help.click();
+		switchToNextWindow();
+		return new Help_page(driver);
+	}
+	
+	public Category_add_edit_page clickSave(){
 		btn_save.click();
+		return new Category_add_edit_page(driver);
 	}
 	
-	public void clickCancel() {
+	public Category_manager_page clickCancel() {
 		btn_cancel.click();
+		return new Category_manager_page(driver);
 	}
 	
-	
-	public void filterCategoryByXpath(String category) {
-		getWebElement(String.format(_categoryParent, category)).click();;
+	public void clickSaveNew(){
+		btn_saveNew.click();
 	}
+	
+//	public void filterCategoryByXpath(String category) {
+//		getWebElement(String.format(_categoryParent, category)).click();;
+//	}
+	
+	//Verify action
+	public boolean isEditClientPageOpening(){
+		return isElementExist(_txt_editClientitle);
+	}
+	
+	public boolean isCategoryDataCorrect(String title, String alias, String parent, String status, String access, String language, String categoryText){
+		String check_title = txt_title.getAttribute("value");
+		String check_alias = txt_alias.getAttribute("value");
+		String check_parent = driver.findElement(By.id("jform_parent_id")).findElement(By.xpath(".//option[@selected='selected']")).getAttribute("value");
+//		String check_parent1 = driver.findElement(By.id("jform_parent_id")).findElement(By.xpath(".//option[@selected='selected']")).getText();
+		String check_status = driver.findElement(By.id("jform_published")).findElement(By.xpath(".//option[@selected='selected']")).getAttribute("value");
+		String check_access = driver.findElement(By.id("jform_access")).findElement(By.xpath(".//option[@selected='selected']")).getAttribute("value");
+		String check_language = driver.findElement(By.id("jform_language")).findElement(By.xpath(".//option[@selected='selected']")).getAttribute("value");
+		String check_categoryText = driver.findElement(By.id("tinymce")).getAttribute("value");
+		
+		int checknumber = 0;		
+		
+		if(check_title==title){
+			checknumber = checknumber +1;
+		}
+		
+		if(check_alias==alias){
+			checknumber = checknumber +1;
+		}
+		
+		if(check_parent==parent){
+			checknumber = checknumber +1;
+		}
+		
+		if(check_status==status){
+			checknumber = checknumber +1;
+		}
+		
+		if(check_access==access){
+			checknumber = checknumber +1;
+		}
+		
+		if(check_language==language){
+			checknumber = checknumber +1;
+		}
+		
+		if(check_categoryText==categoryText){
+			checknumber = checknumber +1;
+		}
+		
+		boolean check = false;
+		
+		if(checknumber ==7){
+			check = true;			
+		}
+		
+		return check;
+	}
+	
 	//Editor
 	@FindBy(xpath="//input[@id='jform_title']")
-	WebElement txt_title;
+	private WebElement txt_title;
 
 	@FindBy(xpath="//input[@id='jform_alias']")
-	WebElement txt_alias;
+	private WebElement txt_alias;
 	
 	@FindBy(xpath="//select[@id='jform_parent_id']")
-	WebElement cb_parent;
+	private WebElement cb_parent;
 	
-	@FindBy(xpath="//select[@id='jform_state']")
-	WebElement cb_status;
+	@FindBy(xpath="//select[@id='jform_published']")
+	private WebElement cb_status;
 	
 	@FindBy(xpath="//select[@id='jform_access']")
-	WebElement cb_access;
+	private WebElement cb_access;
 	
 	@FindBy(xpath="//select[@id='jform_featured']")
-	WebElement cb_feature;
+	private WebElement cb_feature;
 	
 	@FindBy(xpath="//select[@id='jform_language']")
-	WebElement cb_language;	
+	private WebElement cb_language;	
 	
 	@FindBy(xpath="//textarea[@id='jform_description']")
-	WebElement txt_categoryText;
+	private WebElement txt_categoryText;
 	
 	@FindBy(xpath="//a[text()='Toggle editor']")
-	WebElement btn_toggleEditor;
+	private WebElement btn_toggleEditor;
 	
 	@FindBy(xpath="//a[text()='Image']")
-	WebElement btn_image;
+	private WebElement btn_image;
 	
 	//Submit buttons
 	@FindBy(xpath="//li[@id='toolbar-save']/a")
-	WebElement btn_saveClose;
+	private WebElement btn_saveClose;
 	
 	@FindBy(xpath="//li[@id='toolbar-apply']/a")
-	WebElement btn_save;
+	private WebElement btn_save;
 	
 	@FindBy(xpath="//li[@id='toolbar-save-new']/a")
-	WebElement btn_saveNew;
+	private WebElement btn_saveNew;
+	
+	@FindBy(xpath="//li[@id='toolbar-save-copy']")
+	private WebElement brn_saveCopy;
 	
 	@FindBy(xpath="//li[@id='toolbar-cancel']/a")
-	WebElement btn_cancel;
+	private WebElement btn_cancel;
+	
+	@FindBy(xpath="//li[@id='toolbar-help']/a")
+	private WebElement btn_help;
 	
 	//iframe
 	@FindBy(xpath="//div[@id='sbox-content']/iframe")
-	WebElement iframe_imageFrame;
+	private WebElement iframe_imageFrame;
 	
 	@FindBy(xpath="//iframe[@id='imageframe']")
-	WebElement iframe_selectImageFrame;
+	private WebElement iframe_selectImageFrame;
 	
 	@FindBy(xpath="//button[text()='Insert']")
-	WebElement btn_insertImageIframe;
+	private WebElement btn_insertImageIframe;
 	
-	
-	String _lbl_addNewCategory = "//h2[text()='Category Manager: Add A New Articles Category']";
+	private String _txt_editClientitle = ".//*[@id='toolbar-box']/div/div[2]/h2[contains (text(),'Category Manager: Edit An Articles Category')]";
 	String _categoryParent = "//select[@id='jform_catid']/option[contains(text(), '%s')]";
 }

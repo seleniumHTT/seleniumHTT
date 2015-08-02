@@ -15,7 +15,7 @@ public class Banner_Client_add_edit_page extends AbstractPage{
 		this.driver = driver;
 	}
 	
-	//Form action
+	//Form actions
 	public void enterData(String clientName, String contactName, String contactEmail, String status){
 		if(clientName != null && clientName!=""){
 			txt_clientName.clear();
