@@ -4,9 +4,11 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import common.PageFactory;
-
+import common.config;
 import abstracts.AbstractPage;
 
 public class Article_manager_page extends AbstractPage {
@@ -18,6 +20,7 @@ public class Article_manager_page extends AbstractPage {
 	}
 
 	public void searchArticle(String articleTitle) {
+		waitElementDisplay(_txt_search);
 		txt_search.clear();
 		txt_search.sendKeys(articleTitle);
 		btn_search.click();
@@ -101,7 +104,9 @@ public class Article_manager_page extends AbstractPage {
 	}
 	
 	public boolean isIdSortedCorrect(String asc_dec) {
-		return isNumberSortedCorrect(asc_dec, _rowTable, 12);
+		if(isElementExist(_lnk_ID + "/img")) {
+			return isNumberSortedCorrect(asc_dec, _rowTable, 12);
+		} return false;
 	}	
 	
 	public boolean isArticleFeatured(String articleTitle, String access) {
@@ -161,16 +166,21 @@ public class Article_manager_page extends AbstractPage {
 	public void filterCategory(String category) {
 		selectComboboxByXpath(_categoryValue, category);		
 	}
-	public void clickOrderingColumn() {		
+	public void clickOrderingColumn() {
+		waitElementDisplay("//a[text()='Ordering']");
 		lnk_ordering.click();
 	}
 	
-	public void clickIdColumn() {		
+	public void clickIdColumn() {
+		waitElementDisplay(_lnk_ID);
 		lnk_ID.click();
+		//Use sleep to wait changing due to it's unsuccessful for first click  
+		sleepIE();
 	}
 	
 	@FindBy(xpath="//input[@id='filter_search']")
 	private WebElement txt_search;
+	private String _txt_search = "//input[@id='filter_search']";
 	
 	@FindBy(xpath="//button[text()='Search']")
 	private WebElement btn_search;
@@ -211,9 +221,9 @@ public class Article_manager_page extends AbstractPage {
 	@FindBy(xpath="//a[text()='Ordering']")
 	private WebElement lnk_ordering;	
 		
-	@FindBy(xpath="//a[text()='ID']")
+	@FindBy(xpath="//a[contains(text(),'ID')]")
 	private WebElement lnk_ID;
-	
+	private String _lnk_ID = "//a[contains(text(),'ID')]";
 		
 	private String _iconCheckedOut = "/a/span[@class='state checkedout']";
 	private String _rowTable = "//table[@class='adminlist']/tbody/tr";
