@@ -4,6 +4,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import common.config;
+
 import abstracts.AbstractPage;
 
 public class Weblink_add_edit_page extends AbstractPage {
@@ -67,24 +69,29 @@ public class Weblink_add_edit_page extends AbstractPage {
 		driver.switchTo().parentFrame();		
 		btn_insertImageIframe.click();
 		
-		driver.switchTo().parentFrame();		
+		driver.switchTo().parentFrame();
+		sleep(config.getShortTime());
 	}
 	
 	public Weblink_manager_page clickSaveClose() {
 		btn_saveClose.click();
-		return new Weblink_manager_page(driver);
+		waitForPageLoaded(driver);
+		return new Weblink_manager_page(driver);		
 	}	
 		
 	public void clickSave() {
 		btn_save.click();
+		waitForPageLoaded(driver);
 	}
 	
 	public void clickSaveCopy() {
 		btn_saveCopy.click();
+		waitForPageLoaded(driver);
 	}
 	
 	public Weblink_manager_page clickClose() {
 		btn_cancel.click();
+		waitForPageLoaded(driver);
 		return new Weblink_manager_page(driver);
 	}
 	

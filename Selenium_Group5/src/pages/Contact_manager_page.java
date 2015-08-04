@@ -4,8 +4,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import common.PageFactory;
 
+import common.PageFactory;
+import common.config;
 import abstracts.AbstractPage;
 
 public class Contact_manager_page extends AbstractPage {
@@ -20,40 +21,48 @@ public class Contact_manager_page extends AbstractPage {
 		txt_search.clear();
 		txt_search.sendKeys(contactName);
 		btn_search.click();
+		waitForPageLoaded(driver);
 	}
 	
 	//Action toolbar
 	public Contact_add_edit_page clickNewContact() {
 		btn_newContact.click();
+		waitForPageLoaded(driver);
 		return new Contact_add_edit_page(driver);
 	}
 	
 	public Contact_add_edit_page clickEditContact() {
 		btn_editContact.click();
+		waitForPageLoaded(driver);
 		return new Contact_add_edit_page(driver);
 	}
 	
 	public Contact_manager_page clickTrashContact() {
 		btn_trash.click();
+		waitForPageLoaded(driver);
 		return new Contact_manager_page(driver);
 	}
 	
 	public void clickArchiveContact() {
 		btn_archive.click();
+		waitForPageLoaded(driver);
 	}
 	
 	public void clickChangeStatusToolbar(String status) {
 		if(status.equals("Publish")) {
 			btn_publish.click();
+			waitForPageLoaded(driver);
 		} else if(status.equals("Unpublish")) {
 			btn_unpublish.click();
+			waitForPageLoaded(driver);
 		}
 	}
 	
 	public Help_page clickHelpToolbar() {
 		PageFactory.setParentWindow(driver.getWindowHandle());
 		btn_help.click();
-		switchToNextWindow();
+		sleep(config.getShortTime());
+		switchToNextWindow();		
 		return new Help_page(driver);
 	}
 	
@@ -124,9 +133,11 @@ public class Contact_manager_page extends AbstractPage {
 		if(updown.equals("down")) {			
 			String downXpath = getCellXpath(contactName, 7) + _iconMoveDown;
 			getWebElement(downXpath).click();
+			waitForPageLoaded(driver);
 		} else if (updown.equals("up")) {			
 			String upXpath = getCellXpath(contactName, 7) + _iconMoveUp;
 			getWebElement(upXpath).click();
+			waitForPageLoaded(driver);
 		}
 	}	
 	
@@ -136,35 +147,45 @@ public class Contact_manager_page extends AbstractPage {
 		
 		if(isElementExist(icoFeatured)) {
 			getWebElement(icoFeatured).click();
-		} else getWebElement(icoUnFeatured).click();
+			waitForPageLoaded(driver);
+		} else {
+			getWebElement(icoUnFeatured).click();
+			waitForPageLoaded(driver);
+		}
 		
 	}	
 	
 	public void clickChangeStatus(String contactName) {
 		String buttonXpath = getCellXpath(contactName, 4) + "/a";
 		getWebElement(buttonXpath).click();
+		waitForPageLoaded(driver);
 	}
 	
 	public void checkIn(String contactName) {
 		clickContactCheckbox(contactName);
-		btn_checkin.click();		
+		btn_checkin.click();
+		waitForPageLoaded(driver);
 	}	
 	
 	public void filterStatus(String status) {
-		selectCombobox(cb_filterStatus, status);		
+		selectCombobox(cb_filterStatus, status);
+		waitForPageLoaded(driver);
 	}
 	
 	public void filterCategory(String category) {
 		selectComboboxByXpath(_categoryValue, category);
+		waitForPageLoaded(driver);
 		
 	}	
 		
 	public void clickOrderingColumn() {		
 		lnk_ordering.click();
+		waitForPageLoaded(driver);
 	}
 	
 	public void clickIdColumn() {		
 		lnk_ID.click();
+		waitForPageLoaded(driver);
 	}
 	
 	

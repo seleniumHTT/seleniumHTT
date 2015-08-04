@@ -6,6 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 import common.PageFactory;
+import common.config;
 import abstracts.AbstractPage;
 
 public class Weblink_manager_page extends AbstractPage {
@@ -20,33 +21,40 @@ public class Weblink_manager_page extends AbstractPage {
 		txt_search.clear();
 		txt_search.sendKeys(weblinkTitle);
 		btn_search.click();
+		waitForPageLoaded(driver);
 	}
 	
 	//Action toolbar
 	public Weblink_add_edit_page clickNewWeblink() {
 		btn_newWeblink.click();
+		waitForPageLoaded(driver);
 		return new Weblink_add_edit_page(driver);
 	}
 	
 	public Weblink_add_edit_page clickEditWeblink() {
 		btn_editWeblink.click();
+		waitForPageLoaded(driver);
 		return new Weblink_add_edit_page(driver);
 	}
 	
 	public Weblink_manager_page clickTrashWeblink() {
 		btn_trash.click();
+		waitForPageLoaded(driver);
 		return new Weblink_manager_page(driver);
 	}
 	
 	public void clickArchiveWeblink() {
 		btn_archive.click();
+		waitForPageLoaded(driver);
 	}
 		
 	public void clickChangeStatusToolbar(String status) {
 		if(status.equals("Publish")) {
 			btn_publish.click();
+			waitForPageLoaded(driver);
 		} else if(status.equals("Unpublish")) {
 			btn_unpublish.click();
+			waitForPageLoaded(driver);
 		}
 	}
 	
@@ -54,7 +62,8 @@ public class Weblink_manager_page extends AbstractPage {
 		PageFactory.setParentWindow(driver.getWindowHandle());
 		btn_help.click();
 		switchToNextWindow();
-		return new Help_page(driver);
+		sleep(config.getShortTime());
+		return new Help_page(driver);		
 	}
 	
 	//Verify
@@ -96,15 +105,18 @@ public class Weblink_manager_page extends AbstractPage {
 	public void clickWeblinkCheckbox(String weblinkTitle) {
 		String chbXpath = getCellXpath(weblinkTitle, 1) + "/input";
 		getWebElement(chbXpath).click();
+		waitForPageLoaded(driver);
 	}
 	
 	public void clickArrowOrdering(String weblinkTitle, String updown) {		
 		if(updown.equals("down")) {
 			String downXpath = getCellXpath(weblinkTitle, 5) + _iconMoveDown;
 			getWebElement(downXpath).click();
+			waitForPageLoaded(driver);
 		} else if (updown.equals("up")) {
 			String upXpath = getCellXpath(weblinkTitle, 5) + _iconMoveUp;
 			getWebElement(upXpath).click();
+			waitForPageLoaded(driver);
 		}
 	}	
 	
@@ -115,28 +127,34 @@ public class Weblink_manager_page extends AbstractPage {
 	public void checkIn(String name) {
 		clickWeblinkCheckbox(name);
 		btn_checkin.click();		
+		waitForPageLoaded(driver);
 	}
 	
 	public void clickChangeStatus(String weblinkTitle) {
 		String buttonXpath = getCellXpath(weblinkTitle, 3) + "/a";
 		getWebElement(buttonXpath).click();
+		waitForPageLoaded(driver);
 	}
 	
 	public void filterStatus(String status) {
-		selectCombobox(cb_filterStatus, status);		
+		selectCombobox(cb_filterStatus, status);	
+		waitForPageLoaded(driver);
 	}
 	
 	public void filterCategory(String category) {
 		selectComboboxByXpath(_categoryValue, category);
+		waitForPageLoaded(driver);
 		
 	}
 	
 	public void clickIdColumn() {		
 		lnk_ID.click();
+		waitForPageLoaded(driver);
 	}
 	
 	public void clickOrderingColumn() {		
 		lnk_ordering.click();
+		waitForPageLoaded(driver);
 	}
 	
 	

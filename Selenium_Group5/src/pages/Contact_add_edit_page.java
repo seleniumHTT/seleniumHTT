@@ -4,6 +4,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import common.config;
+
 import abstracts.AbstractPage;
 
 public class Contact_add_edit_page extends AbstractPage {
@@ -62,15 +64,19 @@ public class Contact_add_edit_page extends AbstractPage {
 		driver.switchTo().parentFrame();		
 		btn_insertImageIframe.click();
 		
-		driver.switchTo().parentFrame();		
+		driver.switchTo().parentFrame();
+		//sleep to wait dialog disappear
+		sleep(config.getShortTime());
 	}
 	public Contact_manager_page clickSaveClose() {
 		btn_saveClose.click();
+		waitForPageLoaded(driver);
 		return new Contact_manager_page(driver);
 	}	
 		
 	public void clickSave() {
 		btn_save.click();
+		waitForPageLoaded(driver);
 	}
 	
 	public void filterCategoryByXpath(String category) {
