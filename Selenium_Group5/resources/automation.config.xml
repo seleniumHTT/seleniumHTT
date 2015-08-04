@@ -6,7 +6,7 @@
 	<timeWait>
 		<longTime>30</longTime>
 		<shortTime>3</shortTime>
-		<mediumTime>15</mediumTime>
+		<mediumTime>10</mediumTime>
 	</timeWait>
 	
 	<closeBrowser>YES</closeBrowser>

@@ -24,6 +24,7 @@ public class Article_manager_page extends AbstractPage {
 		txt_search.clear();
 		txt_search.sendKeys(articleTitle);
 		btn_search.click();
+		waitForPageLoaded(driver);
 	}
 	
 	//Action toolbar
@@ -53,9 +54,10 @@ public class Article_manager_page extends AbstractPage {
 	}
 	
 	public Help_page clickHelpToolbar() {
-		PageFactory.setParentWindow(driver.getWindowHandle());
-		btn_help.click();
-		switchToNextWindow();
+		PageFactory.setParentWindow(driver.getWindowHandle());		
+		btn_help.click();	
+		sleep(config.getShortTime());
+		switchToNextWindow();		
 		return new Help_page(driver);
 	}
 	
@@ -128,8 +130,9 @@ public class Article_manager_page extends AbstractPage {
 	}
 	
 	//Handle table
-	public void clickArticleCheckbox(String articleTitle) {
+	public void clickArticleCheckbox(String articleTitle) {		
 		String chbXpath = getCellXpath(articleTitle, 1) + "/input";
+		waitToClick(chbXpath);
 		getWebElement(chbXpath).click();
 	}
 	
@@ -141,11 +144,14 @@ public class Article_manager_page extends AbstractPage {
 			String upXpath = getCellXpath(articleTitle, 6) + _iconMoveUp;
 			getWebElement(upXpath).click();
 		}
+		waitForPageLoaded(driver);
 	}	
 	
 	public void clickChangeStatus(String articleTitle) {
 		String buttonXpath = getCellXpath(articleTitle, 3) + "/a";
+		waitToClick(buttonXpath);
 		getWebElement(buttonXpath).click();
+		waitForPageLoaded(driver);
 	}
 	
 	public void clickChangeFeature(String articleTitle) {
@@ -153,29 +159,35 @@ public class Article_manager_page extends AbstractPage {
 		String icoUnFeatured = getCellXpath(articleTitle, 4) + _icoUnFeatured;
 		
 		if(isElementExist(icoFeatured)) {
+			waitToClick(icoFeatured);
 			getWebElement(icoFeatured).click();
-		} else getWebElement(icoUnFeatured).click(); 
+		} else {
+			waitToClick(icoUnFeatured);
+			getWebElement(icoUnFeatured).click();
+		} 
+		waitForPageLoaded(driver);
 		
 	}
 	
 	public void filterStatus(String status) {
-		selectCombobox(cb_filterStatus, status);		
+		selectCombobox(cb_filterStatus, status);
+		waitForPageLoaded(driver);
 	}
 	
 	
 	public void filterCategory(String category) {
-		selectComboboxByXpath(_categoryValue, category);		
+		selectComboboxByXpath(_categoryValue, category);
+		waitForPageLoaded(driver);
 	}
 	public void clickOrderingColumn() {
 		waitElementDisplay("//a[text()='Ordering']");
 		lnk_ordering.click();
+		waitForPageLoaded(driver);
 	}
 	
 	public void clickIdColumn() {
-		waitElementDisplay(_lnk_ID);
 		lnk_ID.click();
-		//Use sleep to wait changing due to it's unsuccessful for first click  
-		sleepIE();
+		waitForPageLoaded(driver);
 	}
 	
 	@FindBy(xpath="//input[@id='filter_search']")

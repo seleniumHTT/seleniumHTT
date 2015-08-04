@@ -74,7 +74,7 @@ public class Article_add_edit_page extends AbstractPage {
 	}
 	
 	public Article_manager_page clickSaveClose() {		
-		btn_saveClose.click();
+		btn_saveClose.click();	
 		return new Article_manager_page(driver);		
 	}	
 		

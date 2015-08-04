@@ -7,8 +7,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import common.config;
@@ -219,6 +221,35 @@ public abstract class AbstractPage {
 	public void waitElementDisplay(String xpath) {
 		WebDriverWait wait = new WebDriverWait(driver, config.getMediumTime());
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath)));
+		config.setImplicitlyWait(config.getLongTime());
+	}
+	
+	public void waitToClick(String xpath) {
+		WebDriverWait wait = new WebDriverWait(driver, config.getMediumTime());
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath(xpath)));
+		config.setImplicitlyWait(config.getLongTime());
+	}
+	
+	public void waitForPageLoaded(WebDriver driver) {
+
+	     ExpectedCondition<Boolean> expectation = new
+		 ExpectedCondition<Boolean>() {
+	        public Boolean apply(WebDriver driver) {
+	          return ((JavascriptExecutor)driver).executeScript("return document.readyState").equals("complete");
+	        }
+	      };
+
+	     Wait<WebDriver> wait = new WebDriverWait(driver,30);
+	      try {
+	              wait.until(expectation);
+	      } catch(Throwable error) {
+	              System.out.println("Timed out!!!");
+	      }
+	 } 
+	
+	public void waitWindowsTitleDisplay(String title) {
+		WebDriverWait wait = new WebDriverWait(driver, config.getMediumTime());
+		wait.until(ExpectedConditions.titleIs(title));
 		config.setImplicitlyWait(config.getLongTime());
 	}
 	
