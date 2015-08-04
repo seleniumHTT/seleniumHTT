@@ -3,22 +3,18 @@
 <suite name="Failed suite [Default suite]">
   <test name="Default test(failed)">
     <classes>
-      <class name="testcases.banners.TM_Banner_002">
+      <class name="testcases.category.TM_Category_002">
         <methods>
+          <include name="TC_JOOMLA_CATEGORY_MANAGER_015"/>
           <include name="beforeTest"/>
-          <include name="afterTest"/>
+          <include name="TC_JOOMLA_CATEGORY_MANAGER_010"/>
           <include name="beforeClass"/>
-          <include name="TC_JOOMLA_BANNERS_BANNERS_017"/>
-          <include name="TC_JOOMLA_BANNERS_BANNERS_014"/>
-          <include name="beforeTest"/>
-          <include name="afterTest"/>
-          <include name="TC_JOOMLA_BANNERS_BANNERS_012"/>
-          <include name="TC_JOOMLA_BANNERS_BANNERS_013"/>
-          <include name="TC_JOOMLA_BANNERS_BANNERS_010"/>
-          <include name="afterClass"/>
-          <include name="TC_JOOMLA_BANNERS_BANNERS_011"/>
+          <include name="TC_JOOMLA_CATEGORY_MANAGER_014"/>
+          <include name="TC_JOOMLA_CATEGORY_MANAGER_013"/>
+          <include name="TC_JOOMLA_CATEGORY_MANAGER_012"/>
+          <include name="TC_JOOMLA_CATEGORY_MANAGER_011"/>
         </methods>
-      </class> <!-- testcases.banners.TM_Banner_002 -->
+      </class> <!-- testcases.category.TM_Category_002 -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

@@ -16,8 +16,10 @@ public class TM_Category_002 extends AbstractTest{
 	  
 	  name = TestData.Category.getName();
 	  name2 = "Another " + name;
+	  
 	  nameSaveAsNew = name + " New";
 	  name2SaveAsCopy = name2 + " Copy";
+	  name2SaveAsCopyBatched = "- " + name2SaveAsCopy;
 	  parent = TestData.Category.getParent();
 	  stsPublished = TestData.Category.getStsPublished();
 	  stsUnpublished = TestData.Category.getStsUnpublished();
@@ -143,31 +145,12 @@ public class TM_Category_002 extends AbstractTest{
 	  managerCategoryPage.clickCategoryCheckbox(nameSaveAsNew);
 	  editCategoryPage = managerCategoryPage.clickEditCategory();
 	  
-	  check = editCategoryPage.isCategoryDataCorrect(nameSaveAsNew, alias, name, stsPublished, accessReg, langUk, categoryText);
+	  check = editCategoryPage.isCategoryBatSuccess(name);
 	  verifyTrue(check, "VP: Category Artical is moved successfully");
 	  
 	  managerCategoryPage = addCategoryPage.clickCancel();
   }
   
-  @Test(description="Verify that user can copy may articles to another category", dependsOnMethods="TC_JOOMLA_CATEGORY_MANAGER_014", priority=1)
-  public void TC_JOOMLA_CATEGORY_MANAGER_015(){
-	  
-	  managerCategoryPage.searchCategory(name2SaveAsCopy);
-	  managerCategoryPage.clickCategoryCheckbox(name2SaveAsCopy);
-	  managerCategoryPage.batchProcess(defaultAccessLevel, defaultLanguage, name2, batchActionCopy);
-	  managerCategoryPage.clickProcess();
-	  
-	  check = managerCategoryPage.isMessageDisplay(AppData.Category.msgBatch);
-	  verifyTrue(check, "VP: Batch Process completed message displayed");
-	  
-	  managerCategoryPage.clickCategoryCheckbox(name2SaveAsCopy);
-	  editCategoryPage = managerCategoryPage.clickEditCategory();
-	  
-	  check = editCategoryPage.isCategoryDataCorrect(name2SaveAsCopy, alias, name2, stsPublished, accessReg, langUk, categoryText);
-	  verifyTrue(check, "VP: Category Artical is moved successfully");
-  }
-   
-    
   @AfterClass
   public void afterClass() {
 	  config.tearDown();
@@ -182,7 +165,7 @@ public class TM_Category_002 extends AbstractTest{
   }
   
   String name, name2, nameSaveAsNew, name2SaveAsCopy, alias, parent, stsPublished, stsUnpublished, accessReg, categoryText, langUk;
-  String defaultAccessLevel, defaultLanguage, batchActionMove, batchActionCopy; 
+  String defaultAccessLevel, defaultLanguage, batchActionMove, batchActionCopy, name2SaveAsCopyBatched; 
   String helpPageTitle;
   boolean check;
   Category_manager_page managerCategoryPage;

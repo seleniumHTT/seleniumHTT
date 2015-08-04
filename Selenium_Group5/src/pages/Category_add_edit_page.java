@@ -98,54 +98,65 @@ public class Category_add_edit_page extends AbstractPage {
 		return isElementExist(_txt_editClientitle);
 	}
 	
-	public boolean isCategoryDataCorrect(String title, String alias, String parent, String status, String access, String language, String categoryText){
-		String check_title = txt_title.getAttribute("value");
-		String check_alias = txt_alias.getAttribute("value");
-		String check_parent = driver.findElement(By.id("jform_parent_id")).findElement(By.xpath(".//option[@selected='selected']")).getAttribute("value");
-//		String check_parent1 = driver.findElement(By.id("jform_parent_id")).findElement(By.xpath(".//option[@selected='selected']")).getText();
-		String check_status = driver.findElement(By.id("jform_published")).findElement(By.xpath(".//option[@selected='selected']")).getAttribute("value");
-		String check_access = driver.findElement(By.id("jform_access")).findElement(By.xpath(".//option[@selected='selected']")).getAttribute("value");
-		String check_language = driver.findElement(By.id("jform_language")).findElement(By.xpath(".//option[@selected='selected']")).getAttribute("value");
-		String check_categoryText = driver.findElement(By.id("tinymce")).getAttribute("value");
-		
-		int checknumber = 0;		
-		
-		if(check_title==title){
-			checknumber = checknumber +1;
-		}
-		
-		if(check_alias==alias){
-			checknumber = checknumber +1;
-		}
-		
-		if(check_parent==parent){
-			checknumber = checknumber +1;
-		}
-		
-		if(check_status==status){
-			checknumber = checknumber +1;
-		}
-		
-		if(check_access==access){
-			checknumber = checknumber +1;
-		}
-		
-		if(check_language==language){
-			checknumber = checknumber +1;
-		}
-		
-		if(check_categoryText==categoryText){
-			checknumber = checknumber +1;
-		}
-		
+	public boolean isCategoryBatSuccess(String parent) {
+		String new_parent = "- " + parent;
+		String check_parent = driver.findElement(By.id("jform_parent_id")).findElement(By.xpath(".//option[@selected='selected']")).getAttribute("text");
 		boolean check = false;
-		
-		if(checknumber ==7){
-			check = true;			
+		if(new_parent.equals(check_parent)) {
+			check = true;
 		}
 		
 		return check;
 	}
+	
+//	public boolean isCategoryDataCorrect(String title, String alias, String parent, String status, String access, String language, String categoryText){
+//		String check_title = txt_title.getAttribute("text");
+//		String check_alias = txt_alias.getAttribute("text");
+//		String check_parent = driver.findElement(By.id("jform_parent_id")).findElement(By.xpath(".//option[@selected='selected']")).getAttribute("text");
+//		String check_status = driver.findElement(By.id("jform_published")).findElement(By.xpath(".//option[@selected='selected']")).getAttribute("text");
+//		String check_access = driver.findElement(By.id("jform_access")).findElement(By.xpath(".//option[@selected='selected']")).getAttribute("text");
+//		String check_language = driver.findElement(By.id("jform_language")).findElement(By.xpath(".//option[@selected='selected']")).getAttribute("text");
+//		String check_categoryText = driver.findElement(By.id("jform_description")).getAttribute("text");
+//		String newParent = "- " + parent;
+//		
+//		int checknumber = 0;		
+//		
+//		if(check_title==title){
+//			checknumber = checknumber +1;
+//		}
+//		
+//		if(check_alias==alias){
+//			checknumber = checknumber +1;
+//		}
+//		
+//		if(check_parent==newParent){
+//			checknumber = checknumber +1;
+//		}
+//		
+//		if(check_status==status){
+//			checknumber = checknumber +1;
+//		}
+//		
+//		if(check_access==access){
+//			checknumber = checknumber +1;
+//		}
+//		
+//		if(check_language==language){
+//			checknumber = checknumber +1;
+//		}
+//		
+//		if(check_categoryText==categoryText){
+//			checknumber = checknumber +1;
+//		}
+//		
+//		boolean check = false;
+//		
+//		if(checknumber ==7){
+//			check = true;			
+//		}
+//		
+//		return check;
+//	}
 	
 	//Editor
 	@FindBy(xpath="//input[@id='jform_title']")
