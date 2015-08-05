@@ -244,7 +244,7 @@ public abstract class AbstractPage {
 	        }
 	      };
 
-	     Wait<WebDriver> wait = new WebDriverWait(driver,30);
+	     Wait<WebDriver> wait = new WebDriverWait(driver,60);
 	      try {
 	              wait.until(expectation);
 	      } catch(Throwable error) {

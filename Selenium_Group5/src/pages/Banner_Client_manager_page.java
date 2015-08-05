@@ -6,6 +6,7 @@ import org.openqa.selenium.support.FindBy;
 
 import abstracts.AbstractPage;
 import common.PageFactory;
+import common.config;
 
 public class Banner_Client_manager_page extends AbstractPage{
 	WebDriver driver;
@@ -18,55 +19,66 @@ public class Banner_Client_manager_page extends AbstractPage{
 	//Action toolbar
 	public Banner_Client_add_edit_page clickNewBannerClient(){
 		btn_newBannerClient.click();
+		waitForPageLoaded(driver);
 		return new Banner_Client_add_edit_page(driver);
 	}
 	
 	public Banner_Client_add_edit_page clickEditBannerClient(){
 		btn_editBannerClient.click();
+		waitForPageLoaded(driver);
 		return new Banner_Client_add_edit_page(driver);
 	}
 	
 	public Help_page clickHelpBannerClient(){
 		PageFactory.setParentWindow(driver.getWindowHandle());
 		btn_helpBannerClient.click();
+		sleep(config.getShortTime());
 		switchToNextWindow();
 		return new Help_page(driver);
 	}
 	
 	public void clickPublishBannerClient(){
-		btn_publishBannerClient.click();		
+		btn_publishBannerClient.click();	
+		waitForPageLoaded(driver);
 	}
 	
 	public void clickUnpublishBannerClient(){
-		btn_unpublishBannerClient.click();		
+		btn_unpublishBannerClient.click();	
+		waitForPageLoaded(driver);
 	}
 	
 	public void clickArchiveBannerClient(){
-		btn_archiveBannerClient.click();		
+		btn_archiveBannerClient.click();	
+		waitForPageLoaded(driver);
 	}
 	
 	public void clickTrashBannerClient(){
 		btn_trashBannerClient.click();		
+		waitForPageLoaded(driver);
 	}
 	
 	public void clickCheckInBannerClient(){
 		btn_checkInBannerClient.click();
+		waitForPageLoaded(driver);
 	}
 	
 	public void searchBannerClient(String bannerClientName){
 		txt_search.clear();
 		txt_search.sendKeys(bannerClientName);
-		btn_search.click();		
+		btn_search.click();	
+		waitForPageLoaded(driver);
 	}
 	
 	//Handle table
 	public void clickClientCheckbox(String bannerClientName) {
 		String chbXpath = getCellXpath(bannerClientName, 1) + "/input";
 		getWebElement(chbXpath).click();
+		waitForPageLoaded(driver);
 	}
 	
 	public void filterStatus(String status) {
-		selectCombobox(cb_filterStatus, status);		
+		selectCombobox(cb_filterStatus, status);	
+		waitForPageLoaded(driver);
 	}
 	
 	//Verify

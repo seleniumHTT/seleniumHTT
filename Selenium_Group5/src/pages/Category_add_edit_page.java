@@ -7,6 +7,7 @@ import org.openqa.selenium.support.FindBy;
 
 import abstracts.AbstractPage;
 import common.PageFactory;
+import common.config;
 
 public class Category_add_edit_page extends AbstractPage {
 	WebDriver driver;
@@ -60,39 +61,41 @@ public class Category_add_edit_page extends AbstractPage {
 	//Toolbar action
 	public Category_manager_page clickSaveClose() {
 		btn_saveClose.click();
+		waitForPageLoaded(driver);
 		return new Category_manager_page(driver);
 	}	
 	
 	public Category_manager_page clickSaveCopy(){
 		btn_saveClose.click();
+		waitForPageLoaded(driver);
 		return new Category_manager_page(driver);
 	}
 		
 	public Help_page clickHelpPage(){
 		PageFactory.setParentWindow(driver.getWindowHandle());
 		btn_help.click();
+		sleep(config.getShortTime());
 		switchToNextWindow();
 		return new Help_page(driver);
 	}
 	
 	public Category_add_edit_page clickSave(){
 		btn_save.click();
+		waitForPageLoaded(driver);
 		return new Category_add_edit_page(driver);
 	}
 	
 	public Category_manager_page clickCancel() {
 		btn_cancel.click();
+		waitForPageLoaded(driver);
 		return new Category_manager_page(driver);
 	}
 	
 	public void clickSaveNew(){
 		btn_saveNew.click();
-	}
-	
-//	public void filterCategoryByXpath(String category) {
-//		getWebElement(String.format(_categoryParent, category)).click();;
-//	}
-	
+		waitForPageLoaded(driver);
+	}	
+
 	//Verify action
 	public boolean isEditClientPageOpening(){
 		return isElementExist(_txt_editClientitle);
@@ -108,55 +111,6 @@ public class Category_add_edit_page extends AbstractPage {
 		
 		return check;
 	}
-	
-//	public boolean isCategoryDataCorrect(String title, String alias, String parent, String status, String access, String language, String categoryText){
-//		String check_title = txt_title.getAttribute("text");
-//		String check_alias = txt_alias.getAttribute("text");
-//		String check_parent = driver.findElement(By.id("jform_parent_id")).findElement(By.xpath(".//option[@selected='selected']")).getAttribute("text");
-//		String check_status = driver.findElement(By.id("jform_published")).findElement(By.xpath(".//option[@selected='selected']")).getAttribute("text");
-//		String check_access = driver.findElement(By.id("jform_access")).findElement(By.xpath(".//option[@selected='selected']")).getAttribute("text");
-//		String check_language = driver.findElement(By.id("jform_language")).findElement(By.xpath(".//option[@selected='selected']")).getAttribute("text");
-//		String check_categoryText = driver.findElement(By.id("jform_description")).getAttribute("text");
-//		String newParent = "- " + parent;
-//		
-//		int checknumber = 0;		
-//		
-//		if(check_title==title){
-//			checknumber = checknumber +1;
-//		}
-//		
-//		if(check_alias==alias){
-//			checknumber = checknumber +1;
-//		}
-//		
-//		if(check_parent==newParent){
-//			checknumber = checknumber +1;
-//		}
-//		
-//		if(check_status==status){
-//			checknumber = checknumber +1;
-//		}
-//		
-//		if(check_access==access){
-//			checknumber = checknumber +1;
-//		}
-//		
-//		if(check_language==language){
-//			checknumber = checknumber +1;
-//		}
-//		
-//		if(check_categoryText==categoryText){
-//			checknumber = checknumber +1;
-//		}
-//		
-//		boolean check = false;
-//		
-//		if(checknumber ==7){
-//			check = true;			
-//		}
-//		
-//		return check;
-//	}
 	
 	//Editor
 	@FindBy(xpath="//input[@id='jform_title']")

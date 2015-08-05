@@ -5,7 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 import common.PageFactory;
-
+import common.config;
 import abstracts.AbstractPage;
 
 public class Category_manager_page extends AbstractPage {
@@ -20,36 +20,37 @@ public class Category_manager_page extends AbstractPage {
 		txt_search.clear();
 		txt_search.sendKeys(categoryTitle);
 		btn_search.click();
+		waitForPageLoaded(driver);
 	}
 	
 	//Action toolbar
 	public Category_add_edit_page clickNewCategory() {
 		btn_newCategory.click();
+		waitForPageLoaded(driver);
 		return new Category_add_edit_page(driver);
 	}
 	
 	public Category_add_edit_page clickEditCategory() {
 		btn_editCategory.click();
+		waitForPageLoaded(driver);
 		return new Category_add_edit_page(driver);
 	}
 	
 	public Category_manager_page clickTrashCategory() {
 		btn_trash.click();
+		waitForPageLoaded(driver);
 		return new Category_manager_page(driver);
 	}
-	
-//	public void checkIn(String categoryTitle) {
-//		clickCategoryCheckbox(categoryTitle);
-//		btn_checkin.click();		
-//	}	
-//	
+
 	public void clickArchiveCategory() {
-		btn_archive.click();		
+		btn_archive.click();	
+		waitForPageLoaded(driver);
 	}
 	
 	public Help_page clickHelpToolbar() {
 		PageFactory.setParentWindow(driver.getWindowHandle());
 		btn_help.click();
+		sleep(config.getShortTime());
 		switchToNextWindow();
 		return new Help_page(driver);
 	}
@@ -57,8 +58,10 @@ public class Category_manager_page extends AbstractPage {
 	public void clickChangeStatusToolbar(String status) {
 		if(status.equals("Publish")) {
 			btn_publish.click();
+			waitForPageLoaded(driver);
 		} else if(status.equals("Unpublish")) {
 			btn_unpublish.click();
+			waitForPageLoaded(driver);
 		}
 	}
 	
@@ -78,15 +81,18 @@ public class Category_manager_page extends AbstractPage {
 		
 		if(action== "Copy"){
 			chb_copy.click();
+			waitForPageLoaded(driver);
 		}
 		else{
 			chb_move.click();
+			waitForPageLoaded(driver);
 		}
 			
 	}
 	
 	public void clickProcess(){
 		btn_process.click();
+		waitForPageLoaded(driver);
 	}
 	
 	//Verify
@@ -94,83 +100,28 @@ public class Category_manager_page extends AbstractPage {
 		return isElementExist("//a[contains(text(),'"+ categoryTitle +"')]");
 	}
 	
-//	public boolean isCategoryLocateAt(String categoryTitle, int row) {
-//		int currentRow = getRowNumber(categoryTitle);
-//		
-//		if(row == currentRow) {			
-//			return true;
-//		}
-//		return false;		
-//	}	
-//	
-//	public boolean isCategoryPublished(String categoryTitle, String expectedStatus) {
-//		String buttonXpath = getCellXpath(categoryTitle, 3) + "/a/span/span";
-//		String currentStatus = driver.findElement(By.xpath(buttonXpath)).getAttribute("innerHTML").trim();
-//		
-//		if(expectedStatus.equals(currentStatus)) {
-//			return true;
-//		}
-//		return false;
-//	}
-//	
-//	public boolean isCategoryPublic(String categoryTitle, String expectedAccess) {
-//		String xpathAccess = getCellXpath(categoryTitle, 5);
-//		String currentAccess = driver.findElement(By.xpath(xpathAccess)).getAttribute("innerHTML").trim();
-//		if(currentAccess.equals(expectedAccess)) {return true; }
-//		return false;
-//	}
-//	
-//	public boolean isCategoryCheckedIn(String categoryTitle) {
-//		String buttonXpath = getCellXpath(categoryTitle, 2) + _iconCheckedOut;
-//		return !isElementExist(buttonXpath);
-//	}
-//	
-//	public boolean isIdSortedCorrect(String asc_dec) {
-//		return isNumberSortedCorrect(asc_dec, _rowTable, 12);
-//	}	
-		
-	
 	//Handle table
 	public void clickCategoryCheckbox(String categoryTitle) {
 		String chbXpath = getCellXpath(categoryTitle, 1) + "/input";
 		getWebElement(chbXpath).click();
+		waitForPageLoaded(driver);
 	}
-	
-//	public void clickArrowOrdering(String categoryTitle, String updown) {		
-//		if(updown.equals("down")) {
-//			String downXpath = getCellXpath(categoryTitle, 4) + _iconMoveDown;
-//			getWebElement(downXpath).click();
-//		} else if (updown.equals("up")) {
-//			String upXpath = getCellXpath(categoryTitle, 4) + _iconMoveUp;
-//			getWebElement(upXpath).click();
-//		}
-//	}	
-//	
-//	public void clickChangeStatus(String categoryTitle) {
-//		String buttonXpath = getCellXpath(categoryTitle, 3) + "/a";
-//		getWebElement(buttonXpath).click();
-//	}
-//	
+
 	
 	public void filterStatus(String status) {
-		selectCombobox(cb_filterStatus, status);		
+		selectCombobox(cb_filterStatus, status);
+		waitForPageLoaded(driver);
 	}
 		
 	public void filterAccess(String access) {
-		selectCombobox(cb_filterAccess, access);		
+		selectCombobox(cb_filterAccess, access);
+		waitForPageLoaded(driver);
 	}
 	
 	public void filterLanguage(String language) {
-		selectCombobox(cb_filterLanguage, language);		
+		selectCombobox(cb_filterLanguage, language);
+		waitForPageLoaded(driver);
 	}
-	
-//	public void clickOrderingColumn() {		
-//		lnk_ordering.click();
-//	}
-//	
-//	public void clickIdColumn() {		
-//		lnk_ID.click();
-//	}
 	
 	@FindBy(xpath="//input[@id='filter_search']")
 	private WebElement txt_search;
@@ -193,14 +144,8 @@ public class Category_manager_page extends AbstractPage {
 	@FindBy(xpath="//li[@id='toolbar-unpublish']/a")
 	private WebElement btn_unpublish;
 	
-//	@FindBy(xpath="//li[@id='toolbar-featured']/a")
-//	private WebElement btn_featured;
-	
 	@FindBy(xpath="//li[@id='toolbar-archive']/a")
 	private WebElement btn_archive;
-	
-//	@FindBy(xpath="//li[@id='toolbar-checkin']/a")
-//	private WebElement btn_checkin;
 	
 	@FindBy(xpath="//li[@id='toolbar-trash']/a")
 	private WebElement btn_trash;
@@ -235,15 +180,4 @@ public class Category_manager_page extends AbstractPage {
 	@FindBy(xpath="//input[@id='batch[move_copy]c']")
 	private WebElement chb_copy;
 		
-//	@FindBy(xpath="//a[text()='Ordering']")
-//	private WebElement lnk_ordering;	
-//		
-//	@FindBy(xpath="//a[text()='ID']")
-//	private WebElement lnk_ID;
-	
-		
-//	private String _iconCheckedOut = "/a/span[@class='state checkedout']";
-//	private String _rowTable = "//table[@class='adminlist']/tbody/tr";		
-//	private String _iconMoveUp = "//a[@title='Move Up']";
-//	private String _iconMoveDown = "//a[@title='Move Down']";
 }

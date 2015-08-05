@@ -53,7 +53,8 @@
 			<stsUnpublished>Unpublished</stsUnpublished>
 			<stsArchived>Archived</stsArchived>
 			<stsTrashed>Trashed</stsTrashed>
-		</status>			
+		</status>
+		<helpPage>Joomla! Help</helpPage>			
 	</banner>
 	
 	<bannerclient>

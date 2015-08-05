@@ -25,8 +25,7 @@ public class Help_page extends AbstractPage {
 			return true;
 		} catch (TimeoutException ex) {
 			System.out.println(driver.getTitle());
-			return false;
-			
+			return false;			
 		}
 		
 	}

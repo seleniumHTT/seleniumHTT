@@ -2,6 +2,7 @@ package pages;
 
 import abstracts.AbstractPage;
 import common.PageFactory;
+import common.config;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -45,35 +46,42 @@ public class Banner_add_edit_page extends AbstractPage{
 	//Toolbar action
 	public Banner_manager_page clickSaveClose(){
 		btn_saveClose.click();
+		waitForPageLoaded(driver);
 		return new Banner_manager_page(driver);
 	}
 		
 	public Help_page clickHelpPage(){
 		PageFactory.setParentWindow(driver.getWindowHandle());
 		btn_help.click();
+		sleep(config.getShortTime());
 		switchToNextWindow();
 		return new Help_page(driver);
 	}
 	
 	public Banner_manager_page clickCancel(){
 		btn_cancel.click();
+		waitForPageLoaded(driver);
 		return new Banner_manager_page(driver);
 	}
 	
 	public void clickSave(){
 		btn_save.click();
+		waitForPageLoaded(driver);
 	}
 	
 	public void clickSaveNew(){
 		btn_saveNew.click();
+		waitForPageLoaded(driver);
 	}
 	
 	public void clickSaveCopy(){
 		btn_savecopy.click();
+		waitForPageLoaded(driver);
 	}
 	
 	public void refreshPage(){
-		driver.navigate().refresh();		
+		driver.navigate().refresh();
+		waitForPageLoaded(driver);
 	}
 	
 	//Verify action
