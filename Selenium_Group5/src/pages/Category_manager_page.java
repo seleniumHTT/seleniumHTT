@@ -57,12 +57,11 @@ public class Category_manager_page extends AbstractPage {
 	
 	public void clickChangeStatusToolbar(String status) {
 		if(status.equals("Publish")) {
-			btn_publish.click();
-			waitForPageLoaded(driver);
+			btn_publish.click();			
 		} else if(status.equals("Unpublish")) {
-			btn_unpublish.click();
-			waitForPageLoaded(driver);
+			btn_unpublish.click();			
 		}
+		waitForPageLoaded(driver);
 	}
 	
 	//Action for Batch process the selected categories table
@@ -81,13 +80,11 @@ public class Category_manager_page extends AbstractPage {
 		
 		if(action== "Copy"){
 			chb_copy.click();
-			waitForPageLoaded(driver);
 		}
 		else{
-			chb_move.click();
-			waitForPageLoaded(driver);
+			chb_move.click();			
 		}
-			
+		waitForPageLoaded(driver);
 	}
 	
 	public void clickProcess(){

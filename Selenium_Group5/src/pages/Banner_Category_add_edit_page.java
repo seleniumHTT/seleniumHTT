@@ -57,6 +57,7 @@ public class Banner_Category_add_edit_page extends AbstractPage  {
 	
 	public Banner_Category_manager_page clickSaveClose(){
 		btn_SaveClose.click();
+		waitForPageLoaded(driver);
 		return new Banner_Category_manager_page(driver);
 	}
 	

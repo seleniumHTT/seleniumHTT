@@ -17,6 +17,7 @@ public class Banner_Category_manager_page extends AbstractPage {
 	//Toolbar action
 	public Banner_Category_add_edit_page clickNewCategories(){
 		btn_New.click();
+		waitForPageLoaded(driver);
 		return new Banner_Category_add_edit_page(driver);
 	}
 	
@@ -29,6 +30,7 @@ public class Banner_Category_manager_page extends AbstractPage {
 		txt_search.clear();
 		txt_search.sendKeys(categoryName);
 		btn_search.click();
+		waitForPageLoaded(driver);		
 	}
 	
 	//Form action
