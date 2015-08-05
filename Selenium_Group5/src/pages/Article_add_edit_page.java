@@ -75,11 +75,13 @@ public class Article_add_edit_page extends AbstractPage {
 	
 	public Article_manager_page clickSaveClose() {		
 		btn_saveClose.click();	
+		waitForPageLoaded(driver);
 		return new Article_manager_page(driver);		
 	}	
 		
 	public void clickSave() {
 		btn_save.click();
+		waitForPageLoaded(driver);
 	}
 	
 	public void filterCategoryByXpath(String category) {

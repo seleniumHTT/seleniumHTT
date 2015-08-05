@@ -50,18 +50,18 @@ public class Weblink_manager_page extends AbstractPage {
 		
 	public void clickChangeStatusToolbar(String status) {
 		if(status.equals("Publish")) {
-			btn_publish.click();
-			waitForPageLoaded(driver);
+			btn_publish.click();			
 		} else if(status.equals("Unpublish")) {
-			btn_unpublish.click();
-			waitForPageLoaded(driver);
+			btn_unpublish.click();			
 		}
+		waitForPageLoaded(driver);
 	}
 	
 	public Help_page clickHelpToolbar() {
 		PageFactory.setParentWindow(driver.getWindowHandle());
 		btn_help.click();
 		switchToNextWindow();
+		//Sleep  for loading new window
 		sleep(config.getShortTime());
 		return new Help_page(driver);		
 	}

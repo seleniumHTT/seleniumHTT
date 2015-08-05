@@ -284,8 +284,7 @@ public abstract class AbstractPage {
 	
 	private String _cell = "//a[contains(text(), '%s')]/ancestor::tr/td[%s]";
 	private String _previousRows = "//a[contains(text(), '%s')]/ancestor::tr/preceding-sibling::*";
-	private String _systemMsg = ".//*[@id='system-message']//*[contains(text(),'%s')]";
-	private final String adminPageTitle = "Control Panel";
+	private String _systemMsg = ".//*[@id='system-message']//*[contains(text(),'%s')]";	
 	private final String menuContactManager = "Components/Contacts";
 	private final String menuWeblinkManager = "Components/Weblinks";
 	private final String menuBannerManager = "Components/Banners/Banners";

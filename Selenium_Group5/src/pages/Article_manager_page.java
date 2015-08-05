@@ -4,9 +4,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
 import common.PageFactory;
 import common.config;
 import abstracts.AbstractPage;
@@ -30,27 +27,31 @@ public class Article_manager_page extends AbstractPage {
 	//Action toolbar
 	public Article_add_edit_page clickNewArticle() {
 		btn_newArticle.click();
+		waitForPageLoaded(driver);
 		return new Article_add_edit_page(driver);
 	}
 	
 	public Article_add_edit_page clickEditArticle() {
 		btn_editArticle.click();
+		waitForPageLoaded(driver);
 		return new Article_add_edit_page(driver);
 	}
 	
 	public Article_manager_page clickTrashArticle() {
 		btn_trash.click();
+		waitForPageLoaded(driver);
 		return new Article_manager_page(driver);
 	}
 	
 	public void checkIn(String contactName) {
 		clickArticleCheckbox(contactName);
 		btn_checkin.click();		
+		waitForPageLoaded(driver);
 	}	
 	
 	public void clickArchiveArticle() {
 		btn_archive.click();
-		
+		waitForPageLoaded(driver);		
 	}
 	
 	public Help_page clickHelpToolbar() {
@@ -67,6 +68,7 @@ public class Article_manager_page extends AbstractPage {
 		} else if(status.equals("Unpublish")) {
 			btn_unpublish.click();
 		}
+		waitForPageLoaded(driver);
 	}
 	
 	//Verify
@@ -173,8 +175,7 @@ public class Article_manager_page extends AbstractPage {
 		selectCombobox(cb_filterStatus, status);
 		waitForPageLoaded(driver);
 	}
-	
-	
+		
 	public void filterCategory(String category) {
 		selectComboboxByXpath(_categoryValue, category);
 		waitForPageLoaded(driver);
