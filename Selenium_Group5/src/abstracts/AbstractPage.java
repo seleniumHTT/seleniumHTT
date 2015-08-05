@@ -122,6 +122,7 @@ public abstract class AbstractPage {
 				sleep(config.getMediumTime());
 			}
 		} while (currentUrl == driver.getCurrentUrl());
+		waitForPageLoaded(driver);
 	}
 	
 	//Select menu, split by '/'
