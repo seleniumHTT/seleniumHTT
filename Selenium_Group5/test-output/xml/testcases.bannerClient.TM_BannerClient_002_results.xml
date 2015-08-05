@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="TM_BannerClient"
+           tests="6"
+           failures="0"
+           errors="0"
+           skipped="0"
+           time="117.697">
+  <properties />
+  
+  
+            <testcase name="TC_JOOMLA_BANNERS_CLIENTS_015" time="6.750" classname="testcases.bannerClient.TM_BannerClient_002" />
+                <testcase name="TC_JOOMLA_BANNERS_CLIENTS_012" time="7.232" classname="testcases.bannerClient.TM_BannerClient_002" />
+                <testcase name="TC_JOOMLA_BANNERS_CLIENTS_010" time="57.320" classname="testcases.bannerClient.TM_BannerClient_002" />
+                <testcase name="TC_JOOMLA_BANNERS_CLIENTS_011" time="20.515" classname="testcases.bannerClient.TM_BannerClient_002" />
+                <testcase name="TC_JOOMLA_BANNERS_CLIENTS_013" time="23.776" classname="testcases.bannerClient.TM_BannerClient_002" />
+                <testcase name="TC_JOOMLA_BANNERS_CLIENTS_014" time="2.104" classname="testcases.bannerClient.TM_BannerClient_002" />
+      
+</testsuite>

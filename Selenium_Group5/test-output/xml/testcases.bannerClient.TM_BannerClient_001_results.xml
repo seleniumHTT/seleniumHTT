@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="TM_BannerClient"
+           tests="9"
+           failures="0"
+           errors="0"
+           skipped="0"
+           time="75.950">
+  <properties />
+  
+  
+            <testcase name="TC_JOOMLA_BANNERS_CLIENTS_006" time="10.019" classname="testcases.bannerClient.TM_BannerClient_001" />
+                <testcase name="TC_JOOMLA_BANNERS_CLIENTS_009" time="3.875" classname="testcases.bannerClient.TM_BannerClient_001" />
+                <testcase name="TC_JOOMLA_BANNERS_CLIENTS_004" time="10.046" classname="testcases.bannerClient.TM_BannerClient_001" />
+                <testcase name="TC_JOOMLA_BANNERS_CLIENTS_007" time="6.417" classname="testcases.bannerClient.TM_BannerClient_001" />
+                <testcase name="TC_JOOMLA_BANNERS_CLIENTS_001" time="10.993" classname="testcases.bannerClient.TM_BannerClient_001" />
+                <testcase name="TC_JOOMLA_BANNERS_CLIENTS_005" time="10.080" classname="testcases.bannerClient.TM_BannerClient_001" />
+                <testcase name="TC_JOOMLA_BANNERS_CLIENTS_008" time="2.906" classname="testcases.bannerClient.TM_BannerClient_001" />
+                <testcase name="TC_JOOMLA_BANNERS_CLIENTS_002" time="11.569" classname="testcases.bannerClient.TM_BannerClient_001" />
+                <testcase name="TC_JOOMLA_BANNERS_CLIENTS_003" time="10.045" classname="testcases.bannerClient.TM_BannerClient_001" />
+      
+</testsuite>

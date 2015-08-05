@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <webconfig>	
-<!-- 	<browser>chrome</browser> -->
-	<browser>ie</browser>
+<!--	<browser>chrome</browser>  -->
+ 	<browser>ie</browser> 
 <!-- 	<browser>firefox</browser> -->
 	<grid>NO</grid>
 	<timeWait>

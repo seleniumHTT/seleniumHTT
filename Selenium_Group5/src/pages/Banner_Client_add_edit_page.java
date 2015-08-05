@@ -35,6 +35,7 @@ public class Banner_Client_add_edit_page extends AbstractPage{
 			
 		if(status != null && status != "") {
 			selectCombobox(cb_status, status);
+			waitForPageLoaded(driver);
 		}
 			
 	}	

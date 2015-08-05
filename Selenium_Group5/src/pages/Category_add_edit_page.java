@@ -33,18 +33,22 @@ public class Category_add_edit_page extends AbstractPage {
 		
 		if(parent !=null && parent != "") {
 			selectCombobox(cb_parent, parent);
+			waitForPageLoaded(driver);
 		}
 		
 		if(status != null && status != "") {
 			selectCombobox(cb_status, status);
+			waitForPageLoaded(driver);
 		}
 		
 		if(access != null && access != "") {
 			selectCombobox(cb_access, access);
+			waitForPageLoaded(driver);
 		}			
 		
 		if(language != null && language != "") {
 			selectCombobox(cb_language, language);
+			waitForPageLoaded(driver);
 		}
 		
 		if(categoryText != null && categoryText != "") {
