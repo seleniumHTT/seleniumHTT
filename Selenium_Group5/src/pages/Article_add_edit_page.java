@@ -4,6 +4,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import common.config;
+
 import abstracts.AbstractPage;
 
 public class Article_add_edit_page extends AbstractPage {
@@ -17,6 +19,7 @@ public class Article_add_edit_page extends AbstractPage {
 	
 	public void enterData(String title, String category, String status, String access, String feature, String articleText) {
 		
+		waitElementDisplay(_txt_title);
 		//Enter data
 		if(title !=null && title != "") {			
 			txt_title.clear();
@@ -51,26 +54,34 @@ public class Article_add_edit_page extends AbstractPage {
 	}
 	
 	public void insertImage(String imageName) {
+		String currentWindow = driver.getWindowHandle(); 
 		btn_image.click();
 		
 		driver.switchTo().frame(iframe_imageFrame);
 		driver.switchTo().frame(iframe_selectImageFrame);
 		
-		getWebElement("//a[@title='"+ imageName +"']").click();
-		
-		driver.switchTo().parentFrame();		
+		getWebElement("//a[@title='"+ imageName +"']").click();		
+				
+		driver.switchTo().defaultContent();
+		driver.switchTo().frame(iframe_imageFrame);
 		btn_insertImageIframe.click();
 		
-		driver.switchTo().parentFrame();		
+		driver.switchTo().defaultContent();
+		driver.switchTo().window(currentWindow);
+		
+		//sleep to wait dialog disappear
+		sleep(config.getShortTime());
 	}
 	
-	public Article_manager_page clickSaveClose() {
-		btn_saveClose.click();
-		return new Article_manager_page(driver);
+	public Article_manager_page clickSaveClose() {		
+		btn_saveClose.click();	
+		waitForPageLoaded(driver);
+		return new Article_manager_page(driver);		
 	}	
 		
 	public void clickSave() {
 		btn_save.click();
+		waitForPageLoaded(driver);
 	}
 	
 	public void filterCategoryByXpath(String category) {
@@ -79,6 +90,7 @@ public class Article_add_edit_page extends AbstractPage {
 	//Editor
 	@FindBy(xpath="//input[@id='jform_title']")
 	WebElement txt_title;
+	private String _txt_title = "//input[@id='jform_title']";
 
 	@FindBy(xpath="//select[@id='jform_catid']")
 	WebElement cb_category;

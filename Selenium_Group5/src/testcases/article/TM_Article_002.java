@@ -29,7 +29,7 @@ public class TM_Article_002 extends AbstractTest{
   }
   
   @Test(description= "Verify user can check in a article", priority=1)
-  public void TC_JOOMLA_ARTICLE_006() {	
+  public void TC_JOOMLA_ARTICLE_006() { 
 	  
 	  articleManagerPage = adminPage.clickArticleManagerMenu();
 	 
@@ -51,11 +51,12 @@ public class TM_Article_002 extends AbstractTest{
 	  articleManagerPage.searchArticle(name);
 	  
 	  articleManagerPage.checkIn(name2);
+	  	  
+	  check = articleManagerPage.isMessageDisplay(AppData.Article.msgCheckedIn);
+	  verifyTrue(check, "VP: Article successfully saved message is displayed");
+	  
 	  check = articleManagerPage.isArticleCheckedIn(name2);
 	  verifyTrue(check, "VP: The lock icon next to the article is removed");
-	  
-	  check = articleManagerPage.isMessageDisplay(AppData.Article.msgCheckedIn);
-	  verifyTrue(check, "VP: Article successfully saved message is displayed");  
   }
   
   @Test(description= "Verify user can change the status of article using the Status column", dependsOnMethods= "TC_JOOMLA_ARTICLE_006", priority=1)
@@ -63,18 +64,19 @@ public class TM_Article_002 extends AbstractTest{
 	  
 	  articleManagerPage.clickChangeStatus(name2);
 	  
-	  check = articleManagerPage.isArticlePublished(name2, "Unpublished");
-	  verifyTrue(check, "VP: The icon of the selected item is showed as 'Unpublished'");
-	  
 	  check = articleManagerPage.isMessageDisplay(AppData.Article.msgUnpublish);
 	  verifyTrue(check, "VP: The '1 article successfully unpublished' message is displayed");
 	  
-	  articleManagerPage.clickChangeStatus(name2);	  
-	  check = articleManagerPage.isArticlePublished(name2, "Published");
-	  verifyTrue(check, "VP: The icon of the selected item is showed as 'Published'");	  
+	  check = articleManagerPage.isArticlePublished(name2, "Unpublished");
+	  verifyTrue(check, "VP: The icon of the selected item is showed as 'Unpublished'");	    
+	  
+	  articleManagerPage.clickChangeStatus(name2);
 	  
 	  check = articleManagerPage.isMessageDisplay(AppData.Article.msgPublish);
 	  verifyTrue(check, "VP: The '1 article successfully published' message is displayed");
+	  
+	  check = articleManagerPage.isArticlePublished(name2, "Published");
+	  verifyTrue(check, "VP: The icon of the selected item is showed as 'Published'");
   }
   
   @Test(description= "Verify user can add image to article's information", dependsOnMethods= "TC_JOOMLA_ARTICLE_006")
@@ -142,18 +144,6 @@ public class TM_Article_002 extends AbstractTest{
 	  verifyTrue(check, "VP: The deleted article is displayed on the table grid");
   } 
   
-  @AfterClass
-  public void afterClass() {
-	  config.tearDown();
-  }
-
-  @BeforeTest
-  public void beforeTest() {
-  }
-
-  @AfterTest
-  public void afterTest() {
-  }
   
   String name, alias, category, stsPublished, access, feature, articleText, imageName, name2, name3; 
   String nameEdit, aliasEdit, categoryEdit, statusEdit, accessEdit, featureEdit, Edit, articleTextEdit;

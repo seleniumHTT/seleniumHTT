@@ -16,6 +16,12 @@ public abstract class AbstractTest {
   @AfterClass
   public void afterClass() {
 	  config.tearDown();
+	  try {
+		Thread.sleep(3000);
+	} catch (InterruptedException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
   }
   
   public void verifyTrue(boolean condition, String verifyPoint) {	  

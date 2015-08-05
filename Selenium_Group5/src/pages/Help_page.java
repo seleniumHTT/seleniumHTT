@@ -1,8 +1,9 @@
 package pages;
 
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
-import common.PageFactory;
 
+import common.PageFactory;
 import abstracts.AbstractPage;
 
 public class Help_page extends AbstractPage {
@@ -17,12 +18,21 @@ public class Help_page extends AbstractPage {
 		return driver.getTitle();
 	}
 	
-	public boolean isHelpWindowDisplays(String windowsTitle) {		
-		return getWindowTitle().contains(windowsTitle);
+	public boolean isHelpWindowDisplays(String windowsTitle) {
+		try {
+			waitWindowsTitleDisplay(windowsTitle);
+			System.out.println(driver.getTitle());
+			return true;
+		} catch (TimeoutException ex) {
+			System.out.println(driver.getTitle());
+			return false;
+			
+		}
+		
 	}
 	
 	public void closeBackToParentPage() {
-		closeWindow();
+		driver.close();
 		driver.switchTo().window(PageFactory.getParentWindow());
 	}
 	

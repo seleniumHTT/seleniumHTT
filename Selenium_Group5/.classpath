@@ -13,11 +13,11 @@
 	<classpathentry kind="lib" path="libs/poi-ooxml-3.11-20141221.jar"/>
 	<classpathentry kind="lib" path="libs/poi-ooxml-schemas-3.11-20141221.jar"/>
 	<classpathentry kind="lib" path="libs/poi-scratchpad-3.11-20141221.jar"/>
-	<classpathentry kind="lib" path="libs/selenium-java-2.45.0.jar"/>
 	<classpathentry kind="lib" path="libs/selenium-server-standalone-2.44.0.jar"/>
 	<classpathentry kind="lib" path="libs/xmlbeans-2.6.0.jar"/>
 	<classpathentry kind="lib" path="libs/guice-3.0.jar"/>
 	<classpathentry kind="lib" path="libs/reportng-1.1.4.jar"/>
 	<classpathentry kind="lib" path="libs/velocity-dep-1.4.jar"/>
+	<classpathentry kind="lib" path="libs/selenium-java-2.47.1.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

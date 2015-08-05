@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <webconfig>	
-	<browser>firefox</browser>
+<!-- 	<browser>chrome</browser> -->
+	<browser>ie</browser>
+<!-- 	<browser>firefox</browser> -->
 	<grid>NO</grid>
 	<timeWait>
-		<longTime>60</longTime>
-		<shortTime>5</shortTime>
+		<longTime>30</longTime>
+		<shortTime>3</shortTime>
+		<mediumTime>10</mediumTime>
 	</timeWait>
 	
 	<closeBrowser>YES</closeBrowser>

@@ -2,11 +2,16 @@ package abstracts;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.Wait;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import common.config;
 import pages.*;
@@ -24,6 +29,12 @@ public abstract class AbstractPage {
 		return driver.findElement(By.xpath(xpath));
 	}
 	
+	public WebElement getWebElement(String xpath, int timeOut) {
+		WebDriverWait wait =  new WebDriverWait(driver, timeOut);
+		WebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(xpath)));
+		return element;
+	}
+	
 	public String getCellXpath(String objectTitle, int colNumber) {
 		return String.format(_cell, objectTitle, colNumber);
 	}
@@ -34,7 +45,7 @@ public abstract class AbstractPage {
 	
 	public int getRowNumber(String objectTitle) {
 		String previousRows = String.format(_previousRows, objectTitle);
-		config.setImplicitlyWait(config.getShortTime());
+		config.setImplicitlyWait(config.getMediumTime());
 		int rows = driver.findElements(By.xpath(previousRows)).size() + 1;
 		config.setImplicitlyWait(config.getLongTime());
 		return rows;
@@ -53,16 +64,20 @@ public abstract class AbstractPage {
 		getWebElement(String.format(valueXpath, value)).click();
 	}
 	public void mouseHover(WebElement e) {
-		Actions action = new Actions(driver);
-		action.moveToElement(e).perform();
+		if(!config.getBrowserName().equals("ie")) {
+			Actions action = new Actions(driver);
+			action.moveToElement(e).perform();
+			//sleep between the moving
+			sleep(1/2);
+		}
 	}	
 	
 	
 	//Navigate between pages
-	public Article_manager_page clickArticleManagerMenu() {		
-		clickMenu(menuArticleManager);
+	public Article_manager_page clickArticleManagerMenu() {
+		clickMenu(menuArticleManager);		
 		return new Article_manager_page(driver);
-	}
+	}	
 	
 	public Weblink_manager_page clickWeblinkManagerMenu() {		
 		clickMenu(menuWeblinkManager);
@@ -96,9 +111,16 @@ public abstract class AbstractPage {
 	
 	public void clickMenu(String menu) {
 		String currentUrl = driver.getCurrentUrl();
-		do {
-			getSelectedMenu(menu).click();
-			sleep(config.getShortTime()*1000);
+		do {			
+			if(config.getBrowserName().equals("ie")) {
+				clickByScript(getSelectedMenu(menu));
+			} else {
+				getSelectedMenu(menu).click();				
+			}
+			if(currentUrl == driver.getCurrentUrl()) {
+				//wait for click again
+				sleep(config.getMediumTime());
+			}
 		} while (currentUrl == driver.getCurrentUrl());
 	}
 	
@@ -121,16 +143,13 @@ public abstract class AbstractPage {
 			for (int i = 0; i < arrMenu.length - 1; i++) {				 
 				 menuXpath = menuXpath + "/../ul/li/a[text()='"+ arrMenu[i+1] +"']";
 				 eMenu = getWebElement(menuXpath);
-				 mouseHover(eMenu);			 
-				 //sleep to menu appears
-				 sleep(500);
+				 mouseHover(eMenu);	
 			}
-		}
-		//sleep to menu appears
-		sleep(500);
+		}		
 		return eMenu;
 		 
 	}
+
 	
 	//check number sorting
 	public boolean isNumberSortedCorrect(String asc_dec, String xpathRow, int col) {
@@ -174,19 +193,69 @@ public abstract class AbstractPage {
 	}	
 	
 	public boolean isElementExist(String xpath) {
-		config.setImplicitlyWait(config.getShortTime());
-		boolean check = !driver.findElements(By.xpath(xpath)).isEmpty();
+		//config.setImplicitlyWait(config.getMediumTime());
+		boolean check = false;
+		try {
+			waitElementDisplay(xpath);
+			check = true;
+		} catch(TimeoutException ex) {
+			System.out.println("Element not found");
+			check = false;
+		}		
 		config.setImplicitlyWait(config.getLongTime());
 		return check;
 	}
 	
 	//Wait, sleep methods
-	public void sleep(long milisecond) {
+	public void sleep(long second) {
 		try {
-			Thread.sleep(milisecond);
+			Thread.sleep(second*1000);
 		} catch (InterruptedException e) {			
 			e.printStackTrace();
 		}
+	}
+	
+	//Sleep in some special cases for IE
+	public void sleepIE() {
+		if(config.getBrowserName().equals("ie")) {
+			System.out.println("Sleep for IE special case: " + config.getShortTime() + " second(s)");
+			sleep(config.getShortTime());
+		}
+	}
+	
+	public void waitElementDisplay(String xpath) {
+		WebDriverWait wait = new WebDriverWait(driver, config.getMediumTime());
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath)));
+		config.setImplicitlyWait(config.getLongTime());
+	}
+	
+	public void waitToClick(String xpath) {
+		WebDriverWait wait = new WebDriverWait(driver, config.getMediumTime());
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath(xpath)));
+		config.setImplicitlyWait(config.getLongTime());
+	}
+	
+	public void waitForPageLoaded(WebDriver driver) {
+
+	     ExpectedCondition<Boolean> expectation = new
+		 ExpectedCondition<Boolean>() {
+	        public Boolean apply(WebDriver driver) {
+	          return ((JavascriptExecutor)driver).executeScript("return document.readyState").equals("complete");
+	        }
+	      };
+
+	     Wait<WebDriver> wait = new WebDriverWait(driver,30);
+	      try {
+	              wait.until(expectation);
+	      } catch(Throwable error) {
+	              System.out.println("Timed out!!!");
+	      }
+	 } 
+	
+	public void waitWindowsTitleDisplay(String title) {
+		WebDriverWait wait = new WebDriverWait(driver, config.getMediumTime());
+		wait.until(ExpectedConditions.titleIs(title));
+		config.setImplicitlyWait(config.getLongTime());
 	}
 	
 	// Switch to next opened window
@@ -213,10 +282,14 @@ public abstract class AbstractPage {
 		}
 	}
 	
+	public void clickByScript(WebElement webElement) {		
+		JavascriptExecutor js = (JavascriptExecutor)driver;
+		js.executeScript("arguments[0].click();", webElement);
+	}
+	
 	private String _cell = "//a[contains(text(), '%s')]/ancestor::tr/td[%s]";
 	private String _previousRows = "//a[contains(text(), '%s')]/ancestor::tr/preceding-sibling::*";
-	private String _systemMsg = ".//*[@id='system-message']//*[contains(text(),'%s')]";
-//	private final String adminPageTitle = "Control Panel";
+	private String _systemMsg = ".//*[@id='system-message']//*[contains(text(),'%s')]";	
 	private final String menuContactManager = "Components/Contacts";
 	private final String menuWeblinkManager = "Components/Weblinks";
 	private final String menuBannerManager = "Components/Banners/Banners";

@@ -101,6 +101,8 @@ public class TM_Article_001 extends AbstractTest{
   @Test(description= "Verify user can edit a article", dependsOnMethods= "TC_JOOMLA_ARTICLE_001", priority=2)
   public void TC_JOOMLA_ARTICLE_002() {
 	  
+	  articleManagerPage.searchArticle(name);
+	  
 	  articleManagerPage.clickArticleCheckbox(name);
 	  editArticlePage = articleManagerPage.clickEditArticle();
 	  	  
@@ -120,6 +122,8 @@ public class TM_Article_001 extends AbstractTest{
   @Test(description= "Verify user can publish an unpublished article", dependsOnMethods= "TC_JOOMLA_ARTICLE_002")
   public void TC_JOOMLA_ARTICLE_003() {	  
 	
+	  articleManagerPage.searchArticle(name);
+	  
 	  articleManagerPage.clickArticleCheckbox(nameEdit);
 	  articleManagerPage.clickChangeStatusToolbar("Unpublish");	  
 	  	  
@@ -130,6 +134,8 @@ public class TM_Article_001 extends AbstractTest{
   @Test(description= "Verify user can publish an unpublished article", dependsOnMethods="TC_JOOMLA_ARTICLE_003")
   public void TC_JOOMLA_ARTICLE_004() {
 	  	  
+	  articleManagerPage.searchArticle(name);
+	  
 	  articleManagerPage.clickArticleCheckbox(nameEdit);
 	  articleManagerPage.clickChangeStatusToolbar("Publish");	  
 	  	  
@@ -139,6 +145,8 @@ public class TM_Article_001 extends AbstractTest{
   
   @Test(description= "Verify user can move a article to the archive", dependsOnMethods= "TC_JOOMLA_ARTICLE_004")
   public void TC_JOOMLA_ARTICLE_005() {
+	  
+	  articleManagerPage.searchArticle(name);
 	  
 	  articleManagerPage.clickArticleCheckbox(nameEdit);
 	  articleManagerPage.clickArchiveArticle(); 
