@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [Default suite]">
+  <test name="Default test(failed)">
+    <classes>
+      <class name="testcases.banners.TM_Banner_002">
+        <methods>
+          <include name="beforeTest"/>
+          <include name="afterTest"/>
+          <include name="beforeClass"/>
+          <include name="TC_JOOMLA_BANNERS_BANNERS_017"/>
+          <include name="TC_JOOMLA_BANNERS_BANNERS_014"/>
+          <include name="beforeTest"/>
+          <include name="afterTest"/>
+          <include name="TC_JOOMLA_BANNERS_BANNERS_012"/>
+          <include name="TC_JOOMLA_BANNERS_BANNERS_013"/>
+          <include name="TC_JOOMLA_BANNERS_BANNERS_010"/>
+          <include name="afterClass"/>
+          <include name="TC_JOOMLA_BANNERS_BANNERS_011"/>
+        </methods>
+      </class> <!-- testcases.banners.TM_Banner_002 -->
+    </classes>
+  </test> <!-- Default test(failed) -->
+</suite> <!-- Failed suite [Default suite] -->

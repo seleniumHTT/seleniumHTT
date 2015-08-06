@@ -31,14 +31,17 @@ public class Banner_add_edit_page extends AbstractPage{
 		if(category != null && category != "") {
 			category = "- " + category;
 			selectCombobox(cb_category, category);
+			waitForPageLoaded(driver);
 		}
 			
 		if(status != null && status != "") {
 			selectCombobox(cb_status, status);
+			waitForPageLoaded(driver);
 		}
 		
 		if(client != null && client != "") {
 			selectCombobox(cb_client, client);
+			waitForPageLoaded(driver);
 		}
 			
 	}	

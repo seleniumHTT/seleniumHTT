@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [Joomla All Tcs]">
+  <listeners>
+    <listener class-name="org.uncommons.reportng.HTMLReporter"/>
+    <listener class-name="org.uncommons.reportng.JUnitXMLReporter"/>
+  </listeners>
+  <test name="TM_Contact(failed)">
+    <classes>
+      <class name="testcases.bannerClient.TM_BannerClient_001">
+        <methods>
+          <include name="beforeTest"/>
+          <include name="beforeClass"/>
+          <include name="afterTest"/>
+          <include name="beforeTest"/>
+          <include name="afterTest"/>
+          <include name="afterClass"/>
+        </methods>
+      </class> <!-- testcases.bannerClient.TM_BannerClient_001 -->
+      <class name="testcases.banners.TM_Banner_002">
+        <methods>
+          <include name="beforeTest"/>
+          <include name="afterTest"/>
+          <include name="beforeClass"/>
+          <include name="afterTest"/>
+          <include name="beforeTest"/>
+          <include name="afterClass"/>
+        </methods>
+      </class> <!-- testcases.banners.TM_Banner_002 -->
+      <class name="testcases.contact.TM_Contact_001">
+        <methods>
+          <include name="beforeTest"/>
+          <include name="afterClass"/>
+          <include name="beforeTest"/>
+          <include name="afterTest"/>
+          <include name="TC_JOOMLA_CONTACTS_001"/>
+          <include name="afterTest"/>
+          <include name="TC_JOOMLA_CONTACTS_008"/>
+          <include name="beforeClass"/>
+        </methods>
+      </class> <!-- testcases.contact.TM_Contact_001 -->
+      <class name="testcases.weblink.TM_Weblink_002">
+        <methods>
+          <include name="beforeTest"/>
+          <include name="afterClass"/>
+          <include name="afterTest"/>
+          <include name="beforeClass"/>
+        </methods>
+      </class> <!-- testcases.weblink.TM_Weblink_002 -->
+      <class name="testcases.banners.TM_Banner_001">
+        <methods>
+          <include name="beforeTest"/>
+          <include name="beforeClass"/>
+          <include name="beforeTest"/>
+          <include name="afterTest"/>
+          <include name="afterTest"/>
+          <include name="afterClass"/>
+        </methods>
+      </class> <!-- testcases.banners.TM_Banner_001 -->
+      <class name="testcases.category.TM_Category_002">
+        <methods>
+          <include name="afterTest"/>
+          <include name="afterClass"/>
+          <include name="beforeTest"/>
+          <include name="beforeTest"/>
+          <include name="afterTest"/>
+          <include name="beforeClass"/>
+        </methods>
+      </class> <!-- testcases.category.TM_Category_002 -->
+      <class name="testcases.weblink.TM_Weblink_001">
+        <methods>
+          <include name="beforeTest"/>
+          <include name="beforeClass"/>
+          <include name="afterClass"/>
+          <include name="afterTest"/>
+        </methods>
+      </class> <!-- testcases.weblink.TM_Weblink_001 -->
+      <class name="testcases.bannerClient.TM_BannerClient_002">
+        <methods>
+          <include name="beforeTest"/>
+          <include name="beforeTest"/>
+          <include name="afterTest"/>
+          <include name="beforeClass"/>
+          <include name="afterTest"/>
+          <include name="afterClass"/>
+        </methods>
+      </class> <!-- testcases.bannerClient.TM_BannerClient_002 -->
+      <class name="testcases.article.TM_Article_001">
+        <methods>
+          <include name="beforeTest"/>
+          <include name="afterClass"/>
+          <include name="afterTest"/>
+          <include name="beforeClass"/>
+        </methods>
+      </class> <!-- testcases.article.TM_Article_001 -->
+      <class name="testcases.category.TM_Category_001">
+        <methods>
+          <include name="beforeTest"/>
+          <include name="afterClass"/>
+          <include name="afterTest"/>
+          <include name="beforeClass"/>
+        </methods>
+      </class> <!-- testcases.category.TM_Category_001 -->
+      <class name="testcases.contact.TM_Contact_002">
+        <methods>
+          <include name="beforeClass"/>
+          <include name="beforeTest"/>
+          <include name="afterTest"/>
+          <include name="afterClass"/>
+          <include name="afterTest"/>
+          <include name="beforeTest"/>
+        </methods>
+      </class> <!-- testcases.contact.TM_Contact_002 -->
+      <class name="testcases.article.TM_Article_002">
+        <methods>
+          <include name="beforeClass"/>
+          <include name="beforeTest"/>
+          <include name="afterClass"/>
+          <include name="afterTest"/>
+        </methods>
+      </class> <!-- testcases.article.TM_Article_002 -->
+    </classes>
+  </test> <!-- TM_Contact(failed) -->
+  <test name="TM_Weblink(failed)">
+    <classes>
+      <class name="testcases.bannerClient.TM_BannerClient_001">
+        <methods>
+          <include name="beforeTest"/>
+          <include name="beforeClass"/>
+          <include name="afterTest"/>
+          <include name="beforeTest"/>
+          <include name="afterTest"/>
+          <include name="afterClass"/>
+        </methods>
+      </class> <!-- testcases.bannerClient.TM_BannerClient_001 -->
+      <class name="testcases.banners.TM_Banner_002">
+        <methods>
+          <include name="beforeTest"/>
+          <include name="afterTest"/>
+          <include name="beforeClass"/>
+          <include name="afterTest"/>
+          <include name="beforeTest"/>
+          <include name="afterClass"/>
+        </methods>
+      </class> <!-- testcases.banners.TM_Banner_002 -->
+      <class name="testcases.contact.TM_Contact_001">
+        <methods>
+          <include name="beforeTest"/>
+          <include name="afterClass"/>
+          <include name="beforeTest"/>
+          <include name="afterTest"/>
+          <include name="afterTest"/>
+          <include name="beforeClass"/>
+        </methods>
+      </class> <!-- testcases.contact.TM_Contact_001 -->
+      <class name="testcases.weblink.TM_Weblink_002">
+        <methods>
+          <include name="beforeTest"/>
+          <include name="afterClass"/>
+          <include name="afterTest"/>
+          <include name="beforeClass"/>
+        </methods>
+      </class> <!-- testcases.weblink.TM_Weblink_002 -->
+      <class name="testcases.banners.TM_Banner_001">
+        <methods>
+          <include name="beforeTest"/>
+          <include name="beforeClass"/>
+          <include name="beforeTest"/>
+          <include name="afterTest"/>
+          <include name="afterTest"/>
+          <include name="afterClass"/>
+        </methods>
+      </class> <!-- testcases.banners.TM_Banner_001 -->
+      <class name="testcases.weblink.TM_Weblink_001">
+        <methods>
+          <include name="TC_JOOMLA_WEBLINKS_008"/>
+          <include name="beforeTest"/>
+          <include name="beforeClass"/>
+          <include name="afterClass"/>
+          <include name="TC_JOOMLA_WEBLINKS_001"/>
+          <include name="afterTest"/>
+        </methods>
+      </class> <!-- testcases.weblink.TM_Weblink_001 -->
+      <class name="testcases.category.TM_Category_002">
+        <methods>
+          <include name="afterTest"/>
+          <include name="afterClass"/>
+          <include name="beforeTest"/>
+          <include name="beforeTest"/>
+          <include name="afterTest"/>
+          <include name="beforeClass"/>
+        </methods>
+      </class> <!-- testcases.category.TM_Category_002 -->
+      <class name="testcases.bannerClient.TM_BannerClient_002">
+        <methods>
+          <include name="beforeTest"/>
+          <include name="beforeTest"/>
+          <include name="afterTest"/>
+          <include name="beforeClass"/>
+          <include name="afterTest"/>
+          <include name="afterClass"/>
+        </methods>
+      </class> <!-- testcases.bannerClient.TM_BannerClient_002 -->
+      <class name="testcases.article.TM_Article_001">
+        <methods>
+          <include name="beforeTest"/>
+          <include name="afterClass"/>
+          <include name="afterTest"/>
+          <include name="beforeClass"/>
+        </methods>
+      </class> <!-- testcases.article.TM_Article_001 -->
+      <class name="testcases.category.TM_Category_001">
+        <methods>
+          <include name="beforeTest"/>
+          <include name="afterClass"/>
+          <include name="afterTest"/>
+          <include name="beforeClass"/>
+        </methods>
+      </class> <!-- testcases.category.TM_Category_001 -->
+      <class name="testcases.contact.TM_Contact_002">
+        <methods>
+          <include name="beforeClass"/>
+          <include name="beforeTest"/>
+          <include name="afterTest"/>
+          <include name="afterClass"/>
+          <include name="afterTest"/>
+          <include name="beforeTest"/>
+        </methods>
+      </class> <!-- testcases.contact.TM_Contact_002 -->
+      <class name="testcases.article.TM_Article_002">
+        <methods>
+          <include name="beforeClass"/>
+          <include name="beforeTest"/>
+          <include name="afterClass"/>
+          <include name="afterTest"/>
+        </methods>
+      </class> <!-- testcases.article.TM_Article_002 -->
+    </classes>
+  </test> <!-- TM_Weblink(failed) -->
+</suite> <!-- Failed suite [Joomla All Tcs] -->
