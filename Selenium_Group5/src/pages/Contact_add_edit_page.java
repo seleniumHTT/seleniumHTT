@@ -126,9 +126,6 @@ public class Contact_add_edit_page extends AbstractPage {
 	
 	@FindBy(xpath="//button[text()='Insert']")
 	private WebElement btn_insertImageIframe;
-	
-	
-	private String _lbl_addNewContact = "//h2[text()='Contact Manager: Add New Contact']";
-	private String _categoryValue = "//select[@id='jform_catid']/option[contains(text(), '%s')]";
-	
+		
+	private String _categoryValue = "//select[@id='jform_catid']/option[contains(text(), '%s')]";	
 }

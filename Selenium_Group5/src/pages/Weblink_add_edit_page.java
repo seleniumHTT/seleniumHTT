@@ -152,7 +152,6 @@ public class Weblink_add_edit_page extends AbstractPage {
 	@FindBy(xpath="//button[text()='Insert']")
 	private WebElement btn_insertImageIframe;	
 	
-	private String _lbl_addNewWeblink = "//h2[text()='Weblink Manager: Add New Weblink']";
 	private String _categoryValue = "//select[@id='jform_catid']/option[contains(text(), '%s')]";
 	
 }

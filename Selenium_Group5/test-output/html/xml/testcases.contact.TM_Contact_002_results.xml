@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="TM_Contact"
+           tests="6"
+           failures="0"
+           errors="0"
+           skipped="0"
+           time="134.720">
+  <properties />
+  
+  
+            <testcase name="TC_JOOMLA_CONTACTS_013" time="18.477" classname="testcases.contact.TM_Contact_002" />
+                <testcase name="TC_JOOMLA_CONTACTS_014" time="7.302" classname="testcases.contact.TM_Contact_002" />
+                <testcase name="TC_JOOMLA_CONTACTS_007" time="10.440" classname="testcases.contact.TM_Contact_002" />
+                <testcase name="TC_JOOMLA_CONTACTS_015" time="28.299" classname="testcases.contact.TM_Contact_002" />
+                <testcase name="TC_JOOMLA_CONTACTS_011" time="6.671" classname="testcases.contact.TM_Contact_002" />
+                <testcase name="TC_JOOMLA_CONTACTS_006" time="63.531" classname="testcases.contact.TM_Contact_002" />
+      
+</testsuite>

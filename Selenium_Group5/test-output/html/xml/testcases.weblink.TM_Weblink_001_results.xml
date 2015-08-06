@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="TM_Weblink"
+           tests="10"
+           failures="0"
+           errors="0"
+           skipped="0"
+           time="101.009">
+  <properties />
+  
+  
+            <testcase name="TC_JOOMLA_WEBLINKS_002" time="13.438" classname="testcases.weblink.TM_Weblink_001" />
+                <testcase name="TC_JOOMLA_WEBLINKS_005" time="14.598" classname="testcases.weblink.TM_Weblink_001" />
+                <testcase name="TC_JOOMLA_WEBLINKS_009" time="2.937" classname="testcases.weblink.TM_Weblink_001" />
+                <testcase name="TC_JOOMLA_WEBLINKS_004" time="3.709" classname="testcases.weblink.TM_Weblink_001" />
+                <testcase name="TC_JOOMLA_WEBLINKS_008" time="13.947" classname="testcases.weblink.TM_Weblink_001" />
+                <testcase name="TC_JOOMLA_WEBLINKS_003" time="3.742" classname="testcases.weblink.TM_Weblink_001" />
+                <testcase name="TC_JOOMLA_WEBLINKS_010" time="8.291" classname="testcases.weblink.TM_Weblink_001" />
+                <testcase name="TC_JOOMLA_WEBLINKS_017" time="2.857" classname="testcases.weblink.TM_Weblink_001" />
+                <testcase name="TC_JOOMLA_WEBLINKS_016" time="18.080" classname="testcases.weblink.TM_Weblink_001" />
+                <testcase name="TC_JOOMLA_WEBLINKS_001" time="19.410" classname="testcases.weblink.TM_Weblink_001" />
+      
+</testsuite>
